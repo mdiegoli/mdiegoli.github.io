@@ -1,0 +1,1320 @@
+{
+    "LB": {
+        "15": {
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_15.png",
+            "partname": "i",
+            "effect": "weapon:Q"
+        },
+        "16": {
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_16.png",
+            "partname": "lu",
+            "effect": "weapon:Q"
+        },
+        "17": {
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_17.png",
+            "partname": "ka",
+            "effect": "weapon:Q"
+        },
+        "18": {
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_18.png",
+            "partname": "kar",
+            "effect": "weapon:Q"
+        },
+        "19": {
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_19.png",
+            "partname": "kor",
+            "effect": "weapon:Q"
+        },
+        "20": {
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_20.png",
+            "partname": "me",
+            "effect": "weapon:Q"
+        },
+        "21": {
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_21.png",
+            "partname": "mel",
+            "effect": "weapon:Q"
+        },
+        "22": {
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_22.png",
+            "partname": "mor",
+            "effect": "weapon:Q"
+        },
+        "23": {
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_23.png",
+            "partname": "nar",
+            "effect": "weapon:Q"
+        },
+        "24": {
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_24.png",
+            "partname": "ra",
+            "effect": "weapon:Q"
+        },
+        "25": {
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_25.png",
+            "partname": "sa",
+            "effect": "weapon:Q"
+        },
+        "26": {
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_26.png",
+            "partname": null,
+            "effect": "weapon:Q"
+        },
+        "27": {
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_27.png",
+            "partname": null,
+            "effect": "weapon:Q"
+        },
+        "28": {
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_28.png",
+            "partname": null,
+            "effect": "weapon:Q"
+        },
+        "29": {
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_29.png",
+            "partname": null,
+            "effect": "weapon:Q"
+        },
+        "30": {
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_30.png",
+            "partname": null,
+            "effect": "weapon:Q"
+        },
+        "31": {
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_31.png",
+            "partname": null,
+            "effect": "weapon:Q"
+        },
+        "32": {
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_32.png",
+            "partname": null,
+            "effect": "weapon:Q"
+        },
+        "33": {
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_33.png",
+            "partname": null,
+            "effect": "weapon:Q"
+        },
+        "34": {
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_34.png",
+            "partname": null,
+            "effect": "weapon:Q"
+        },
+        "35": {
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_35.png",
+            "partname": null,
+            "effect": "weapon:Q"
+        },
+        "36": {
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_36.png",
+            "partname": null,
+            "effect": "weapon:Q"
+        },
+        "01": {
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_01.png",
+            "partname": "an",
+            "effect": "weapon:Q"
+        },
+        "02": {
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_02.png",
+            "partname": "as",
+            "effect": "weapon:Q"
+        },
+        "03": {
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_03.png",
+            "partname": "az",
+            "effect": "weapon:Q"
+        },
+        "04": {
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_04.png",
+            "partname": "ba",
+            "effect": "weapon:Q"
+        },
+        "05": {
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_05.png",
+            "partname": "bal",
+            "effect": "weapon:Q"
+        },
+        "06": {
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_06.png",
+            "partname": "be",
+            "effect": "weapon:Q"
+        },
+        "07": {
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_07.png",
+            "partname": "bel",
+            "effect": "weapon:Q"
+        },
+        "08": {
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_08.png",
+            "partname": "del",
+            "effect": "weapon:Q"
+        },
+        "09": {
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_09.png",
+            "partname": "dra",
+            "effect": "weapon:Q"
+        },
+        "10": {
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_10.png",
+            "partname": "du",
+            "effect": "weapon:Q"
+        },
+        "11": {
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_11.png",
+            "partname": "e",
+            "effect": "weapon:Q"
+        },
+        "12": {
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_12.png",
+            "partname": "go",
+            "effect": "weapon:Q"
+        },
+        "13": {
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_13.png",
+            "partname": "gri",
+            "effect": "weapon:Q"
+        },
+        "14": {
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_14.png",
+            "partname": "hex",
+            "effect": "weapon:Q"
+        }
+    },
+    "LW": {
+        "01": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_01.png",
+            "partname": "an",
+            "effect": "var:A"
+        },
+        "02": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_02.png",
+            "partname": "as",
+            "effect": "var:A"
+        },
+        "03": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_03.png",
+            "partname": "az",
+            "effect": "var:A"
+        },
+        "04": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_04.png",
+            "partname": "ba",
+            "effect": "var:A"
+        },
+        "05": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_05.png",
+            "partname": "bal",
+            "effect": "var:A"
+        },
+        "06": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_06.png",
+            "partname": "be",
+            "effect": "var:A"
+        },
+        "07": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_07.png",
+            "partname": "bel",
+            "effect": "var:A"
+        },
+        "08": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_08.png",
+            "partname": "del",
+            "effect": "var:A"
+        },
+        "09": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_09.png",
+            "partname": "dra",
+            "effect": "var:A"
+        },
+        "10": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_10.png",
+            "partname": "du",
+            "effect": "var:A"
+        },
+        "11": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_11.png",
+            "partname": "e",
+            "effect": "var:A"
+        },
+        "12": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_12.png",
+            "partname": "go",
+            "effect": "var:A"
+        },
+        "13": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_13.png",
+            "partname": "gri",
+            "effect": "var:A"
+        },
+        "14": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_14.png",
+            "partname": "hex",
+            "effect": "var:A"
+        },
+        "15": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_15.png",
+            "partname": "i",
+            "effect": "var:A"
+        },
+        "16": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_16.png",
+            "partname": "lu",
+            "effect": "var:A"
+        },
+        "17": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_17.png",
+            "partname": "ka",
+            "effect": "var:A"
+        },
+        "18": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_18.png",
+            "partname": "kar",
+            "effect": "var:A"
+        },
+        "19": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_19.png",
+            "partname": "kor",
+            "effect": "var:A"
+        },
+        "20": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_20.png",
+            "partname": "me",
+            "effect": "var:A"
+        },
+        "21": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_21.png",
+            "partname": "mel",
+            "effect": "var:A"
+        },
+        "22": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_22.png",
+            "partname": "mor",
+            "effect": "var:A"
+        },
+        "23": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_23.png",
+            "partname": "nar",
+            "effect": "var:A"
+        },
+        "24": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_24.png",
+            "partname": "ra",
+            "effect": "var:A"
+        },
+        "25": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_25.png",
+            "partname": "sa",
+            "effect": "var:A"
+        },
+        "26": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_26.png",
+            "partname": null,
+            "effect": "var:A"
+        },
+        "27": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_27.png",
+            "partname": null,
+            "effect": "var:A"
+        },
+        "28": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_28.png",
+            "partname": null,
+            "effect": "var:A"
+        },
+        "29": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_29.png",
+            "partname": null,
+            "effect": "var:A"
+        },
+        "30": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_30.png",
+            "partname": null,
+            "effect": "var:A"
+        },
+        "31": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_31.png",
+            "partname": null,
+            "effect": "var:A"
+        },
+        "32": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_32.png",
+            "partname": null,
+            "effect": "var:A"
+        },
+        "33": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_33.png",
+            "partname": null,
+            "effect": "var:A"
+        },
+        "34": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_34.png",
+            "partname": null,
+            "effect": "var:A"
+        },
+        "35": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_35.png",
+            "partname": null,
+            "effect": "var:A"
+        },
+        "36": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_36.png",
+            "partname": null,
+            "effect": "var:A"
+        },
+        "37": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_37.png",
+            "partname": null,
+            "effect": "var:A"
+        },
+        "38": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_38.png",
+            "partname": null,
+            "effect": "var:A"
+        },
+        "39": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_39.png",
+            "partname": null,
+            "effect": "var:A"
+        },
+        "40": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_40.png",
+            "partname": null,
+            "effect": "var:A"
+        },
+        "41": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_41.png",
+            "partname": null,
+            "effect": "var:A"
+        },
+        "42": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_42.png",
+            "partname": null,
+            "effect": "var:A"
+        },
+        "43": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_43.png",
+            "partname": null,
+            "effect": "var:A"
+        }
+    },
+    "RW": {
+        "01": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_01.png",
+            "partname": "an",
+            "effect": ""
+        },
+        "02": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_02.png",
+            "partname": "as",
+            "effect": ""
+        },
+        "03": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_03.png",
+            "partname": "az",
+            "effect": ""
+        },
+        "04": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_04.png",
+            "partname": "ba",
+            "effect": ""
+        },
+        "05": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_05.png",
+            "partname": "bal",
+            "effect": ""
+        },
+        "06": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_06.png",
+            "partname": "be",
+            "effect": ""
+        },
+        "07": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_07.png",
+            "partname": "bel",
+            "effect": ""
+        },
+        "08": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_08.png",
+            "partname": "del",
+            "effect": ""
+        },
+        "09": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_09.png",
+            "partname": "dra",
+            "effect": ""
+        },
+        "10": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_10.png",
+            "partname": "du",
+            "effect": ""
+        },
+        "11": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_11.png",
+            "partname": "e",
+            "effect": ""
+        },
+        "12": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_12.png",
+            "partname": "go",
+            "effect": ""
+        },
+        "13": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_13.png",
+            "partname": "gri",
+            "effect": ""
+        },
+        "14": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_14.png",
+            "partname": "hex",
+            "effect": ""
+        },
+        "15": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_15.png",
+            "partname": "i",
+            "effect": ""
+        },
+        "16": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_16.png",
+            "partname": "lu",
+            "effect": ""
+        },
+        "17": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_17.png",
+            "partname": "ka",
+            "effect": ""
+        },
+        "18": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_18.png",
+            "partname": "kar",
+            "effect": ""
+        },
+        "19": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_19.png",
+            "partname": "kor",
+            "effect": ""
+        },
+        "20": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_20.png",
+            "partname": "me",
+            "effect": ""
+        },
+        "21": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_21.png",
+            "partname": "mel",
+            "effect": ""
+        },
+        "22": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_22.png",
+            "partname": "mor",
+            "effect": ""
+        },
+        "23": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_23.png",
+            "partname": "nar",
+            "effect": ""
+        },
+        "24": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_24.png",
+            "partname": "ra",
+            "effect": ""
+        },
+        "25": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_25.png",
+            "partname": "sa",
+            "effect": ""
+        },
+        "26": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_26.png",
+            "partname": null,
+            "effect": ""
+        },
+        "27": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_27.png",
+            "partname": null,
+            "effect": ""
+        },
+        "28": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_28.png",
+            "partname": null,
+            "effect": ""
+        },
+        "29": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_29.png",
+            "partname": null,
+            "effect": ""
+        },
+        "30": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_30.png",
+            "partname": null,
+            "effect": ""
+        },
+        "31": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_31.png",
+            "partname": null,
+            "effect": ""
+        },
+        "32": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_32.png",
+            "partname": null,
+            "effect": ""
+        },
+        "33": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_33.png",
+            "partname": null,
+            "effect": ""
+        },
+        "34": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_34.png",
+            "partname": null,
+            "effect": ""
+        },
+        "35": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_35.png",
+            "partname": null,
+            "effect": ""
+        },
+        "36": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_36.png",
+            "partname": null,
+            "effect": ""
+        },
+        "37": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_37.png",
+            "partname": null,
+            "effect": ""
+        },
+        "38": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_38.png",
+            "partname": null,
+            "effect": ""
+        },
+        "39": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_39.png",
+            "partname": null,
+            "effect": ""
+        },
+        "40": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_40.png",
+            "partname": null,
+            "effect": ""
+        },
+        "41": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_41.png",
+            "partname": null,
+            "effect": ""
+        },
+        "42": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_42.png",
+            "partname": null,
+            "effect": ""
+        },
+        "43": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_43.png",
+            "partname": null,
+            "effect": ""
+        }
+    },
+    "BO": {
+        "01": {
+            "type": "body",
+            "img": "dem_A_BO_3_01.png",
+            "partname": "bi",
+            "effect": "energy:K"
+        },
+        "02": {
+            "type": "body",
+            "img": "dem_A_BO_3_02.png",
+            "partname": "bra",
+            "effect": "energy:K"
+        },
+        "03": {
+            "type": "body",
+            "img": "dem_A_BO_3_03.png",
+            "partname": "ci",
+            "effect": "energy:K"
+        },
+        "04": {
+            "type": "body",
+            "img": "dem_A_BO_3_04.png",
+            "partname": "da",
+            "effect": "energy:K"
+        },
+        "05": {
+            "type": "body",
+            "img": "dem_A_BO_3_05.png",
+            "partname": "de",
+            "effect": "energy:K"
+        },
+        "06": {
+            "type": "body",
+            "img": "dem_A_BO_3_06.png",
+            "partname": "fa",
+            "effect": "energy:K"
+        },
+        "07": {
+            "type": "body",
+            "img": "dem_A_BO_3_07.png",
+            "partname": "fri",
+            "effect": "energy:K"
+        },
+        "08": {
+            "type": "body",
+            "img": "dem_A_BO_3_08.png",
+            "partname": "for",
+            "effect": "energy:K"
+        },
+        "09": {
+            "type": "body",
+            "img": "dem_A_BO_3_09.png",
+            "partname": "gi",
+            "effect": "energy:K"
+        },
+        "10": {
+            "type": "body",
+            "img": "dem_A_BO_3_10.png",
+            "partname": "gra",
+            "effect": "energy:K"
+        },
+        "11": {
+            "type": "body",
+            "img": "dem_A_BO_3_11.png",
+            "partname": "gri",
+            "effect": "energy:K"
+        },
+        "12": {
+            "type": "body",
+            "img": "dem_A_BO_3_12.png",
+            "partname": "hu",
+            "effect": "energy:K"
+        },
+        "13": {
+            "type": "body",
+            "img": "dem_A_BO_3_13.png",
+            "partname": "la",
+            "effect": "energy:K"
+        },
+        "14": {
+            "type": "body",
+            "img": "dem_A_BO_3_14.png",
+            "partname": "las",
+            "effect": "energy:K"
+        },
+        "15": {
+            "type": "body",
+            "img": "dem_A_BO_3_15.png",
+            "partname": "li",
+            "effect": "energy:K"
+        },
+        "16": {
+            "type": "body",
+            "img": "dem_A_BO_3_16.png",
+            "partname": "mai",
+            "effect": "energy:K"
+        },
+        "17": {
+            "type": "body",
+            "img": "dem_A_BO_3_17.png",
+            "partname": "mo",
+            "effect": "energy:K"
+        },
+        "18": {
+            "type": "body",
+            "img": "dem_A_BO_3_18.png",
+            "partname": "mu",
+            "effect": "energy:K"
+        },
+        "19": {
+            "type": "body",
+            "img": "dem_A_BO_3_19.png",
+            "partname": "phis",
+            "effect": "energy:K"
+        },
+        "20": {
+            "type": "body",
+            "img": "dem_A_BO_3_20.png",
+            "partname": "pho",
+            "effect": "energy:K"
+        },
+        "21": {
+            "type": "body",
+            "img": "dem_A_BO_3_21.png",
+            "partname": "ra",
+            "effect": "energy:K"
+        },
+        "22": {
+            "type": "body",
+            "img": "dem_A_BO_3_22.png",
+            "partname": "su",
+            "effect": "energy:K"
+        },
+        "23": {
+            "type": "body",
+            "img": "dem_A_BO_3_23.png",
+            "partname": "ta",
+            "effect": "energy:K"
+        },
+        "24": {
+            "type": "body",
+            "img": "dem_A_BO_3_24.png",
+            "partname": "tel",
+            "effect": "energy:K"
+        },
+        "25": {
+            "type": "body",
+            "img": "dem_A_BO_3_25.png",
+            "partname": "va",
+            "effect": "energy:K"
+        },
+        "26": {
+            "type": "body",
+            "img": "dem_A_BO_3_26.png",
+            "partname": "vi",
+            "effect": "energy:K"
+        },
+        "27": {
+            "type": "body",
+            "img": "dem_A_BO_3_27.png",
+            "partname": "yan",
+            "effect": "energy:K"
+        },
+        "28": {
+            "type": "body",
+            "img": "dem_A_BO_3_28.png",
+            "partname": "za",
+            "effect": "energy:K"
+        },
+        "29": {
+            "type": "body",
+            "img": "dem_A_BO_3_29.png",
+            "partname": null,
+            "effect": "energy:K"
+        },
+        "30": {
+            "type": "body",
+            "img": "dem_A_BO_3_30.png",
+            "partname": null,
+            "effect": "energy:K"
+        },
+        "31": {
+            "type": "body",
+            "img": "dem_A_BO_3_31.png",
+            "partname": null,
+            "effect": "energy:K"
+        },
+        "32": {
+            "type": "body",
+            "img": "dem_A_BO_3_32.png",
+            "partname": null,
+            "effect": "energy:K"
+        },
+        "33": {
+            "type": "body",
+            "img": "dem_A_BO_3_33.png",
+            "partname": null,
+            "effect": "energy:K"
+        },
+        "34": {
+            "type": "body",
+            "img": "dem_A_BO_3_34.png",
+            "partname": null,
+            "effect": "energy:K"
+        },
+        "35": {
+            "type": "body",
+            "img": "dem_A_BO_3_35.png",
+            "partname": null,
+            "effect": "energy:K"
+        },
+        "36": {
+            "type": "body",
+            "img": "dem_A_BO_3_36.png",
+            "partname": null,
+            "effect": "energy:K"
+        },
+        "37": {
+            "type": "body",
+            "img": "dem_A_BO_3_37.png",
+            "partname": null,
+            "effect": "energy:K"
+        },
+        "38": {
+            "type": "body",
+            "img": "dem_A_BO_3_38.png",
+            "partname": null,
+            "effect": "energy:K"
+        },
+        "39": {
+            "type": "body",
+            "img": "dem_A_BO_3_39.png",
+            "partname": null,
+            "effect": "energy:K"
+        },
+        "40": {
+            "type": "body",
+            "img": "dem_A_BO_3_40.png",
+            "partname": null,
+            "effect": "energy:K"
+        }
+    },
+    "HE": {
+        "01": {
+            "type": "head",
+            "img": "dem_A_HE_4_01.png",
+            "partname": "an",
+            "effect": "pattern:M"
+        },
+        "02": {
+            "type": "head",
+            "img": "dem_A_HE_4_02.png",
+            "partname": "as",
+            "effect": "pattern:M"
+        },
+        "03": {
+            "type": "head",
+            "img": "dem_A_HE_4_03.png",
+            "partname": "az",
+            "effect": "pattern:M"
+        },
+        "04": {
+            "type": "head",
+            "img": "dem_A_HE_4_04.png",
+            "partname": "ba",
+            "effect": "pattern:M"
+        },
+        "05": {
+            "type": "head",
+            "img": "dem_A_HE_4_05.png",
+            "partname": "bal",
+            "effect": "pattern:M"
+        },
+        "06": {
+            "type": "head",
+            "img": "dem_A_HE_4_06.png",
+            "partname": "be",
+            "effect": "pattern:M"
+        },
+        "07": {
+            "type": "head",
+            "img": "dem_A_HE_4_07.png",
+            "partname": "bel",
+            "effect": "pattern:M"
+        },
+        "08": {
+            "type": "head",
+            "img": "dem_A_HE_4_08.png",
+            "partname": "del",
+            "effect": "pattern:M"
+        },
+        "09": {
+            "type": "head",
+            "img": "dem_A_HE_4_09.png",
+            "partname": "dra",
+            "effect": "pattern:M"
+        },
+        "10": {
+            "type": "head",
+            "img": "dem_A_HE_4_10.png",
+            "partname": "du",
+            "effect": "pattern:M"
+        },
+        "11": {
+            "type": "head",
+            "img": "dem_A_HE_4_11.png",
+            "partname": "e",
+            "effect": "pattern:M"
+        },
+        "12": {
+            "type": "head",
+            "img": "dem_A_HE_4_12.png",
+            "partname": "go",
+            "effect": "pattern:M"
+        },
+        "13": {
+            "type": "head",
+            "img": "dem_A_HE_4_13.png",
+            "partname": "gri",
+            "effect": "pattern:M"
+        },
+        "14": {
+            "type": "head",
+            "img": "dem_A_HE_4_14.png",
+            "partname": "hex",
+            "effect": "pattern:M"
+        },
+        "15": {
+            "type": "head",
+            "img": "dem_A_HE_4_15.png",
+            "partname": "i",
+            "effect": "pattern:M"
+        },
+        "16": {
+            "type": "head",
+            "img": "dem_A_HE_4_16.png",
+            "partname": "lu",
+            "effect": "pattern:M"
+        },
+        "17": {
+            "type": "head",
+            "img": "dem_A_HE_4_17.png",
+            "partname": "ka",
+            "effect": "pattern:M"
+        },
+        "18": {
+            "type": "head",
+            "img": "dem_A_HE_4_18.png",
+            "partname": "kar",
+            "effect": "pattern:M"
+        },
+        "19": {
+            "type": "head",
+            "img": "dem_A_HE_4_19.png",
+            "partname": "kor",
+            "effect": "pattern:M"
+        },
+        "20": {
+            "type": "head",
+            "img": "dem_A_HE_4_20.png",
+            "partname": "me",
+            "effect": "pattern:M"
+        },
+        "21": {
+            "type": "head",
+            "img": "dem_A_HE_4_21.png",
+            "partname": "mel",
+            "effect": "pattern:M"
+        },
+        "22": {
+            "type": "head",
+            "img": "dem_A_HE_4_22.png",
+            "partname": "mor",
+            "effect": "pattern:M"
+        },
+        "23": {
+            "type": "head",
+            "img": "dem_A_HE_4_23.png",
+            "partname": "nar",
+            "effect": "pattern:M"
+        },
+        "24": {
+            "type": "head",
+            "img": "dem_A_HE_4_24.png",
+            "partname": "ra",
+            "effect": "pattern:M"
+        },
+        "25": {
+            "type": "head",
+            "img": "dem_A_HE_4_25.png",
+            "partname": "sa",
+            "effect": "pattern:M"
+        },
+        "26": {
+            "type": "head",
+            "img": "dem_A_HE_4_26.png",
+            "partname": null,
+            "effect": "pattern:M"
+        },
+        "27": {
+            "type": "head",
+            "img": "dem_A_HE_4_27.png",
+            "partname": null,
+            "effect": "pattern:M"
+        },
+        "28": {
+            "type": "head",
+            "img": "dem_A_HE_4_28.png",
+            "partname": null,
+            "effect": "pattern:M"
+        },
+        "29": {
+            "type": "head",
+            "img": "dem_A_HE_4_29.png",
+            "partname": null,
+            "effect": "pattern:M"
+        },
+        "30": {
+            "type": "head",
+            "img": "dem_A_HE_4_30.png",
+            "partname": null,
+            "effect": "pattern:M"
+        },
+        "31": {
+            "type": "head",
+            "img": "dem_A_HE_4_31.png",
+            "partname": null,
+            "effect": "pattern:M"
+        },
+        "32": {
+            "type": "head",
+            "img": "dem_A_HE_4_32.png",
+            "partname": null,
+            "effect": "pattern:M"
+        },
+        "33": {
+            "type": "head",
+            "img": "dem_A_HE_4_33.png",
+            "partname": null,
+            "effect": "pattern:M"
+        },
+        "34": {
+            "type": "head",
+            "img": "dem_A_HE_4_34.png",
+            "partname": null,
+            "effect": "pattern:M"
+        },
+        "35": {
+            "type": "head",
+            "img": "dem_A_HE_4_35.png",
+            "partname": null,
+            "effect": "pattern:M"
+        },
+        "36": {
+            "type": "head",
+            "img": "dem_A_HE_4_36.png",
+            "partname": null,
+            "effect": "pattern:M"
+        },
+        "37": {
+            "type": "head",
+            "img": "dem_A_HE_4_37.png",
+            "partname": null,
+            "effect": "pattern:M"
+        },
+        "38": {
+            "type": "head",
+            "img": "dem_A_HE_4_38.png",
+            "partname": null,
+            "effect": "pattern:M"
+        },
+        "39": {
+            "type": "head",
+            "img": "dem_A_HE_4_39.png",
+            "partname": null,
+            "effect": "pattern:M"
+        },
+        "40": {
+            "type": "head",
+            "img": "dem_A_HE_4_40.png",
+            "partname": null,
+            "effect": "pattern:M"
+        },
+        "41": {
+            "type": "head",
+            "img": "dem_A_HE_4_41.png",
+            "partname": null,
+            "effect": "pattern:M"
+        },
+        "42": {
+            "type": "head",
+            "img": "dem_A_HE_4_42.png",
+            "partname": null,
+            "effect": "pattern:M"
+        },
+        "43": {
+            "type": "head",
+            "img": "dem_A_HE_4_43.png",
+            "partname": null,
+            "effect": "pattern:M"
+        },
+        "44": {
+            "type": "head",
+            "img": "dem_A_HE_4_44.png",
+            "partname": null,
+            "effect": "pattern:M"
+        },
+        "45": {
+            "type": "head",
+            "img": "dem_A_HE_4_45.png",
+            "partname": null,
+            "effect": "pattern:M"
+        },
+        "46": {
+            "type": "head",
+            "img": "dem_A_HE_4_46.png",
+            "partname": null,
+            "effect": "pattern:M"
+        },
+        "47": {
+            "type": "head",
+            "img": "dem_A_HE_4_47.png",
+            "partname": null,
+            "effect": "pattern:M"
+        },
+        "48": {
+            "type": "head",
+            "img": "dem_A_HE_4_48.png",
+            "partname": null,
+            "effect": "pattern:M"
+        },
+        "49": {
+            "type": "head",
+            "img": "dem_A_HE_4_49.png",
+            "partname": null,
+            "effect": "pattern:M"
+        },
+        "50": {
+            "type": "head",
+            "img": "dem_A_HE_4_50.png",
+            "partname": null,
+            "effect": "pattern:M"
+        },
+        "51": {
+            "type": "head",
+            "img": "dem_A_HE_4_51.png",
+            "partname": null,
+            "effect": "pattern:M"
+        },
+        "52": {
+            "type": "head",
+            "img": "dem_A_HE_4_52.png",
+            "partname": null,
+            "effect": "pattern:M"
+        },
+        "53": {
+            "type": "head",
+            "img": "dem_A_HE_4_53.png",
+            "partname": null,
+            "effect": "pattern:M"
+        },
+        "54": {
+            "type": "head",
+            "img": "dem_A_HE_4_54.png",
+            "partname": null,
+            "effect": "pattern:M"
+        },
+        "55": {
+            "type": "head",
+            "img": "dem_A_HE_4_55.png",
+            "partname": null,
+            "effect": "pattern:M"
+        },
+        "56": {
+            "type": "head",
+            "img": "dem_A_HE_4_56.png",
+            "partname": null,
+            "effect": "pattern:M"
+        }
+    }
+}
