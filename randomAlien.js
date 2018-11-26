@@ -65,11 +65,11 @@ var Entity = class {
             var me = this;
             function myFunction(arr) {
                 me.demonData = arr;
-                let LW= Utils.random(1,36).toString();
+                let LW= Utils.random(1,36).toString().padStart(2,'0');
                 let RW= LW;
-                let LB= Utils.random(1,36).toString();
-                let HE= Utils.random(1,36).toString();
-                let BO= Utils.random(1,36).toString();
+                let LB= Utils.random(1,36).toString().padStart(2,'0');
+                let HE= Utils.random(1,36).toString().padStart(2,'0');
+                let BO= Utils.random(1,36).toString().padStart(2,'0');
 
 
                 game.load.image('invaderLW', 'assets/games/demons/'+me.demonData['LW'][LW].img, gC.spriteW, gC.spriteH);
