@@ -62,21 +62,21 @@ var Entity = class {
             };
             xmlhttp.open("GET", url, true);
             xmlhttp.send();
-
+            var me = this;
             function myFunction(arr) {
-                this.demonData = arr;
+                me.demonData = arr;
                 let LW= Utils.random(1,36).toString();
-                let RW= this.demonData[gC.level]['layers'].LW;
+                let RW= LW;
                 let LB= Utils.random(1,36).toString();
                 let HE= Utils.random(1,36).toString();
                 let BO= Utils.random(1,36).toString();
 
 
-                game.load.image('invaderLW', 'assets/games/demons/'+this.demonData['LW'][LW].img, gC.spriteW, gC.spriteH);
-                game.load.image('invaderRW', 'assets/games/demons/'+this.demonData['RW'][RW].img, gC.spriteW, gC.spriteH);
-                game.load.image('invaderLB', 'assets/games/demons/'+this.demonData['LB'][LB].img, gC.spriteW, gC.spriteH);
-                game.load.image('invaderBO', 'assets/games/demons/'+this.demonData['BO'][BO].img, gC.spriteW, gC.spriteH);
-                game.load.image('invaderHE', 'assets/games/demons/'+this.demonData['HE'][HE].img, gC.spriteW, gC.spriteH);
+                game.load.image('invaderLW', 'assets/games/demons/'+me.demonData['LW'][LW].img, gC.spriteW, gC.spriteH);
+                game.load.image('invaderRW', 'assets/games/demons/'+me.demonData['RW'][RW].img, gC.spriteW, gC.spriteH);
+                game.load.image('invaderLB', 'assets/games/demons/'+me.demonData['LB'][LB].img, gC.spriteW, gC.spriteH);
+                game.load.image('invaderBO', 'assets/games/demons/'+me.demonData['BO'][BO].img, gC.spriteW, gC.spriteH);
+                game.load.image('invaderHE', 'assets/games/demons/'+me.demonData['HE'][HE].img, gC.spriteW, gC.spriteH);
             }
     }
     
