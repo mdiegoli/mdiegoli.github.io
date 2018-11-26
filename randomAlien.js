@@ -50,18 +50,32 @@ var Entity = class {
                 }	
             }
             this.aliens;
+            fetch('assets/games/demons/demons4js.json')
+                .then(function(response) {
+                  if(response.ok) {
+                    this.demonData = response.json();
+                    let LW= Utils.random(1,36).toString();
+                    let RW= this.demonData[gC.level]['layers'].LW;
+                    let LB= Utils.random(1,36).toString();
+                    let HE= Utils.random(1,36).toString();
+                    let BO= Utils.random(1,36).toString();
 
-            this.demonData[gC.level]['layers'].LW= Utils.random(1,36).toString();
-            this.demonData[gC.level]['layers'].RW= this.demonData[gC.level]['layers'].LW;
-            this.demonData[gC.level]['layers'].LB= Utils.random(1,36).toString();
-            this.demonData[gC.level]['layers'].HE= Utils.random(1,36).toString();
-            this.demonData[gC.level]['layers'].BO= Utils.random(1,36).toString();
-            game.load.image('invaderLW', 'assets/games/demons/dem_'+gC.level+'_LW_1_'+this.demonData[gC.level]['layers'].LW.padStart(2,0)+'.png', gC.spriteW, gC.spriteH);
-            game.load.image('invaderRW', 'assets/games/demons/dem_'+gC.level+'_RW_1_'+this.demonData[gC.level]['layers'].RW.padStart(2,0)+'.png', gC.spriteW, gC.spriteH);
-            game.load.image('invaderLB', 'assets/games/demons/dem_'+gC.level+'_LB_2_'+this.demonData[gC.level]['layers'].LB.padStart(2,0)+'.png', gC.spriteW, gC.spriteH);
-            game.load.image('invaderBO', 'assets/games/demons/dem_'+gC.level+'_BO_3_'+this.demonData[gC.level]['layers'].BO.padStart(2,0)+'.png', gC.spriteW, gC.spriteH);
-            game.load.image('invaderHE', 'assets/games/demons/dem_'+gC.level+'_HE_4_'+this.demonData[gC.level]['layers'].HE.padStart(2,0)+'.png', gC.spriteW, gC.spriteH);
-        
+
+                    game.load.image('invaderLW', 'assets/games/demons/'+this.demonData['LW'][LW].img, gC.spriteW, gC.spriteH);
+                    game.load.image('invaderRW', 'assets/games/demons/'+this.demonData['RW'][RW].img, gC.spriteW, gC.spriteH);
+                    game.load.image('invaderLB', 'assets/games/demons/'+this.demonData['LB'][LB].img, gC.spriteW, gC.spriteH);
+                    game.load.image('invaderBO', 'assets/games/demons/'+this.demonData['BO'][BO].img, gC.spriteW, gC.spriteH);
+                    game.load.image('invaderHE', 'assets/games/demons/'+this.demonData['HE'][HE].img, gC.spriteW, gC.spriteH);
+
+                  }
+                  throw new Error('Network response was not ok.');
+                })
+                .catch(function(error) {
+                  console.log('There has been a problem with your fetch operation: ' + error.message);
+                })
+            
+          
+            
             //this.create();
     }
     
