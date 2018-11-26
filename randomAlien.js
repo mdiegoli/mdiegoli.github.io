@@ -26,6 +26,7 @@ var dem;
 
 var utils = class{
     constructor(){}
+    init(level){
     random(s,e){
         return Math.floor(Math.random() * (e - s + 1)) + s;
     }
@@ -35,6 +36,8 @@ var Utils = new utils();
 
 var Entity = class {
         constructor(level){
+        }
+        preload(){
             this.demonData = {'A':	    
             {	        
                   "data": "demon",
@@ -135,11 +138,13 @@ var Entity = class {
 }
 
 //var game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-example', { preload: preload, create: create, update: update, render: render });
-
+init(){
+    dem = new Entity();
+}
 
 
 function preload() {
-    dem = new Entity();
+    dem.preload();
     /*
     game.load.spritesheet('invader', 'assets/games/invaders/invader32x32x4.png', 32, 32);
     var data = demonData[gC.level];
