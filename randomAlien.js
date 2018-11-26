@@ -41,11 +41,12 @@ var Entity = class {
             xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     this.demonData = JSON.parse(this.responseText);
+                    this.preload();
                 }
             };
             xmlhttp.open("GET", url, true);
             xmlhttp.send();
-            this.preload();
+            
         }
         preload(){
             this.aliens;
