@@ -139,7 +139,7 @@ var Entity = class {
 
 function preload() {
     dem = new Entity();
-    dem.create();
+    dem.preload();
     /*
     game.load.spritesheet('invader', 'assets/games/invaders/invader32x32x4.png', 32, 32);
     var data = demonData[gC.level];
@@ -165,7 +165,7 @@ function preload() {
 }
 
 function create() {
-    dem.preload()
+    dem.create()
     /*
     aliens = game.add.group();
     aliens.enableBody = true;
