@@ -26,7 +26,6 @@ var dem;
 
 var utils = class{
     constructor(){}
-    init(level){
     random(s,e){
         return Math.floor(Math.random() * (e - s + 1)) + s;
     }
