@@ -35,6 +35,16 @@ var Utils = new utils();
 
 var Entity = class {
         constructor(level){
+            var xmlhttp = new XMLHttpRequest();
+            var url = 'assets/games/demons/demons4js.json';
+
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    this.demonData = JSON.parse(this.responseText);
+                }
+            };
+            xmlhttp.open("GET", url, true);
+            xmlhttp.send();
         }
         preload(){
             this.demonData = {'A':	    
@@ -53,33 +63,22 @@ var Entity = class {
             }
             this.aliens;
             
-            var xmlhttp = new XMLHttpRequest();
-            var url = 'assets/games/demons/demons4js.json';
-
-            xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    var myArr = JSON.parse(this.responseText);
-                    myFunction(myArr);
-                }
-            };
-            xmlhttp.open("GET", url, true);
-            xmlhttp.send();
+            
             var me = this;
-            function myFunction(arr) {
-                me.demonData = arr;
-                let LW= Utils.random(1,36).toString().padStart(2,'0');
-                let RW= LW;
-                let LB= Utils.random(1,36).toString().padStart(2,'0');
-                let HE= Utils.random(1,36).toString().padStart(2,'0');
-                let BO= Utils.random(1,36).toString().padStart(2,'0');
+                
+            let LW= Utils.random(1,36).toString().padStart(2,'0');
+            let RW= LW;
+            let LB= Utils.random(1,36).toString().padStart(2,'0');
+            let HE= Utils.random(1,36).toString().padStart(2,'0');
+            let BO= Utils.random(1,36).toString().padStart(2,'0');
 
 
-                game.load.image('invaderLW', 'assets/games/demons/'+me.demonData['LW'][LW].img, gC.spriteW, gC.spriteH);
-                game.load.image('invaderRW', 'assets/games/demons/'+me.demonData['RW'][RW].img, gC.spriteW, gC.spriteH);
-                game.load.image('invaderLB', 'assets/games/demons/'+me.demonData['LB'][LB].img, gC.spriteW, gC.spriteH);
-                game.load.image('invaderBO', 'assets/games/demons/'+me.demonData['BO'][BO].img, gC.spriteW, gC.spriteH);
-                game.load.image('invaderHE', 'assets/games/demons/'+me.demonData['HE'][HE].img, gC.spriteW, gC.spriteH);
-            }
+            game.load.image('invaderLW', 'assets/games/demons/'+me.demonData['LW'][LW].img, gC.spriteW, gC.spriteH);
+            game.load.image('invaderRW', 'assets/games/demons/'+me.demonData['RW'][RW].img, gC.spriteW, gC.spriteH);
+            game.load.image('invaderLB', 'assets/games/demons/'+me.demonData['LB'][LB].img, gC.spriteW, gC.spriteH);
+            game.load.image('invaderBO', 'assets/games/demons/'+me.demonData['BO'][BO].img, gC.spriteW, gC.spriteH);
+            game.load.image('invaderHE', 'assets/games/demons/'+me.demonData['HE'][HE].img, gC.spriteW, gC.spriteH);
+
     }
     
     create(){
