@@ -47,20 +47,6 @@ var Entity = class {
             xmlhttp.send();
         }
         preload(){
-            this.demonData = {'A':	    
-            {	        
-                  "data": "demon",
-                  "width": 240,	
-                  "original_width": 128,
-                  "layers": {	    
-                    "LW": "",	    
-                    "RW": "",	    
-                    "LB": "",	    
-                    "HE": "",
-                    "BO":""
-                  }	
-                }	
-            }
             this.aliens;
             
             
