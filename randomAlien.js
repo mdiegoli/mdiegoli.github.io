@@ -54,7 +54,7 @@ var Entity = class {
             var me = this;
                 
             this.LW= Utils.random(1,36).toString().padStart(2,'0');
-            this.RW= LW;
+            this.RW= this.LW;
             this.LB= Utils.random(1,36).toString().padStart(2,'0');
             this.HE= Utils.random(1,36).toString().padStart(2,'0');
             this.BO= Utils.random(1,36).toString().padStart(2,'0');
