@@ -109,7 +109,7 @@ var Entity = class {
         //console.log('assets/games/demons/dem_'+gC.level+'_HE_1_'+this.demonData[gC.level]['layers'].HE.padStart(2,0)+'.png')
         let alienhe = this.aliens.create(this.randomX, this.randomY, 'invaderHE');
         alienhe.anchor.setTo(0.5, 0.5);
-        this.tween(this.demonData[gC.level]['layers'].LW)
+        this.tween(LW)
     }
     tween(id){
         //https://phaser.io/docs/2.4.4/Phaser.Tween.html#to
