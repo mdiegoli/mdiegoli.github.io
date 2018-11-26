@@ -45,6 +45,7 @@ var Entity = class {
             };
             xmlhttp.open("GET", url, true);
             xmlhttp.send();
+            this.preload();
         }
         preload(){
             this.aliens;
@@ -124,7 +125,6 @@ var Entity = class {
 
 function preload() {
     dem = new Entity();
-    dem.preload();
     /*
     game.load.spritesheet('invader', 'assets/games/invaders/invader32x32x4.png', 32, 32);
     var data = demonData[gC.level];
