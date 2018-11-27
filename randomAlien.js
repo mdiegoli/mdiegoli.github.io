@@ -34,12 +34,13 @@ var utils = class{
 var Utils = new utils();
 
 var Entity = class {
-        constructor(level){
+        constructor(level){}
+        async readDemonData(){
             var me = this;
             var xmlhttp = new XMLHttpRequest();
             var url = 'assets/games/demons/demons4js.json';
 
-            xmlhttp.onreadystatechange = function() {
+            xmlhttp.onreadystatechange = awayt function() {
                 if (this.readyState == 4 && this.status == 200) {
                     me.demonData = JSON.parse(this.responseText);
                     me.preload();
@@ -127,6 +128,7 @@ var Entity = class {
 
 function preload() {
     dem = new Entity();
+    dem.readDemonData();
     /*
     game.load.spritesheet('invader', 'assets/games/invaders/invader32x32x4.png', 32, 32);
     var data = demonData[gC.level];
