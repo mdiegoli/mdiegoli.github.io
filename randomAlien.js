@@ -35,13 +35,14 @@ var Utils = new utils();
 
 var Entity = class {
         constructor(level){
+            var me = this;
             var xmlhttp = new XMLHttpRequest();
             var url = 'assets/games/demons/demons4js.json';
 
             xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
-                    this.demonData = JSON.parse(this.responseText);
-                    this.preload();
+                    me.demonData = JSON.parse(this.responseText);
+                    me.preload();
                 }
             };
             xmlhttp.open("GET", url, true);
