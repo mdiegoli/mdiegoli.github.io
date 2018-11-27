@@ -40,7 +40,7 @@ var Entity = class {
             var xmlhttp = new XMLHttpRequest();
             var url = 'assets/games/demons/demons4js.json';
 
-            xmlhttp.onreadystatechange = awayt function() {
+            xmlhttp.onreadystatechange = await function() {
                 if (this.readyState == 4 && this.status == 200) {
                     me.demonData = JSON.parse(this.responseText);
                     me.preload();
