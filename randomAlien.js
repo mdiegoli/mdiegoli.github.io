@@ -152,7 +152,7 @@ function preload() {
 }
 
 function create() {
-    game.load.onLoadComplete.add(create, dem);
+    game.load.onLoadComplete.add(createAlien, this);
     //dem.create()
     /*
     aliens = game.add.group();
@@ -164,7 +164,7 @@ function create() {
 }
 var aliens;
 function createAliens () {
-
+    dem.create()
     //random demon creator from game difficult level
     //...
     //test
