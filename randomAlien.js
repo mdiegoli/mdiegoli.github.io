@@ -154,7 +154,7 @@ function preload() {
 }
 
 function create() {
-    game.load.onLoadComplete.add(this.createAlien, this);
+    game.load.onLoadComplete.add(dem.createAlien, dem);
     //dem.create()
     /*
     aliens = game.add.group();
