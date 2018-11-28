@@ -62,11 +62,11 @@ function preload(){
             this.LB= Utils.random(1,36).toString().padStart(2,'0');
             this.HE= Utils.random(1,36).toString().padStart(2,'0');
             this.BO= Utils.random(1,36).toString().padStart(2,'0');
-             game.load.image('invaderLW', 'assets/games/demons/'+me.demonData['LW'][this.LW].img, gC.spriteW, gC.spriteH);
-            game.load.image('invaderRW', 'assets/games/demons/'+me.demonData['RW'][this.RW].img, gC.spriteW, gC.spriteH);
-            game.load.image('invaderLB', 'assets/games/demons/'+me.demonData['LB'][this.LB].img, gC.spriteW, gC.spriteH);
-            game.load.image('invaderBO', 'assets/games/demons/'+me.demonData['BO'][this.BO].img, gC.spriteW, gC.spriteH);
-            game.load.image('invaderHE', 'assets/games/demons/'+me.demonData['HE'][this.HE].img, gC.spriteW, gC.spriteH);
+            this.load.image('invaderLW', 'assets/games/demons/'+me.demonData['LW'][this.LW].img, gC.spriteW, gC.spriteH);
+            this.load.image('invaderRW', 'assets/games/demons/'+me.demonData['RW'][this.RW].img, gC.spriteW, gC.spriteH);
+            this.load.image('invaderLB', 'assets/games/demons/'+me.demonData['LB'][this.LB].img, gC.spriteW, gC.spriteH);
+            this.load.image('invaderBO', 'assets/games/demons/'+me.demonData['BO'][this.BO].img, gC.spriteW, gC.spriteH);
+            this.load.image('invaderHE', 'assets/games/demons/'+me.demonData['HE'][this.HE].img, gC.spriteW, gC.spriteH);
      }
     
 function create(){
@@ -96,5 +96,4 @@ function create(){
         //console.log('assets/games/demons/dem_'+gC.level+'_HE_1_'+this.demonData[gC.level]['layers'].HE.padStart(2,0)+'.png')
         let alienhe = this.aliens.create(this.randomX, this.randomY, 'invaderHE');
         alienhe.anchor.setTo(0.5, 0.5);
-        this.tween(this.LW)
     }
