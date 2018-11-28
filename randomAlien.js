@@ -53,6 +53,8 @@ function readDemonData(){
         }
 function preload(){
             this.aliens;
+            this.load.json('demons4js.json', 'assets/games/demons/demons4js.json');
+            var demonData = this.cache.getJSON('demons4js.json');
             
             
             var me = this;
