@@ -8,7 +8,7 @@ img.onload = function () {
 img.src = "images/watermelon-duck.png";
 */
 
-var BNEngine = class{
+class BNEngine{
 	constructor(){
 		utils.getEBTN()
 	}
@@ -26,96 +26,177 @@ var gC = {
 gC.spritePosX = gC.width-gC.spriteW;
 gC.spritePosY = gC.height-gC.spriteH;
 
-var utils = class{
-    constructor(){}
+class utils{
+    constructor(){
+    }
     random(s,e){
         return Math.floor(Math.random() * (e - s + 1)) + s;
     }
     getEBTN(str){
-    	return document.getElementByTagName(str);
+    	return document.getElementsByTagName(str);
     }
-    
+    createE(str){
+        return document.createElement(str);       
+    }
+    appendB2A(a,b){
+        a.appendChild(b);
+    }
+    setCanvas(e){
+        this.c = e;
+        this.ctx = e.getContext("2d")
+    }
+    drawImage(str,x,y){
+        var me = this;
+        new Promise((res,rej)=>{
+            var img = new Image(gC.spriteW,gC.spriteH);
+            img.onload = function () {
+                me.ctx.drawImage(img, x, y);
+                res('image '+str+' loaded!')
+            }
+            img.onerror = function (e) {
+                rej('load image '+str+' error: '+e)
+            }
+            img.src = str;
+        })
+        
+    }
 }
 var Utils = new utils();
-
-
-    var config = {
-        type: Phaser.AUTO,
-        width: gC.width,
-        height: gC.height,
-        physics: {
-            default: 'arcade',
-            arcade: {
-                gravity: { y: 200 }
+class enemy{
+    constructor(){
+        var canvas = Utils.getEBTN('canvas')
+        if(typeof canvas === 'object' && canvas.length <= 0){
+            //non c'è canvas
+            var a = Utils.getEBTN('body')[0]
+            var b = Utils.createE('canvas')
+            //memorizzo canvas e contesto
+            Utils.setCanvas(b)
+            Utils.appendB2A(a,b)
+        }
+    }
+    start(){
+        var me = this;
+        return new Promise((res,rej)=>{
+            new Promise((res,rej)=>{
+                me.readDemonData()
+                .then(
+                    (succ)=>{
+                        me.create()
+                            .then(
+                                (succ)=>{
+                                    res('done');
+                                }
+                            )
+                            .catch(
+                                (err)=>{
+                                    res(err);
+                                }
+                            )
+                    }
+                )
+                .catch(
+                    (err)=>{
+                        alert(err);
+                    }
+                )
+            })
+        })
+    }
+    readDemonData(){
+        var me = this;
+        return new Promise(function(res,rej){
+            if(!gC.demonData){
+                var xmlhttp = new XMLHttpRequest();
+                var url = 'assets/games/demons/demons4js.json';
+                xmlhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        gC.demonData = JSON.parse(this.responseText);
+                        me.preload()
+                        .then(
+                            (succ)=>{
+                                return res();
+                            }
+                        )
+                        .catch(
+                            (err)=>{
+                                return rej();
+                            }
+                        )
+                    }
+                };
+                xmlhttp.open("GET", url, true);
+                xmlhttp.send();
+            }else{
+                me.preload()
+                    .then(
+                        (succ)=>{
+                            return res();
+                        }
+                    )
+                    .catch(
+                        (err)=>{
+                            return rej();
+                        }
+                    )
             }
-        },
-        scene: {
-            preload: preload,
-            create: create
-        }
-    };
-
-    var game = new BNEngine.Game(config);
-
-function readDemonData(){
-            var me = this;
-            var xmlhttp = new XMLHttpRequest();
-            var url = 'assets/games/demons/demons4js.json';
-             xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    me.demonData = JSON.parse(this.responseText);
-                    me.preload();
-                }
-            };
-            xmlhttp.open("GET", url, true);
-            xmlhttp.send();
             
-        }
-function preload(){
-            this.aliens;
-            this.load.json('demons4js.json', 'assets/games/demons/demons4js.json');
-            var demonData = this.cache.getJSON('demons4js.json');
-            
-            
-            var me = this;
-                
+        })
+        
+        
+    }
+    preload(){
+        return new Promise((res,rej)=>{
             this.LW= Utils.random(1,36).toString().padStart(2,'0');
             this.RW= this.LW;
             this.LB= Utils.random(1,36).toString().padStart(2,'0');
             this.HE= Utils.random(1,36).toString().padStart(2,'0');
             this.BO= Utils.random(1,36).toString().padStart(2,'0');
-            this.load.image('invaderLW', 'assets/games/demons/'+me.demonData['LW'][this.LW].img, gC.spriteW, gC.spriteH);
-            this.load.image('invaderRW', 'assets/games/demons/'+me.demonData['RW'][this.RW].img, gC.spriteW, gC.spriteH);
-            this.load.image('invaderLB', 'assets/games/demons/'+me.demonData['LB'][this.LB].img, gC.spriteW, gC.spriteH);
-            this.load.image('invaderBO', 'assets/games/demons/'+me.demonData['BO'][this.BO].img, gC.spriteW, gC.spriteH);
-            this.load.image('invaderHE', 'assets/games/demons/'+me.demonData['HE'][this.HE].img, gC.spriteW, gC.spriteH);
-     }
-    
-function create(){
-        this.aliens = game.add.group();
-        this.aliens.enableBody = true;
-        this.aliens.physicsBodyType = Phaser.Physics.ARCADE;
-        this.randomX = 0;//Utils.random(1,gC.spritePosX);
-        this.randomY = Utils.random(1,gC.spritePosY);
-        //nome immagine personalizzato
-        //game.load.image('invaderLW', 'assets/games/demons/dem_'+gC.level+'_LW_1_'+this.demonData[gC.level]['layers'].LW.padStart(2,0)+'.png', 128, 128);
-        //console.log('assets/games/demons/dem_'+gC.level+'_LW_1_'+this.demonData[gC.level]['layers'].LW.padStart(2,0)+'.png')
-        let alienlw = this.aliens.create(this.randomX, this.randomY, 'invaderLW');
-        alienlw.anchor.setTo(0.5, 0.5);
-        //game.load.image('invaderRW', 'assets/games/demons/dem_'+gC.level+'_RW_1_'+this.demonData[gC.level]['layers'].RW.padStart(2,0)+'.png', 128, 128);
-        //console.log('assets/games/demons/dem_'+gC.level+'_RW_1_'+this.demonData[gC.level]['layers'].RW.padStart(2,0)+'.png')
-        let alienrw = this.aliens.create(this.randomX, this.randomY, 'invaderRW');
-        alienrw.anchor.setTo(0.5, 0.5);
-        //game.load.image('invaderLB', 'assets/games/demons/dem_'+gC.level+'_LB_2_'+this.demonData[gC.level]['layers'].LB.padStart(2,0)+'.png', 128, 128);
-        //console.log('assets/games/demons/dem_'+gC.level+'_LB_1_'+this.demonData[gC.level]['layers'].LB.padStart(2,0)+'.png')
-        let alienlb = this.aliens.create(this.randomX, this.randomY, 'invaderLB');
-        alienlb.anchor.setTo(0.5, 0.5);
-        //game.load.image('invaderBO', 'assets/games/demons/dem_'+gC.level+'_BO_3_'+this.demonData[gC.level]['layers'].BO.padStart(2,0)+'.png', 128, 128);
-        //console.log('assets/games/demons/dem_'+gC.level+'_BO_1_'+this.demonData[gC.level]['layers'].BO.padStart(2,0)+'.png')
-        let alienbo = this.aliens.create(this.randomX, this.randomY, 'invaderBO');
-        alienbo.anchor.setTo(0.5, 0.5);
-        //game.load.image('invaderHE', 'assets/games/demons/dem_'+gC.level+'_HE_4_'+this.demonData[gC.level]['layers'].HE.padStart(2,0)+'.png', 128, 128);
-        //console.log('assets/games/demons/dem_'+gC.level+'_HE_1_'+this.demonData[gC.level]['layers'].HE.padStart(2,0)+'.png')
-        let alienhe = this.aliens.create(this.randomX, this.randomY, 'invaderHE');
-        alienhe.anchor.setTo(0.5, 0.5);
+            res();
+        })
+        
     }
+
+    create(){
+        var promises = [];
+        return new Promise((res,rej)=>{
+            this.randomX = 0;
+            this.randomY = Utils.random(1,gC.spritePosY);
+            promises.push(Utils.drawImage('assets/games/demons/'+gC.demonData['LW'][this.LW].img, this.randomX, this.randomY));
+            promises.push(Utils.drawImage('assets/games/demons/'+gC.demonData['RW'][this.RW].img, this.randomX, this.randomY));
+            promises.push(Utils.drawImage('assets/games/demons/'+gC.demonData['LB'][this.LB].img, this.randomX, this.randomY));
+            promises.push(Utils.drawImage('assets/games/demons/'+gC.demonData['BO'][this.BO].img, this.randomX, this.randomY));
+            promises.push(Utils.drawImage('assets/games/demons/'+gC.demonData['HE'][this.HE].img, this.randomX, this.randomY));
+
+            Promise.all(promises)
+                .then(
+                    (succ)=>{
+                        return res();
+                    }
+                )
+                .catch(
+                    (err)=>{
+                        return rej();
+                    }
+                )
+        })
+        
+        
+    }
+
+}
+
+function startGame(){
+    var e = new enemy();
+    e.start()
+        .then(
+            (succ)=>{
+                alert(succ);
+            }
+        )
+        .catch(
+            (err)=>{
+                alert(err);
+            }
+        )
+
+}
