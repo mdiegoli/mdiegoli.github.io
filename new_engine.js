@@ -1,9 +1,3 @@
-class BNEngine{
-	constructor(){
-		utils.getEBTN()
-	}
-	
-}
 var gC = {
     width: 600,
     height: 448,
