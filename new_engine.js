@@ -48,7 +48,7 @@ class utils{
     }
     drawImages(x,y){
 	let keys = Object.keys(this.images);
-        for(let i = 0,k_l = keys.length;i<keys_length;i++){
+        for(let i = 0,k_l = keys.length;i<k_l;i++){
 		this.ctx.drawImage(this.images[keys[i]], x, y);
 	}
         
