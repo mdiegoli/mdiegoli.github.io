@@ -57,8 +57,9 @@ class utils{
     }
     loadImage(str,type){
         var me = this;
-	    if(!this.images[type]){
+	    
 		return new Promise((res,rej)=>{
+		if(!this.images[type]){
 		    var img = new Image(gC.spriteW,gC.spriteH);
 		    img.onload = function () {
 			me.images[type] = img;
@@ -68,10 +69,11 @@ class utils{
 			rej('load image '+str+' error: '+e)
 		    }
 		    img.src = str;
+		}else{
+			res('image just loaded')
+		    }
 		})
-	    }else{
-		res('image just loaded')
-	    }
+	    
         
         
     }
