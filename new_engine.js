@@ -207,12 +207,12 @@ function startGame(){
     e.start()
         .then(
             (succ)=>{
-                alert(succ);
+                console.log(succ);
             }
         )
         .catch(
             (err)=>{
-                alert(err);
+                console.log(err);
             }
         )
 
