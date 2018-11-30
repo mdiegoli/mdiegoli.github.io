@@ -61,7 +61,7 @@ class utils{
 		}
 	}
     drawImages(x,y){
-	    if(!this.x && |this.y){
+	    if(!this.x && !this.y){
 	    	this.x = x;
 		this.y = y;
 	    }
