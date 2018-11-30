@@ -208,7 +208,7 @@ class enemy{
     }
 
 }
-var assets = {};
+var assets = [];
 function startGame(){
     var canvas = Utils.getEBTN('canvas')
 	if(typeof canvas === 'object' && canvas.length <= 0){
