@@ -31,18 +31,22 @@ class utils{
         this.ctx = e.getContext("2d")
     }
 	animation(){
-		if(!this.dir)this.dir='r'
-		if(this.x<gC.spritePosX && this.dir === 'r'){
-			this.x++;
-		}else{
-			if(this.x === gC.spritePosX) this.dir = 'l';
-			if(this.x>0 && this.dir === 'l'){
-				this.x--;
+		return new Promise((res,rej)=>{
+			if(!this.dir)this.dir='r'
+			if(this.x<gC.spritePosX && this.dir === 'r'){
+				this.x++;
 			}else{
-				this.dir = 'r';
+				if(this.x === gC.spritePosX) this.dir = 'l';
+				if(this.x>0 && this.dir === 'l'){
+					this.x--;
+				}else{
+					this.dir = 'r';
 
-			}	
-		}
+				}	
+			}
+			res();
+		})
+		
 	}
     drawImages(x,y){
 	    if(!this.x && !this.y){
