@@ -46,10 +46,28 @@ class utils{
         this.c = e;
         this.ctx = e.getContext("2d")
     }
+	animation(){
+		if(!this.dir)this.dir='r'
+		if(this.x<gC.spritePosX && this.dir === 'r'){
+			this.x++;
+		}else{
+			if(this.x === gC.spritePosX) this.dir = 'l';
+			if(this.x>0 && this.dir === 'l'){
+				this.x--;
+			}else{
+				this.dir = 'r';
+
+			}	
+		}
+	}
     drawImages(x,y){
+	    if(!this.x && |this.y){
+	    	this.x = x;
+		this.y = y;
+	    }
 	let keys = Object.keys(this.images);
         for(let i = 0,k_l = keys.length;i<k_l;i++){
-		this.ctx.drawImage(this.images[keys[i]], x, y);
+		this.ctx.drawImage(this.images[keys[i]], this.x, this.y)
 	}
         
     }
