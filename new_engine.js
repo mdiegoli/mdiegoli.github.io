@@ -30,32 +30,12 @@ class utils{
         this.c = e;
         this.ctx = e.getContext("2d")
     }
-	animation(){
-		return new Promise((res,rej)=>{
-			if(!this.dir)this.dir='r'
-			if(this.x<gC.spritePosX && this.dir === 'r'){
-				this.x++;
-			}else{
-				if(this.x === gC.spritePosX) this.dir = 'l';
-				if(this.x>0 && this.dir === 'l'){
-					this.x--;
-				}else{
-					this.dir = 'r';
-
-				}	
-			}
-			res();
-		})
-		
-	}
+	
     drawImages(x,y){
-	    if(!this.x && !this.y){
-	    	this.x = x;
-		this.y = y;
-	    }
+	    
 	let keys = Object.keys(this.images);
         for(let i = 0,k_l = keys.length;i<k_l;i++){
-		this.ctx.drawImage(this.images[keys[i]], this.x, this.y)
+		this.ctx.drawImage(this.images[keys[i]], x, y)
 	}
         
     }
@@ -90,6 +70,26 @@ class enemy{
     constructor(){
         
     }
+	animation(){
+		return new Promise((res,rej)=>{
+			if(!this.dir)this.dir='r'
+			this.randomX
+            		this.randomY
+			if(this.randomX<gC.spritePosX && this.dir === 'r'){
+				this.randomX++;
+			}else{
+				if(this.randomX === gC.spritePosX) this.dir = 'l';
+				if(this.randomX>0 && this.dir === 'l'){
+					this.x--;
+				}else{
+					this.dir = 'r';
+
+				}	
+			}
+			res();
+		})
+		
+	}
     start(){
         var me = this;
         return new Promise((res,rej)=>{
