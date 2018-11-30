@@ -59,6 +59,9 @@ class utils{
             img.src = str;
         })
         
+    },
+    setAttribute(e,name,val){
+    	e.setAttribute(name,val);
     }
 }
 var Utils = new utils();
@@ -72,6 +75,8 @@ class enemy{
             //memorizzo canvas e contesto
             Utils.setCanvas(b)
             Utils.appendB2A(a,b)
+		Utils.setAttribute(b,'width',gC.width)
+		Utils.setAttribute(b,'height',gC.height)
         }
     }
     start(){
