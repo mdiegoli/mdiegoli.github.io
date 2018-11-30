@@ -251,4 +251,5 @@ function startGame(){
 	window.requestAnimationFrame(startGame);
 }
 assets.push(new enemy());
+assets.push(new enemy());
 window.requestAnimationFrame(startGame);
