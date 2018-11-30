@@ -222,7 +222,17 @@ function startGame(){
     assets[a].start()
         .then(
             (succ)=>{
-                console.log(succ);
+                assets[a].animation()
+		.then(
+		    (succ)=>{
+			console.log(succ);
+		    }
+		)
+		.catch(
+		    (err)=>{
+			console.log(err);
+		    }
+		)
             }
         )
         .catch(
