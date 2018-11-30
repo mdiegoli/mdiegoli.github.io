@@ -59,7 +59,7 @@ class utils{
             img.src = str;
         })
         
-    },
+    }
     setAttribute(e,name,val){
     	e.setAttribute(name,val);
     }
