@@ -25,5 +25,8 @@ splash gioco
 		animazione alieni e fuoco
 		
 		interazione personaggio e fuoco
+		
+todo:
+spostare animation in enemy
 
 
