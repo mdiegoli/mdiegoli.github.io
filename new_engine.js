@@ -67,17 +67,7 @@ class utils{
 var Utils = new utils();
 class enemy{
     constructor(){
-        var canvas = Utils.getEBTN('canvas')
-        if(typeof canvas === 'object' && canvas.length <= 0){
-            //non c'è canvas
-            var a = Utils.getEBTN('body')[0]
-            var b = Utils.createE('canvas')
-            //memorizzo canvas e contesto
-            Utils.setCanvas(b)
-            Utils.appendB2A(a,b)
-		Utils.setAttribute(b,'width',gC.width)
-		Utils.setAttribute(b,'height',gC.height)
-        }
+        
     }
     start(){
         var me = this;
@@ -191,6 +181,17 @@ class enemy{
 }
 
 function startGame(){
+    var canvas = Utils.getEBTN('canvas')
+	if(typeof canvas === 'object' && canvas.length <= 0){
+	    //non c'è canvas
+	    var a = Utils.getEBTN('body')[0]
+	    var b = Utils.createE('canvas')
+	    //memorizzo canvas e contesto
+	    Utils.setCanvas(b)
+	    Utils.appendB2A(a,b)
+	Utils.setAttribute(b,'width',gC.width)
+	Utils.setAttribute(b,'height',gC.height)
+	}
     var e = new enemy();
     e.start()
         .then(
