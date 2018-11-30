@@ -183,7 +183,7 @@ class enemy{
         return new Promise((res,rej)=>{
             this.randomX = 0;
             this.randomY = Utils.random(1,gC.spritePosY);
-            Utils.drawImages(this.randomX, this.randomY));
+            Utils.drawImages(this.randomX, this.randomY);
             res();
             
         })
