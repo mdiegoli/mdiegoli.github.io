@@ -80,7 +80,6 @@ class enemy{
     start(){
         var me = this;
         return new Promise((res,rej)=>{
-            new Promise((res,rej)=>{
                 me.readDemonData()
                 .then(
                     (succ)=>{
@@ -103,7 +102,6 @@ class enemy{
                     }
                 )
             })
-        })
     }
     readDemonData(){
         var me = this;
