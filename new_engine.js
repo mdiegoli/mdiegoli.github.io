@@ -208,7 +208,7 @@ class enemy{
     }
 
 }
-
+var assets = {};
 function startGame(){
     var canvas = Utils.getEBTN('canvas')
 	if(typeof canvas === 'object' && canvas.length <= 0){
@@ -221,8 +221,9 @@ function startGame(){
 	Utils.setAttribute(b,'width',gC.width)
 	Utils.setAttribute(b,'height',gC.height)
 	}
-    var e = new enemy();
-    e.start()
+    let a_l = assets.length;
+	for(let a = 0;a<a_l;a++)
+    assets[a].start()
         .then(
             (succ)=>{
                 console.log(succ);
@@ -233,5 +234,7 @@ function startGame(){
                 console.log(err);
             }
         )
-
+	window.requestAnimationFrame(startGame);
 }
+assets.push(new enemy());
+window.requestAnimationFrame(startGame);
