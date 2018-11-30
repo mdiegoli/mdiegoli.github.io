@@ -166,12 +166,12 @@ class enemy{
 		Promise.all(preloaded)
 		.then(
 		    (succ)=>{
-			return res();
+			res();
 		    }
 		)
 		.catch(
 		    (err)=>{
-			return rej();
+			rej();
 		    }
 		)
         })
