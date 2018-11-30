@@ -105,7 +105,7 @@ class enemy{
                 )
                 .catch(
                     (err)=>{
-                        alert(err);
+                        console.log(err);
                     }
                 )
             })
