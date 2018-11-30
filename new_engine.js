@@ -23,6 +23,9 @@ class utils{
     createE(str){
         return document.createElement(str);       
     }
+clearCanvas(){
+	this.ctx.clearRect(0, 0, this.c.width, this.c.height);
+}
     appendB2A(a,b){
         a.appendChild(b);
     }
@@ -221,6 +224,7 @@ function startGame(){
 	Utils.setAttribute(b,'width',gC.width)
 	Utils.setAttribute(b,'height',gC.height)
 	}
+	Utils.clearCanvas()
     let a_l = assets.length;
 	for(let a = 0;a<a_l;a++)
     assets[a].start()
