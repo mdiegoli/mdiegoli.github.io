@@ -55,7 +55,7 @@ class utils{
     }
     loadImage(str,type){
         var me = this;
-        new Promise((res,rej)=>{
+        return new Promise((res,rej)=>{
             var img = new Image(gC.spriteW,gC.spriteH);
             img.onload = function () {
                 me.images[type] = img;
