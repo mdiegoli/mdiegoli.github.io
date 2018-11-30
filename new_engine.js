@@ -28,6 +28,7 @@ gC.spritePosY = gC.height-gC.spriteH;
 
 class utils{
     constructor(){
+	    this.images = {};
     }
     random(s,e){
         return Math.floor(Math.random() * (e - s + 1)) + s;
@@ -45,12 +46,19 @@ class utils{
         this.c = e;
         this.ctx = e.getContext("2d")
     }
-    drawImage(str,x,y){
+    drawImages(x,y){
+	let keys = Object.keys(this.images);
+        for(let i = 0,k_l = keys.length;i<keys_length;i++){
+		this.ctx.drawImage(this.images[keys[i]], x, y);
+	}
+        
+    }
+    loadImage(str,type){
         var me = this;
         new Promise((res,rej)=>{
             var img = new Image(gC.spriteW,gC.spriteH);
             img.onload = function () {
-                me.ctx.drawImage(img, x, y);
+                me.images[type] = img;
                 res('image '+str+' loaded!')
             }
             img.onerror = function (e) {
@@ -140,13 +148,32 @@ class enemy{
         
     }
     preload(){
-        return new Promise((res,rej)=>{
+        var preloaded = [] 
+	return new Promise((res,rej)=>{
             this.LW= Utils.random(1,36).toString().padStart(2,'0');
             this.RW= this.LW;
             this.LB= Utils.random(1,36).toString().padStart(2,'0');
             this.HE= Utils.random(1,36).toString().padStart(2,'0');
             this.BO= Utils.random(1,36).toString().padStart(2,'0');
-            res();
+		
+		
+		preloaded.push(Utils.loadImage('assets/games/demons/'+gC.demonData['LW'][this.LW].img, 'LW'));
+		preloaded.push(Utils.loadImage('assets/games/demons/'+gC.demonData['RW'][this.RW].img, 'RW'));
+		preloaded.push(Utils.loadImage('assets/games/demons/'+gC.demonData['LB'][this.LB].img, 'LB'));
+		preloaded.push(Utils.loadImage('assets/games/demons/'+gC.demonData['BO'][this.BO].img, 'BO'));
+		preloaded.push(Utils.loadImage('assets/games/demons/'+gC.demonData['HE'][this.HE].img, 'HE'));
+
+		Promise.all(preloaded)
+		.then(
+		    (succ)=>{
+			return res();
+		    }
+		)
+		.catch(
+		    (err)=>{
+			return rej();
+		    }
+		)
         })
         
     }
@@ -156,23 +183,9 @@ class enemy{
         return new Promise((res,rej)=>{
             this.randomX = 0;
             this.randomY = Utils.random(1,gC.spritePosY);
-            promises.push(Utils.drawImage('assets/games/demons/'+gC.demonData['LW'][this.LW].img, this.randomX, this.randomY));
-            promises.push(Utils.drawImage('assets/games/demons/'+gC.demonData['RW'][this.RW].img, this.randomX, this.randomY));
-            promises.push(Utils.drawImage('assets/games/demons/'+gC.demonData['LB'][this.LB].img, this.randomX, this.randomY));
-            promises.push(Utils.drawImage('assets/games/demons/'+gC.demonData['BO'][this.BO].img, this.randomX, this.randomY));
-            promises.push(Utils.drawImage('assets/games/demons/'+gC.demonData['HE'][this.HE].img, this.randomX, this.randomY));
-
-            Promise.all(promises)
-                .then(
-                    (succ)=>{
-                        return res();
-                    }
-                )
-                .catch(
-                    (err)=>{
-                        return rej();
-                    }
-                )
+            Utils.drawImages(this.randomX, this.randomY));
+            res();
+            
         })
         
         
