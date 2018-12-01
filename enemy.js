@@ -93,15 +93,15 @@ class enemy{
         var preloaded = [] 
 	return new Promise((res,rej)=>{
 	    if(!this.LW)
-            	this.LW= Utils.random(1,36).toString().padStart(2,'0');
-            if(!this.RW)
-            	this.RW= this.LW;
-            if(!this.LB)
-            	this.LB= Utils.random(1,36).toString().padStart(2,'0');
-            if(!this.HE)
-            	this.HE= Utils.random(1,36).toString().padStart(2,'0');
-            if(!this.BO)
-            	this.BO= Utils.random(1,36).toString().padStart(2,'0');
+            this.LW= Utils.random(1,36).toString().padStart(2,'0');
+        if(!this.RW)
+            this.RW= this.LW;
+        if(!this.LB)
+            this.LB= Utils.random(1,36).toString().padStart(2,'0');
+        if(!this.HE)
+            this.HE= Utils.random(1,36).toString().padStart(2,'0');
+        if(!this.BO)
+            this.BO= Utils.random(1,36).toString().padStart(2,'0');
 		
 		
 		preloaded.push(Utils.loadImage('assets/games/demons/'+gC.demonData['LW'][this.LW].img, 'LW'));
@@ -111,16 +111,16 @@ class enemy{
 		preloaded.push(Utils.loadImage('assets/games/demons/'+gC.demonData['HE'][this.HE].img, 'HE'));
 
 		Promise.all(preloaded)
-		.then(
-		    (succ)=>{
-			res();
-		    }
-		)
-		.catch(
-		    (err)=>{
-			rej();
-		    }
-		)
+            .then(
+                (succ)=>{
+                res();
+                }
+            )
+            .catch(
+                (err)=>{
+                rej();
+                }
+            )
         })
         
     }

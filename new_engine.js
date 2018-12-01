@@ -25,7 +25,7 @@ function startGame(){
                 assets[a].animation()
                     .then(
                         (succ)=>{
-                        console.log(succ);
+                        //console.log(succ);
                         }
                     )
                     .catch(
