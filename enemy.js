@@ -5,14 +5,13 @@ class enemy{
 	animation(){
 		return new Promise((res,rej)=>{
 			if(!this.dir)this.dir='r'
-			this.randomX
-            		this.randomY
+			
 			if(this.randomX<gC.spritePosX && this.dir === 'r'){
 				this.randomX++;
 			}else{
 				if(this.randomX === gC.spritePosX) this.dir = 'l';
 				if(this.randomX>0 && this.dir === 'l'){
-					this.x--;
+					this.randomX--;
 				}else{
 					this.dir = 'r';
 
@@ -127,10 +126,17 @@ class enemy{
     }
 
     create(){
-        var promises = [];
         return new Promise((res,rej)=>{
-            this.randomX = 0;
-            this.randomY = Utils.random(1,gC.spritePosY);
+            if(this.dead === undefined){
+                this.dead = false;
+                this.randomX = 0;
+                this.randomY = Utils.random(1,gC.spritePosY);
+                
+            }else{
+                if(this.dead){
+                    alert('enemy dead')
+                }
+            }
             Utils.drawImages(this.randomX, this.randomY);
             res();
             
