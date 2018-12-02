@@ -24,7 +24,7 @@ class enemy{
     start(){
         var me = this;
         return new Promise((res,rej)=>{
-                me.readDemonData()
+                me.preload()
                 .then(
                     (succ)=>{
                         me.create()
@@ -47,48 +47,7 @@ class enemy{
                 )
             })
     }
-    readDemonData(){
-        var me = this;
-        return new Promise(function(res,rej){
-            if(!gC.demonData){
-                var xmlhttp = new XMLHttpRequest();
-                var url = 'assets/games/demons/demons4js.json';
-                xmlhttp.onreadystatechange = function() {
-                    if (this.readyState == 4 && this.status == 200) {
-                        gC.demonData = JSON.parse(this.responseText);
-                        me.preload()
-                        .then(
-                            (succ)=>{
-                                return res();
-                            }
-                        )
-                        .catch(
-                            (err)=>{
-                                return rej();
-                            }
-                        )
-                    }
-                };
-                xmlhttp.open("GET", url, true);
-                xmlhttp.send();
-            }else{
-                me.preload()
-                    .then(
-                        (succ)=>{
-                            return res();
-                        }
-                    )
-                    .catch(
-                        (err)=>{
-                            return rej();
-                        }
-                    )
-            }
-            
-        })
-        
-        
-    }
+    
     preload(){
         var preloaded = [] 
 	return new Promise((res,rej)=>{
