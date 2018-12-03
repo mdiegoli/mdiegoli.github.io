@@ -40,10 +40,10 @@ class utils{
         var me = this;
 	    
 		return new Promise((res,rej)=>{
-		if(!this.images[level]){
-			this.images[level] = {};
+		if(!me.images[level]){
+			me.images[level] = {};
 		}
-		if(!this.images[level][type]){
+		if(!me.images[level][type]){
 		    var img = new Image(gC.spriteW,gC.spriteH);
 		    img.onload = function () {
 			me.images[level][type] = img;
