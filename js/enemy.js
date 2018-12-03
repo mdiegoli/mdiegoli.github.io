@@ -51,23 +51,23 @@ class enemy{
     preload(){
         var preloaded = [] 
 	return new Promise((res,rej)=>{
-	    if(!this.LW)
-            this.LW= Utils.random(1,36).toString().padStart(2,'0');
-        if(!this.RW)
-            this.RW= this.LW;
-        if(!this.LB)
-            this.LB= Utils.random(1,36).toString().padStart(2,'0');
-        if(!this.HE)
-            this.HE= Utils.random(1,36).toString().padStart(2,'0');
-        if(!this.BO)
-            this.BO= Utils.random(1,36).toString().padStart(2,'0');
+	    if(!this.prototype.LW)
+            this.prototype.LW= Utils.random(1,36).toString().padStart(2,'0');
+        if(!this.prototype.RW)
+            this.prototype.RW= this.LW;
+        if(!this.prototype.LB)
+            this.prototype.LB= Utils.random(1,36).toString().padStart(2,'0');
+        if(!this.prototype.HE)
+            this.prototype.HE= Utils.random(1,36).toString().padStart(2,'0');
+        if(!this.prototype.BO)
+            this.prototype.BO= Utils.random(1,36).toString().padStart(2,'0');
 		
 		
-		preloaded.push(Utils.loadImage('assets/games/demons/'+gC.demonData['LW'][this.LW].img, 'LW'));
-		preloaded.push(Utils.loadImage('assets/games/demons/'+gC.demonData['RW'][this.RW].img, 'RW'));
-		preloaded.push(Utils.loadImage('assets/games/demons/'+gC.demonData['LB'][this.LB].img, 'LB'));
-		preloaded.push(Utils.loadImage('assets/games/demons/'+gC.demonData['BO'][this.BO].img, 'BO'));
-		preloaded.push(Utils.loadImage('assets/games/demons/'+gC.demonData['HE'][this.HE].img, 'HE'));
+		preloaded.push(Utils.loadImage('assets/games/demons/'+gC.demonData['LW'][this.prototype.LW].img, 'LW'));
+		preloaded.push(Utils.loadImage('assets/games/demons/'+gC.demonData['RW'][this.prototype.RW].img, 'RW'));
+		preloaded.push(Utils.loadImage('assets/games/demons/'+gC.demonData['LB'][this.prototype.LB].img, 'LB'));
+		preloaded.push(Utils.loadImage('assets/games/demons/'+gC.demonData['BO'][this.prototype.BO].img, 'BO'));
+		preloaded.push(Utils.loadImage('assets/games/demons/'+gC.demonData['HE'][this.prototype.HE].img, 'HE'));
 
 		Promise.all(preloaded)
             .then(
