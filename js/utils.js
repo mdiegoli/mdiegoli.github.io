@@ -31,14 +31,17 @@ class utils{
 	}
         
     }
-    loadImage(str,type){
+    loadImage(str,type,level){
         var me = this;
 	    
 		return new Promise((res,rej)=>{
-		if(!this.images[type]){
+		if(!this.images[level]){
+			this.images[level] = {};
+		}
+		if(!this.images[level][type]){
 		    var img = new Image(gC.spriteW,gC.spriteH);
 		    img.onload = function () {
-			me.images[type] = img;
+			me.images[level][type] = img;
 			res('image '+str+' loaded!')
 		    }
 		    img.onerror = function (e) {
