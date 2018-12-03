@@ -49,8 +49,9 @@ class enemy{
     }
     
     preload(){
-        var preloaded = [] 
+         
 	return new Promise((res,rej)=>{
+		let preloaded = [];
 		if(!this.__proto__.indexes)
 			this.__proto__.indexes = {}
 		if(!this.__proto__.indexes[this.level])
