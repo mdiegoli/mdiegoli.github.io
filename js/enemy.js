@@ -59,7 +59,7 @@ class enemy{
 	    if(!this.__proto__.indexes[this.level].LW)
             this.__proto__.indexes[this.level].LW= Utils.random(1,36).toString().padStart(2,'0');
         if(!this.__proto__.indexes[this.level].RW)
-            this.__proto__.indexes[this.level].RW= this.LW;
+            this.__proto__.indexes[this.level].RW= this.__proto__.indexes[this.level].LW;
         if(!this.__proto__.indexes[this.level].LB)
             this.__proto__.indexes[this.level].LB= Utils.random(1,36).toString().padStart(2,'0');
         if(!this.__proto__.indexes[this.level].HE)
