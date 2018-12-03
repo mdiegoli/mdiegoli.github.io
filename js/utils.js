@@ -36,6 +36,7 @@ class utils{
         
     }
     loadImage(str,type,level){
+	    console.log(str);
         var me = this;
 	    
 		return new Promise((res,rej)=>{
