@@ -51,23 +51,23 @@ class enemy{
     preload(){
         var preloaded = [] 
 	return new Promise((res,rej)=>{
-	    if(!this.prototype.LW)
-            this.prototype.LW= Utils.random(1,36).toString().padStart(2,'0');
-        if(!this.prototype.RW)
-            this.prototype.RW= this.LW;
-        if(!this.prototype.LB)
-            this.prototype.LB= Utils.random(1,36).toString().padStart(2,'0');
-        if(!this.prototype.HE)
-            this.prototype.HE= Utils.random(1,36).toString().padStart(2,'0');
-        if(!this.prototype.BO)
-            this.prototype.BO= Utils.random(1,36).toString().padStart(2,'0');
+	    if(!this.__proto__.LW)
+            this.__proto__.LW= Utils.random(1,36).toString().padStart(2,'0');
+        if(!this.__proto__.RW)
+            this.__proto__.RW= this.LW;
+        if(!this.__proto__.LB)
+            this.__proto__.LB= Utils.random(1,36).toString().padStart(2,'0');
+        if(!this.__proto__.HE)
+            this.__proto__.HE= Utils.random(1,36).toString().padStart(2,'0');
+        if(!this.__proto__.BO)
+            this.__proto__.BO= Utils.random(1,36).toString().padStart(2,'0');
 		
 		
-		preloaded.push(Utils.loadImage('assets/games/demons/'+gC.demonData['LW'][this.prototype.LW].img, 'LW'));
-		preloaded.push(Utils.loadImage('assets/games/demons/'+gC.demonData['RW'][this.prototype.RW].img, 'RW'));
-		preloaded.push(Utils.loadImage('assets/games/demons/'+gC.demonData['LB'][this.prototype.LB].img, 'LB'));
-		preloaded.push(Utils.loadImage('assets/games/demons/'+gC.demonData['BO'][this.prototype.BO].img, 'BO'));
-		preloaded.push(Utils.loadImage('assets/games/demons/'+gC.demonData['HE'][this.prototype.HE].img, 'HE'));
+		preloaded.push(Utils.loadImage('assets/games/demons/'+gC.demonData['LW'][this.__proto__.LW].img, 'LW'));
+		preloaded.push(Utils.loadImage('assets/games/demons/'+gC.demonData['RW'][this.__proto__.RW].img, 'RW'));
+		preloaded.push(Utils.loadImage('assets/games/demons/'+gC.demonData['LB'][this.__proto__.LB].img, 'LB'));
+		preloaded.push(Utils.loadImage('assets/games/demons/'+gC.demonData['BO'][this.__proto__.BO].img, 'BO'));
+		preloaded.push(Utils.loadImage('assets/games/demons/'+gC.demonData['HE'][this.__proto__.HE].img, 'HE'));
 
 		Promise.all(preloaded)
             .then(
