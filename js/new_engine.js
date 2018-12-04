@@ -40,9 +40,7 @@ function addDemoAssets(t){
 
         
 }
-assets.push(new enemy('A'));
-assets.push(new enemy('B'));
-assets.push(new enemy('C'));
+
 
 function readDemonData(){
     var me = this;
