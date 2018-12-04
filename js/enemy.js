@@ -67,12 +67,12 @@ class enemy{
         if(!this.indexes.BO)
             this.indexes.BO= Utils.random(1,36).toString().padStart(2,'0');
 		
-		
-		preloaded.push(me.loadImage('assets/games/demons/'+gC.demonData['LW'][this.indexes.LW].img, 'LW'));
-		preloaded.push(me.loadImage('assets/games/demons/'+gC.demonData['RW'][this.indexes.RW].img, 'RW'));
-		preloaded.push(me.loadImage('assets/games/demons/'+gC.demonData['LB'][this.indexes.LB].img, 'LB'));
-		preloaded.push(me.loadImage('assets/games/demons/'+gC.demonData['BO'][this.indexes.BO].img, 'BO'));
-		preloaded.push(me.loadImage('assets/games/demons/'+gC.demonData['HE'][this.indexes.HE].img, 'HE'));
+		var lI = Utils.loadImage.bind(me);
+		preloaded.push(lI('assets/games/demons/'+gC.demonData['LW'][this.indexes.LW].img, 'LW'));
+		preloaded.push(lI('assets/games/demons/'+gC.demonData['RW'][this.indexes.RW].img, 'RW'));
+		preloaded.push(lI('assets/games/demons/'+gC.demonData['LB'][this.indexes.LB].img, 'LB'));
+		preloaded.push(lI('assets/games/demons/'+gC.demonData['BO'][this.indexes.BO].img, 'BO'));
+		preloaded.push(lI('assets/games/demons/'+gC.demonData['HE'][this.indexes.HE].img, 'HE'));
 
 		Promise.all(preloaded)
             .then(
