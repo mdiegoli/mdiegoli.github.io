@@ -33,16 +33,9 @@ function startGame(){
 }
 
 function addDemoAssets(t){
-    var levels = ['A','B','C'];
-    var i_l = 0;
-    if(t%3)
-        assets.push(new enemy(levels[++i_l%3]));
-
-        
+    if(t%5)
+        assets.push(new enemy());
 }
-assets.push(new enemy('A'));
-assets.push(new enemy('B'));
-assets.push(new enemy('C'));
 
 function readDemonData(){
     var me = this;
@@ -84,15 +77,15 @@ function addCanvas(){
 }
 //every frame value, draw scene
 function l(){
-    var demoClock = 0;
+    var demoTime = 0;
     addCanvas().then(
         (succ)=>{
             readDemonData().then(
                 (succ) => {
                     gC.l_i = setInterval(function() {
-                        demoClock++;
-                        addDemoAssets(demoClock);
-                        startGame()
+                        demoTime++;
+                        addDemoAssets(demoTime);
+                        startGame();
                     }, gC.fr);
                 }
             )

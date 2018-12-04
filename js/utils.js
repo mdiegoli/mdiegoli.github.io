@@ -25,28 +25,27 @@ class utils{
 	
     drawImages(x,y){
 	    
-	let levels = Object.keys(this.images);
-        for(let i = 0,k_l = levels.length;i<k_l;i++){
-		let keys = Object.keys(this.images[levels[i]]);
+	
+		let keys = Object.keys(this.images);
 		for(let p = 0,p_l = keys.length;p<p_l;p++){
-			this.ctx.drawImage(this.images[levels[i]][keys[p]], x, y)
+			this.ctx.drawImage(this.images[keys[p]], x, y)
 		}
 		
-	}
+	
         
     }
-    loadImage(str,type,level){
-	    console.log(str);
-        var me = this;
+    drawImage(img,x,y){
+        this.ctx.drawImage(img, x, y)
+    }
+    loadImage(str,type){
+	    var me = this;
 	    
 		return new Promise((res,rej)=>{
-		if(!me.images[level]){
-			me.images[level] = {};
-		}
-		if(!me.images[level][type]){
-		    var img = new Image(gC.spriteW,gC.spriteH);
+		
+		if(!me.images[type]){
+		    let img = new Image(gC.spriteW,gC.spriteH);
 		    img.onload = function () {
-			me.images[level][type] = img;
+			me.images[type] = img;
 			res('image '+str+' loaded!')
 		    }
 		    img.onerror = function (e) {

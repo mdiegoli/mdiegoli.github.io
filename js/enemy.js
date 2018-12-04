@@ -1,6 +1,7 @@
 class enemy{
     constructor(level){
-        this.level = level
+        this.level = level;
+        this.images = {};
     }
 	animation(){
 		return new Promise((res,rej)=>{
@@ -49,31 +50,29 @@ class enemy{
     }
     
     preload(){
-         
+         var me = this;
 	return new Promise((res,rej)=>{
 		let preloaded = [];
-		if(!this.__proto__.indexes)
-			this.__proto__.indexes = {}
-		if(!this.__proto__.indexes[this.level])
-			this.__proto__.indexes[this.level] = {}
+		if(!this.indexes)
+			this.indexes = {}
 		
-	    if(!this.__proto__.indexes[this.level].LW)
-            this.__proto__.indexes[this.level].LW= Utils.random(1,36).toString().padStart(2,'0');
-        if(!this.__proto__.indexes[this.level].RW)
-            this.__proto__.indexes[this.level].RW= this.__proto__.indexes[this.level].LW;
-        if(!this.__proto__.indexes[this.level].LB)
-            this.__proto__.indexes[this.level].LB= Utils.random(1,36).toString().padStart(2,'0');
-        if(!this.__proto__.indexes[this.level].HE)
-            this.__proto__.indexes[this.level].HE= Utils.random(1,36).toString().padStart(2,'0');
-        if(!this.__proto__.indexes[this.level].BO)
-            this.__proto__.indexes[this.level].BO= Utils.random(1,36).toString().padStart(2,'0');
+	    if(!this.indexes.LW)
+            this.indexes.LW= Utils.random(1,36).toString().padStart(2,'0');
+        if(!this.indexes.RW)
+            this.indexes.RW= this.indexes.LW;
+        if(!this.indexes.LB)
+            this.indexes.LB= Utils.random(1,36).toString().padStart(2,'0');
+        if(!this.indexes.HE)
+            this.indexes.HE= Utils.random(1,36).toString().padStart(2,'0');
+        if(!this.indexes.BO)
+            this.indexes.BO= Utils.random(1,36).toString().padStart(2,'0');
 		
 		
-		preloaded.push(Utils.loadImage('assets/games/demons/'+gC.demonData['LW'][this.__proto__.indexes[this.level].LW].img, 'LW', this.level));
-		preloaded.push(Utils.loadImage('assets/games/demons/'+gC.demonData['RW'][this.__proto__.indexes[this.level].RW].img, 'RW', this.level));
-		preloaded.push(Utils.loadImage('assets/games/demons/'+gC.demonData['LB'][this.__proto__.indexes[this.level].LB].img, 'LB', this.level));
-		preloaded.push(Utils.loadImage('assets/games/demons/'+gC.demonData['BO'][this.__proto__.indexes[this.level].BO].img, 'BO', this.level));
-		preloaded.push(Utils.loadImage('assets/games/demons/'+gC.demonData['HE'][this.__proto__.indexes[this.level].HE].img, 'HE', this.level));
+		preloaded.push(me.loadImage('assets/games/demons/'+gC.demonData['LW'][this.indexes.LW].img, 'LW'));
+		preloaded.push(me.loadImage('assets/games/demons/'+gC.demonData['RW'][this.indexes.RW].img, 'RW'));
+		preloaded.push(me.loadImage('assets/games/demons/'+gC.demonData['LB'][this.indexes.LB].img, 'LB'));
+		preloaded.push(me.loadImage('assets/games/demons/'+gC.demonData['BO'][this.indexes.BO].img, 'BO'));
+		preloaded.push(me.loadImage('assets/games/demons/'+gC.demonData['HE'][this.indexes.HE].img, 'HE'));
 
 		Promise.all(preloaded)
             .then(
@@ -91,21 +90,57 @@ class enemy{
     }
 
     create(){
+        var me = this;
         return new Promise((res,rej)=>{
-            if(this.dead === undefined){
-                this.dead = false;
-                this.randomX = 0;
-                this.randomY = Utils.random(1,gC.spritePosY);
+            if(me.dead === undefined){
+                me.dead = false;
+                me.randomX = 0;
+                me.randomY = Utils.random(1,gC.spritePosY);
                 
             }else{
-                if(this.dead){
+                if(me.dead){
                     alert('enemy dead')
                 }
             }
-            Utils.drawImages(this.randomX, this.randomY);
+            me.drawImages(me.randomX, me.randomY);
             res();
             
         })
+        
+        
+    }
+
+    drawImages(x,y){
+	    
+	
+		let keys = Object.keys(this.images);
+		for(let p = 0,p_l = keys.length;p<p_l;p++){
+			Utils.drawImage(this.images[keys[p]], x, y)
+		}
+		
+	
+        
+    }
+    loadImage(str,type){
+	    var me = this;
+	    
+		return new Promise((res,rej)=>{
+		
+		if(!me.images[type]){
+		    let img = new Image(gC.spriteW,gC.spriteH);
+		    img.onload = function () {
+			me.images[type] = img;
+			res('image '+str+' loaded!')
+		    }
+		    img.onerror = function (e) {
+			rej('load image '+str+' error: '+e)
+		    }
+		    img.src = str;
+		}else{
+			res('image just loaded')
+		    }
+		})
+	    
         
         
     }
