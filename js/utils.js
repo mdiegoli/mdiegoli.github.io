@@ -23,12 +23,12 @@ class utils{
         this.ctx = e.getContext("2d")
     }
 	
-    drawImages(x,y){
+    drawImages(images,x,y){
 	    
 	
-		let keys = Object.keys(this.images);
+		let keys = Object.keys(images);
 		for(let p = 0,p_l = keys.length;p<p_l;p++){
-			this.ctx.drawImage(this.images[keys[p]], x, y)
+			this.ctx.drawImage(images[keys[p]], x, y)
 		}
 		
 	
