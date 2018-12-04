@@ -103,7 +103,7 @@ class enemy{
                 }
             }
 	    var dI = Utils.drawImages.bind(me);
-            dI(me.randomX, me.randomY);
+            dI(me.images, me.randomX, me.randomY);
             res();
             
         })
