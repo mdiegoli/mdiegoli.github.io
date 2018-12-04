@@ -11,22 +11,6 @@ https://phaser.io/tutorials/getting-started
 https://phaser.io/tutorials/getting-started-phaser3
 
 todo:
-wait
-	caricamento json
-	
-	caricamento immagini
-
-splash gioco
-	
-	ciclo
-	
-		render personaggio e alieni
-		
-		animazione alieni e fuoco
-		
-		interazione personaggio e fuoco
-		
-todo:
-spostare animation in enemy
+demon classes
 
 
