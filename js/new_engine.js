@@ -34,9 +34,7 @@ function startGame(){
 
 function addDemoAssets(t){
     var levels = ['A','B','C'];
-    var i_l = 0;
-    if(t%3)
-        assets.push(new enemy(levels[++i_l%3]));
+    assets.push(new enemy(levels[t%3]));
 
         
 }

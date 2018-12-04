@@ -68,11 +68,11 @@ class enemy{
             this.indexes.BO= Utils.random(1,36).toString().padStart(2,'0');
 		
 		var lI = Utils.loadImage.bind(me);
-		preloaded.push(lI('assets/games/demons/'+gC.demonData['LW'][this.indexes.LW].img, 'LW'));
-		preloaded.push(lI('assets/games/demons/'+gC.demonData['RW'][this.indexes.RW].img, 'RW'));
-		preloaded.push(lI('assets/games/demons/'+gC.demonData['LB'][this.indexes.LB].img, 'LB'));
-		preloaded.push(lI('assets/games/demons/'+gC.demonData['BO'][this.indexes.BO].img, 'BO'));
-		preloaded.push(lI('assets/games/demons/'+gC.demonData['HE'][this.indexes.HE].img, 'HE'));
+		preloaded.push(lI('assets/games/demons/'+gC.demonData['LW'][this.indexes.LW].img, 'LW',this.level));
+		preloaded.push(lI('assets/games/demons/'+gC.demonData['RW'][this.indexes.RW].img, 'RW',this.level));
+		preloaded.push(lI('assets/games/demons/'+gC.demonData['LB'][this.indexes.LB].img, 'LB',this.level));
+		preloaded.push(lI('assets/games/demons/'+gC.demonData['BO'][this.indexes.BO].img, 'BO',this.level));
+		preloaded.push(lI('assets/games/demons/'+gC.demonData['HE'][this.indexes.HE].img, 'HE',this.level));
 
 		Promise.all(preloaded)
             .then(
@@ -102,7 +102,7 @@ class enemy{
                     alert('enemy dead')
                 }
             }
-	    Utils.drawImages(me.images, me.randomX, me.randomY);
+	    Utils.drawImages(me.__proto__.images[this.level], me.randomX, me.randomY);
             
             res();
             
