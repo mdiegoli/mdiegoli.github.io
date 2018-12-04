@@ -1,7 +1,8 @@
 class enemy{
     constructor(level){
         this.level = level;
-        this.images = {};
+        if(!this.__proto__.images)this.__proto__.images = {};
+        if(!this.__proto__.images[level])this.__proto__.images[level] = {};
     }
 	animation(){
 		return new Promise((res,rej)=>{
@@ -67,12 +68,12 @@ class enemy{
         if(!this.indexes.BO)
             this.indexes.BO= Utils.random(1,36).toString().padStart(2,'0');
 		
-		var lI = Utils.loadImage.bind(me);
-		preloaded.push(lI('assets/games/demons/'+gC.demonData['LW'][this.indexes.LW].img, 'LW',this.level));
-		preloaded.push(lI('assets/games/demons/'+gC.demonData['RW'][this.indexes.RW].img, 'RW',this.level));
-		preloaded.push(lI('assets/games/demons/'+gC.demonData['LB'][this.indexes.LB].img, 'LB',this.level));
-		preloaded.push(lI('assets/games/demons/'+gC.demonData['BO'][this.indexes.BO].img, 'BO',this.level));
-		preloaded.push(lI('assets/games/demons/'+gC.demonData['HE'][this.indexes.HE].img, 'HE',this.level));
+		var lI = Utils.loadImage;
+		preloaded.push(lI(me.__proto__.images[me.level],'assets/games/demons/'+gC.demonData['LW'][this.indexes.LW].img, 'LW'));
+		preloaded.push(lI(me.__proto__.images[me.level],'assets/games/demons/'+gC.demonData['RW'][this.indexes.RW].img, 'RW'));
+		preloaded.push(lI(me.__proto__.images[me.level],'assets/games/demons/'+gC.demonData['LB'][this.indexes.LB].img, 'LB'));
+		preloaded.push(lI(me.__proto__.images[me.level],'assets/games/demons/'+gC.demonData['BO'][this.indexes.BO].img, 'BO'));
+		preloaded.push(lI(me.__proto__.images[me.level],'assets/games/demons/'+gC.demonData['HE'][this.indexes.HE].img, 'HE'));
 
 		Promise.all(preloaded)
             .then(

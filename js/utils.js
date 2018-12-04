@@ -37,16 +37,14 @@ class utils{
     drawImage(img,x,y){
         this.ctx.drawImage(img, x, y)
     }
-    loadImage(str,type,level){
+    loadImage(images,str,type){
 	    var me = this;
 	    
 		return new Promise((res,rej)=>{
-        if(!me.__proto__.images) me.__proto__.images = {};
-        if(!me.__proto__.images[level]) me.__proto__.images[level] = {};
-		if(!me.__proto__.images[level][type]){
+        if(!images[type]){
 		    let img = new Image(gC.spriteW,gC.spriteH);
 		    img.onload = function () {
-			me.__proto__.images[level][type] = img;
+			images[type] = img;
 			res('image '+str+' loaded!')
 		    }
 		    img.onerror = function (e) {
