@@ -102,8 +102,8 @@ class enemy{
                     alert('enemy dead')
                 }
             }
-	    var dI = Utils.drawImages.bind(me);
-            dI(me.images, me.randomX, me.randomY);
+	    Utils.drawImages(me.images, me.randomX, me.randomY);
+            
             res();
             
         })
