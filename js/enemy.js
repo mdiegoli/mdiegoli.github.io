@@ -102,48 +102,15 @@ class enemy{
                     alert('enemy dead')
                 }
             }
-            me.drawImages(me.randomX, me.randomY);
+	    var dI = Utils.drawImages.bind(me);
+            dI(me.randomX, me.randomY);
             res();
             
         })
         
         
     }
-
-    drawImages(x,y){
-	    
-	
-		let keys = Object.keys(this.images);
-		for(let p = 0,p_l = keys.length;p<p_l;p++){
-			Utils.drawImage(this.images[keys[p]], x, y)
-		}
-		
-	
-        
-    }
-    loadImage(str,type){
-	    var me = this;
-	    
-		return new Promise((res,rej)=>{
-		
-		if(!me.images[type]){
-		    let img = new Image(gC.spriteW,gC.spriteH);
-		    img.onload = function () {
-			me.images[type] = img;
-			res('image '+str+' loaded!')
-		    }
-		    img.onerror = function (e) {
-			rej('load image '+str+' error: '+e)
-		    }
-		    img.src = str;
-		}else{
-			res('image just loaded')
-		    }
-		})
-	    
-        
-        
-    }
+    
 
 }
 
