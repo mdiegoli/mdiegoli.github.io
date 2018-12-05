@@ -74,6 +74,9 @@ function addCanvas(){
             Utils.appendB2A(a,b)
             Utils.setAttribute(b,'width',gC.width)
             Utils.setAttribute(b,'height',gC.height)
+		b.addEventListener('mousedown','mouseDown',false)
+		b.addEventListener('mouseup','mouseUp',false)
+		b.addEventListener('mousemove','mouseMove',false)
         }
         res();
     })
@@ -96,4 +99,13 @@ function l(){
     )
     
     
+}
+
+function mouseMove(e){
+}
+
+function mouseDown(e){
+}
+
+function mouseUp(e){
 }
