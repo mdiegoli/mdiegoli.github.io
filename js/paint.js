@@ -72,6 +72,7 @@ function addCanvas(){
             //memorizzo canvas e contesto
             Utils.setCanvas(b)
             Utils.appendB2A(a,b)
+	    gC.canvas = b;
             Utils.setAttribute(b,'width',gC.width)
             Utils.setAttribute(b,'height',gC.height)
 		b.addEventListener('mousedown','mouseDown',false)
@@ -97,15 +98,36 @@ function l(){
             )
         }
     )
-    
-    
+}
+
+document.addEventListener('keydown','selectDemon')
+
+function selectDemon(e){
+	gC.brush = new enemy(e.key)
 }
 
 function mouseMove(e){
+	e.preventDefault();
+	if(gC.paint){
+		let coord = getMousePos(gC.canvas,e)
+		gC.brush.paint(coord.x,coord.y)
+	}
 }
 
 function mouseDown(e){
+	e.preventDefault();
+	gC.paint = true;
 }
 
 function mouseUp(e){
+	e.preventDefault();
+	gC.paint = false;
+}
+
+function getMousePos(canvas, evt) {
+	var rect = canvas.getBoundingClientRect();
+	return {
+		  x: evt.clientX - rect.left,
+		  y: evt.clientY - rect.top
+	};
 }
