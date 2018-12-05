@@ -73,8 +73,8 @@ function addCanvas(){
             Utils.setCanvas(b)
             Utils.appendB2A(a,b)
 	    gC.canvas = b;
-            Utils.setAttribute(b,'width',gC.width)
-            Utils.setAttribute(b,'height',gC.height)
+            Utils.setAttribute(b,'width',window.innerWidth)
+            Utils.setAttribute(b,'height',window.innerHeight)
 		b.addEventListener('mousedown',mouseDown)
 		b.addEventListener('mouseup',mouseUp)
 		b.addEventListener('mousemove',mouseMove)
