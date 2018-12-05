@@ -6,4 +6,8 @@ uso interval invece del frame
 
 oggetto enemy: classi demoni classificati per lettera
 
-uso __PROTO__
+uso proto di object
+
+quest'app usata come banco di prova per il canvas
+
+
