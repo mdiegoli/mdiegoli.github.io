@@ -107,7 +107,7 @@ function mouseMove(e){
 	e.preventDefault();
 	if(gC.paint){
 		let coord = getMousePos(gC.canvas,e)
-		gC.brush.paint(coord.x,coord.y)
+		if(gC.brush) gC.brush.paint(coord.x,coord.y)
 	}
 }
 
