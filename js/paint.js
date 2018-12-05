@@ -75,10 +75,10 @@ function addCanvas(){
 	    gC.canvas = b;
             Utils.setAttribute(b,'width',gC.width)
             Utils.setAttribute(b,'height',gC.height)
-		b.addEventListener('mousedown','mouseDown',false)
-		b.addEventListener('mouseup','mouseUp',false)
-		b.addEventListener('mousemove','mouseMove',false)
-		document.addEventListener('keydown','selectDemon')
+		b.addEventListener('mousedown',mouseDown)
+		b.addEventListener('mouseup',mouseUp)
+		b.addEventListener('mousemove',mouseMove)
+		document.addEventListener('keydown',selectDemon)
         }
         res();
     })
