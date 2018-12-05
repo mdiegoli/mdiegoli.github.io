@@ -101,6 +101,15 @@ function l(){
 
 function selectDemon(e){
 	gC.brush = new enemy(e.key)
+	gC.brush.preload().then(
+		(succ)=>{
+			console.log('preload done');
+		}
+	).catch(
+		(err)=>{
+			console.log(err);
+		}
+	)
 }
 
 function mouseMove(e){
