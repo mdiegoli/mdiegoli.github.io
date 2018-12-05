@@ -111,6 +111,18 @@ class enemy{
         
         
     }
+	
+paint(x,y){
+        var me = this;
+        return new Promise((res,rej)=>{
+            Utils.drawImages(me.__proto__.images[this.level], x, y);
+            
+            res();
+            
+        })
+        
+        
+    }
     
 
 }
