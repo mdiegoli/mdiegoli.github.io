@@ -86,15 +86,27 @@ function addCanvas(){
 //every frame value, draw scene
 function l(){
     var demoClock = 0;
-    addCanvas().then(
-        (succ)=>{
-            console.log('start!');
-        }
-    ).catch(
-    	(err) => {
-		console.log(err);
-	}
-    )
+	readDemonData()
+		.then(
+			(succ)=>{
+				addCanvas().then(
+					(succ)=>{
+					    console.log('start!');
+					}
+				    ).catch(
+					(err) => {
+						console.log(err);
+					}
+				    )			
+			}
+		)
+		.catch(
+		
+			(err) => {
+				console.log(err);
+			}
+		)
+    
 }
 
 
