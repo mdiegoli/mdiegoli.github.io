@@ -78,6 +78,7 @@ function addCanvas(){
 		b.addEventListener('mousedown','mouseDown',false)
 		b.addEventListener('mouseup','mouseUp',false)
 		b.addEventListener('mousemove','mouseMove',false)
+		document.addEventListener('keydown','selectDemon')
         }
         res();
     })
@@ -87,20 +88,16 @@ function l(){
     var demoClock = 0;
     addCanvas().then(
         (succ)=>{
-            readDemonData().then(
-                (succ) => {
-                    gC.l_i = setInterval(function() {
-                        demoClock++;
-                        addDemoAssets(demoClock);
-                        startGame()
-                    }, gC.fr);
-                }
-            )
+            console.log('start!');
         }
+    ).catch(
+    	(err) => {
+		console.log(err);
+	}
     )
 }
 
-document.addEventListener('keydown','selectDemon')
+
 
 function selectDemon(e){
 	gC.brush = new enemy(e.key)
