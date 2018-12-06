@@ -3,6 +3,27 @@ class hero extends entity{
         super(level)
     }
 	
+    create(){
+        var me = this;
+        return new Promise((res,rej)=>{
+            if(me.dead === undefined){
+                me.dead = false;
+                me.randomX = gC.spritePosX/2;
+                me.randomY = gC.spritePosY;
+                
+            }else{
+                if(me.dead){
+                    alert('enemy dead')
+                }
+            }
+	    Utils.drawImages(me.__proto__.images[this.level], me.randomX, me.randomY);
+            
+            res();
+            
+        })
+        
+        
+    }
     
     preload(){
          var me = this;
