@@ -28,6 +28,12 @@ sound
 
 splash/end
 
+bezel
+
+echo
+
+
+
 
 
 
