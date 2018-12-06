@@ -1,0 +1,88 @@
+<html>
+<head>
+<style type="text/css">
+
+#outer {
+	position: absolute;
+	top: 0;
+	left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    /* Firefox */
+    display: -moz-box;
+    -moz-box-pack: center;
+    -moz-box-align: center;
+
+    /* Safari and Chrome */
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+
+    /* W3C */
+    display: box;
+    box-pack: center;
+    box-align: center;
+    vertical-align: center;
+}
+
+#box {
+	background-color: #000;
+	width: 996;
+	height: 498;
+	z-index: 20;
+}
+
+#bezel {
+	background-image: url(bezel/bezel-01.gif);
+    width: 100%;
+    height: 100%;
+	z-index: 10;
+	opacity: 0.9; 
+}
+
+
+#back {
+	position: absolute;
+	width: 996;
+	height: 498;
+}
+
+#title {
+	position: relative;
+	top: 120px;
+	left: 251px;
+	width: 50%;
+	height: : 50%;
+}
+
+</style>
+</head>
+<body>
+
+<div id="outer">
+	<div id="box">
+
+	<!--
+	<img id="back" src=backs/K-back-001-2x.png>
+	-->
+
+	<img id="back" src=backs/K-back-001-2x.gif>
+	<img id="title" src=title/keplerion-title.gif>
+	<!--
+	-->
+
+	</div>
+
+</div>
+
+<div id="outer">
+
+	<div id="bezel">
+	</div>
+
+</div>
+
+</body>
+</html>
