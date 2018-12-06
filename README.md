@@ -10,9 +10,9 @@ demonPaint
 
 https://mdiegoli.github.io/demonPaint.html
 
-todo:
+__todo__:
 
-hero
+-> hero
 
 move
 
