@@ -5,7 +5,8 @@ var gC = {
     spriteH:128,
     spriteW:128,
     muberAnimationPoints: 3,
-    fr: 500
+    fr: 500,
+    offset_arrow:5
 };
 
 gC.spritePosX = gC.width-gC.spriteW;

@@ -66,11 +66,11 @@ class hero extends entity{
     }    
 
     right(){
-        if((this.randomX+5) <= gC.spritePosX) this.randomX += 5;
+        if((this.randomX+gC.offset_arrow) <= gC.spritePosX) this.randomX += gC.offset_arrow;
     }
 
     left(){
-        if((this.randomX-5) > 0) this.randomX -= 5;
+        if((this.randomX-gC.offset_arrow) > 0) this.randomX -= gC.offset_arrow;
     }
 }
 
