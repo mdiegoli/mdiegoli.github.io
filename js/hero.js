@@ -65,6 +65,13 @@ class hero extends entity{
         
     }    
 
+    right(){
+        if((this.randomX+5) <= gC.spritePosX) this.randomX += 5;
+    }
+
+    left(){
+        if((this.randomX-5) > 0) this.randomX -= 5;
+    }
 }
 
 //export { enemy };

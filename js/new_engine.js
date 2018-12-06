@@ -40,7 +40,8 @@ function addDemoAssets(t){
 }
 
 function addHero(){
-    assets.push(new hero());
+    gC.player = new hero();
+    assets.push(gC.player);
 
         
 }
@@ -79,6 +80,19 @@ function addCanvas(){
             Utils.appendB2A(a,b)
             Utils.setAttribute(b,'width',gC.width)
             Utils.setAttribute(b,'height',gC.height)
+            document.addEventListener('keydown',(e)=>{
+                switch(e.keyCode){
+                    case 37:
+                        gC.player.left();
+                        break;
+                    case 39:
+                        gC.player.right();
+                        break;
+                    case 32:
+                        gC.player.fire();
+                        break;
+                }
+            })
         }
         res();
     })
