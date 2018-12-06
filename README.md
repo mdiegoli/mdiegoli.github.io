@@ -10,6 +10,10 @@ demonPaint
 
 https://mdiegoli.github.io/demonPaint.html
 
+Assets
+
+https://itch.io/game-assets
+
 __todo__:
 
 -> hero
