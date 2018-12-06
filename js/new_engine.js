@@ -39,6 +39,11 @@ function addDemoAssets(t){
         
 }
 
+function addHero(){
+    assets.push(new hero());
+
+        
+}
 
 function readDemonData(){
     var me = this;
@@ -85,6 +90,7 @@ function l(){
         (succ)=>{
             readDemonData().then(
                 (succ) => {
+			addHero();
                     gC.l_i = setInterval(function() {
                         demoClock++;
                         addDemoAssets(demoClock);
