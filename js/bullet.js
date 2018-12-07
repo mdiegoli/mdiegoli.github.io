@@ -12,8 +12,8 @@ class bullet extends entity{
 		return new Promise((res,rej)=>{
 			if(!this.dir)this.dir='u'
 
-			if((this.randomY-5)>0 && this.dir === 'U'){
-				this.randomY-=5;
+			if((this.randomY-gC.offsetBullet)>0 && this.dir === 'U'){
+				this.randomY-=gC.offsetBullet;
 			}else{
 				res();	
 			}
