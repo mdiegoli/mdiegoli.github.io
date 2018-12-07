@@ -22,6 +22,8 @@ Doublebuffer Canvas
 
 https://coderwall.com/p/p4crrq/easy-double-buffering-on-html5-canvas
 
+https://stackoverflow.com/questions/43369748/how-to-render-offscreen-canvas-properly
+
 __todo__:
 
 velocity(slow movement with high frame rate)
