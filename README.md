@@ -24,7 +24,7 @@ https://developers.google.com/web/updates/2018/08/offscreen-canvas
 
 __todo__:
 
-velocity(slow movement with high frame rate)
+-> velocity(slow movement with high frame rate): double buffer
 
 echo
 
