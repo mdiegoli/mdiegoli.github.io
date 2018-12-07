@@ -20,9 +20,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas
 
 Doublebuffer Canvas
 
-https://coderwall.com/p/p4crrq/easy-double-buffering-on-html5-canvas
-
-https://stackoverflow.com/questions/43369748/how-to-render-offscreen-canvas-properly
+https://developers.google.com/web/updates/2018/08/offscreen-canvas
 
 __todo__:
 
