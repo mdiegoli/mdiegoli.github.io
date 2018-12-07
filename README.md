@@ -16,9 +16,9 @@ https://itch.io/game-assets
 
 __todo__:
 
--> hero
+velocity(slow movement with high frame rate)
 
-move
+echo
 
 fire
 
@@ -28,13 +28,12 @@ score
 
 background
 
+bezel
+
 sound
 
 splash/end
 
-bezel
-
-echo
 
 
 
