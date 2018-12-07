@@ -6,9 +6,21 @@ class bullet extends entity{
     create(){
         var me = this;
          Utils.drawImages(me.__proto__.images[this.level], me.randomX, me.randomY);
-        
-        
     }
+	
+    animation(){
+		return new Promise((res,rej)=>{
+			if(!this.dir)this.dir='u'
+
+			if((this.randomY-5)>0 && this.dir === 'U'){
+				this.randomY-=5;
+			}else{
+				res();	
+			}
+			res();
+		})
+
+	}
     
     preload(){
          var me = this;
@@ -17,12 +29,12 @@ class bullet extends entity{
 		if(!this.indexes)
 			this.indexes = {}
 		
-	    if(!this.indexes.LW)
-            this.indexes.BU= Utils.random(1,36).toString().padStart(2,'0');
+	    if(!this.indexes.BU)
+            	this.indexes.BU= Utils.random(1,36).toString().padStart(2,'0');
        
 		
 	var lI = Utils.loadImage;
-	lI(me.__proto__.images[me.level],'assets/games/bullets/hero1.png', 'LW');
+	lI(me.__proto__.images[me.level],'assets/games/bullets/hero1.png', 'BU');
 	res();
         })
         
