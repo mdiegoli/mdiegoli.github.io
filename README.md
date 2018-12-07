@@ -14,6 +14,10 @@ Assets
 
 https://itch.io/game-assets
 
+Offscreen Canvas
+
+https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas
+
 __todo__:
 
 velocity(slow movement with high frame rate)
