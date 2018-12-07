@@ -39,14 +39,6 @@ class bullet extends entity{
         })
         
     }    
-
-    right(){
-        if((this.randomX+gC.offset_arrow) <= gC.spritePosX) this.randomX += gC.offset_arrow;
-    }
-
-    left(){
-        if((this.randomX-gC.offset_arrow) > 0) this.randomX -= gC.offset_arrow;
-    }
 }
 
 //export { enemy };
