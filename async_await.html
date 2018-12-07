@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>Promise experiment</title>
+</head>
+<body onload="l()">
+<script>
+async function calla(){
+	return new Promise((res,rej)=>{
+		setTimeout(async function(){ 
+			console.log('a');
+			res(); 
+		}, 3000);
+	})
+	
+}
+
+async function callb(){
+	return new Promise((res,rej)=>{
+		setTimeout(async function(){ 
+			console.log('b');
+			res(); 
+		}, 3000);
+	})
+}
+async function callab(){
+	return new Promise((res,rej)=>{
+		setTimeout(async function(){
+			console.time()
+			let aw = await calla();
+			console.timeEnd()
+			console.time()
+			let bw = await callb();
+			console.timeEnd()
+			res(); 
+		}, 3000);
+	})
+}
+async function l(){
+	let abw = await callab();
+	console.log('done')
+}
+</script>
+</body>
+</html>
