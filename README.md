@@ -18,6 +18,10 @@ Offscreen Canvas
 
 https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas
 
+Doublebuffer Canvas
+
+https://coderwall.com/p/p4crrq/easy-double-buffering-on-html5-canvas
+
 __todo__:
 
 velocity(slow movement with high frame rate)
