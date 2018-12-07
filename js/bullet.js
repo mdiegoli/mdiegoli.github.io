@@ -5,7 +5,7 @@ class bullet extends entity{
 	
     create(){
         var me = this;
-         Utils.drawImages(me.__proto__.images[this.level], me.randomX, me.randomY);
+         Utils.drawImages(me.__proto__.images[this.level], me.randomX + me.randomX/2, me.randomY);
     }
 	
     animation(){
