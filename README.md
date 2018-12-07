@@ -42,6 +42,8 @@ sound
 
 splash/end
 
+replace promise with async/await (https://mdiegoli.github.io/async_await.html)
+
 
 
 
