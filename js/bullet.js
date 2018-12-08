@@ -8,7 +8,7 @@ class bullet extends entity{
 		return new Promise((res,rej)=>{
 			
 			
-			Utils.drawImages(me.__proto__.images[this.level], me.randomX + me.randomX/2, me.randomY);
+			Utils.drawImages(me.__proto__.images[this.level], me.randomX, me.randomY);
 			res();
 		})
     }
@@ -39,7 +39,7 @@ class bullet extends entity{
             	this.indexes.BU= Utils.random(1,36).toString().padStart(2,'0');
         if(!me.randomX && !me.randomY){
 			me.randomX = gC.player.getPosX();
-			me.randomY = gC.spritePosY;
+			me.randomY = gC.spritePosY-gC.spriteH;
 		}
 		
 		var lI = Utils.loadImage;
