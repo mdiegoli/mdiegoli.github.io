@@ -4,16 +4,22 @@ class bullet extends entity{
     }
 	
     create(){
-        var me = this;
-         Utils.drawImages(me.__proto__.images[this.level], me.randomX + me.randomX/2, me.randomY);
+		var me = this;
+		return new Promise((res,rej)=>{
+			
+			
+			Utils.drawImages(me.__proto__.images[this.level], me.randomX + me.randomX/2, me.randomY);
+			res();
+		})
     }
 	
     animation(){
+		var me = this;
 		return new Promise((res,rej)=>{
-			if(!this.dir)this.dir='u'
+			if(!me.dir)me.dir='u'
 
-			if((this.randomY-gC.offsetBullet)>0 && this.dir === 'U'){
-				this.randomY-=gC.offsetBullet;
+			if((me.randomY-gC.offset_bullet)>0 && me.dir === 'u'){
+				me.randomY-=gC.offset_bullet;
 			}else{
 				res();	
 			}
@@ -31,11 +37,14 @@ class bullet extends entity{
 		
 	    if(!this.indexes.BU)
             	this.indexes.BU= Utils.random(1,36).toString().padStart(2,'0');
-       
+        if(!me.randomX && !me.randomY){
+			me.randomX = gC.player.getPosX();
+			me.randomY = gC.spritePosY;
+		}
 		
-	var lI = Utils.loadImage;
-	lI(me.__proto__.images[me.level],'assets/games/bullets/hero1.png', 'BU');
-	res();
+		var lI = Utils.loadImage;
+		lI(me.__proto__.images[me.level],'assets/games/bullets/hero1.png', 'BU');
+		res();
         })
         
     }    

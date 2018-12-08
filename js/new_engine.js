@@ -12,17 +12,20 @@ function startGame(){
     assets[a].start()
         .then(
             (succ)=>{
-                assets[a].animation()
-                    .then(
-                        (succ)=>{
-                        //console.log(succ);
-                        }
-                    )
-                    .catch(
-                        (err)=>{
-                        console.log(err);
-                        }
-                    )
+                if(assets[a].animation)
+                    assets[a].animation()
+                        .then(
+                            (succ)=>{
+                            //console.log(succ);
+                            }
+                        )
+                        .catch(
+                            (err)=>{
+                            console.log(err);
+                            }
+                        )
+                else
+                    console.log('asset senza animazione')
             }
         )
         .catch(
@@ -89,7 +92,7 @@ function addCanvas(){
                         gC.player.right();
                         break;
                     case 32:
-                        gC.player.fire();
+                        assets.push(gC.player.fire('a'));
                         break;
                 }
             })

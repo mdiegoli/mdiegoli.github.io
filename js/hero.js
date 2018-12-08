@@ -72,6 +72,14 @@ class hero extends entity{
     left(){
         if((this.randomX-gC.offset_arrow) > 0) this.randomX -= gC.offset_arrow;
     }
+
+    fire(level){
+        return new bullet(level);
+    }
+
+    getPosX(){
+        return this.randomX;
+    }
 }
 
 //export { enemy };
