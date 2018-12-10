@@ -12,6 +12,8 @@ class utils{
         return document.createElement(str);       
     }
     clearCanvas(c){
+	if(!c)
+		c = this.ctxo;
         c.fillStyle = '#000';
         c.clearRect(0, 0, this.c.width, this.c.height);
     }
