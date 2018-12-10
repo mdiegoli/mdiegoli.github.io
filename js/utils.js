@@ -22,7 +22,7 @@ class utils{
         this.c = e;
 	    this.co = this.createE('canvas');
         this.ctx = e.getContext("2d");
-	    this.ctxo = co.getContext("2d");
+	    this.ctxo = this.co.getContext("2d");
     }
 	
 	c2c(){
