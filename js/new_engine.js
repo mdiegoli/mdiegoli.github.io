@@ -33,6 +33,7 @@ function startGame(){
                 console.log(err);
             }
         )
+	if(a==(a_l-1)) Utils.c2c();
 }
 
 function addDemoAssets(t){
