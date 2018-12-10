@@ -20,16 +20,11 @@ class utils{
     }
     setCanvas(e){
         this.c = e;
-        this.co = createE('canvas');
-	this.ctxo = co.getContext("2d")
-	this.ctx = c.getContext("2d")
+        this.ctx = c.getContext("2d")
 	
     }
 
-	c2c(){
-        this.c.drawImage(this.ctxo,0,0)
 	
-    }
 	
     drawImages(images,x,y){
 	    
