@@ -7,33 +7,34 @@ var assets = [];
 function startGame(){
     
 	Utils.clearCanvas()
-    let a_l = assets.length;
-	for(let a = 0;a<a_l;a++)
-    assets[a].start()
-        .then(
-            (succ)=>{
-                if(assets[a].animation)
-                    assets[a].animation()
-                        .then(
-                            (succ)=>{
-                            //console.log(succ);
-                            }
-                        )
-                        .catch(
-                            (err)=>{
-                            console.log(err);
-                            }
-                        )
-                else
-                    console.log('asset senza animazione')
-            }
-        )
-        .catch(
-            (err)=>{
-                console.log(err);
-            }
-        )
-	if(a==(a_l-1)) Utils.c2c();
+    	let a_l = assets.length;
+	for(let a = 0;a<a_l;a++){
+	    assets[a].start()
+		.then(
+		    (succ)=>{
+			if(assets[a].animation)
+			    assets[a].animation()
+				.then(
+				    (succ)=>{
+				    //console.log(succ);
+				    }
+				)
+				.catch(
+				    (err)=>{
+				    console.log(err);
+				    }
+				)
+			else
+			    console.log('asset senza animazione')
+		    }
+		)
+		.catch(
+		    (err)=>{
+			console.log(err);
+		    }
+		)
+		if(a==(a_l-1)) Utils.c2c();
+	}
 }
 
 function addDemoAssets(t){
