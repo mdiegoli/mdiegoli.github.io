@@ -6,7 +6,7 @@ var assets = [];
 
 function startGame(){
     
-	Utils.clearCanvas()
+	
     	let a_l = assets.length;
 	for(let a = 0;a<a_l;a++){
 	    assets[a].start()
@@ -33,13 +33,18 @@ function startGame(){
 			console.log(err);
 		    }
 		)
-		if(a==(a_l-1)) Utils.c2c();
+        if(a==(a_l-1)){
+        
+        Utils.c2c();
+        requestAnimationFrame(this.gAF)
+        }
 	}
 }
 
-function addDemoAssets(t){
+function addDemoAssets(){
     var levels = ['A','B','C'];
-    assets.push(new enemy(levels[t%3]));
+    assets.push(new enemy(levels[gC.demoClock%3]));
+    gC.demoClock++;
 
         
 }
@@ -102,19 +107,24 @@ function addCanvas(){
         res();
     })
 }
+
+function gAF(c){
+    gC.demoClock++;
+    Utils.clearCanvas();
+    addDemoAssets();
+    startGame()
+}
+
 //every frame value, draw scene
 function l(){
-    var demoClock = 0;
+    gC.demoClock = 0;
     addCanvas().then(
         (succ)=>{
             readDemonData().then(
                 (succ) => {
-			addHero();
-                    gC.l_i = setInterval(function() {
-                        demoClock++;
-                        addDemoAssets(demoClock);
-                        startGame()
-                    }, gC.fr);
+			        addHero();
+                    requestAnimationFrame(gAF);
+                    
                 }
             )
         }

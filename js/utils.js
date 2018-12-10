@@ -11,25 +11,27 @@ class utils{
     createE(str){
         return document.createElement(str);       
     }
-    clearCanvas(c){
-	if(!c)
-		c = this.ctxo;
-        c.fillStyle = '#000';
-        c.clearRect(0, 0, this.c.width, this.c.height);
+    clearCanvas(){
+		this.ctxo.fillStyle = '#FFF';
+        this.ctxo.fillRect(0, 0, gC.width, gC.height);
+        this.ctx.fillStyle = '#000';
+        this.ctx.clearRect(0, 0, gC.width, gC.height);
     }
     appendB2A(a,b){
         a.appendChild(b);
     }
     setCanvas(e){
         this.c = e;
-	    this.co = this.createE('canvas');
         this.ctx = e.getContext("2d");
-	    this.ctxo = this.co.getContext("2d");
+        this.co = this.createE('canvas');
+        this.setAttribute(this.co,'width',gC.width)
+        this.setAttribute(this.co,'height',gC.height)
+        this.ctxo = this.co.getContext("2d");
     }
 	
 	c2c(){
-		this.clearCanvas(this.ctx)
 		this.ctx.drawImage(this.co,0,0)
+        
 	}
 	
     drawImages(images,x,y){
@@ -44,7 +46,7 @@ class utils{
         
     }
     drawImage(img,x,y){
-        this.ctx.drawImage(img, x, y)
+        this.ctxo.drawImage(img, x, y)
     }
     loadImage(images,str,type){
 	    var me = this;

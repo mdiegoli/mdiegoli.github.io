@@ -22,6 +22,15 @@ Doublebuffer Canvas
 
 https://developers.google.com/web/updates/2018/08/offscreen-canvas
 
+Canvas performance
+
+https://www.html5rocks.com/en/tutorials/canvas/performance/
+
+RequestAnimationFrame
+
+http://devbutze.blogspot.com/2013/09/requestanimationframe-is-what-you-need.html
+
+
 __todo__:
 
 -> velocity(slow movement with high frame rate): double buffer
