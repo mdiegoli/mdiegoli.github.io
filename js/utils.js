@@ -12,8 +12,8 @@ class utils{
         return document.createElement(str);       
     }
     clearCanvas(){
-        this.ctx.fillStyle = '#000';
-        this.ctx.clearRect(0, 0, this.c.width, this.c.height);
+        this.ctxo.fillStyle = '#000';
+        this.ctxo.clearRect(0, 0, this.c.width, this.c.height);
     }
     appendB2A(a,b){
         a.appendChild(b);
@@ -34,7 +34,7 @@ class utils{
 	
 		let keys = Object.keys(images);
 		for(let p = 0,p_l = keys.length;p<p_l;p++){
-			this.ctx.drawImage(images[keys[p]], x, y)
+			this.ctxo.drawImage(images[keys[p]], x, y)
 		}
 		
 	
