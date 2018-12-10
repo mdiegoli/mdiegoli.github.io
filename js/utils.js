@@ -11,9 +11,9 @@ class utils{
     createE(str){
         return document.createElement(str);       
     }
-    clearCanvas(){
-        this.ctxo.fillStyle = '#000';
-        this.ctxo.clearRect(0, 0, this.c.width, this.c.height);
+    clearCanvas(c){
+        c.fillStyle = '#000';
+        c.clearRect(0, 0, this.c.width, this.c.height);
     }
     appendB2A(a,b){
         a.appendChild(b);
@@ -26,6 +26,7 @@ class utils{
     }
 	
 	c2c(){
+		this.clearCanvas(this.ctx)
 		this.ctx.drawImage(this.co,0,0)
 	}
 	
