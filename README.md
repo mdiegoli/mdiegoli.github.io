@@ -30,6 +30,10 @@ RequestAnimationFrame
 
 http://devbutze.blogspot.com/2013/09/requestanimationframe-is-what-you-need.html
 
+Tensorflow
+
+https://medium.com/tensorflow/introducing-tensorflow-js-machine-learning-in-javascript-bf3eab376db
+
 
 __todo__:
 
