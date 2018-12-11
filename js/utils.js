@@ -12,8 +12,7 @@ class utils{
         return document.createElement(str);       
     }
     clearCanvas(){
-		this.ctxo.fillStyle = '#FFF';
-        this.ctxo.fillRect(0, 0, gC.width, gC.height);
+		
         this.ctx.fillStyle = '#000';
         this.ctx.clearRect(0, 0, gC.width, gC.height);
     }
@@ -31,6 +30,8 @@ class utils{
 	
 	c2c(){
 		this.ctx.drawImage(this.co,0,0)
+		this.ctxo.fillStyle = '#FFF';
+        	this.ctxo.fillRect(0, 0, gC.width, gC.height);
         
 	}
 	
