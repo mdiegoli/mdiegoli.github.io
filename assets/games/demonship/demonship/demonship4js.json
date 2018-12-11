@@ -1,0 +1,206 @@
+{
+    "": {
+        "": {
+            "type": "",
+            "img": "demonship4js.json",
+            "partname": "",
+            "effect": ""
+        }
+    },
+    "BO": {
+        "01": {
+            "type": "body",
+            "img": "ship_A_BO_3_01.png",
+            "partname": "bal",
+            "effect": "energy:K"
+        },
+        "02": {
+            "type": "body",
+            "img": "ship_A_BO_3_02.png",
+            "partname": "bav",
+            "effect": "energy:K"
+        },
+        "03": {
+            "type": "body",
+            "img": "ship_A_BO_3_03.png",
+            "partname": "ol",
+            "effect": "energy:K"
+        },
+        "04": {
+            "type": "body",
+            "img": "ship_A_BO_3_04.png",
+            "partname": "bam",
+            "effect": "energy:K"
+        },
+        "05": {
+            "type": "body",
+            "img": "ship_A_BO_3_05.png",
+            "partname": "ci",
+            "effect": "energy:K"
+        }
+    },
+    "HE": {
+        "01": {
+            "type": "head",
+            "img": "ship_A_HE_4_01.png",
+            "partname": "ahl",
+            "effect": "pattern:M"
+        },
+        "02": {
+            "type": "head",
+            "img": "ship_A_HE_4_02.png",
+            "partname": "ahn",
+            "effect": "pattern:M"
+        },
+        "03": {
+            "type": "head",
+            "img": "ship_A_HE_4_03.png",
+            "partname": "ahv",
+            "effect": "pattern:M"
+        },
+        "04": {
+            "type": "head",
+            "img": "ship_A_HE_4_04.png",
+            "partname": "an",
+            "effect": "pattern:M"
+        },
+        "05": {
+            "type": "head",
+            "img": "ship_A_HE_4_05.png",
+            "partname": "anl",
+            "effect": "pattern:M"
+        }
+    },
+    "LB": {
+        "01": {
+            "type": "lowerbody",
+            "img": "ship_A_LB_2_01.png",
+            "partname": "an",
+            "effect": "weapon:Q"
+        },
+        "02": {
+            "type": "lowerbody",
+            "img": "ship_A_LB_2_02.png",
+            "partname": "as",
+            "effect": "weapon:Q"
+        },
+        "03": {
+            "type": "lowerbody",
+            "img": "ship_A_LB_2_03.png",
+            "partname": "ash",
+            "effect": "weapon:Q"
+        },
+        "04": {
+            "type": "lowerbody",
+            "img": "ship_A_LB_2_04.png",
+            "partname": "tl",
+            "effect": "weapon:Q"
+        },
+        "05": {
+            "type": "lowerbody",
+            "img": "ship_A_LB_2_05.png",
+            "partname": "ask",
+            "effect": "weapon:Q"
+        },
+        "06": {
+            "type": "lowerbody",
+            "img": "ship_A_LB_2_06.png",
+            "partname": "ba",
+            "effect": "weapon:Q"
+        },
+        "07": {
+            "type": "lowerbody",
+            "img": "ship_A_LB_2_07.png",
+            "partname": "bub",
+            "effect": "weapon:Q"
+        }
+    },
+    "LW": {
+        "01": {
+            "type": "leftwing",
+            "img": "ship_A_LW_1_01.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "02": {
+            "type": "leftwing",
+            "img": "ship_A_LW_1_02.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "03": {
+            "type": "leftwing",
+            "img": "ship_A_LW_1_03.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "04": {
+            "type": "leftwing",
+            "img": "ship_A_LW_1_04.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "05": {
+            "type": "leftwing",
+            "img": "ship_A_LW_1_05.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "06": {
+            "type": "leftwing",
+            "img": "ship_A_LW_1_06.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "07": {
+            "type": "leftwing",
+            "img": "ship_A_LW_1_07.png",
+            "partname": "",
+            "effect": "var:A"
+        }
+    },
+    "RW": {
+        "01": {
+            "type": "rightwing",
+            "img": "ship_A_RW_1_01.png",
+            "partname": "",
+            "effect": ""
+        },
+        "02": {
+            "type": "rightwing",
+            "img": "ship_A_RW_1_02.png",
+            "partname": "",
+            "effect": ""
+        },
+        "03": {
+            "type": "rightwing",
+            "img": "ship_A_RW_1_03.png",
+            "partname": "",
+            "effect": ""
+        },
+        "04": {
+            "type": "rightwing",
+            "img": "ship_A_RW_1_04.png",
+            "partname": "",
+            "effect": ""
+        },
+        "05": {
+            "type": "rightwing",
+            "img": "ship_A_RW_1_05.png",
+            "partname": "",
+            "effect": ""
+        },
+        "06": {
+            "type": "rightwing",
+            "img": "ship_A_RW_1_06.png",
+            "partname": "",
+            "effect": ""
+        },
+        "07": {
+            "type": "rightwing",
+            "img": "ship_A_RW_1_07.png",
+            "partname": "",
+            "effect": ""
+        }
+    }
+}
