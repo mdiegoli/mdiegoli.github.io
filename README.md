@@ -37,7 +37,7 @@ https://medium.com/tensorflow/introducing-tensorflow-js-machine-learning-in-java
 
 __todo__:
 
--> velocity(slow movement with high frame rate): double buffer
+->preload
 
 echo
 
