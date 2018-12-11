@@ -8,27 +8,17 @@ class entity{
     start(){
         var me = this;
         return new Promise((res,rej)=>{
-                me.preload()
+            me.create()
                 .then(
                     (succ)=>{
-                        me.create()
-                            .then(
-                                (succ)=>{
-                                    res('done');
-                                }
-                            )
-                            .catch(
-                                (err)=>{
-                                    res(err);
-                                }
-                            )
+                        res('done');
                     }
                 )
                 .catch(
                     (err)=>{
-                        console.log(err);
+                        res(err);
                     }
-                )
+                )        
             })
     }
     

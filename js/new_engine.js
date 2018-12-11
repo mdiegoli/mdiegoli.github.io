@@ -41,18 +41,31 @@ function startGame(){
 	}
 }
 
-function addDemoAssets(){
-    var levels = ['A','B','C'];
-    assets.push(new enemy(levels[gC.demoClock%3]));
-    gC.demoClock++;
-
+function addDemoAssets(c){
+    return new Promise(function(res,rej){
+        var e = new enemy(c);
+        e.preload().then(
+            (succ) => {
+                assets.push(e);
+                res();
+            }
+        )
+    })
+    
         
 }
 
 function addHero(){
-    gC.player = new hero();
-    assets.push(gC.player);
-
+    return new Promise(function(res,rej){
+    
+        gC.player = new hero();
+        gC.player.preload().then(
+            (succ) => {
+                assets.push(gC.player);
+                res();
+            }
+        )
+    })
         
 }
 
@@ -77,6 +90,29 @@ function readDemonData(){
     
     
 }
+
+function readShipData(){
+    var me = this;
+    return new Promise(function(res,rej){
+        if(!gC.shipData){
+            var xmlhttp = new XMLHttpRequest();
+            var url = 'assets/games/demonship/demonship/demonship4js.json';
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    gC.shipData = JSON.parse(this.responseText);
+                    return res();
+                }
+            };
+            xmlhttp.open("GET", url, true);
+            xmlhttp.send();
+        }else{
+            return res();
+        }
+    })
+    
+    
+}
+
 function addCanvas(){
     var me = this;
     return new Promise(function(res,rej){
@@ -111,7 +147,7 @@ function addCanvas(){
 function gAF(c){
     gC.demoClock++;
     Utils.clearCanvas();
-    addDemoAssets();
+    
     startGame()
 }
 
@@ -122,9 +158,39 @@ function l(){
         (succ)=>{
             readDemonData().then(
                 (succ) => {
-			        addHero();
-                    requestAnimationFrame(gAF);
-                    
+                    readShipData().then(
+                        (succ) => {
+                            
+                            addHero().then(
+                                (succ) => {
+                                    addDemoAssets('a').then(
+                                        (succ) => {
+        
+                                            addDemoAssets('b').then(
+                                                (succ) => {
+                
+                                                    addDemoAssets('c').then(
+                                                        (succ) => {
+                        
+                                                            addDemoAssets('d').then(
+                                                                (succ) => {
+                                
+                                                                    requestAnimationFrame(gAF);
+                                                            
+                                                                }
+                                                            )
+                                                        }
+                                                    )
+                                                }
+                                            )
+                                        }
+                                    )
+                                    
+                                }
+                            )
+                            
+                        }
+                    )
                 }
             )
         }

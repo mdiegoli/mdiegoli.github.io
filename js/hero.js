@@ -33,22 +33,22 @@ class hero extends entity{
 			this.indexes = {}
 		
 	    if(!this.indexes.LW)
-            this.indexes.LW= Utils.random(1,36).toString().padStart(2,'0');
+            this.indexes.LW= Utils.random(1,5).toString().padStart(2,'0');
         if(!this.indexes.RW)
             this.indexes.RW= this.indexes.LW;
         if(!this.indexes.LB)
-            this.indexes.LB= Utils.random(1,36).toString().padStart(2,'0');
+            this.indexes.LB= Utils.random(1,5).toString().padStart(2,'0');
         if(!this.indexes.HE)
-            this.indexes.HE= Utils.random(1,36).toString().padStart(2,'0');
+            this.indexes.HE= Utils.random(1,5).toString().padStart(2,'0');
         if(!this.indexes.BO)
-            this.indexes.BO= Utils.random(1,36).toString().padStart(2,'0');
+            this.indexes.BO= Utils.random(1,5).toString().padStart(2,'0');
 		
 		var lI = Utils.loadImage;
-		preloaded.push(lI(me.__proto__.images[me.level],'assets/games/demons/'+gC.demonData['LW'][this.indexes.LW].img, 'LW'));
-		preloaded.push(lI(me.__proto__.images[me.level],'assets/games/demons/'+gC.demonData['RW'][this.indexes.RW].img, 'RW'));
-		preloaded.push(lI(me.__proto__.images[me.level],'assets/games/demons/'+gC.demonData['LB'][this.indexes.LB].img, 'LB'));
-		preloaded.push(lI(me.__proto__.images[me.level],'assets/games/demons/'+gC.demonData['BO'][this.indexes.BO].img, 'BO'));
-		preloaded.push(lI(me.__proto__.images[me.level],'assets/games/demons/'+gC.demonData['HE'][this.indexes.HE].img, 'HE'));
+		preloaded.push(lI(me.__proto__.images[me.level],'assets/games/demonship/demonship/'+gC.shipData['LW'][this.indexes.LW].img, 'LW'));
+		preloaded.push(lI(me.__proto__.images[me.level],'assets/games/demonship/demonship/'+gC.shipData['RW'][this.indexes.RW].img, 'RW'));
+		preloaded.push(lI(me.__proto__.images[me.level],'assets/games/demonship/demonship/'+gC.shipData['LB'][this.indexes.LB].img, 'LB'));
+		preloaded.push(lI(me.__proto__.images[me.level],'assets/games/demonship/demonship/'+gC.shipData['BO'][this.indexes.BO].img, 'BO'));
+		preloaded.push(lI(me.__proto__.images[me.level],'assets/games/demonship/demonship/'+gC.shipData['HE'][this.indexes.HE].img, 'HE'));
 
 		Promise.all(preloaded)
             .then(
