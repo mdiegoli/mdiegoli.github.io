@@ -34,6 +34,10 @@ Tensorflow
 
 https://medium.com/tensorflow/introducing-tensorflow-js-machine-learning-in-javascript-bf3eab376db
 
+Mario animation
+
+https://www.raywenderlich.com/2891-how-to-make-a-platform-game-like-super-mario-brothers-part-1
+
 
 __todo__:
 
