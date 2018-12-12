@@ -156,45 +156,34 @@ function l(){
     gC.demoClock = 0;
     addCanvas().then(
         (succ)=>{
-            readDemonData().then(
-                (succ) => {
-                    readShipData().then(
-                        (succ) => {
-                            
-                            addHero().then(
-                                (succ) => {
-                                    addDemoAssets('a').then(
-                                        (succ) => {
-        
-                                            addDemoAssets('b').then(
-                                                (succ) => {
-                
-                                                    addDemoAssets('c').then(
-                                                        (succ) => {
-                        
-                                                            addDemoAssets('d').then(
-                                                                (succ) => {
-                                
-                                                                    requestAnimationFrame(gAF);
-                                                            
-                                                                }
-                                                            )
-                                                        }
-                                                    )
-                                                }
-                                            )
-                                        }
-                                    )
-                                    
-                                }
-                            )
-                            
-                        }
-                    )
-                }
-            )
-        }
-    )
+            readDemonData()
+		}).then(
+        (succ) => {
+            readShipData()
+		}).then(
+        (succ) => {
+            addHero()
+		}).then(
+		(succ) => {
+			addDemoAssets('a')
+		}).then(
+		(succ) => {
+			addDemoAssets('b')
+		}).then(
+		(succ) => {
+			addDemoAssets('c')
+		}).then(
+		(succ) => {         
+			addDemoAssets('d')
+		}).then(
+		(succ) => {                   
+			requestAnimationFrame(gAF);
+	
+		}).catch(
+			(err)=>{
+				console.log(err)
+			}
+		)
     
     
 }
