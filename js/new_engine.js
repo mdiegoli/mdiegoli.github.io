@@ -55,10 +55,10 @@ function addDemoAssets(c){
         
 }
 
-function addHero(){
+function addHero(l){
     return new Promise(function(res,rej){
     
-        gC.player = new hero();
+        gC.player = new hero(l);
         gC.player.preload().then(
             (succ) => {
                 assets.push(gC.player);
