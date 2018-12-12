@@ -162,7 +162,7 @@ function l(){
             readShipData()
 		}).then(
         (succ) => {
-            addHero()
+            addHero('P')
 		}).then(
 		(succ) => {
 			addDemoAssets('a')
