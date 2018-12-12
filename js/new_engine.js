@@ -119,8 +119,9 @@ function addCanvas(){
         var canvas = Utils.getEBTN('canvas')
         if(typeof canvas === 'object' && canvas.length <= 0){
             //non c'è canvas
-            var a = Utils.getEBTN('body')[0]
-            var b = Utils.createE('canvas')
+            //var a = Utils.getEBTN('body')[0]
+            var a = Utils.getEBI('box');
+            var b = Utils.createE('canvas');
             //memorizzo canvas e contesto
             Utils.setCanvas(b)
             Utils.appendB2A(a,b)

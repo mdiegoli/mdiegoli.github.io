@@ -1,6 +1,65 @@
 <html>
 <head>
-<meta name="description" content="Phaser.js game demo" />
+  <style type="text/css">
+
+    #outer {
+      position: absolute;
+      top: 0;
+      left: 0;
+    
+        width: 100%;
+        height: 100%;
+    
+        /* Firefox */
+        display: -moz-box;
+        -moz-box-pack: center;
+        -moz-box-align: center;
+    
+        /* Safari and Chrome */
+        display: -webkit-box;
+        -webkit-box-pack: center;
+        -webkit-box-align: center;
+    
+        /* W3C */
+        display: box;
+        box-pack: center;
+        box-align: center;
+        vertical-align: center;
+    }
+    
+    #box {
+      background-color: #000;
+      width: 996;
+      height: 498;
+      z-index: 20;
+    }
+    
+    #bezel {
+      background-image: url(assets/games/layout-draft/bezel/bezel-01.gif);
+        width: 100%;
+        height: 100%;
+      z-index: 10;
+      opacity: 0.9; 
+      background-repeat: no-repeat;
+    }
+    
+    
+    #back {
+      position: absolute;
+      width: 996;
+      height: 498;
+    }
+    
+    #title {
+      position: relative;
+      top: 120px;
+      left: 251px;
+      width: 50%;
+      height: 50%;
+    }
+    
+    </style>
+  <meta name="description" content="Phaser.js game demo" />
   <meta charset="utf-8">
   <title>Keplerion by Masayume & Morticcino</title>
   <script src="js/conf.js" type="text/javascript"></script>
@@ -13,5 +72,27 @@
 </head>
 <body onload="l()">
 
+  <div id="outer">
+    <div id="box">
+  
+    <!--
+    
+  
+    <img id="back" src=assets/games/layout-draft/backs/K-back-001-2x.gif>
+    <img id="title" src=assets/games/layout-draft/title/keplerion-title.gif>
+    -->
+  
+    </div>
+  
+  </div>
+  
+  <div id="outer">
+  
+    <div id="bezel">
+    </div>
+  
+  </div>
+  
 </body>
 </html>
+
