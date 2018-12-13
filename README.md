@@ -43,19 +43,15 @@ https://www.raywenderlich.com/2891-how-to-make-a-platform-game-like-super-mario-
 
 __todo__:
 
-->preload
+scale canvas
 
 echo
-
-fire
 
 hit
 
 score
 
 background
-
-bezel
 
 sound
 
