@@ -8,6 +8,9 @@ class utils{
     getEBTN(str){
     	return document.getElementsByTagName(str);
     }
+    getEBI(str){
+        return document.getElementById(str);
+    }
     createE(str){
         return document.createElement(str);       
     }
