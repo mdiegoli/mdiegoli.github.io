@@ -10,12 +10,17 @@ class hero extends entity{
                 me.dead = false;
                 me.randomX = gC.spritePosX/2;
                 me.randomY = gC.spritePosY;
-                
+   		me.right = '';
+		me.left = '';
             }else{
                 if(me.dead){
                     alert('enemy dead')
                 }
             }
+		if(me.right)
+			me.rightfn()
+		else if(me.left)
+			me.leftfn()
 	    Utils.drawImages(me.__proto__.images[this.level], me.randomX, me.randomY);
             
             res();
@@ -25,6 +30,19 @@ class hero extends entity{
         
     }
     
+	
+    rightDown(){
+    	this.right = true;
+    }
+    rightUp(){
+	    this.right = false;
+    }
+    leftDown(){
+	    this.left = true;
+    }
+    leftUp(){
+	    this.left = false;
+    }
     preload(){
          var me = this;
 	return new Promise((res,rej)=>{
@@ -65,11 +83,11 @@ class hero extends entity{
         
     }    
 
-    right(){
+    rightfn(){
         if((this.randomX+gC.offset_arrow) <= gC.spritePosX) this.randomX += gC.offset_arrow;
     }
 
-    left(){
+    leftfn(){
         if((this.randomX-gC.offset_arrow) > 0) this.randomX -= gC.offset_arrow;
     }
 
