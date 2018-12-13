@@ -130,10 +130,24 @@ function addCanvas(){
             document.addEventListener('keydown',(e)=>{
                 switch(e.keyCode){
                     case 37:
-                        gC.player.left();
+                        gC.player.leftDown();
                         break;
                     case 39:
-                        gC.player.right();
+                        gC.player.rightDown();
+                        break;
+                    case 32:
+                        assets.push(gC.player.fire('a'));
+                        break;
+                }
+            })
+		
+	    document.addEventListener('keyup',(e)=>{
+                switch(e.keyCode){
+                    case 37:
+                        gC.player.leftUp();
+                        break;
+                    case 39:
+                        gC.player.rightUp();
                         break;
                     case 32:
                         assets.push(gC.player.fire('a'));
