@@ -98,6 +98,10 @@ class hero extends entity{
     getPosX(){
         return this.randomX;
     }
+	
+	getPosY(){
+        return this.randomY;
+    }
 }
 
 //export { enemy };
