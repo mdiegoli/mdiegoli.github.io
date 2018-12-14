@@ -43,7 +43,7 @@ class bullet extends entity{
 		}
 		
 		var lI = Utils.loadImage;
-		lI(me.__proto__.images[me.level],'assets/games/bullets/hero1.png', 'BU');
+		lI(me.__proto__.images[me.level],'assets/games/bullets/BULLET-001.png', 'BU');
 		res();
         })
         
