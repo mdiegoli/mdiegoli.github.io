@@ -39,7 +39,7 @@ class bullet extends entity{
             	this.indexes.BU= Utils.random(1,36).toString().padStart(2,'0');
         if(!me.randomX && !me.randomY){
 			me.randomX = gC.player.getPosX();
-			me.randomY = gC.spritePosY-gC.spriteH;
+			me.randomY = gC.player.getPosY();
 		}
 		
 		var lI = Utils.loadImage;
