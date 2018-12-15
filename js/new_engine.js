@@ -69,6 +69,19 @@ function addHero(l){
         
 }
 
+function addBullet(l){
+    return new Promise(function(res,rej){
+    
+        gC.bullet = new bullet(l);
+        gC.bullet.preload().then(
+            (succ) => {
+                res();
+            }
+        )
+    })
+        
+}
+
 function readDemonData(){
     var me = this;
     return new Promise(function(res,rej){
@@ -136,7 +149,7 @@ function addCanvas(){
                         gC.player.rightDown();
                         break;
                     case 32:
-                        assets.push(gC.player.fire('a'));
+                        assets.push(gC.player.fire('b_a'));
                         break;
                 }
             })
@@ -150,7 +163,7 @@ function addCanvas(){
                         gC.player.rightUp();
                         break;
                     case 32:
-                        assets.push(gC.player.fire('a'));
+                        assets.push(gC.player.fire('b_a'));
                         break;
                 }
             })
@@ -176,22 +189,25 @@ function l(){
                     readShipData().then(
                         (succ) => {
                             
-                            addHero().then(
+                            addHero('h_a').then(
                                 (succ) => {
-                                    addDemoAssets('a').then(
+                                    addDemoAssets('e_a').then(
                                         (succ) => {
         
-                                            addDemoAssets('b').then(
+                                            addDemoAssets('e_b').then(
                                                 (succ) => {
                 
-                                                    addDemoAssets('c').then(
+                                                    addDemoAssets('e_c').then(
                                                         (succ) => {
                         
-                                                            addDemoAssets('d').then(
+                                                            addDemoAssets('e_d').then(
                                                                 (succ) => {
-                                
-                                                                    requestAnimationFrame(gAF);
-                                                            
+                                                                    addBullet('b_a').then(
+                                                                        (succ) => {
+                                                                            requestAnimationFrame(gAF);
+                                                                        }
+                                                                    )   
+                                                                    
                                                                 }
                                                             )
                                                         }

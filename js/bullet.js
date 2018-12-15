@@ -17,13 +17,17 @@ class bullet extends entity{
 		var me = this;
 		return new Promise((res,rej)=>{
 			if(!me.dir)me.dir='u'
-
+			if(!me.randomX && !me.randomY){
+				me.randomX = gC.player.getPosX();
+				me.randomY = gC.player.getPosY();
+			}
 			if((me.randomY-gC.offset_bullet)>0 && me.dir === 'u'){
 				me.randomY-=gC.offset_bullet;
+				res();
 			}else{
-				res();	
+				rej();	
 			}
-			res();
+			
 		})
 
 	}
@@ -36,11 +40,8 @@ class bullet extends entity{
 			this.indexes = {}
 		
 	    if(!this.indexes.BU)
-            	this.indexes.BU= Utils.random(1,36).toString().padStart(2,'0');
-        if(!me.randomX && !me.randomY){
-			me.randomX = gC.player.getPosX();
-			me.randomY = gC.player.getPosY();
-		}
+            	this.indexes.BU= Utils.random(1,4).toString().padStart(2,'0');
+        
 		
 		var lI = Utils.loadImage;
 		lI(me.__proto__.images[me.level],'assets/games/bullets/BULLET-001.png', 'BU');
