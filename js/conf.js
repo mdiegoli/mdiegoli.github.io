@@ -1,6 +1,6 @@
 var gC = {
-    width: 600,
-    height: 448,
+    width: 996,
+    height: 498,
     level:'A',
     spriteH:128,
     spriteW:128,
