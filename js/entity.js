@@ -47,7 +47,7 @@ class entity{
 
     hit(x,y,w,h){
 	 //https://stackoverflow.com/questions/2752349/fast-rectangle-to-rectangle-intersection   
-	  if (x < this.randomX + this.Width && this.randomX < x + w && y < this.randomY + this.Height)
+	  if (x < this.BBoxX + this.BBoxW && this.BBoxX < x + w && y < this.BBoxY + this.BBoxHe)
 	    return true;
 	  else
 	    return false;
