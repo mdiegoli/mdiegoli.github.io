@@ -26,16 +26,7 @@ class entity{
     create(){
         var me = this;
         return new Promise((res,rej)=>{
-            if(me.dead === undefined){
-                me.dead = false;
-                me.randomX = 0;
-                me.randomY = Utils.random(1,gC.spritePosY);
-                
-            }else{
-                if(me.dead){
-                    alert('enemy dead')
-                }
-            }
+            
 	    Utils.drawImages(me.__proto__.images[this.level], me.randomX, me.randomY);
             
             res();
@@ -67,4 +58,25 @@ paint(x,y){
     }
     
 
+}
+
+bbox(){
+	return new Promise((res,rej)=>{
+		if(me.dead === undefined){
+			me.dead = false;
+			me.randomX = 0;
+			me.BBoxX = 0;
+			me.randomY = Utils.random(1,gC.spritePosY);
+			me.BBoxY = me.randomY;
+			me.BBoxH = gC.spriteH;
+			me.BBoxW = gC.spriteW;
+			
+                
+            	}else{
+			if(me.dead){
+			    alert('enemy dead')
+			}
+		    
+            }
+	})
 }
