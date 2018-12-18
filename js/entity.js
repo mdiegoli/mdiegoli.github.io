@@ -8,17 +8,28 @@ class entity{
     start(){
         var me = this;
         return new Promise((res,rej)=>{
-            me.create()
-                .then(
+		me.bbox()
+		.then(
                     (succ)=>{
-                        res('done');
+                        me.create()
+			.then(
+			    (succ)=>{
+				res('done');
+			    }
+			)
+			.catch(
+			    (err)=>{
+				res(err);
+			    }
+			)
                     }
                 )
                 .catch(
                     (err)=>{
                         res(err);
                     }
-                )        
+                )
+                    
             })
     }
     
