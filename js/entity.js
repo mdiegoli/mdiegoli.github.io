@@ -67,11 +67,8 @@ paint(x,y){
         
         
     }
-    
-
-}
-
-bbox(){
+	
+	bbox(){
 	return new Promise((res,rej)=>{
 		if(me.dead === undefined){
 			me.dead = false;
@@ -91,3 +88,8 @@ bbox(){
             }
 	})
 }
+
+    
+
+}
+
