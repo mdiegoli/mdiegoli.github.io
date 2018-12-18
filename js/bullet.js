@@ -51,4 +51,23 @@ class bullet extends entity{
     }    
 }
 
-//export { enemy };
+bbox(){
+	return new Promise((res,rej)=>{
+		if(me.dead === undefined){
+			me.dead = false;
+			me.randomX = 0;
+			me.BBoxX = 0; //redefine
+			me.randomY =  0; //redefine
+			me.BBoxY = me.randomY;  //redefine
+			me.BBoxH = gC.spriteH;  //redefine
+			me.BBoxW = gC.spriteW; //redefine
+			
+                
+            	}else{
+			if(me.dead){
+			    alert('enemy dead')
+			}
+		    
+            }
+	})
+}
