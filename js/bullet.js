@@ -51,6 +51,7 @@ class bullet extends entity{
     }    
 	
 	bbox(){
+		var me = this;
 	return new Promise((res,rej)=>{
 		if(me.dead === undefined){
 			me.dead = false;
@@ -60,11 +61,14 @@ class bullet extends entity{
 			me.BBoxY = me.randomY;  //redefine
 			me.BBoxH = gC.spriteH;  //redefine
 			me.BBoxW = gC.spriteW; //redefine
-			
+			res();
                 
             	}else{
 			if(me.dead){
-			    alert('enemy dead')
+			    rej('enemy dead')
+				
+			}else{
+				res();
 			}
 		    
             }
