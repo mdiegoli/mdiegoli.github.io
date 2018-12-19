@@ -59,7 +59,9 @@ class entity{
 paint(x,y){
         var me = this;
         return new Promise((res,rej)=>{
+		
             Utils.drawImages(me.__proto__.images[this.level], x, y);
+		Utils.drawBBox(me.BBoxX,me.BBoxY,me.BBoxH,me.BBoxW);
             
             res();
             
