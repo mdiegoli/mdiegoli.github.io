@@ -52,6 +52,12 @@ class utils{
     drawImage(img,x,y){
         this.ctxo.drawImage(img, x, y)
     }
+	drawBBox(x,y,w,h){
+		this.ctxo.globalAlpha = 0.2;
+		this.ctxo.fillStyle = "green"; 
+		this.ctxo.rect(x, y, w, h);
+		ctx.fill();
+	}
     loadImage(images,str,type){
 	    var me = this;
 	    
