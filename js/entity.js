@@ -69,6 +69,7 @@ paint(x,y){
     }
 	
 	bbox(){
+		var me = this;
 	return new Promise((res,rej)=>{
 		if(me.dead === undefined){
 			me.dead = false;
