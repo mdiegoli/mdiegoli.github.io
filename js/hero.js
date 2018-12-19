@@ -126,6 +126,7 @@ class hero extends entity{
 		    
             }
 	})
+	}
 }
 
 //export { enemy };
