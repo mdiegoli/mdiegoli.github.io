@@ -102,6 +102,30 @@ class hero extends entity{
 	getPosY(){
         return this.randomY;
     }
+	
+	bbox(){
+		var me = this;
+	return new Promise((res,rej)=>{
+		if(me.dead === undefined){
+			me.dead = false;
+			me.randomX = Utils.random(1,gC.spritePosX);;
+			me.BBoxX = me.randomX;
+			me.randomY = gC.spritePosY;
+			me.BBoxY = me.randomY;
+			me.BBoxH = gC.spriteH;
+			me.BBoxW = gC.spriteW;
+			res();
+			
+                
+            	}else{
+			if(me.dead){
+			    rej();
+			}else{
+				res();
+			}
+		    
+            }
+	})
 }
 
 //export { enemy };
