@@ -79,11 +79,14 @@ paint(x,y){
 			me.BBoxY = me.randomY;
 			me.BBoxH = gC.spriteH;
 			me.BBoxW = gC.spriteW;
+			res();
 			
                 
             	}else{
 			if(me.dead){
-			    alert('enemy dead')
+			    rej();
+			}else{
+				res();
 			}
 		    
             }
