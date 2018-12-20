@@ -56,7 +56,8 @@ class utils{
 		this.ctxo.globalAlpha = 0.2;
 		this.ctxo.fillStyle = "green"; 
 		this.ctxo.fillRect(x, y, w, h);
-		ctx.fill();
+		this.ctxo.globalAlpha = 1.0;
+		//ctx.fill();
 	}
     loadImage(images,str,type){
 	    var me = this;
