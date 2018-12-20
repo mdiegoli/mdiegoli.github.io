@@ -39,6 +39,7 @@ class entity{
         return new Promise((res,rej)=>{
             
 	    Utils.drawImages(me.__proto__.images[this.level], me.randomX, me.randomY);
+		Utils.drawBBox(me.BBoxX,me.BBoxY,me.BBoxH,me.BBoxW);
             
             res();
             
@@ -61,7 +62,7 @@ paint(x,y){
         return new Promise((res,rej)=>{
 		
             Utils.drawImages(me.__proto__.images[this.level], x, y);
-		Utils.drawBBox(me.BBoxX,me.BBoxY,me.BBoxH,me.BBoxW);
+		
             
             res();
             
