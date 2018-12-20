@@ -9,6 +9,8 @@ class bullet extends entity{
 			
 			
 			Utils.drawImages(me.__proto__.images[this.level], me.randomX, me.randomY);
+			//add the echo feature
+			Utils.drawBBox(me.BBoxX,me.BBoxY,me.BBoxH,me.BBoxW);
 			res();
 		})
     }
