@@ -55,7 +55,7 @@ class utils{
 	drawBBox(x,y,w,h){
 		this.ctxo.globalAlpha = 0.2;
 		this.ctxo.fillStyle = "green"; 
-		this.ctxo.rect(x, y, w, h);
+		this.ctxo.fillRect(x, y, w, h);
 		ctx.fill();
 	}
     loadImage(images,str,type){
