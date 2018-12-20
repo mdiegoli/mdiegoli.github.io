@@ -4,6 +4,8 @@ var gC = {
     level:'A',
     spriteH:128,
     spriteW:128,
+    bulletH:10,
+    bulletW:10,
     muberAnimationPoints: 3,
     fr: 500,
     offset_arrow:5,

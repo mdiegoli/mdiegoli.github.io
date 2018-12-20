@@ -10,7 +10,7 @@ class bullet extends entity{
 			
 			Utils.drawImages(me.__proto__.images[this.level], me.randomX, me.randomY);
 			//add the echo feature
-			Utils.drawBBox(me.randomX, me.randomY,me.BBoxH,me.BBoxW);
+			Utils.drawBBox(me.BBoxX, me.BBoxY,gC.bulletW,gC.bulletH);
 			res();
 		})
     }
@@ -22,9 +22,12 @@ class bullet extends entity{
 			if(!me.randomX && !me.randomY){
 				me.randomX = gC.player.getPosX();
 				me.randomY = gC.player.getPosY();
+				me.BBoxX = me.randomX + gC.spriteW/2 - gC.bulletW/2;
+				me.BBoxY = me.randomY + gC.spriteH/2 - gC.bulletH/2;
 			}
 			if((me.randomY-gC.offset_bullet)>0 && me.dir === 'u'){
 				me.randomY-=gC.offset_bullet;
+				me.BBoxY  -=gC.offset_bullet;
 				res();
 			}else{
 				rej();	
@@ -57,12 +60,10 @@ class bullet extends entity{
 	return new Promise((res,rej)=>{
 		if(me.dead === undefined){
 			me.dead = false;
-			me.randomX = 0;
-			me.BBoxX = 0; //redefine
-			me.randomY =  0; //redefine
-			me.BBoxY = me.randomY;  //redefine
-			me.BBoxH = gC.spriteH;  //redefine
-			me.BBoxW = gC.spriteW; //redefine
+			me.randomX = gC.player.getPosX();
+				me.randomY = gC.player.getPosY();
+				me.BBoxX = me.randomX + gC.spriteW/2 - gC.bulletW/2;
+				me.BBoxY = me.randomY + gC.spriteH/2 - gC.bulletH/2;
 			res();
                 
             	}else{
