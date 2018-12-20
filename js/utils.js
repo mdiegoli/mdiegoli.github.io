@@ -56,6 +56,7 @@ class utils{
 		this.ctxo.globalAlpha = 0.2;
 		this.ctxo.fillStyle = "green"; 
 		this.ctxo.fillRect(x, y, w, h);
+		//comment the line under for echo effect
 		this.ctxo.globalAlpha = 1.0;
 		//ctx.fill();
 	}
