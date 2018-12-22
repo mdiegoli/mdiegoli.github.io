@@ -8,10 +8,12 @@ class enemy extends entity{
 			
 			if(this.randomX<gC.spritePosX && this.dir === 'r'){
 				this.randomX++;
+				this.BBoxX++;
 			}else{
 				if(this.randomX === gC.spritePosX) this.dir = 'l';
 				if(this.randomX>0 && this.dir === 'l'){
 					this.randomX--;
+					this.BBoxX--;
 				}else{
 					this.dir = 'r';
 
@@ -23,7 +25,7 @@ class enemy extends entity{
 	}
     
     preload(){
-         var me = this;
+		 var me = this;
 	return new Promise((res,rej)=>{
 		let preloaded = [];
 		if(!this.indexes)

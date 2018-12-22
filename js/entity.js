@@ -1,7 +1,8 @@
 class entity{
     constructor(level){
         this.level = level;
-        if(!this.__proto__.images)this.__proto__.images = {};
+		if(!this.__proto__.bulletId)this.__proto__.bulletId = 0;
+		if(!this.__proto__.images)this.__proto__.images = {};
         if(!this.__proto__.images[level])this.__proto__.images[level] = {};
     }
 	

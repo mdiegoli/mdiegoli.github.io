@@ -52,9 +52,9 @@ class utils{
     drawImage(img,x,y){
         this.ctxo.drawImage(img, x, y)
     }
-	drawBBox(x,y,w,h){
+	drawBBox(x,y,w,h,c){
 		this.ctxo.globalAlpha = 0.2;
-		this.ctxo.fillStyle = "green"; 
+		this.ctxo.fillStyle = c; 
 		this.ctxo.fillRect(x, y, w, h);
 		//comment the line under for echo effect
 		this.ctxo.globalAlpha = 1.0;

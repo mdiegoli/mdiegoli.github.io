@@ -1,6 +1,8 @@
 class bullet extends entity{
     constructor(level){
-        super(level)
+		super(level)
+		this.id = this.__proto__.bulletId++;
+		this.BBoxColor = 'green';
     }
 	
     create(){
@@ -10,7 +12,7 @@ class bullet extends entity{
 			
 			Utils.drawImages(me.__proto__.images[this.level], me.randomX, me.randomY);
 			//add the echo feature
-			Utils.drawBBox(me.BBoxX, me.BBoxY,gC.bulletW,gC.bulletH);
+			Utils.drawBBox(me.BBoxX, me.BBoxY,gC.bulletW,gC.bulletH,me.BBoxColor);
 			res();
 		})
     }
@@ -28,8 +30,25 @@ class bullet extends entity{
 			if((me.randomY-gC.offset_bullet)>0 && me.dir === 'u'){
 				me.randomY-=gC.offset_bullet;
 				me.BBoxY  -=gC.offset_bullet;
+				for(let a = 0,a_l = assets.length;a<a_l;a++){
+					if(!(assets[a] instanceof bullet) && !(assets[a] instanceof hero) && assets[a].hit(me.BBoxX,me.BBoxY,gC.bulletW,me.bulletW)){
+						assets.splice(a,1);
+						for(let b = 0;b<a_l;b++){
+							if(assets[b].id && assets[b].id === me.id){
+								me.BBoxColor = 'red'
+								//assets.splice(b,1);
+							}
+						}		
+					}
+				}
 				res();
 			}else{
+				let a_l = assets.length;
+				for(let b = 0;b<a_l;b++){
+					if(assets[b].id && assets[b].id === me.id){
+						assets.splice(b,1);
+					}
+				}	
 				rej();	
 			}
 			
@@ -38,7 +57,7 @@ class bullet extends entity{
 	}
     
     preload(){
-         var me = this;
+		 var me = this;
 	return new Promise((res,rej)=>{
 		let preloaded = [];
 		if(!this.indexes)
