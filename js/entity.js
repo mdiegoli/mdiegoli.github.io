@@ -77,8 +77,8 @@ paint(x,y){
 	return new Promise((res,rej)=>{
 		if(me.dead === undefined){
 			me.dead = false;
-			me.randomX = 0;
-			me.BBoxX = 0;
+			me.randomX = Utils.random(1,gC.spritePosX);
+			me.BBoxX = me.randomX;
 			me.randomY = Utils.random(1,gC.spritePosY);
 			me.BBoxY = me.randomY;
 			me.BBoxH = gC.spriteH;
