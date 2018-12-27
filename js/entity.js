@@ -79,7 +79,7 @@ paint(x,y){
 			me.dead = false;
 			me.randomX = Utils.random(1,gC.spritePosX);
 			me.BBoxX = me.randomX;
-			me.randomY = Utils.random(1,gC.spritePosY);
+			me.randomY = 0;//Utils.random(1,gC.spritePosY);
 			me.BBoxY = me.randomY;
 			me.BBoxH = gC.spriteH;
 			me.BBoxW = gC.spriteW;
