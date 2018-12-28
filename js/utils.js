@@ -49,6 +49,19 @@ class utils{
 	
         
     }
+
+    drawBackground(images){
+	    this.ctxo.save();
+        this.ctxo.scale(2,2);
+		let keys = Object.keys(images);
+		for(let p = 0,p_l = keys.length;p<p_l;p++){
+			this.ctxo.drawImage(images[keys[p]],0,0)
+        }
+        this.ctxo.restore();
+		
+	
+        
+    }
     drawImage(img,x,y){
         this.ctxo.drawImage(img, x, y)
     }

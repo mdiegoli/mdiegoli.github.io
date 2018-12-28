@@ -1,0 +1,1050 @@
+{
+    "HE": {
+        "26": {
+            "type": "head",
+            "img": "back_A_HE_1_26.png",
+            "partname": "fen",
+            "effect": "pattern:M"
+        },
+        "01": {
+            "type": "head",
+            "img": "back_A_HE_1_01.png",
+            "partname": "ahl",
+            "effect": "pattern:M"
+        },
+        "02": {
+            "type": "head",
+            "img": "back_A_HE_1_02.png",
+            "partname": "ahn",
+            "effect": "pattern:M"
+        },
+        "03": {
+            "type": "head",
+            "img": "back_A_HE_1_03.png",
+            "partname": "ahv",
+            "effect": "pattern:M"
+        },
+        "04": {
+            "type": "head",
+            "img": "back_A_HE_1_04.png",
+            "partname": "an",
+            "effect": "pattern:M"
+        },
+        "05": {
+            "type": "head",
+            "img": "back_A_HE_1_05.png",
+            "partname": "anl",
+            "effect": "pattern:M"
+        },
+        "06": {
+            "type": "head",
+            "img": "back_A_HE_1_06.png",
+            "partname": "anv",
+            "effect": "pattern:M"
+        },
+        "07": {
+            "type": "head",
+            "img": "back_A_HE_1_07.png",
+            "partname": "as",
+            "effect": "pattern:M"
+        },
+        "08": {
+            "type": "head",
+            "img": "back_A_HE_1_08.png",
+            "partname": "az",
+            "effect": "pattern:M"
+        },
+        "09": {
+            "type": "head",
+            "img": "back_A_HE_1_09.png",
+            "partname": "ba",
+            "effect": "pattern:M"
+        },
+        "10": {
+            "type": "head",
+            "img": "back_A_HE_1_10.png",
+            "partname": "be",
+            "effect": "pattern:M"
+        },
+        "11": {
+            "type": "head",
+            "img": "back_A_HE_1_11.png",
+            "partname": "de",
+            "effect": "pattern:M"
+        },
+        "12": {
+            "type": "head",
+            "img": "back_A_HE_1_12.png",
+            "partname": "du",
+            "effect": "pattern:M"
+        },
+        "13": {
+            "type": "head",
+            "img": "back_A_HE_1_13.png",
+            "partname": "bal",
+            "effect": "pattern:M"
+        },
+        "14": {
+            "type": "head",
+            "img": "back_A_HE_1_14.png",
+            "partname": "ang",
+            "effect": "pattern:M"
+        },
+        "15": {
+            "type": "head",
+            "img": "back_A_HE_1_15.png",
+            "partname": "bav",
+            "effect": "pattern:M"
+        },
+        "16": {
+            "type": "head",
+            "img": "back_A_HE_1_16.png",
+            "partname": "dul",
+            "effect": "pattern:M"
+        },
+        "17": {
+            "type": "head",
+            "img": "back_A_HE_1_17.png",
+            "partname": "ban",
+            "effect": "pattern:M"
+        },
+        "18": {
+            "type": "head",
+            "img": "back_A_HE_1_18.png",
+            "partname": "bav",
+            "effect": "pattern:M"
+        },
+        "19": {
+            "type": "head",
+            "img": "back_A_HE_1_19.png",
+            "partname": "ank",
+            "effect": "pattern:M"
+        },
+        "20": {
+            "type": "head",
+            "img": "back_A_HE_1_20.png",
+            "partname": "ant",
+            "effect": "pattern:M"
+        },
+        "21": {
+            "type": "head",
+            "img": "back_A_HE_1_21.png",
+            "partname": "eh",
+            "effect": "pattern:M"
+        },
+        "22": {
+            "type": "head",
+            "img": "back_A_HE_1_22.png",
+            "partname": "akh",
+            "effect": "pattern:M"
+        },
+        "23": {
+            "type": "head",
+            "img": "back_A_HE_1_23.png",
+            "partname": "el",
+            "effect": "pattern:M"
+        },
+        "24": {
+            "type": "head",
+            "img": "back_A_HE_1_24.png",
+            "partname": "elh",
+            "effect": "pattern:M"
+        },
+        "25": {
+            "type": "head",
+            "img": "back_A_HE_1_25.png",
+            "partname": "fel",
+            "effect": "pattern:M"
+        }
+    },
+    "LB": {
+        "01": {
+            "type": "lowerbody",
+            "img": "back_A_LB_3_01.png",
+            "partname": "an",
+            "effect": "weapon:Q"
+        },
+        "02": {
+            "type": "lowerbody",
+            "img": "back_A_LB_3_02.png",
+            "partname": "as",
+            "effect": "weapon:Q"
+        },
+        "03": {
+            "type": "lowerbody",
+            "img": "back_A_LB_3_03.png",
+            "partname": "ash",
+            "effect": "weapon:Q"
+        },
+        "04": {
+            "type": "lowerbody",
+            "img": "back_A_LB_3_04.png",
+            "partname": "tl",
+            "effect": "weapon:Q"
+        },
+        "05": {
+            "type": "lowerbody",
+            "img": "back_A_LB_3_05.png",
+            "partname": "ask",
+            "effect": "weapon:Q"
+        },
+        "06": {
+            "type": "lowerbody",
+            "img": "back_A_LB_3_06.png",
+            "partname": "ba",
+            "effect": "weapon:Q"
+        },
+        "07": {
+            "type": "lowerbody",
+            "img": "back_A_LB_3_07.png",
+            "partname": "bub",
+            "effect": "weapon:Q"
+        },
+        "08": {
+            "type": "lowerbody",
+            "img": "back_A_LB_3_08.png",
+            "partname": "buv",
+            "effect": "weapon:Q"
+        },
+        "09": {
+            "type": "lowerbody",
+            "img": "back_A_LB_3_09.png",
+            "partname": "gra",
+            "effect": "weapon:Q"
+        },
+        "10": {
+            "type": "lowerbody",
+            "img": "back_A_LB_3_10.png",
+            "partname": "del",
+            "effect": "weapon:Q"
+        },
+        "11": {
+            "type": "lowerbody",
+            "img": "back_A_LB_3_11.png",
+            "partname": "isk",
+            "effect": "weapon:Q"
+        },
+        "12": {
+            "type": "lowerbody",
+            "img": "back_A_LB_3_12.png",
+            "partname": "eg",
+            "effect": "weapon:Q"
+        },
+        "13": {
+            "type": "lowerbody",
+            "img": "back_A_LB_3_13.png",
+            "partname": "gor",
+            "effect": "weapon:Q"
+        },
+        "14": {
+            "type": "lowerbody",
+            "img": "back_A_LB_3_14.png",
+            "partname": "las",
+            "effect": "weapon:Q"
+        },
+        "15": {
+            "type": "lowerbody",
+            "img": "back_A_LB_3_15.png",
+            "partname": "nal",
+            "effect": "weapon:Q"
+        },
+        "16": {
+            "type": "lowerbody",
+            "img": "back_A_LB_3_16.png",
+            "partname": "el",
+            "effect": "weapon:Q"
+        },
+        "17": {
+            "type": "lowerbody",
+            "img": "back_A_LB_3_17.png",
+            "partname": "eh",
+            "effect": "weapon:Q"
+        },
+        "18": {
+            "type": "lowerbody",
+            "img": "back_A_LB_3_18.png",
+            "partname": "lac",
+            "effect": "weapon:Q"
+        },
+        "19": {
+            "type": "lowerbody",
+            "img": "back_A_LB_3_19.png",
+            "partname": "lah",
+            "effect": "weapon:Q"
+        },
+        "20": {
+            "type": "lowerbody",
+            "img": "back_A_LB_3_20.png",
+            "partname": "ehl",
+            "effect": "weapon:Q"
+        },
+        "21": {
+            "type": "lowerbody",
+            "img": "back_A_LB_3_21.png",
+            "partname": "ehk",
+            "effect": "weapon:Q"
+        },
+        "22": {
+            "type": "lowerbody",
+            "img": "back_A_LB_3_22.png",
+            "partname": "leth",
+            "effect": "weapon:Q"
+        },
+        "23": {
+            "type": "lowerbody",
+            "img": "back_A_LB_3_23.png",
+            "partname": "lekh",
+            "effect": "weapon:Q"
+        },
+        "24": {
+            "type": "lowerbody",
+            "img": "back_A_LB_3_24.png",
+            "partname": "lev",
+            "effect": "weapon:Q"
+        },
+        "25": {
+            "type": "lowerbody",
+            "img": "back_A_LB_3_25.png",
+            "partname": "leh",
+            "effect": "weapon:Q"
+        },
+        "26": {
+            "type": "lowerbody",
+            "img": "back_A_LB_3_26.png",
+            "partname": "roh",
+            "effect": "weapon:Q"
+        },
+        "27": {
+            "type": "lowerbody",
+            "img": "back_A_LB_3_27.png",
+            "partname": "sh",
+            "effect": "weapon:Q"
+        },
+        "28": {
+            "type": "lowerbody",
+            "img": "back_A_LB_3_28.png",
+            "partname": "l",
+            "effect": "weapon:Q"
+        },
+        "29": {
+            "type": "lowerbody",
+            "img": "back_A_LB_3_29.png",
+            "partname": "lak",
+            "effect": "weapon:Q"
+        },
+        "30": {
+            "type": "lowerbody",
+            "img": "back_A_LB_3_30.png",
+            "partname": "ehr",
+            "effect": "weapon:Q"
+        },
+        "31": {
+            "type": "lowerbody",
+            "img": "back_A_LB_3_31.png",
+            "partname": "meh",
+            "effect": "weapon:Q"
+        },
+        "32": {
+            "type": "lowerbody",
+            "img": "back_A_LB_3_32.png",
+            "partname": "mel",
+            "effect": "weapon:Q"
+        },
+        "33": {
+            "type": "lowerbody",
+            "img": "back_A_LB_3_33.png",
+            "partname": "moh",
+            "effect": "weapon:Q"
+        }
+    },
+    "LW": {
+        "01": {
+            "type": "leftwing",
+            "img": "back_A_LW_2_01.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "02": {
+            "type": "leftwing",
+            "img": "back_A_LW_2_02.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "03": {
+            "type": "leftwing",
+            "img": "back_A_LW_2_03.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "04": {
+            "type": "leftwing",
+            "img": "back_A_LW_2_04.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "05": {
+            "type": "leftwing",
+            "img": "back_A_LW_2_05.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "06": {
+            "type": "leftwing",
+            "img": "back_A_LW_2_06.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "07": {
+            "type": "leftwing",
+            "img": "back_A_LW_2_07.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "08": {
+            "type": "leftwing",
+            "img": "back_A_LW_2_08.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "09": {
+            "type": "leftwing",
+            "img": "back_A_LW_2_09.png",
+            "partname": "",
+            "effect": "var:A"
+        }
+    },
+    "RW": {
+        "01": {
+            "type": "rightwing",
+            "img": "back_A_RW_2_01.png",
+            "partname": "",
+            "effect": ""
+        },
+        "02": {
+            "type": "rightwing",
+            "img": "back_A_RW_2_02.png",
+            "partname": "",
+            "effect": ""
+        },
+        "03": {
+            "type": "rightwing",
+            "img": "back_A_RW_2_03.png",
+            "partname": "",
+            "effect": ""
+        },
+        "04": {
+            "type": "rightwing",
+            "img": "back_A_RW_2_04.png",
+            "partname": "",
+            "effect": ""
+        },
+        "05": {
+            "type": "rightwing",
+            "img": "back_A_RW_2_05.png",
+            "partname": "",
+            "effect": ""
+        },
+        "06": {
+            "type": "rightwing",
+            "img": "back_A_RW_2_06.png",
+            "partname": "",
+            "effect": ""
+        },
+        "07": {
+            "type": "rightwing",
+            "img": "back_A_RW_2_07.png",
+            "partname": "",
+            "effect": ""
+        },
+        "08": {
+            "type": "rightwing",
+            "img": "back_A_RW_2_08.png",
+            "partname": "",
+            "effect": ""
+        },
+        "09": {
+            "type": "rightwing",
+            "img": "back_A_RW_2_09.png",
+            "partname": "",
+            "effect": ""
+        },
+        "10": {
+            "type": "rightwing",
+            "img": "back_A_RW_2_10.png",
+            "partname": "",
+            "effect": ""
+        },
+        "11": {
+            "type": "rightwing",
+            "img": "back_A_RW_2_11.png",
+            "partname": "",
+            "effect": ""
+        },
+        "12": {
+            "type": "rightwing",
+            "img": "back_A_RW_2_12.png",
+            "partname": "",
+            "effect": ""
+        },
+        "13": {
+            "type": "rightwing",
+            "img": "back_A_RW_2_13.png",
+            "partname": "",
+            "effect": ""
+        },
+        "14": {
+            "type": "rightwing",
+            "img": "back_A_RW_2_14.png",
+            "partname": "",
+            "effect": ""
+        },
+        "15": {
+            "type": "rightwing",
+            "img": "back_A_RW_2_15.png",
+            "partname": "",
+            "effect": ""
+        },
+        "16": {
+            "type": "rightwing",
+            "img": "back_A_RW_2_16.png",
+            "partname": "",
+            "effect": ""
+        },
+        "17": {
+            "type": "rightwing",
+            "img": "back_A_RW_2_17.png",
+            "partname": "",
+            "effect": ""
+        },
+        "18": {
+            "type": "rightwing",
+            "img": "back_A_RW_2_18.png",
+            "partname": "",
+            "effect": ""
+        },
+        "19": {
+            "type": "rightwing",
+            "img": "back_A_RW_2_19.png",
+            "partname": "",
+            "effect": ""
+        }
+    },
+    "BO": {
+        "01": {
+            "type": "body",
+            "img": "back_A_BO_5_01.png",
+            "partname": "bal",
+            "effect": "energy:K"
+        },
+        "02": {
+            "type": "body",
+            "img": "back_A_BO_5_02.png",
+            "partname": "bav",
+            "effect": "energy:K"
+        },
+        "03": {
+            "type": "body",
+            "img": "back_A_BO_5_03.png",
+            "partname": "ol",
+            "effect": "energy:K"
+        },
+        "04": {
+            "type": "body",
+            "img": "back_A_BO_5_04.png",
+            "partname": "bam",
+            "effect": "energy:K"
+        },
+        "05": {
+            "type": "body",
+            "img": "back_A_BO_5_05.png",
+            "partname": "ci",
+            "effect": "energy:K"
+        },
+        "06": {
+            "type": "body",
+            "img": "back_A_BO_5_06.png",
+            "partname": "bat",
+            "effect": "energy:K"
+        },
+        "07": {
+            "type": "body",
+            "img": "back_A_BO_5_07.png",
+            "partname": "cih",
+            "effect": "energy:K"
+        },
+        "08": {
+            "type": "body",
+            "img": "back_A_BO_5_08.png",
+            "partname": "da",
+            "effect": "energy:K"
+        },
+        "09": {
+            "type": "body",
+            "img": "back_A_BO_5_09.png",
+            "partname": "ske",
+            "effect": "energy:K"
+        },
+        "10": {
+            "type": "body",
+            "img": "back_A_BO_5_10.png",
+            "partname": "ste",
+            "effect": "energy:K"
+        },
+        "11": {
+            "type": "body",
+            "img": "back_A_BO_5_11.png",
+            "partname": "cil",
+            "effect": "energy:K"
+        },
+        "12": {
+            "type": "body",
+            "img": "back_A_BO_5_12.png",
+            "partname": "om",
+            "effect": "energy:K"
+        },
+        "13": {
+            "type": "body",
+            "img": "back_A_BO_5_13.png",
+            "partname": "de",
+            "effect": "energy:K"
+        },
+        "14": {
+            "type": "body",
+            "img": "back_A_BO_5_14.png",
+            "partname": "civ",
+            "effect": "energy:K"
+        },
+        "15": {
+            "type": "body",
+            "img": "back_A_BO_5_15.png",
+            "partname": "do",
+            "effect": "energy:K"
+        },
+        "16": {
+            "type": "body",
+            "img": "back_A_BO_5_16.png",
+            "partname": "dov",
+            "effect": "energy:K"
+        },
+        "17": {
+            "type": "body",
+            "img": "back_A_BO_5_17.png",
+            "partname": "dok",
+            "effect": "energy:K"
+        },
+        "18": {
+            "type": "body",
+            "img": "back_A_BO_5_18.png",
+            "partname": "mah",
+            "effect": "energy:K"
+        },
+        "19": {
+            "type": "body",
+            "img": "back_A_BO_5_19.png",
+            "partname": "mal",
+            "effect": "energy:K"
+        },
+        "20": {
+            "type": "body",
+            "img": "back_A_BO_5_20.png",
+            "partname": "mo",
+            "effect": "energy:K"
+        },
+        "21": {
+            "type": "body",
+            "img": "back_A_BO_5_21.png",
+            "partname": "moh",
+            "effect": "energy:K"
+        },
+        "22": {
+            "type": "body",
+            "img": "back_A_BO_5_22.png",
+            "partname": "mol",
+            "effect": "energy:K"
+        },
+        "23": {
+            "type": "body",
+            "img": "back_A_BO_5_23.png",
+            "partname": "mov",
+            "effect": "energy:K"
+        },
+        "24": {
+            "type": "body",
+            "img": "back_A_BO_5_24.png",
+            "partname": "mok",
+            "effect": "energy:K"
+        },
+        "25": {
+            "type": "body",
+            "img": "back_A_BO_5_25.png",
+            "partname": "mog",
+            "effect": "energy:K"
+        },
+        "26": {
+            "type": "body",
+            "img": "back_A_BO_5_26.png",
+            "partname": "mogg",
+            "effect": "energy:K"
+        },
+        "27": {
+            "type": "body",
+            "img": "back_A_BO_5_27.png",
+            "partname": "me",
+            "effect": "energy:K"
+        },
+        "28": {
+            "type": "body",
+            "img": "back_A_BO_5_28.png",
+            "partname": "mu",
+            "effect": "energy:K"
+        },
+        "29": {
+            "type": "body",
+            "img": "back_A_BO_5_29.png",
+            "partname": "mi",
+            "effect": "energy:K"
+        },
+        "30": {
+            "type": "body",
+            "img": "back_A_BO_5_30.png",
+            "partname": "mih",
+            "effect": "energy:K"
+        },
+        "31": {
+            "type": "body",
+            "img": "back_A_BO_5_31.png",
+            "partname": "miv",
+            "effect": "energy:K"
+        },
+        "32": {
+            "type": "body",
+            "img": "back_A_BO_5_32.png",
+            "partname": "nol",
+            "effect": "energy:K"
+        },
+        "33": {
+            "type": "body",
+            "img": "back_A_BO_5_33.png",
+            "partname": "nov",
+            "effect": "energy:K"
+        },
+        "34": {
+            "type": "body",
+            "img": "back_A_BO_5_34.png",
+            "partname": "pa",
+            "effect": "energy:K"
+        },
+        "35": {
+            "type": "body",
+            "img": "back_A_BO_5_35.png",
+            "partname": "pav",
+            "effect": "energy:K"
+        },
+        "36": {
+            "type": "body",
+            "img": "back_A_BO_5_36.png",
+            "partname": "nog",
+            "effect": "energy:K"
+        },
+        "37": {
+            "type": "body",
+            "img": "back_A_BO_5_37.png",
+            "partname": "og",
+            "effect": "energy:K"
+        },
+        "38": {
+            "type": "body",
+            "img": "back_A_BO_5_38.png",
+            "partname": "qo",
+            "effect": "energy:K"
+        },
+        "39": {
+            "type": "body",
+            "img": "back_A_BO_5_39.png",
+            "partname": "pav",
+            "effect": "energy:K"
+        },
+        "40": {
+            "type": "body",
+            "img": "back_A_BO_5_40.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "41": {
+            "type": "body",
+            "img": "back_A_BO_5_41.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "42": {
+            "type": "body",
+            "img": "back_A_BO_5_42.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "43": {
+            "type": "body",
+            "img": "back_A_BO_5_43.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "44": {
+            "type": "body",
+            "img": "back_A_BO_5_44.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "45": {
+            "type": "body",
+            "img": "back_A_BO_5_45.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "46": {
+            "type": "body",
+            "img": "back_A_BO_5_46.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "47": {
+            "type": "body",
+            "img": "back_A_BO_5_47.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "48": {
+            "type": "body",
+            "img": "back_A_BO_5_48.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "49": {
+            "type": "body",
+            "img": "back_A_BO_5_49.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "50": {
+            "type": "body",
+            "img": "back_A_BO_5_50.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "51": {
+            "type": "body",
+            "img": "back_A_BO_5_51.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "52": {
+            "type": "body",
+            "img": "back_A_BO_5_52.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "53": {
+            "type": "body",
+            "img": "back_A_BO_5_53.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "54": {
+            "type": "body",
+            "img": "back_A_BO_5_54.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "55": {
+            "type": "body",
+            "img": "back_A_BO_5_55.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "56": {
+            "type": "body",
+            "img": "back_A_BO_5_56.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "57": {
+            "type": "body",
+            "img": "back_A_BO_5_57.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "58": {
+            "type": "body",
+            "img": "back_A_BO_5_58.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "59": {
+            "type": "body",
+            "img": "back_A_BO_5_59.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "60": {
+            "type": "body",
+            "img": "back_A_BO_5_60.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "61": {
+            "type": "body",
+            "img": "back_A_BO_5_61.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "62": {
+            "type": "body",
+            "img": "back_A_BO_5_62.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "63": {
+            "type": "body",
+            "img": "back_A_BO_5_63.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "64": {
+            "type": "body",
+            "img": "back_A_BO_5_64.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "65": {
+            "type": "body",
+            "img": "back_A_BO_5_65.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "66": {
+            "type": "body",
+            "img": "back_A_BO_5_66.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "67": {
+            "type": "body",
+            "img": "back_A_BO_5_67.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "68": {
+            "type": "body",
+            "img": "back_A_BO_5_68.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "69": {
+            "type": "body",
+            "img": "back_A_BO_5_69.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "70": {
+            "type": "body",
+            "img": "back_A_BO_5_70.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "71": {
+            "type": "body",
+            "img": "back_A_BO_5_71.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "72": {
+            "type": "body",
+            "img": "back_A_BO_5_72.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "73": {
+            "type": "body",
+            "img": "back_A_BO_5_73.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "74": {
+            "type": "body",
+            "img": "back_A_BO_5_74.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "75": {
+            "type": "body",
+            "img": "back_A_BO_5_75.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "76": {
+            "type": "body",
+            "img": "back_A_BO_5_76.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "77": {
+            "type": "body",
+            "img": "back_A_BO_5_77.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "78": {
+            "type": "body",
+            "img": "back_A_BO_5_78.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "79": {
+            "type": "body",
+            "img": "back_A_BO_5_79.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "80": {
+            "type": "body",
+            "img": "back_A_BO_5_80.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "81": {
+            "type": "body",
+            "img": "back_A_BO_5_81.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "82": {
+            "type": "body",
+            "img": "back_A_BO_5_82.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "83": {
+            "type": "body",
+            "img": "back_A_BO_5_83.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "84": {
+            "type": "body",
+            "img": "back_A_BO_5_84.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "85": {
+            "type": "body",
+            "img": "back_A_BO_5_85.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        },
+        "86": {
+            "type": "body",
+            "img": "back_A_BO_5_86.png",
+            "partname": "2bdef",
+            "effect": "energy:K"
+        }
+    }
+}
