@@ -14,9 +14,10 @@ class utils{
     createE(str){
         return document.createElement(str);       
     }
-    clearCanvas(){
-		
-        this.ctx.fillStyle = '#000';
+    clearCanvas(c){
+        if(!c)
+            c = '#000';
+        this.ctx.fillStyle = c;
         this.ctx.clearRect(0, 0, gC.width, gC.height);
     }
     appendB2A(a,b){
@@ -64,6 +65,11 @@ class utils{
     }
     drawImage(img,x,y){
         this.ctxo.drawImage(img, x, y)
+    }
+    drawText(src,x,y,c){
+        this.ctxo.font = "30px Arial";
+		this.ctxo.fillStyle = c;
+        this.ctxo.fillText(src, x, y);
     }
 	drawBBox(x,y,w,h,c){
 		this.ctxo.globalAlpha = 0.2;

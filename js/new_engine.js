@@ -69,6 +69,23 @@ function addHero(l){
         
 }
 
+function showSplash(){
+    return new Promise(function(res,rej){
+    
+        let splasho = new splash();
+        splasho.preload().then(
+            (succ) => {
+                splasho.create().then(
+                    (succ) => {
+                        res();
+                    }
+                )
+            }
+        )
+    })
+        
+}
+
 function addBullet(l){
     return new Promise(function(res,rej){
     
@@ -216,60 +233,74 @@ function gAF(c){
     startGame()
 }
 
-//every frame value, draw scene
-function l(){
+function s(){
     gC.demoClock = 0;
     addCanvas().then(
         (succ)=>{
-            readBackData().then(
+            showSplash().then(
                 (succ)=>{
-                    readDemonData().then(
+                    l()
+                }
+            )
+        }
+        
+    )
+
+    }
+//every frame value, draw scene
+function l(){
+    gC.demoClock = 0;
+    //addCanvas().then(
+    //    (succ)=>{
+    readBackData().then(
+        (succ)=>{
+            readDemonData().then(
+                (succ) => {
+                    readShipData().then(
                         (succ) => {
-                            readShipData().then(
+                            addBack('k_a').then(
                                 (succ) => {
-                                    addBack('k_a').then(
+                                    addHero('h_a').then(
                                         (succ) => {
-                                            addHero('h_a').then(
+                                            addDemoAssets('e_a').then(
                                                 (succ) => {
-                                                    addDemoAssets('e_a').then(
+                
+                                                    addDemoAssets('e_b').then(
                                                         (succ) => {
                         
-                                                            addDemoAssets('e_b').then(
+                                                            addDemoAssets('e_c').then(
                                                                 (succ) => {
                                 
-                                                                    addDemoAssets('e_c').then(
+                                                                    addDemoAssets('e_d').then(
                                                                         (succ) => {
-                                        
-                                                                            addDemoAssets('e_d').then(
+                                                                            addBullet('b_a').then(
                                                                                 (succ) => {
-                                                                                    addBullet('b_a').then(
-                                                                                        (succ) => {
-                                                                                            requestAnimationFrame(gAF);
-                                                                                        }
-                                                                                    )   
-                                                                                    
+                                                                                    requestAnimationFrame(gAF);
                                                                                 }
-                                                                            )
+                                                                            )   
+                                                                            
                                                                         }
                                                                     )
                                                                 }
                                                             )
                                                         }
                                                     )
-                                                    
                                                 }
                                             )
+                                            
                                         }
-                                    )                                    
+                                    )
                                 }
-                            )
+                            )                                    
                         }
                     )
                 }
             )
-            
         }
     )
+    
+    //    }
+    //)
     
     
 }
