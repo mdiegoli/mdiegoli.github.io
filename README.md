@@ -1,3 +1,30 @@
+__todo__:
+
+echo
+
+score
+
+sound
+
+splash/end
+
+replace promise with async/await (https://mdiegoli.github.io/async_await.html)
+
+muoversi secondo pattern e possibilmente non sovrapporsi
+
+Quando si uccidono tutti i nemici si passa al livello successivo.
+
+I nemici sparano
+
+Vite
+
+
+Canvas optimization
+
+https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Optimizing_canvas
+
+https://www.html5rocks.com/en/tutorials/canvas/performance/#toc-ref
+
 HTML5 Cheat sheet
 
 http://cheatsheetworld.com/programming/html5-canvas-cheat-sheet/
@@ -39,29 +66,3 @@ https://github.com/tensorflow/tfjs-examples
 Mario animation
 
 https://www.raywenderlich.com/2891-how-to-make-a-platform-game-like-super-mario-brothers-part-1
-
-
-__todo__:
-
-scale canvas
-
-echo
-
-hit
-
-score
-
-background
-
-sound
-
-splash/end
-
-replace promise with async/await (https://mdiegoli.github.io/async_await.html)
-
-
-
-
-
-
-
