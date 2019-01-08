@@ -32,8 +32,23 @@ class utils{
         this.ctxo = this.co.getContext("2d");
     }
 	
+	setOffScreen(){
+	this.c = e;
+        this.ctx = e.getContext("2d");
+        this.co = new OffscreenCanvas(996,498);
+        this.ctxo = this.co.getContext("2d");
+    }
+	
 	c2c(){
 		this.ctx.drawImage(this.co,0,0)
+		this.ctxo.fillStyle = '#FFF';
+        	this.ctxo.fillRect(0, 0, gC.width, gC.height);
+        
+	}
+	
+	c2osc(){
+		var bitmapOne = this.co.transferToImageBitmap();
+		this.ctx.transferFromImageBitmap(bitmapOne);
 		this.ctxo.fillStyle = '#FFF';
         	this.ctxo.fillRect(0, 0, gC.width, gC.height);
         
