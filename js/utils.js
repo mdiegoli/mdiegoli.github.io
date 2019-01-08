@@ -34,7 +34,7 @@ class utils{
 	
 	setOffScreen(e){
 	this.c = e;
-        this.ctx = e.getContext("2d");
+        this.ctx = e.getContext("bitmaprenderer");
         this.co = new OffscreenCanvas(996,498);
         this.ctxo = this.co.getContext("2d");
     }
