@@ -32,7 +32,7 @@ class utils{
         this.ctxo = this.co.getContext("2d");
     }
 	
-	setOffScreen(){
+	setOffScreen(e){
 	this.c = e;
         this.ctx = e.getContext("2d");
         this.co = new OffscreenCanvas(996,498);
