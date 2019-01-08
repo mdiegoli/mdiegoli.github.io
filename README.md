@@ -66,3 +66,7 @@ https://github.com/tensorflow/tfjs-examples
 Mario animation
 
 https://www.raywenderlich.com/2891-how-to-make-a-platform-game-like-super-mario-brothers-part-1
+
+Optimizing_canvas
+
+https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Optimizing_canvas
