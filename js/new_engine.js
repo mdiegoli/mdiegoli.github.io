@@ -35,7 +35,7 @@ function startGame(){
 		)
         if(a==(a_l-1)){
         
-        Utils.c2c();
+        Utils.c2osc();
         requestAnimationFrame(this.gAF)
         }
 	}
@@ -190,7 +190,8 @@ function addCanvas(){
             var a = Utils.getEBI('box');
             var b = Utils.createE('canvas');
             //memorizzo canvas e contesto
-            Utils.setCanvas(b)
+            //Utils.setCanvas(b)
+            Utils.setOffscreen()
             Utils.appendB2A(a,b)
             Utils.setAttribute(b,'width',gC.width)
             Utils.setAttribute(b,'height',gC.height)
