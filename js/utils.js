@@ -48,7 +48,7 @@ class utils{
 	
 	c2osc(){
 		var bitmapOne = this.co.transferToImageBitmap();
-		this.ctx.transferFromImageBitmap(bitmapOne);
+		this.c.transferFromImageBitmap(bitmapOne);
 		this.ctxo.fillStyle = '#FFF';
         	this.ctxo.fillRect(0, 0, gC.width, gC.height);
         
