@@ -191,7 +191,7 @@ function addCanvas(){
             var b = Utils.createE('canvas');
             //memorizzo canvas e contesto
             //Utils.setCanvas(b)
-            Utils.setOffscreen()
+            Utils.setOffScreen()
             Utils.appendB2A(a,b)
             Utils.setAttribute(b,'width',gC.width)
             Utils.setAttribute(b,'height',gC.height)
