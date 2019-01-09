@@ -65,6 +65,18 @@ class utils{
 	
         
     }
+	
+	drawImagesNoDoubleBuffer(images,x,y){
+	    
+	
+		let keys = Object.keys(images);
+		for(let p = 0,p_l = keys.length;p<p_l;p++){
+			this.ctx.drawImage(images[keys[p]], x, y)
+		}
+		
+	
+        
+    }
 
     drawBackground(images){
 	    this.ctxo.save();
