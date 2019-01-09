@@ -35,7 +35,7 @@ https://code.tutsplus.com/articles/21-ridiculously-impressive-html5-canvas-exper
 
 demonPaint
 
-https://mdiegoli.github.io/demonPaint.html
+https://mdiegoli.github.io/paint.html
 
 Assets
 
