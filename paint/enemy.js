@@ -103,8 +103,8 @@ class enemy{
                     alert('enemy dead')
                 }
             }
-	    Utils.drawImages(me.__proto__.images[this.level], me.randomX, me.randomY);
-            
+	    //Utils.drawImages(me.__proto__.images[this.level], me.randomX, me.randomY);
+            Utils.drawImagesNoDoubleBuffer(me.__proto__.images[this.level], me.randomX, me.randomY);
             res();
             
         })
