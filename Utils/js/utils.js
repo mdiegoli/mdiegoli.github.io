@@ -131,6 +131,24 @@ class utils{
     setAttribute(e,name,val){
     	e.setAttribute(name,val);
     }
+    sketch(ox,oy,x,y){
+        if(!this.path){ 
+            this.ctx.beginPath();
+            this.ctx.moveTo(ox, oy);
+            this.ctx.lineTo(x, y);
+            this.path = 'M '+ox+' '+oy+' L '+x+' '+y+' ';
+        }else{
+            this.ctx.lineTo(x, y);
+            this.path += 'L '+x+' '+y+' ';
+        }
+        this.ctx.stroke();
+
+    }
+    endsketch(x,y){
+            this.ctx.lineTo(x, y);
+            this.path += 'Z';
+        
+    }
 }
 
 var Utils = new utils();
