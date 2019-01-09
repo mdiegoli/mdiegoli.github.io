@@ -41,7 +41,7 @@ class splash{
         
         
     })
-		   
+		/*   
 	createOffscreen(){
         var me = this;
         return new Promise((res,rej)=>{
@@ -62,7 +62,7 @@ class splash{
         Utils.c2osc();
         
         
-    })
+    })*/
 }
 
 }
