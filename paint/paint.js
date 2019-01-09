@@ -145,7 +145,7 @@ function mouseUp(e){
 function getMousePos(canvas, evt) {
 	var rect = canvas.getBoundingClientRect();
 	return {
-		  x: evt.clientX - rect.left,
-		  y: evt.clientY - rect.top
+		  x: evt.clientX - rect.left-(gC.spriteW/2),
+		  y: evt.clientY - rect.top-(gC.spriteH/2)
 	};
 }
