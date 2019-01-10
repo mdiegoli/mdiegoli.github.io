@@ -193,17 +193,17 @@ getCubicBezierPathStr(ps) {
 
             if(!me.mat_path){ 
 		    me.mat_path = 'M'+ bezier[0][0] + ' ' + bezier[0][1] + ' L ' + bezier[1][0] + ' ' + bezier[1][1];
-		     this.ctx.beginPath();
-		    this.ctx.moveTo(bezier[0][0], bezier[0][1]);
-		    this.ctx.lineTo(bezier[1][0], bezier[1][1]);
+		     me.ctx.beginPath();
+		    me.ctx.moveTo(bezier[0][0], bezier[0][1]);
+		    me.ctx.lineTo(bezier[1][0], bezier[1][1]);
 	    }else{
-	    	this.ctx.lineTo(bezier[1][0], bezier[1][1]);
+	    	me.ctx.lineTo(bezier[1][0], bezier[1][1]);
             	me.mat_path += 'L '+ bezier[1][0] + ' ' + bezier[1][1]+' ';
 	    }
-		this.ctx.stroke();
+		me.ctx.stroke();
         });
     }
-		this.path += 'Z';
+		me.path += 'Z';
 }
 }
 
