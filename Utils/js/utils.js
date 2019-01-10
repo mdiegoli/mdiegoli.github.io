@@ -170,7 +170,7 @@ getCubicBezierPathStr(ps) {
 }
 	
 	
-	function drawMats(
+	drawMats(
         mats,
         type) {
 
