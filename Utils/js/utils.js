@@ -191,17 +191,19 @@ getCubicBezierPathStr(ps) {
             let bezier = cpNode.matCurveToNextVertex;
             if (!bezier) { return; }
 
-            let $path = document.createElementNS(NS, 'path');
-            $path.setAttributeNS(
-                null, 
-                "d", 
-                fs[bezier.length](bezier)
-            );
-            $path.setAttributeNS(null, "class", type);
-
-            svg.appendChild($path);
+            if(!me.mat_path){ 
+		    me.mat_path = 'M'+ bezier[0][0] + ' ' + bezier[0][1] + ' L ' + bezier[1][0] + ' ' + bezier[1][1];
+		     this.ctx.beginPath();
+		    this.ctx.moveTo(bezier[0][0], bezier[0][1]);
+		    this.ctx.lineTo(bezier[1][0], bezier[1][1]);
+	    }else{
+	    	this.ctx.lineTo(bezier[1][0], bezier[1][1]);
+            	me.mat_path += 'L '+ bezier[1][0] + ' ' + bezier[1][1]+' ';
+	    }
+		this.ctx.stroke();
         });
     }
+		this.path += 'Z';
 }
 }
 
