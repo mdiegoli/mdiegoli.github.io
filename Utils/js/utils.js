@@ -186,7 +186,7 @@ getCubicBezierPathStr(ps) {
 
         let fs = [,,me.getLinePathStr, me.getQuadBezierPathStr, me.getCubicBezierPathStr];
 
-        traverseEdges(cpNode, function(cpNode) {
+        FloMat.traverseEdges(cpNode, function(cpNode) {
             if (cpNode.isTerminating()) { return; }
             let bezier = cpNode.matCurveToNextVertex;
             if (!bezier) { return; }
