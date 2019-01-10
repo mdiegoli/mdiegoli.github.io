@@ -37,6 +37,10 @@ demonPaint
 
 https://mdiegoli.github.io/paint.html
 
+demon f3d
+
+https://mdiegoli.github.io/f3d.html
+
 Assets
 
 https://itch.io/game-assets
