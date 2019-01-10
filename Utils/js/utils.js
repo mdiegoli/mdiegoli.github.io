@@ -149,7 +149,11 @@ class utils{
             this.path += 'Z';
 	    let bezierLoops = FloMat.getPathsFromStr(this.path);
     	let mats = FloMat.findMats(bezierLoops, 3);
-	this.drawMats(mats, 'mat');
+    this.drawMats(mats, 'mat');
+    
+    let sats = mats.map(mat => FloMat.toScaleAxis(mat, 1.5));
+
+    this.drawMats(sats, 'sat');
         
     }
 	
@@ -184,23 +188,26 @@ getCubicBezierPathStr(ps) {
         
         if (!cpNode) { return; }
 
-        let fs = [,,me.getLinePathStr, me.getQuadBezierPathStr, me.getCubicBezierPathStr];
+        let fs = ['','',me.getLinePathStr, me.getQuadBezierPathStr, me.getCubicBezierPathStr];
 
         FloMat.traverseEdges(cpNode, function(cpNode) {
             if (cpNode.isTerminating()) { return; }
             let bezier = cpNode.matCurveToNextVertex;
             if (!bezier) { return; }
-
+            let path_piece = fs[bezier.length](bezier);
             if(!me.mat_path){ 
-		    me.mat_path = 'M'+ bezier[0][0] + ' ' + bezier[0][1] + ' L ' + bezier[1][0] + ' ' + bezier[1][1];
-		     me.ctx.beginPath();
-		    me.ctx.moveTo(bezier[0][0], bezier[0][1]);
-		    me.ctx.lineTo(bezier[1][0], bezier[1][1]);
+		    me.mat_path = path_piece;
+		     //me.ctx.beginPath();
+		    //me.ctx.moveTo(bezier[0][0], bezier[0][1]);
+		    //me.ctx.lineTo(bezier[1][0], bezier[1][1]);
 	    }else{
-	    	me.ctx.lineTo(bezier[1][0], bezier[1][1]);
-            	me.mat_path += 'L '+ bezier[1][0] + ' ' + bezier[1][1]+' ';
-	    }
-		me.ctx.stroke();
+	    	//me.ctx.lineTo(bezier[1][0], bezier[1][1]);
+            	me.mat_path += path_piece;
+        }
+        let o_path2d = new Path2D(path_piece);
+        if(type.indexOf('mat') !== -1) me.ctx.strokeStyle = '#0000FF';
+        else me.ctx.strokeStyle = '#FF0000';
+        me.ctx.stroke(o_path2d);
         });
     }
 		me.path += 'Z';
