@@ -147,8 +147,8 @@ class utils{
     endsketch(x,y){
             this.ctx.lineTo(x, y);
             this.path += 'Z';
-	    let bezierLoops = getPathsFromStr(this.path);
-    	let mats = findMats(bezierLoops, 3);
+	    let bezierLoops = FloMat.getPathsFromStr(this.path);
+    	let mats = FloMat.findMats(bezierLoops, 3);
 	this.drawMats(mats, 'mat');
         
     }
