@@ -147,8 +147,62 @@ class utils{
     endsketch(x,y){
             this.ctx.lineTo(x, y);
             this.path += 'Z';
+	    let bezierLoops = getPathsFromStr(this.path);
+    	let mats = findMats(bezierLoops, 3);
+	this.drawMats(mats, 'mat');
         
     }
+	
+	getLinePathStr(ps) {
+    let [[x0,y0],[x1,y1]] = ps;
+    return `M${x0} ${y0} L${x1} ${y1}`;
+}
+
+getQuadBezierPathStr(ps) {
+    let [[x0,y0],[x1,y1],[x2,y2]] = ps;
+    return `M${x0} ${y0} Q${x1} ${y1} ${x2} ${y2}`;
+}
+
+
+getCubicBezierPathStr(ps) {
+    let [[x0,y0],[x1,y1],[x2,y2],[x3,y3]] = ps;
+    return `M${x0} ${y0} C${x1} ${y1} ${x2} ${y2} ${x3} ${y3}`;
+}
+	
+	
+	function drawMats(
+        mats,
+        type) {
+
+    mats.forEach(f);
+
+    /**
+     * Draws a MAT curve on an SVG element.
+     */
+     function f(mat) {
+        let cpNode = mat.cpNode;
+        
+        if (!cpNode) { return; }
+
+        let fs = [,,this.getLinePathStr, this.getQuadBezierPathStr, this.getCubicBezierPathStr];
+
+        traverseEdges(cpNode, function(cpNode) {
+            if (cpNode.isTerminating()) { return; }
+            let bezier = cpNode.matCurveToNextVertex;
+            if (!bezier) { return; }
+
+            let $path = document.createElementNS(NS, 'path');
+            $path.setAttributeNS(
+                null, 
+                "d", 
+                fs[bezier.length](bezier)
+            );
+            $path.setAttributeNS(null, "class", type);
+
+            svg.appendChild($path);
+        });
+    }
+}
 }
 
 var Utils = new utils();
