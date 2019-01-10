@@ -173,7 +173,7 @@ getCubicBezierPathStr(ps) {
 	drawMats(
         mats,
         type) {
-
+	var me = this;
     mats.forEach(f);
 
     /**
@@ -184,7 +184,7 @@ getCubicBezierPathStr(ps) {
         
         if (!cpNode) { return; }
 
-        let fs = [,,this.getLinePathStr, this.getQuadBezierPathStr, this.getCubicBezierPathStr];
+        let fs = [,,me.getLinePathStr, me.getQuadBezierPathStr, me.getCubicBezierPathStr];
 
         traverseEdges(cpNode, function(cpNode) {
             if (cpNode.isTerminating()) { return; }
