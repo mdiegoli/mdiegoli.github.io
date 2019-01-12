@@ -67,17 +67,28 @@ function addCanvas(){
         var canvas = Utils.getEBTN('canvas')
         if(typeof canvas === 'object' && canvas.length <= 0){
             //non c'è canvas
-            var a = Utils.getEBTN('body')[0]
+            var a = Utils.getEBI('canvases')
+            Utils.setAttribute(a,'style','width:'+window.innerWidth+';height:'+window.innerHeight)
             var b = Utils.createE('canvas')
+            var b2 = Utils.createE('canvas')
             //memorizzo canvas e contesto
             Utils.setCanvas(b)
+            Utils.setCanvas2(b2)
             Utils.appendB2A(a,b)
-	    gC.canvas = b;
+            Utils.appendB2A(a,b2)
+            
+        gC.canvas = b;
+        gC.canvas2 = b2;
             Utils.setAttribute(b,'width',window.innerWidth)
             Utils.setAttribute(b,'height',window.innerHeight)
-		b.addEventListener('mousedown',mouseDown)
-		b.addEventListener('mouseup',mouseUp)
-		b.addEventListener('mousemove',mouseMove)
+            Utils.setAttribute(b,'style','z-index: -10;position:absolute')
+            Utils.setAttribute(b2,'width',window.innerWidth)
+            Utils.setAttribute(b2,'height',window.innerHeight)
+            Utils.setAttribute(b2,'style','z-index: -1;position:absolute;pointer-events:none')
+            
+		a.addEventListener('mousedown',mouseDown)
+		a.addEventListener('mouseup',mouseUp)
+		a.addEventListener('mousemove',mouseMove)
 		document.addEventListener('keydown',selectDemon)
         }
         res();
@@ -110,18 +121,26 @@ function l(){
 }
 
 
-
 function selectDemon(e){
-	gC.brush = new enemy(e.key)
-	gC.brush.preload().then(
-		(succ)=>{
-			console.log('preload done');
-		}
-	).catch(
-		(err)=>{
-			console.log(err);
-		}
-	)
+    let key = e.key;
+    if(Utils.isNumber(key)){
+        Utils.setFilter(key)
+    }else{
+        gC.brush = new enemy(key)
+        gC.demonType = key
+        gC.brush.preload().then(
+            (succ)=>{
+                console.log('preload done');
+            }
+        ).catch(
+            (err)=>{
+                console.log(err);
+            }
+        )
+    }
+    let type = gC.demonType?gC.demonType:'';
+    let filter = gC.canvasFilter?gC.canvasFilter:'';
+    Utils.writeOnSecondCanvas('demon type: '+type+', filter: '+filter,10,20)
 }
 
 function mouseMove(e){

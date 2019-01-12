@@ -31,7 +31,14 @@ class utils{
         this.setAttribute(this.co,'height',gC.height)
         this.ctxo = this.co.getContext("2d");
     }
-	
+	setCanvas2(e){
+        this.c2 = e;
+        this.ctx2 = e.getContext("2d");
+        this.co2 = this.createE('canvas');
+        this.setAttribute(this.co2,'width',gC.width)
+        this.setAttribute(this.co2,'height',gC.height)
+        this.ctxo2 = this.co2.getContext("2d");
+    }
 	setOffScreen(e){
 	this.c = e;
         this.ctx = e.getContext("bitmaprenderer");
@@ -52,8 +59,14 @@ class utils{
 		this.ctxo.fillStyle = '#FFF';
         	this.ctxo.fillRect(0, 0, gC.width, gC.height);
         
-	}
-	
+    }
+    
+	writeOnSecondCanvas(str,x,y){
+        this.ctx2.font = "30px Arial";
+        this.ctx2.fillStyle = "red";
+        this.ctx2.clearRect(0,0,gC.width,gC.height)
+        this.ctx2.fillText(str, x, y);
+    }
     drawImages(images,x,y){
 	    
 	
@@ -161,7 +174,47 @@ class utils{
     let [[x0,y0],[x1,y1]] = ps;
     return `M${x0} ${y0} L${x1} ${y1}`;
 }
-
+isNumber(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+}
+setFilter(k){
+    let filter = '';
+    switch(k){
+        case '0':
+            filter = 'none';
+            break;
+        case '1':
+            filter = 'sepia(100%)';
+            break;
+        case '2':
+            filter = 'opacity(50%)';
+            break;
+        case '3':
+            filter = 'invert(100%)';
+            break;
+        case '4':
+            filter = 'grayscale(100%)';
+            break;
+        case '5':
+            filter = 'contrast(0%)';
+            break;
+        case '6':
+            filter = 'brightness(150%)';
+            break;
+        case '7':
+            filter = 'blur(100%)';
+            break;
+        case '8':
+            filter = 'saturate(0%)';
+            break;
+        case '9':
+            filter = 'hue-rotate(90deg)';
+            break;
+    }
+    this.ctx.filter = filter;
+    gC.canvasFilter = filter;
+            
+}
 getQuadBezierPathStr(ps) {
     let [[x0,y0],[x1,y1],[x2,y2]] = ps;
     return `M${x0} ${y0} Q${x1} ${y1} ${x2} ${y2}`;
