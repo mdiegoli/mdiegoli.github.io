@@ -265,6 +265,24 @@ getCubicBezierPathStr(ps) {
     }
 		me.path += 'Z';
 }
+setRandomData(){
+    let az = 'abcdefghijklmnopqrstuvwxyz';
+    let index_d = this.random(0,25);
+    let index_filter = Utils.random(0,9)
+    Utils.setFilter(+index_filter)
+    let char_demon = az.charAt(index_d);
+    gC.brush = new enemy(char_demon)
+        gC.demonType = char_demon
+        gC.brush.preload().then(
+            (succ)=>{
+                console.log('preload done');
+            }
+        ).catch(
+            (err)=>{
+                console.log(err);
+            }
+        )
+}
 }
 
 var Utils = new utils();

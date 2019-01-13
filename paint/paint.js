@@ -89,7 +89,8 @@ function addCanvas(){
 		a.addEventListener('mousedown',mouseDown)
 		a.addEventListener('mouseup',mouseUp)
 		a.addEventListener('mousemove',mouseMove)
-		document.addEventListener('keydown',selectDemon)
+        document.addEventListener('keydown',selectDemon)
+        Utils.setRandomData()
         }
         res();
     })
@@ -153,7 +154,9 @@ function mouseMove(e){
 
 function mouseDown(e){
 	e.preventDefault();
-	gC.paint = true;
+    gC.paint = true;
+    let coord = getMousePos(gC.canvas,e)
+		if(gC.brush) gC.brush.paint(coord.x,coord.y)
 }
 
 function mouseUp(e){
