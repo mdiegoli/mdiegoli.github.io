@@ -91,6 +91,9 @@ function addCanvas(){
 		a.addEventListener('mousemove',mouseMove)
         document.addEventListener('keydown',selectDemon)
         Utils.setRandomData()
+		let type = gC.demonType?gC.demonType:'';
+    let filter = gC.canvasFilter?gC.canvasFilter:'';
+    Utils.writeOnSecondCanvas('demon type: '+type+', filter: '+filter,10,20)
         }
         res();
     })
