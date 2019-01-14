@@ -269,7 +269,7 @@ setRandomData(){
     let az = 'abcdefghijklmnopqrstuvwxyz';
     let index_d = this.random(0,25);
     let index_filter = Utils.random(0,9)
-    Utils.setFilter(+index_filter)
+    Utils.setFilter(index_filter.toString())
     let char_demon = az.charAt(index_d);
     gC.brush = new enemy(char_demon)
         gC.demonType = char_demon
