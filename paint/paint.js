@@ -94,6 +94,11 @@ function addCanvas(){
 		let type = gC.demonType?gC.demonType:'';
     let filter = gC.canvasFilter?gC.canvasFilter:'';
     Utils.writeOnSecondCanvas('demon type: '+type+', filter: '+filter,10,20)
+	const AudioContext = window.AudioContext || window.webkitAudioContext;
+	gC.audioCtx = new AudioContext();
+		var oscillatorNode = gC.audioCtx.createOscillator();
+var gainNode = gC.audioCtx.createGain();
+var finish = gC.audioCtx.destination;
         }
         res();
     })
