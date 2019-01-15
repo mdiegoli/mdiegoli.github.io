@@ -89,6 +89,9 @@ function addCanvas(){
 		a.addEventListener('mousedown',mouseDown)
 		a.addEventListener('mouseup',mouseUp)
 		a.addEventListener('mousemove',mouseMove)
+		a.addEventListener('touchstart',mouseDown)
+		a.addEventListener('touchend',mouseUp)
+		a.addEventListener('touchmove',mouseMove)
         document.addEventListener('keydown',selectDemon)
         Utils.setRandomData()
 		let type = gC.demonType?gC.demonType:'';
