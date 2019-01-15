@@ -99,7 +99,7 @@ function addCanvas(){
 		gC.oscillatorNode = gC.audioCtx.createOscillator();
 gC.gainNode = gC.audioCtx.createGain();
 var finish = gC.audioCtx.destination;
-		gC.oscillatorNode.connect(gainNode);
+		gC.oscillatorNode.connect(gC.gainNode);
     gC.gainNode.connect(gC.audioCtx.destination);
 		gC.oscillatorNode.type = 'square';
     gC.oscillatorNode.frequency.value = 100;
