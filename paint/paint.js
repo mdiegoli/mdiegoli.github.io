@@ -86,13 +86,13 @@ function addCanvas(){
             Utils.setAttribute(b2,'height',window.innerHeight)
             Utils.setAttribute(b2,'style','z-index: -1;position:absolute;pointer-events:none')
             
-		a.addEventListener('mousedown',Utils.mouseDown)
-		a.addEventListener('mouseup',Utils.mouseUp)
-		a.addEventListener('mousemove',Utils.mouseMove)
-		a.addEventListener('touchstart',Utils.touchDown)
-		a.addEventListener('touchend',Utils.touchUp)
-		a.addEventListener('touchmove',Utils.touchMove)
-        document.addEventListener('keydown',Utils.selectDemon)
+		a.addEventListener('mousedown',Utils.mouseDown.bind(Utils))
+		a.addEventListener('mouseup',Utils.mouseUp.bind(Utils))
+		a.addEventListener('mousemove',Utils.mouseMove.bind(Utils))
+		a.addEventListener('touchstart',Utils.touchDown.bind(Utils))
+		a.addEventListener('touchend',Utils.touchUp.bind(Utils))
+		a.addEventListener('touchmove',Utils.touchMove.bind(Utils))
+        document.addEventListener('keydown',Utils.selectDemon.bind(Utils))
         Utils.setRandomData()
 		let type = gC.demonType?gC.demonType:'';
     let filter = gC.canvasFilter?gC.canvasFilter:'';
