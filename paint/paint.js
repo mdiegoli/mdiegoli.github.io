@@ -169,10 +169,8 @@ function mouseDown(e){
     gC.paint = true;
     let coord = getMousePos(gC.canvas,e)
 		if(gC.brush) gC.brush.paint(coord.x,coord.y)
-	if(audioCtx.state === 'suspended') {
-	      audioCtx.resume().then(function() {
-		susresBtn.textContent = 'Suspend context';
-	      });  
+	if(gC.audioCtx.state === 'suspended') {
+	      gC.audioCtx.resume()
 	    }else{
 	
 	gC.oscillatorNode.start(0);
@@ -185,7 +183,7 @@ function mouseUp(e){
 	e.preventDefault();
 	gC.paint = false;
 	
-      audioCtx.suspend();
+      gC.audioCtx.suspend();
 }
 
 function getMousePos(canvas, evt) {
