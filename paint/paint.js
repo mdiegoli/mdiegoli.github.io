@@ -89,9 +89,9 @@ function addCanvas(){
 		a.addEventListener('mousedown',mouseDown)
 		a.addEventListener('mouseup',mouseUp)
 		a.addEventListener('mousemove',mouseMove)
-		a.addEventListener('touchstart',mouseDown)
-		a.addEventListener('touchend',mouseUp)
-		a.addEventListener('touchmove',mouseMove)
+		a.addEventListener('touchstart',touchDown)
+		a.addEventListener('touchend',touchUp)
+		a.addEventListener('touchmove',touchMove)
         document.addEventListener('keydown',selectDemon)
         Utils.setRandomData()
 		let type = gC.demonType?gC.demonType:'';
@@ -163,6 +163,36 @@ function mouseDown(e){
 	e.preventDefault();
     gC.paint = true;
     let coord = getMousePos(gC.canvas,e)
+		if(gC.brush) gC.brush.paint(coord.x,coord.y)
+	if(!gC.audioCtx){
+		Utils.createAudio().then(
+			(succ)=>{
+				gC.oscillatorNode.start(0);
+    				gC.gainNode.gain.value = 0.1;
+			}
+		)
+		
+	}else{
+		if(gC.audioCtx.state === 'suspended') {
+		      gC.audioCtx.resume()
+		    }
+	}
+	
+	
+}
+
+function touchMove(e){
+	e.preventDefault();
+	if(gC.paint){
+		let coord = getTouchPos(gC.canvas,e)
+		if(gC.brush) gC.brush.paint(coord.x,coord.y)
+	}
+}
+
+function touchDown(e){
+	e.preventDefault();
+    gC.paint = true;
+    let coord = getTouchPos(gC.canvas,e)
 		if(gC.brush) gC.brush.paint(coord.x,coord.y)
 	if(!gC.audioCtx){
 		Utils.createAudio().then(
