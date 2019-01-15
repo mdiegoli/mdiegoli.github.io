@@ -6,4 +6,8 @@ https://mdn.github.io/webaudio-examples/audiocontext-states/
 
 quest'app usata come banco di prova per il canvas
 
+ToDo:
+
+move api in utils
+
 
