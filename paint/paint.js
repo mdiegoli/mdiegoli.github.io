@@ -86,13 +86,13 @@ function addCanvas(){
             Utils.setAttribute(b2,'height',window.innerHeight)
             Utils.setAttribute(b2,'style','z-index: -1;position:absolute;pointer-events:none')
             
-		a.addEventListener('mousedown',mouseDown)
-		a.addEventListener('mouseup',mouseUp)
-		a.addEventListener('mousemove',mouseMove)
-		a.addEventListener('touchstart',touchDown)
-		a.addEventListener('touchend',touchUp)
-		a.addEventListener('touchmove',touchMove)
-        document.addEventListener('keydown',selectDemon)
+		a.addEventListener('mousedown',Utils.mouseDown)
+		a.addEventListener('mouseup',Utils.mouseUp)
+		a.addEventListener('mousemove',Utils.mouseMove)
+		a.addEventListener('touchstart',Utils.touchDown)
+		a.addEventListener('touchend',Utils.touchUp)
+		a.addEventListener('touchmove',Utils.touchMove)
+        document.addEventListener('keydown',Utils.selectDemon)
         Utils.setRandomData()
 		let type = gC.demonType?gC.demonType:'';
     let filter = gC.canvasFilter?gC.canvasFilter:'';
@@ -129,114 +129,4 @@ function l(){
 }
 
 
-function selectDemon(e){
-    let key = e.key;
-    if(Utils.isNumber(key)){
-        Utils.setFilter(key)
-    }else{
-        gC.brush = new enemy(key)
-        gC.demonType = key
-        gC.brush.preload().then(
-            (succ)=>{
-                console.log('preload done');
-            }
-        ).catch(
-            (err)=>{
-                console.log(err);
-            }
-        )
-    }
-    let type = gC.demonType?gC.demonType:'';
-    let filter = gC.canvasFilter?gC.canvasFilter:'';
-    Utils.writeOnSecondCanvas('demon type: '+type+', filter: '+filter,10,20)
-}
 
-function mouseMove(e){
-	e.preventDefault();
-	if(gC.paint){
-		let coord = getMousePos(gC.canvas,e)
-		if(gC.brush) gC.brush.paint(coord.x,coord.y)
-	}
-}
-
-function mouseDown(e){
-	e.preventDefault();
-    gC.paint = true;
-    let coord = getMousePos(gC.canvas,e)
-		if(gC.brush) gC.brush.paint(coord.x,coord.y)
-	if(!gC.audioCtx){
-		Utils.createAudio().then(
-			(succ)=>{
-				gC.oscillatorNode.start(0);
-    				gC.gainNode.gain.value = 0.1;
-			}
-		)
-		
-	}else{
-		if(gC.audioCtx.state === 'suspended') {
-		      gC.audioCtx.resume()
-		    }
-	}
-	
-	
-}
-
-function touchMove(e){
-	e.preventDefault();
-	if(gC.paint){
-		let coord = getTouchPos(gC.canvas,e)
-		if(gC.brush) gC.brush.paint(coord.x,coord.y)
-	}
-}
-
-function touchDown(e){
-	e.preventDefault();
-    gC.paint = true;
-    let coord = getTouchPos(gC.canvas,e)
-		if(gC.brush) gC.brush.paint(coord.x,coord.y)
-	if(!gC.audioCtx){
-		Utils.createAudio().then(
-			(succ)=>{
-				gC.oscillatorNode.start(0);
-    				gC.gainNode.gain.value = 0.1;
-			}
-		)
-		
-	}else{
-		if(gC.audioCtx.state === 'suspended') {
-		      gC.audioCtx.resume()
-		    }
-	}
-	
-	
-}
-
-function mouseUp(e){
-	e.preventDefault();
-	gC.paint = false;
-	
-      gC.audioCtx.suspend();
-}
-
-function touchUp(e){
-	e.preventDefault();
-	gC.paint = false;
-	
-      gC.audioCtx.suspend();
-}
-
-function getMousePos(canvas, evt) {
-	var rect = canvas.getBoundingClientRect();
-	return {
-		  x: evt.clientX - rect.left-(gC.spriteW/2),
-		  y: evt.clientY - rect.top-(gC.spriteH/2)
-	};
-}
-
-function getTouchPos(canvas, evt) {
-	var rect = canvas.getBoundingClientRect();
-	return {
-		  x: evt.touches[0].clientX - rect.left-(gC.spriteW/2),
-		  y: evt.touches[0].clientY - rect.top-(gC.spriteH/2)
-	};
-}
