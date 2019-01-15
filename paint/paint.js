@@ -218,6 +218,13 @@ function mouseUp(e){
       gC.audioCtx.suspend();
 }
 
+function touchUp(e){
+	e.preventDefault();
+	gC.paint = false;
+	
+      gC.audioCtx.suspend();
+}
+
 function getMousePos(canvas, evt) {
 	var rect = canvas.getBoundingClientRect();
 	return {
