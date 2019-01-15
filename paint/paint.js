@@ -96,9 +96,11 @@ function addCanvas(){
     Utils.writeOnSecondCanvas('demon type: '+type+', filter: '+filter,10,20)
 	const AudioContext = window.AudioContext || window.webkitAudioContext;
 	gC.audioCtx = new AudioContext();
-		var oscillatorNode = gC.audioCtx.createOscillator();
-var gainNode = gC.audioCtx.createGain();
+		gC.oscillatorNode = gC.audioCtx.createOscillator();
+gC.gainNode = gC.audioCtx.createGain();
 var finish = gC.audioCtx.destination;
+		gC.oscillatorNode.connect(gainNode);
+    gainNode.connect(gC.audioCtx.destination);
         }
         res();
     })
