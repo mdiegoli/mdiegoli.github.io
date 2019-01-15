@@ -299,7 +299,7 @@ setRandomData(){
 		
 	}
 	
-	function selectDemon(e){
+	 selectDemon(e){
     let key = e.key;
     if(this.isNumber(key)){
         this.setFilter(key)
@@ -321,7 +321,7 @@ setRandomData(){
     this.writeOnSecondCanvas('demon type: '+type+', filter: '+filter,10,20)
 }
 
-function mouseMove(e){
+ mouseMove(e){
 	e.preventDefault();
 	if(gC.paint){
 		let coord = this.getMousePos(gC.canvas,e)
@@ -329,7 +329,7 @@ function mouseMove(e){
 	}
 }
 
-function mouseDown(e){
+ mouseDown(e){
 	e.preventDefault();
     gC.paint = true;
     let coord = this.getMousePos(gC.canvas,e)
@@ -351,7 +351,7 @@ function mouseDown(e){
 	
 }
 
-function touchMove(e){
+ touchMove(e){
 	e.preventDefault();
 	if(gC.paint){
 		let coord = this.getTouchPos(gC.canvas,e)
@@ -359,7 +359,7 @@ function touchMove(e){
 	}
 }
 
-function touchDown(e){
+ touchDown(e){
 	e.preventDefault();
     gC.paint = true;
     let coord = this.getTouchPos(gC.canvas,e)
@@ -381,21 +381,21 @@ function touchDown(e){
 	
 }
 
-function mouseUp(e){
+ mouseUp(e){
 	e.preventDefault();
 	gC.paint = false;
 	
       gC.audioCtx.suspend();
 }
 
-function touchUp(e){
+ touchUp(e){
 	e.preventDefault();
 	gC.paint = false;
 	
       gC.audioCtx.suspend();
 }
 
-function getMousePos(canvas, evt) {
+ getMousePos(canvas, evt) {
 	var rect = canvas.getBoundingClientRect();
 	return {
 		  x: evt.clientX - rect.left-(gC.spriteW/2),
@@ -403,7 +403,7 @@ function getMousePos(canvas, evt) {
 	};
 }
 
-function getTouchPos(canvas, evt) {
+ getTouchPos(canvas, evt) {
 	var rect = canvas.getBoundingClientRect();
 	return {
 		  x: evt.touches[0].clientX - rect.left-(gC.spriteW/2),
