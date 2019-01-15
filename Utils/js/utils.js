@@ -283,6 +283,21 @@ setRandomData(){
             }
         )
 }
+	createAudio(){
+		return new Promise(function(res,rej){
+			const AudioContext = window.AudioContext || window.webkitAudioContext;
+			gC.audioCtx = new AudioContext();
+			gC.oscillatorNode = gC.audioCtx.createOscillator();
+			gC.gainNode = gC.audioCtx.createGain();
+			var finish = gC.audioCtx.destination;
+			gC.oscillatorNode.connect(gC.gainNode);
+			gC.gainNode.connect(gC.audioCtx.destination);
+			gC.oscillatorNode.type = 'square';
+			gC.oscillatorNode.frequency.value = 100;
+			res();
+		})
+		
+	}
 }
 
 var Utils = new utils();
