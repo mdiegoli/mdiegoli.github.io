@@ -298,6 +298,118 @@ setRandomData(){
 		})
 		
 	}
+	
+	function selectDemon(e){
+    let key = e.key;
+    if(this.isNumber(key)){
+        this.setFilter(key)
+    }else{
+        gC.brush = new enemy(key)
+        gC.demonType = key
+        gC.brush.preload().then(
+            (succ)=>{
+                console.log('preload done');
+            }
+        ).catch(
+            (err)=>{
+                console.log(err);
+            }
+        )
+    }
+    let type = gC.demonType?gC.demonType:'';
+    let filter = gC.canvasFilter?gC.canvasFilter:'';
+    this.writeOnSecondCanvas('demon type: '+type+', filter: '+filter,10,20)
+}
+
+function mouseMove(e){
+	e.preventDefault();
+	if(gC.paint){
+		let coord = this.getMousePos(gC.canvas,e)
+		if(gC.brush) gC.brush.paint(coord.x,coord.y)
+	}
+}
+
+function mouseDown(e){
+	e.preventDefault();
+    gC.paint = true;
+    let coord = this.getMousePos(gC.canvas,e)
+		if(gC.brush) gC.brush.paint(coord.x,coord.y)
+	if(!gC.audioCtx){
+		this.createAudio().then(
+			(succ)=>{
+				gC.oscillatorNode.start(0);
+    				gC.gainNode.gain.value = 0.1;
+			}
+		)
+		
+	}else{
+		if(gC.audioCtx.state === 'suspended') {
+		      gC.audioCtx.resume()
+		    }
+	}
+	
+	
+}
+
+function touchMove(e){
+	e.preventDefault();
+	if(gC.paint){
+		let coord = this.getTouchPos(gC.canvas,e)
+		if(gC.brush) gC.brush.paint(coord.x,coord.y)
+	}
+}
+
+function touchDown(e){
+	e.preventDefault();
+    gC.paint = true;
+    let coord = this.getTouchPos(gC.canvas,e)
+		if(gC.brush) gC.brush.paint(coord.x,coord.y)
+	if(!gC.audioCtx){
+		this.createAudio().then(
+			(succ)=>{
+				gC.oscillatorNode.start(0);
+    				gC.gainNode.gain.value = 0.1;
+			}
+		)
+		
+	}else{
+		if(gC.audioCtx.state === 'suspended') {
+		      gC.audioCtx.resume()
+		    }
+	}
+	
+	
+}
+
+function mouseUp(e){
+	e.preventDefault();
+	gC.paint = false;
+	
+      gC.audioCtx.suspend();
+}
+
+function touchUp(e){
+	e.preventDefault();
+	gC.paint = false;
+	
+      gC.audioCtx.suspend();
+}
+
+function getMousePos(canvas, evt) {
+	var rect = canvas.getBoundingClientRect();
+	return {
+		  x: evt.clientX - rect.left-(gC.spriteW/2),
+		  y: evt.clientY - rect.top-(gC.spriteH/2)
+	};
+}
+
+function getTouchPos(canvas, evt) {
+	var rect = canvas.getBoundingClientRect();
+	return {
+		  x: evt.touches[0].clientX - rect.left-(gC.spriteW/2),
+		  y: evt.touches[0].clientY - rect.top-(gC.spriteH/2)
+	};
+}
 }
 
 var Utils = new utils();
