@@ -94,15 +94,7 @@ function addCanvas(){
 		let type = gC.demonType?gC.demonType:'';
     let filter = gC.canvasFilter?gC.canvasFilter:'';
     Utils.writeOnSecondCanvas('demon type: '+type+', filter: '+filter,10,20)
-	const AudioContext = window.AudioContext || window.webkitAudioContext;
-	gC.audioCtx = new AudioContext();
-		gC.oscillatorNode = gC.audioCtx.createOscillator();
-gC.gainNode = gC.audioCtx.createGain();
-var finish = gC.audioCtx.destination;
-		gC.oscillatorNode.connect(gC.gainNode);
-    gC.gainNode.connect(gC.audioCtx.destination);
-		gC.oscillatorNode.type = 'square';
-    gC.oscillatorNode.frequency.value = 100;
+	
         }
         res();
     })
@@ -169,14 +161,23 @@ function mouseDown(e){
     gC.paint = true;
     let coord = getMousePos(gC.canvas,e)
 		if(gC.brush) gC.brush.paint(coord.x,coord.y)
+	if(!gC.audioCtx){
+		const AudioContext = window.AudioContext || window.webkitAudioContext;
+		gC.audioCtx = new AudioContext();
+		gC.oscillatorNode = gC.audioCtx.createOscillator();
+		gC.gainNode = gC.audioCtx.createGain();
+		var finish = gC.audioCtx.destination;
+		gC.oscillatorNode.connect(gC.gainNode);
+		gC.gainNode.connect(gC.audioCtx.destination);
+		gC.oscillatorNode.type = 'square';
+		gC.oscillatorNode.frequency.value = 100;
+		gC.oscillatorNode.start(0);
+    		gC.gainNode.gain.value = 0.1;
+	}
+	
 	if(gC.audioCtx.state === 'suspended') {
 	      gC.audioCtx.resume()
-	    }else{
-	
-	gC.oscillatorNode.start(0);
-    gC.gainNode.gain.value = 0.1;
 	    }
-
 }
 
 function mouseUp(e){
