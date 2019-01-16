@@ -18,10 +18,12 @@ function addCanvas(){
 	    gC.canvas = b;
             Utils.setAttribute(b,'width',window.innerWidth)
             Utils.setAttribute(b,'height',window.innerHeight)
-		b.addEventListener('mousedown',mouseDown)
-		b.addEventListener('mouseup',mouseUp)
-		b.addEventListener('mousemove',mouseMove)
-		//document.addEventListener('keydown',selectDemon)
+		a.addEventListener('mousedown',mouseDown)
+		a.addEventListener('mouseup',mouseUp)
+		a.addEventListener('mousemove',mouseMove)
+		a.addEventListener('touchstart',touchDown)
+		a.addEventListener('touchend',touchUp)
+		a.addEventListener('touchmove',touchMove)
         }
         res();
     })
@@ -46,13 +48,13 @@ function l(){
 function mouseMove(e){
 	e.preventDefault();
 	if(gC.paint){
-		let coord = getMousePos(gC.canvas,e)
+		let coord = Utils.getMousePos(gC.canvas,e)
 		Utils.sketch(gC.oldCoordX,gC.oldCoordY,coord.x,coord.y)
 	}
 }
 
 function mouseDown(e){
-    let coord = getMousePos(gC.canvas,e)
+    let coord = Utils.getMousePos(gC.canvas,e)
     gC.oldCoordX = coord.x
     gC.oldCoordY = coord.y
 	e.preventDefault();
@@ -62,14 +64,29 @@ function mouseDown(e){
 function mouseUp(e){
 	e.preventDefault();
     gC.paint = false;
-    let coord = getMousePos(gC.canvas,e)
+    let coord = Utils.getMousePos(gC.canvas,e)
 	Utils.endsketch(coord.x,coord.y)
 }
 
-function getMousePos(canvas, evt) {
-	var rect = canvas.getBoundingClientRect();
-	return {
-		  x: evt.clientX - rect.left,
-		  y: evt.clientY - rect.top
-	};
+function touchMove(e){
+	e.preventDefault();
+	if(gC.paint){
+		let coord = Utils.getTouchPos(gC.canvas,e)
+		Utils.sketch(gC.oldCoordX,gC.oldCoordY,coord.x,coord.y)
+	}
+}
+
+function touchDown(e){
+    let coord = Utils.getTouchPos(gC.canvas,e)
+    gC.oldCoordX = coord.x
+    gC.oldCoordY = coord.y
+	e.preventDefault();
+	gC.paint = true;
+}
+
+function touchUp(e){
+	e.preventDefault();
+    gC.paint = false;
+    let coord = Utils.getTouchPos(gC.canvas,e)
+	Utils.endsketch(coord.x,coord.y)
 }
