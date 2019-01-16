@@ -69,7 +69,6 @@ function mouseUp(e){
 }
 
 function touchMove(e){
-	e.preventDefault();
 	if(gC.paint){
 		let coord = Utils.getTouchPos(gC.canvas,e)
 		Utils.sketch(gC.oldCoordX,gC.oldCoordY,coord.x,coord.y)
@@ -80,12 +79,10 @@ function touchDown(e){
     let coord = Utils.getTouchPos(gC.canvas,e)
     gC.oldCoordX = coord.x
     gC.oldCoordY = coord.y
-	e.preventDefault();
 	gC.paint = true;
 }
 
 function touchUp(e){
-	e.preventDefault();
     gC.paint = false;
 	Utils.endsketch(gC.oldCoordX,gC.oldCoordY)
 }
