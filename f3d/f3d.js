@@ -2,7 +2,7 @@
 //import { Utils } from "./utils.js";
 //import { enemy } from "./enemy.js";
 
-var gC = {};
+//var gC = {};
 
 function addCanvas(){
     var me = this;
@@ -18,6 +18,7 @@ function addCanvas(){
 	    gC.canvas = b;
             Utils.setAttribute(b,'width',window.innerWidth)
             Utils.setAttribute(b,'height',window.innerHeight)
+            Utils.setAttribute(b,'style','touch-action:none')
 		a.addEventListener('mousedown',mouseDown)
 		a.addEventListener('mouseup',mouseUp)
 		a.addEventListener('mousemove',mouseMove)
@@ -48,41 +49,44 @@ function l(){
 function mouseMove(e){
 	e.preventDefault();
 	if(gC.paint){
-		let coord = Utils.getMousePos(gC.canvas,e)
+		let coord = Utils.getRealMousePos(gC.canvas,e)
 		Utils.sketch(gC.oldCoordX,gC.oldCoordY,coord.x,coord.y)
 	}
 }
 
 function mouseDown(e){
-    let coord = Utils.getMousePos(gC.canvas,e)
+    e.preventDefault()
+    let coord = Utils.getRealMousePos(gC.canvas,e)
     gC.oldCoordX = coord.x
     gC.oldCoordY = coord.y
-	e.preventDefault();
 	gC.paint = true;
 }
 
 function mouseUp(e){
 	e.preventDefault();
     gC.paint = false;
-    let coord = Utils.getMousePos(gC.canvas,e)
+    let coord = Utils.getRealMousePos(gC.canvas,e)
 	Utils.endsketch(coord.x,coord.y)
 }
 
 function touchMove(e){
+    e.preventDefault()
 	if(gC.paint){
-		let coord = Utils.getTouchPos(gC.canvas,e)
+		let coord = Utils.getRealTouchPos(gC.canvas,e)
 		Utils.sketch(gC.oldCoordX,gC.oldCoordY,coord.x,coord.y)
 	}
 }
 
 function touchDown(e){
-    let coord = Utils.getTouchPos(gC.canvas,e)
+    e.preventDefault()
+    let coord = Utils.getRealTouchPos(gC.canvas,e)
     gC.oldCoordX = coord.x
     gC.oldCoordY = coord.y
 	gC.paint = true;
 }
 
 function touchUp(e){
+    e.preventDefault()
     gC.paint = false;
 	Utils.endsketch(gC.oldCoordX,gC.oldCoordY)
 }

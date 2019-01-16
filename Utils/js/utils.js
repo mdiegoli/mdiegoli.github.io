@@ -403,11 +403,19 @@ setRandomData(){
 	};
 }
 
- getTouchPos(canvas, evt) {
+getRealMousePos(canvas, evt) {
 	var rect = canvas.getBoundingClientRect();
 	return {
-		  x: evt.touches[0].clientX - rect.left-(gC.spriteW/2),
-		  y: evt.touches[0].clientY - rect.top-(gC.spriteH/2)
+		  x: evt.clientX - rect.left,
+		  y: evt.clientY - rect.top
+	};
+}
+
+ getRealTouchPos(canvas, evt) {
+	var rect = canvas.getBoundingClientRect();
+	return {
+		  x: evt.touches[0].clientX - rect.left,
+		  y: evt.touches[0].clientY - rect.top
 	};
 }
 }
