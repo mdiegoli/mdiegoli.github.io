@@ -87,6 +87,5 @@ function touchDown(e){
 function touchUp(e){
 	e.preventDefault();
     gC.paint = false;
-    let coord = Utils.getTouchPos(gC.canvas,e)
-	Utils.endsketch(coord.x,coord.y)
+	Utils.endsketch(gC.oldCoordX,gC.oldCoordY)
 }
