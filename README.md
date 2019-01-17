@@ -41,7 +41,7 @@ f3d
 
 https://mdiegoli.github.io/f3d.html
 
-sketch MAT SAT (bkp of f3d)
+sketch MAT SAT (v. 0.1 of f3d)
 
 https://mdiegoli.github.io/sketch.html
 
