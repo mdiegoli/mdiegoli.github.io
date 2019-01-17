@@ -1,5 +1,7 @@
 __todo__:
 
+number of assets for every assets's kind
+
 echo
 
 score
