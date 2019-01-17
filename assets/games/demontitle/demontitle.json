@@ -1,0 +1,24 @@
+{
+  "data": "demontitle",
+  "width": 996,
+  "height": 630,
+  "original_width": 498,
+  "font_size": "20px",
+  "layers": {
+    "BO": "100",
+    "LB": "100",
+    "HE": "100",
+    "LW": "100",
+    "RW": "100"
+  },
+  "names": {
+    "BO":   ["zero","ring","ring","order","order","rank","rank","rank","class","class","circle","circle","corp","corp","shield","force","force","veterans","veterans","officers","officers","legion","legion","mol","mov","mok","mog","mogg","me","mu","mi","mih","miv","nol","nov","pa","pav","nog","og","qo","pav", "ba","bal","bav","ol","bam","ci","bat","cih","da","ske","ste","cil","om","de","civ","do","dov","dok","mah","mal","mo","moh","mol","mov","mok","mog","mogg","me","mu","mi","mih","miv","nol","nov","pa","pav","nog","og","qo","pav"],
+    "HE":   ["zero","silver giant","silver star","steel twinstar","steel tristar","steel quadstar","gold giant","gold twinstar","gold tristar","gold quadstar","titanium star","titanium twinstar","titanium tristar","titanium quadstar","titanium giant","silver planet","gold planet","silver lightning","gold lightning","private","sergeant","master sergeant","sergeant 1st class","silver vector","gold vector","silver thorns","golden thorns","silver skull","gold skull","gold cup","silver eagle","gold eagle","silver horns","golden horns","silver crosshorn","gold crosshorn","dugh","hec","dur","hek","doc","doq","dugr","ih","il","lu","ka","kah","keh","kev","mih","mil","moh","mor","nak","nat", "ah","ahl","ahn","ahv","an","anl","anv","as","az","ba","be","de","du","bal","ang","bav","dul","ban","bav","ank","ant","eh","akh","el","elh","fel","fen","pah","pal","dun","bra","brah","dum","dug","duc","duq","dugh","hec","dur","hek","doc","doq","dugr","ih","il","lu","ka","kah","keh","kev","mih","mil","moh","mor","nak","nat"],
+    "LB":   ["zero","first","higher","standard","opposing","secure","open","high","purple","valiant","crossed","complex","isk","eg","gor","las","nal","el","eh","lac","lah","ehl","ehk","leth","lekh","lev","leh","roh","sh","l","lak","ehr","meh","mel","moh","mok","ron","ah","an","as","ash","tl","ask","ba","bub","buv","gra","del","isk","eg","gor","las","nal","el","eh","lac","lah","ehl","ehk","leth","lekh","lev","leh","roh","sh","l","lak","ehr","meh","mel","moh","mok","ron"]
+  },
+  "name_struct": {
+    "LB": " ",
+    "BO": " of the ",
+    "HE": ""
+  }
+}
