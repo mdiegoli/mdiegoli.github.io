@@ -2,13 +2,13 @@ __todo__:
 
 number of assets for every assets's kind
 
+splash/end
+
 echo
 
 score
 
 sound
-
-splash/end
 
 replace promise with async/await (https://mdiegoli.github.io/async_await.html)
 
@@ -19,6 +19,8 @@ Quando si uccidono tutti i nemici si passa al livello successivo.
 I nemici sparano
 
 Vite
+
+badge
 
 
 Canvas optimization
