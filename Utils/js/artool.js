@@ -1,5 +1,5 @@
 class artool{
-  contructor(){
+  constructor(){
 
     var canvas = Utils.getEBTN('canvas')
 	if(typeof canvas === 'object' && canvas.length <= 0){
