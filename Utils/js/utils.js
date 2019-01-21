@@ -1,3 +1,5 @@
+'use strict';
+
 class utils{
     constructor(){
 	    this.images = {};
