@@ -42,8 +42,14 @@ function startGame(){
 	}
 }
 
-function addDemoAssets(c){
+function addDemoAssets(c,n){
     return new Promise(function(res,rej){
+	    let totFreeSpaceFromEnemies, freeSpaceBetweenEnemies;
+	    if(n){
+	    	let totFreeSpaceFromEnemies = gC.width - gC.spriteW * n;
+		    let freeSpaceBetweenEnemies = totFreeSpaceFromEnemies / (n + 1);
+		    
+	    }
         var e = new enemy(c);
         e.preload().then(
             (succ) => {
