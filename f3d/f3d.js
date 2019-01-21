@@ -91,7 +91,7 @@ function touchUp(e){
 	Utils.endsketch(gC.oldCoordX,gC.oldCoordY)
 }
 */
-let f3d = new artool();
+var f3d = new artool();
 
 f3d.custom_mouseMove = function(coord){
 	Utils.sketch(gC.oldCoordX,gC.oldCoordY,coord.x,coord.y)
