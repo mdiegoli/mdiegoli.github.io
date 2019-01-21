@@ -44,6 +44,7 @@ function startGame(){
 
 function addDemoAssets(c,n){
     return new Promise(function(res,rej){
+	    //ToDo:finish line of enemies
 	    let totFreeSpaceFromEnemies, freeSpaceBetweenEnemies;
 	    if(n){
 	    	let totFreeSpaceFromEnemies = gC.width - gC.spriteW * n;
