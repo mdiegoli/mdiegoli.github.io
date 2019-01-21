@@ -1,5 +1,7 @@
 https://developers.google.com/blockly/guides/create-custom-blocks/overview
 
+playcanvas plugin
+
 https://github.com/FlorisSteenkamp/MAT
 
 https://developer-docs.wacom.com/display/DevDocs/ScribbleDemo
