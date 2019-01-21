@@ -13,12 +13,12 @@ class artool{
 	    Utils.setAttribute(b,'width',window.innerWidth)
 	    Utils.setAttribute(b,'height',window.innerHeight)
 	    Utils.setAttribute(b,'style','touch-action:none')
-		a.addEventListener('mousedown',this.mouseDown)
-		a.addEventListener('mouseup',this.mouseUp)
-		a.addEventListener('mousemove',this.mouseMove)
-		a.addEventListener('touchstart',this.touchDown)
-		a.addEventListener('touchend',this.touchUp)
-		a.addEventListener('touchmove',this.touchMove)
+		a.addEventListener('mousedown',this.mouseDown.bind(this))
+		a.addEventListener('mouseup',this.mouseUp.bind(this))
+		a.addEventListener('mousemove',this.mouseMove.bind(this))
+		a.addEventListener('touchstart',this.touchDown.bind(this))
+		a.addEventListener('touchend',this.touchUp.bind(this))
+		a.addEventListener('touchmove',this.touchMove.bind(this))
 	}
 }
 
