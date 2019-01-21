@@ -25,21 +25,7 @@ var artool = class {
         res();
     })
 }
-//every frame value, draw scene
-l(){
-    var demoClock = 0;
-    addCanvas().then(
-        (succ)=>{
-            console.log('start!');
-        }
-        ).catch(
-        (err) => {
-            console.log(err);
-        }
-        )			
 
-    
-}
 
 
 mouseMove(e){
@@ -56,7 +42,7 @@ mouseDown(e){
     gC.oldCoordX = coord.x
     gC.oldCoordY = coord.y
 	gC.paint = true;
-	this.custom_mouseDown();
+	this.custom_mouseDown(coord);
 }
 
 mouseUp(e){
@@ -80,13 +66,14 @@ touchDown(e){
     gC.oldCoordX = coord.x
     gC.oldCoordY = coord.y
 	gC.paint = true;
-	this.custom_touchDown();
+	this.custom_touchDown(coord);
 }
 
 touchUp(e){
     e.preventDefault()
+	let coord = Utils.getRealTouchPos(gC.canvas,e)
     gC.paint = false;
-	this.custom_touchUp();
+	this.custom_touchUp(coord);
 }
 	  
 custom_mouseMove(e){
