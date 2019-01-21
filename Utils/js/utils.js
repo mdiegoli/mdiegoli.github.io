@@ -45,7 +45,10 @@ class utils{
         this.co = new OffscreenCanvas(996,498);
         this.ctxo = this.co.getContext("2d");
     }
-	
+	setSketchBlur(){
+		this.ctx.shadowBlur = 10;
+  		this.ctx.shadowColor = 'rgb(0, 0, 0)';
+	}
 	c2c(){
 		this.ctx.drawImage(this.co,0,0)
 		this.ctxo.fillStyle = '#FFF';
