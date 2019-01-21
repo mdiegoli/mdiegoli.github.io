@@ -1,6 +1,6 @@
 class enemy extends entity{
-    constructor(level){
-        super(level)
+    constructor(level,xpos){
+		super(level,xpos)
     }
 	animation(){
 		return new Promise((res,rej)=>{

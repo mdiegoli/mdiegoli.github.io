@@ -24,8 +24,8 @@ function startGame(){
 				    console.log(err);
 				    }
 				)
-			else
-			    console.log('asset senza animazione')
+			//else
+			//    console.log('asset senza animazione')
 		    }
 		)
 		.catch(
@@ -45,19 +45,36 @@ function startGame(){
 function addDemoAssets(c,n){
     return new Promise(function(res,rej){
 	    //ToDo:finish line of enemies
-	    let totFreeSpaceFromEnemies, freeSpaceBetweenEnemies;
+	    var totFreeSpaceFromEnemies, freeSpaceBetweenEnemies;
 	    if(n){
-	    	let totFreeSpaceFromEnemies = gC.width - gC.spriteW * n;
-		    let freeSpaceBetweenEnemies = totFreeSpaceFromEnemies / (n + 1);
-		    
-	    }
-        var e = new enemy(c);
-        e.preload().then(
-            (succ) => {
-                assets.push(e);
-                res();
+            let spritesTotWidth = gC.spriteW * n;
+            if(spritesTotWidth<gC.width){
+                totFreeSpaceFromEnemies = gC.width - spritesTotWidth;
+                freeSpaceBetweenEnemies = Math.round(totFreeSpaceFromEnemies / (n + 1));
+                let spriteXPos = 0;
+                function addAllDemons(spr){
+                    var e = new enemy(c,spriteXPos);
+                    spriteXPos += freeSpaceBetweenEnemies + gC.spriteW + freeSpaceBetweenEnemies;
+                    e.preload().then(
+                        (succ) => {
+                            assets.push(e);
+                            if(spr<n-1) return addAllDemons(spr+1)
+                            else return res()
+                        }
+                    )
+                }
+                return addAllDemons(0)
             }
-        )
+	    }else{
+            var e = new enemy(c);
+            e.preload().then(
+                (succ) => {
+                    assets.push(e);
+                    res();
+                }
+            )
+        }
+        
     })
     
         
@@ -272,9 +289,11 @@ function l(){
                                 (succ) => {
                                     addHero('h_a').then(
                                         (succ) => {
-                                            addDemoAssets('e_a').then(
+                                            addDemoAssets('e_a',4).then(
+                                                
                                                 (succ) => {
-                
+                                                    requestAnimationFrame(gAF);
+                                                    /*
                                                     addDemoAssets('e_b').then(
                                                         (succ) => {
                         
@@ -295,7 +314,7 @@ function l(){
                                                                 }
                                                             )
                                                         }
-                                                    )
+                                                    )*/
                                                 }
                                             )
                                             
