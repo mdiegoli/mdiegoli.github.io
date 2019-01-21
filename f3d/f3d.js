@@ -120,4 +120,6 @@ custom_touchUp(coord){
 }
 }
 
-const app = new f3d();
+function l(){
+	const app = new f3d();
+}
