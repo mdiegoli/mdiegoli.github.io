@@ -1,4 +1,4 @@
-var artool = class {
+class artool{
   contructor(){
 
     var me = this;
