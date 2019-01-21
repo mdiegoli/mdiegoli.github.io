@@ -9,6 +9,7 @@ class artool{
 	    //memorizzo canvas e contesto
 	    Utils.setCanvas(b)
 	    Utils.appendB2A(a,b)
+		Utils.setSketchBlur();
 	    gC.canvas = b;
 	    Utils.setAttribute(b,'width',window.innerWidth)
 	    Utils.setAttribute(b,'height',window.innerHeight)
