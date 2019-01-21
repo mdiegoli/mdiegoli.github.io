@@ -91,26 +91,31 @@ function touchUp(e){
 	Utils.endsketch(gC.oldCoordX,gC.oldCoordY)
 }
 */
-var f3d = new artool();
+var f3d = class extends artool{
+	constructor(){
+		super();
+	}
 
-f3d.custom_mouseMove = function(coord){
+
+custom_mouseMove(coord){
 	Utils.sketch(gC.oldCoordX,gC.oldCoordY,coord.x,coord.y)
 }
 
-f3d.custom_mouseDown = function(coord){
+custom_mouseDown(coord){
 }
 
-f3d.custom_mouseUp = function(coord){
+custom_mouseUp(coord){
 	Utils.endsketch(coord.x,coord.y)
 }
 
-f3d.custom_touchMove = function(coord){
+custom_touchMove(coord){
 	Utils.sketch(gC.oldCoordX,gC.oldCoordY,coord.x,coord.y)
 }
 
-f3d.custom_touchDown = function(coord){
+custom_touchDown(coord){
 }
 
-f3d.custom_touchUp = function(coord){
+custom_touchUp(coord){
 	Utils.endsketch(gC.oldCoordX,gC.oldCoordY)
+}
 }
