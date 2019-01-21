@@ -119,3 +119,5 @@ custom_touchUp(coord){
 	Utils.endsketch(gC.oldCoordX,gC.oldCoordY)
 }
 }
+
+const app = new f3d();
