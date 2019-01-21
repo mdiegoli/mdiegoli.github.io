@@ -1,8 +1,7 @@
 class artool{
   contructor(){
 
-    var me = this;
-	var canvas = Utils.getEBTN('canvas')
+    var canvas = Utils.getEBTN('canvas')
 	if(typeof canvas === 'object' && canvas.length <= 0){
 	    //non c'è canvas
 	    var a = Utils.getEBTN('body')[0]
