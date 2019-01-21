@@ -3,7 +3,7 @@
 //import { enemy } from "./enemy.js";
 
 //var gC = {};
-
+/*
 function addCanvas(){
     var me = this;
     return new Promise(function(res,rej){
@@ -88,5 +88,29 @@ function touchDown(e){
 function touchUp(e){
     e.preventDefault()
     gC.paint = false;
+	Utils.endsketch(gC.oldCoordX,gC.oldCoordY)
+}
+*/
+let f3d = new artool();
+
+f3d.custom_mouseMove = function(coord){
+	Utils.sketch(gC.oldCoordX,gC.oldCoordY,coord.x,coord.y)
+}
+
+f3d.custom_mouseDown = function(coord){
+}
+
+f3d.custom_mouseUp = function(coord){
+	Utils.endsketch(coord.x,coord.y)
+}
+
+f3d.custom_touchMove = function(coord){
+	Utils.sketch(gC.oldCoordX,gC.oldCoordY,coord.x,coord.y)
+}
+
+f3d.custom_touchDown = function(coord){
+}
+
+f3d.custom_touchUp = function(coord){
 	Utils.endsketch(gC.oldCoordX,gC.oldCoordY)
 }
