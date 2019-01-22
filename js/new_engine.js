@@ -54,7 +54,7 @@ function addDemoAssets(c,n){
                 let spriteXPos = 0;
                 function addAllDemons(spr){
                     var e = new enemy(c,spriteXPos);
-                    spriteXPos += freeSpaceBetweenEnemies + gC.spriteW + freeSpaceBetweenEnemies;
+                    spriteXPos += freeSpaceBetweenEnemies + gC.spriteW;
                     e.preload().then(
                         (succ) => {
                             assets.push(e);
