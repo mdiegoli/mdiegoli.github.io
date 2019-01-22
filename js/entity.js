@@ -1,12 +1,57 @@
 class entity{
-    constructor(level,xpos){
+    constructor(level,xpos,offset){
 		this.level = level;
+		this.offset = offset;
 		this.randomX = xpos;
 		if(!this.__proto__.bulletId)this.__proto__.bulletId = 0;
 		if(!this.__proto__.images)this.__proto__.images = {};
         if(!this.__proto__.images[level])this.__proto__.images[level] = {};
     }
-	
+	rightBorder2LeftBorder(){
+		return new Promise((res,rej)=>{
+			if(!this.dir)this.dir='r'
+			
+			if(this.randomX<gC.spritePosX && this.dir === 'r'){
+				this.randomX++;
+				this.BBoxX++;
+			}else{
+				if(this.randomX === gC.spritePosX) this.dir = 'l';
+				if(this.randomX>0 && this.dir === 'l'){
+					this.randomX--;
+					this.BBoxX--;
+				}else{
+					this.dir = 'r';
+
+				}	
+			}
+			res();
+		})
+		
+	}
+	animationOffset(){
+		return new Promise((res,rej)=>{
+			if(!this.dir)this.dir='r'
+			if(!this.animOffsetX)this.animOffsetX=0;
+			
+			if(this.animOffsetX<this.offset && this.dir === 'r'){
+				this.animOffsetX++;
+				this.randomX++;
+				this.BBoxX++;
+			}else{
+				if(this.animOffsetX === this.offset) this.dir = 'l';
+				if(this.animOffsetX>0 && this.dir === 'l'){
+					this.animOffsetX--;
+					this.randomX--;
+					this.BBoxX--;
+				}else{
+					this.dir = 'r';
+
+				}	
+			}
+			res();
+		})
+		
+	}
     start(){
         var me = this;
         return new Promise((res,rej)=>{
@@ -78,7 +123,8 @@ paint(x,y){
 	return new Promise((res,rej)=>{
 		if(me.dead === undefined){
 			me.dead = false;
-			me.randomX = Utils.random(1,gC.spritePosX);
+			if(!me.randomX)
+				me.randomX = Utils.random(1,gC.spritePosX);
 			me.BBoxX = me.randomX;
 			me.randomY = 0;//Utils.random(1,gC.spritePosY);
 			me.BBoxY = me.randomY;

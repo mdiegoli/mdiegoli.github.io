@@ -1,26 +1,12 @@
 class enemy extends entity{
-    constructor(level,xpos){
-		super(level,xpos)
+    constructor(level,xpos,offset){
+		super(level,xpos,offset)
     }
 	animation(){
-		return new Promise((res,rej)=>{
-			if(!this.dir)this.dir='r'
-			
-			if(this.randomX<gC.spritePosX && this.dir === 'r'){
-				this.randomX++;
-				this.BBoxX++;
-			}else{
-				if(this.randomX === gC.spritePosX) this.dir = 'l';
-				if(this.randomX>0 && this.dir === 'l'){
-					this.randomX--;
-					this.BBoxX--;
-				}else{
-					this.dir = 'r';
-
-				}	
-			}
-			res();
-		})
+		if(this.offset)
+			return this.animationOffset();
+		else
+			return this.rightBorder2LeftBorder();
 		
 	}
     

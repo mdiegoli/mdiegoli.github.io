@@ -53,7 +53,7 @@ function addDemoAssets(c,n){
                 freeSpaceBetweenEnemies = Math.round(totFreeSpaceFromEnemies / (n + 1));
                 let spriteXPos = 0;
                 function addAllDemons(spr){
-                    var e = new enemy(c,spriteXPos);
+                    var e = new enemy(c,freeSpaceBetweenEnemies+spriteXPos,freeSpaceBetweenEnemies);
                     spriteXPos += freeSpaceBetweenEnemies + gC.spriteW;
                     e.preload().then(
                         (succ) => {
@@ -289,7 +289,7 @@ function l(){
                                 (succ) => {
                                     addHero('h_a').then(
                                         (succ) => {
-                                            addDemoAssets('e_a',4).then(
+                                            addDemoAssets('e_a',5).then(
                                                 
                                                 (succ) => {
                                                     requestAnimationFrame(gAF);
