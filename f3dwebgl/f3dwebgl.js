@@ -629,6 +629,5 @@ var f3dwebgl = class{
 
 }
 
-var f = new f3d();
-f.init();
+var f = new f3dwebgl();
 f.render();
