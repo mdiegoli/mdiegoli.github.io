@@ -5,48 +5,54 @@ var f3dwebgl = class{
 	constructor(){
 		this.lastSphereCenterX;
 		this.lastSphereCenterY;
-		this.oldX,oldY;
+		this.oldX;
+		this.oldY;
 		this.lastSphere;
 		this.container;
-		this.camera, scene, renderer, rollOverGeo;
-		this.rollOverMesh, rollOverMaterial;
-		this.mouse, raycaster, isShiftDown = false;
-		this.objects = [];
-		this.plane, cube;
+		this.camera;
+		this.scene;
+		this.renderer;
+		this.rollOverGeo;
+		this.rollOverMesh;
+		this.rollOverMaterial;
+		this.mouse;
+		this.raycaster;
+		this.isShiftDown = false;
+		this.plane;
 		this.number_of_f3d_spheres = 1;
-		this.INTERSECTED;
 		this.draw_mode = false;
 		this.indexPickedObject;
 		this.f3d_scene = [];
 		this.scene[0] = [];
 		this.group;
-		this.info, info2;
+		this.info;
+		this.info2;
 	
-		container = document.createElement( 'div' );
+		this.container = document.createElement( 'div' );
 		document.body.appendChild( container );
-		info = document.createElement( 'div' );
-		info.style.position = 'absolute';
-		info.style.top = '10px';
-		info.style.width = '100%';
-		info.style.textAlign = 'center';
-		info.innerHTML = '<a href="http://threejs.org" target="_blank">three.js</a>';
-		container.appendChild( info );
-		info2 = document.createElement( 'div' );
-		info2.style.position = 'absolute';
-		info2.style.top = '30px';
-		info2.style.width = '100%';
-		info2.style.textAlign = 'center';
-		info2.innerHTML = 'selezione';
-		container.appendChild( info2 );
+		this.info = document.createElement( 'div' );
+		this.info.style.position = 'absolute';
+		this.info.style.top = '10px';
+		this.info.style.width = '100%';
+		this.info.style.textAlign = 'center';
+		this.info.innerHTML = '<a href="http://threejs.org" target="_blank">three.js</a>';
+		this.container.appendChild( this.info );
+		this.info2 = document.createElement( 'div' );
+		this.info2.style.position = 'absolute';
+		this.info2.style.top = '30px';
+		this.info2.style.width = '100%';
+		this.info2.style.textAlign = 'center';
+		this.info2.innerHTML = 'selezione';
+		this.container.appendChild( this.info2 );
 		
-		camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 10000 );
-		camera.position.set(0, 1000, 0 );
-		camera.lookAt( new THREE.Vector3() );
-		scene = new THREE.Scene();
+		this.camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 10000 );
+		this.camera.position.set(0, 1000, 0 );
+		this.camera.lookAt( new THREE.Vector3() );
+		this.scene = new THREE.Scene();
 		// roll-over helpers
-		rollOverGeo = new THREE.BoxGeometry( 50, 50, 50 );
-		rollOverMaterial = new THREE.MeshBasicMaterial( { color: 0xff0000, opacity: 0.5, transparent: true } );
-		rollOverMesh = new THREE.Mesh( rollOverGeo, rollOverMaterial );
+		this.rollOverGeo = new THREE.BoxGeometry( 50, 50, 50 );
+		this.rollOverMaterial = new THREE.MeshBasicMaterial( { color: 0xff0000, opacity: 0.5, transparent: true } );
+		this.rollOverMesh = new THREE.Mesh( this.rollOverGeo, this.rollOverMaterial );
 		//scene.add( rollOverMesh );
 		// grid
 		
@@ -62,29 +68,29 @@ var f3dwebgl = class{
 		}
 		var material = new THREE.LineBasicMaterial( { color: 0x000000, opacity: 0.2, transparent: true } );
 		var line = new THREE.LineSegments( geometry, material );
-		scene.add( line );
+		this.scene.add( line );
 		
 		//
-		raycaster = new THREE.Raycaster();
-		mouse = new THREE.Vector2();
+		this.raycaster = new THREE.Raycaster();
+		this.mouse = new THREE.Vector2();
 		var geometry = new THREE.PlaneBufferGeometry( 2000, 2000 );
 		geometry.rotateX( - Math.PI / 2 );
-		plane = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial( { visible: false } ) );
-		scene.add( plane );
-		//objects.push( plane );
+		this.plane = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial( { visible: false } ) );
+		this.scene.add( this.plane );
+		
 		// Lights
 		var ambientLight = new THREE.AmbientLight( 0x606060 );
-		scene.add( ambientLight );
+		this.scene.add( ambientLight );
 		var directionalLight = new THREE.DirectionalLight( 0xffffff );
 		directionalLight.position.set( 1, 0.75, 0.5 ).normalize();
-		scene.add( directionalLight );
-		renderer = new THREE.WebGLRenderer( { antialias: true } );
-		renderer.setClearColor( 0xf0f0f0 );
-		renderer.setPixelRatio( window.devicePixelRatio );
-		renderer.setSize( window.innerWidth, window.innerHeight );
-		container.appendChild( renderer.domElement );
-		group = new THREE.Group();
-		scene.add(group);
+		this.scene.add( directionalLight );
+		this.renderer = new THREE.WebGLRenderer( { antialias: true } );
+		this.renderer.setClearColor( 0xf0f0f0 );
+		this.renderer.setPixelRatio( window.devicePixelRatio );
+		this.renderer.setSize( window.innerWidth, window.innerHeight );
+		this.container.appendChild( this.renderer.domElement );
+		this.group = new THREE.Group();
+		this.scene.add(this.group);
 		document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 		document.addEventListener( 'touchmove', onDocumentMobileMouseMove, false );
 		document.addEventListener( 'mousedown', onDocumentMouseDown, false );
@@ -106,10 +112,10 @@ var f3dwebgl = class{
 	Sphere(color){
 		var geometry = new THREE.SphereGeometry( 5, 32, 32 );
 		var material = new THREE.MeshBasicMaterial( {color: color} );
-		lastSphere = new THREE.Mesh( geometry, material );
+		this.lastSphere = new THREE.Mesh( geometry, material );
 		
 		
-		return lastSphere;
+		return this.lastSphere;
 	}
 	
 	distance(x1,y1,x2,y2){
@@ -120,14 +126,14 @@ var f3dwebgl = class{
 	}
 	
 	render() {
-		renderer.render( scene, camera );
+		this.renderer.render( this.scene, this.camera );
 		
 	}
 	
 	onWindowResize() {
-		camera.aspect = window.innerWidth / window.innerHeight;
-		camera.updateProjectionMatrix();
-		renderer.setSize( window.innerWidth, window.innerHeight );
+		this.camera.aspect = window.innerWidth / window.innerHeight;
+		this.camera.updateProjectionMatrix();
+		this.renderer.setSize( window.innerWidth, window.innerHeight );
 	}
 
 	onDocumentMobileMouseMove( event ){
@@ -148,7 +154,7 @@ var f3dwebgl = class{
 			geometry.vertices.push(new THREE.Vector3(draw[i].x, 1, draw[i].z));
 			geometry.vertices.push(new THREE.Vector3(draw[i+1].x, 1, draw[i+1].z));
 			var line = new THREE.Line(geometry, material);
-			scene.add(line);
+			this.scene.add(line);
 		}
 	}
 
@@ -231,12 +237,12 @@ var f3dwebgl = class{
 		  }
 		  geometry.vertices.push(new THREE.Vector3(draw[draw.length-1].x, 1, draw[draw.length-1].z));
 		  var line = new THREE.Line(geometry, material);
-		  scene.add(line);
+		  this.scene.add(line);
 	}
 
 
 	mousemove( event, x, y ) {
-		if( draw_mode ){
+		if( this.draw_mode ){
 
 			
 			
@@ -250,10 +256,10 @@ var f3dwebgl = class{
 			console.log('clientX '+event.clientX);
 			console.log('clientY '+event.clientY);
 			*/
-			mouse.set( ( x / window.innerWidth ) * 2 - 1, - ( y / window.innerHeight ) * 2 + 1 );
+			this.mouse.set( ( x / window.innerWidth ) * 2 - 1, - ( y / window.innerHeight ) * 2 + 1 );
 
-			raycaster.setFromCamera( mouse, camera );
-			var intersects = raycaster.intersectObjects( scene.children );
+			this.raycaster.setFromCamera( this.mouse, this.camera );
+			var intersects = this.raycaster.intersectObjects( this.scene.children );
 
 			
 			if ( intersects.length > 0 ) {
@@ -269,18 +275,18 @@ var f3dwebgl = class{
 		}else{
 			
 
-			mouse.set( ( x / window.innerWidth ) * 2 - 1, - ( y / window.innerHeight ) * 2 + 1 );
+			this.mouse.set( ( x / window.innerWidth ) * 2 - 1, - ( y / window.innerHeight ) * 2 + 1 );
 
-			raycaster.setFromCamera( mouse, camera );
+			this.raycaster.setFromCamera( this.mouse, this.camera );
 
-			var intersects = raycaster.intersectObjects( scene.children );
+			var intersects = this.raycaster.intersectObjects( this.scene.children );
 
 			if ( intersects.length > 0 ) {
 
-				if(indexPickedObject || indexPickedObject === 0){
+				if(this.indexPickedObject || this.indexPickedObject === 0){
 					for(let i = 0,intersect_length = intersects.length;i<intersect_length;i++){
 						if(intersects[i].object.name.length === 0)
-							scene.children[f3d_scene[0][indexPickedObject]].position.copy( intersects[i].point );
+							this.scene.children[this.f3d_scene[0][this.indexPickedObject]].position.copy( intersects[i].point );
 					}
 					
 					
@@ -308,62 +314,61 @@ var f3dwebgl = class{
 		
 		maxX = minX = x;
 		maxY = minY = y;
-		mouse.set( ( x / window.innerWidth ) * 2 - 1, - ( y / window.innerHeight ) * 2 + 1 );
-		raycaster.setFromCamera( mouse, camera );
-		var intersects = raycaster.intersectObjects( scene.children, true );
+		this.mouse.set( ( x / window.innerWidth ) * 2 - 1, - ( y / window.innerHeight ) * 2 + 1 );
+		this.raycaster.setFromCamera( this.mouse, this.camera );
+		var intersects = this.raycaster.intersectObjects( this.scene.children, true );
 		
 		if ( intersects.length > 0 ) {
 			intersects.map(
 				function(e){
-					info2.innerHTML += e.object.name;
+					this.info2.innerHTML += e.object.name;
 				}
 			);
 			if(intersects[ 0 ].object.name.indexOf('f3d_sphere_') !== -1){
-				for(let o = 0,scene_children_length = scene.children.length;o<scene_children_length;o++){
+				for(let o = 0,scene_children_length = this.scene.children.length;o<scene_children_length;o++){
 					let index_f3d_sphere = parseInt(intersects[ 0 ].object.name.split('_')[2])-1;
-					if(scene.children[o].name === intersects[ 0 ].object.name)
-						indexPickedObject = index_f3d_sphere;
+					if(this.scene.children[o].name === intersects[ 0 ].object.name)
+						this.indexPickedObject = index_f3d_sphere;
 				}
 			}else if(intersects[ 0 ].object.name.indexOf('interpolation_') !== -1){
-				for(let o = 0,group_children_length = group.children.length;o<group_children_length;o++){
-					if(group.children[o].name === intersects[ 0 ].object.name){
+				for(let o = 0,group_children_length = this.group.children.length;o<group_children_length;o++){
+					if(this.group.children[o].name === intersects[ 0 ].object.name){
 						//ottendo id sfera dal gruppo
 						//clono l'oggetto
 						//lo inserisco nella scena
-						//aggiungo un l'id alla f3d_scene(basta aggiungere, come ultimo elemento, l'ultimo id incrementato di uno)
+						//aggiungo un l'id alla this.f3d_scene(basta aggiungere, come ultimo elemento, l'ultimo id incrementato di uno)
 						let token_objId = intersects[ 0 ].object.name.split('_')[1];
-						let first = scene.children.slice(0,f3d_scene[0][token_objId]+1);
-						let second = scene.children.slice(f3d_scene[0][token_objId]+1,scene.children.length);
-						let obj = group.children[o].clone();
+						let first = this.scene.children.slice(0,this.f3d_scene[0][token_objId]+1);
+						let second = this.scene.children.slice(this.f3d_scene[0][token_objId]+1,this.scene.children.length);
+						let obj = this.group.children[o].clone();
 						obj.name = 'f3d_sphere_' + (parseInt(token_objId)+1);
 						obj.material.color = {r:1,g:1,b:0};
-						number_of_f3d_spheres += 1;
+						this.number_of_f3d_spheres += 1;
 						//scene.add( obj );						
 						let tmp = first.concat(obj);
 						second.map(function(e){
 							let str = e.name.split('_');
 							e.name = str[0]+'_'+str[1]+'_'+(parseInt(str[2])+1);
 						})
-						scene.children.length = 0;
-						scene.children = tmp.concat(second);
-						f3d_scene[0].push(f3d_scene[0][f3d_scene[0].length-1]+1);
-						indexPickedObject = (parseInt(token_objId)+1);
+						this.scene.children.length = 0;
+						this.scene.children = tmp.concat(second);
+						this.f3d_scene[0].push(this.f3d_scene[0][this.f3d_scene[0].length-1]+1);
+						this.indexPickedObject = (parseInt(token_objId)+1);
 					}
 						
 				}
 			}else{
-				draw_mode = true;
+				this.draw_mode = true;
 				var intersect = intersects[ 0 ];
 				var voxel = Sphere(0xffff00);
-				voxel.name = 'f3d_sphere_' + number_of_f3d_spheres;
-				number_of_f3d_spheres += 1;
+				voxel.name = 'f3d_sphere_' + this.number_of_f3d_spheres;
+				this.number_of_f3d_spheres += 1;
 				setOldCoord(intersect.point.x,intersect.point.z);
 				setLastSphereCenter(intersect.point.x,intersect.point.z);
 				voxel.position.copy( intersect.point ).add( intersect.face.normal );
 				//voxel.position.divideScalar( 50 ).floor().multiplyScalar( 50 ).addScalar( 25 );
-				scene.add( voxel );
-				f3d_scene[0].push(scene.children.length-1);
-				//objects.push( voxel );
+				this.scene.add( voxel );
+				this.f3d_scene[0].push(this.scene.children.length-1);
 			}
 			
 		} else {
@@ -424,7 +429,7 @@ var f3dwebgl = class{
 				//line.position.x = p[ 2 ][ 0 ];
 				//line.position.y = p[ 2 ][ 1 ];
 				//line.position.z = p[ 2 ][ 2 ];
-				scene.add( line );
+				this.scene.add( line );
 
 			}
 			points = [];
@@ -433,17 +438,16 @@ var f3dwebgl = class{
 	}
 
 	interpolateSpheres(){
-		var scene = f.getScene();
-		var f3d_scene = f.getF3dScene();
+		var this.scene = f.getScene();
 		
-		if(f3d_scene[0].length > 1){
-			for(let i = 0,f3d_scene_length = f3d_scene[0].length;i<f3d_scene_length-1;i++){
-				let x_diff = scene.children[f3d_scene[0][i]].position.x - scene.children[f3d_scene[0][i+1]].position.x;
-				let y_diff = scene.children[f3d_scene[0][i]].position.y - scene.children[f3d_scene[0][i+1]].position.y;
-				let z_diff = scene.children[f3d_scene[0][i]].position.z - scene.children[f3d_scene[0][i+1]].position.z;
-				let scale_x_diff = scene.children[f3d_scene[0][i]].scale.x - scene.children[f3d_scene[0][i+1]].scale.x;
-				let scale_y_diff = scene.children[f3d_scene[0][i]].scale.y - scene.children[f3d_scene[0][i+1]].scale.y;
-				let scale_z_diff = scene.children[f3d_scene[0][i]].scale.z - scene.children[f3d_scene[0][i+1]].scale.z;
+		if(this.f3d_scene[0].length > 1){
+			for(let i = 0,f3d_scene_length = this.f3d_scene[0].length;i<f3d_scene_length-1;i++){
+				let x_diff = this.scene.children[this.f3d_scene[0][i]].position.x - this.scene.children[this.f3d_scene[0][i+1]].position.x;
+				let y_diff = this.scene.children[this.f3d_scene[0][i]].position.y - this.scene.children[this.f3d_scene[0][i+1]].position.y;
+				let z_diff = this.scene.children[this.f3d_scene[0][i]].position.z - this.scene.children[this.f3d_scene[0][i+1]].position.z;
+				let scale_x_diff = this.scene.children[this.f3d_scene[0][i]].scale.x - this.scene.children[this.f3d_scene[0][i+1]].scale.x;
+				let scale_y_diff = this.scene.children[this.f3d_scene[0][i]].scale.y - this.scene.children[this.f3d_scene[0][i+1]].scale.y;
+				let scale_z_diff = this.scene.children[this.f3d_scene[0][i]].scale.z - this.scene.children[this.f3d_scene[0][i+1]].scale.z;
 				let token_position_x,token_position_y,token_position_z, token_scale_x,token_scale_y,token_scale_z;
 				let distance = Math.sqrt(x_diff * x_diff + y_diff * y_diff + z_diff * z_diff);
 				let numberOfTokens;
@@ -460,14 +464,14 @@ var f3dwebgl = class{
 				//s<numberOfTokens-1, perché altrimenti la penultima sfera sarebbe grande come l'ultima
 				for(let s = 0;s<numberOfTokens-1;s++){
 					let sphere = f.sphere(0xff0000);
-					sphere.position.x = scene.children[f3d_scene[0][i]].position.x - token_position_x*(s+1);
-					sphere.position.y = scene.children[f3d_scene[0][i]].position.y - token_position_y*(s+1);
-					sphere.position.z = scene.children[f3d_scene[0][i]].position.z - token_position_z*(s+1);
-					sphere.scale.x = scene.children[f3d_scene[0][i]].scale.x - token_scale_x*(s+1);
-					sphere.scale.y = scene.children[f3d_scene[0][i]].scale.y - token_scale_y*(s+1);
-					sphere.scale.z = scene.children[f3d_scene[0][i]].scale.z - token_scale_z*(s+1);
+					sphere.position.x = this.scene.children[this.f3d_scene[0][i]].position.x - token_position_x*(s+1);
+					sphere.position.y = this.scene.children[this.f3d_scene[0][i]].position.y - token_position_y*(s+1);
+					sphere.position.z = this.scene.children[this.f3d_scene[0][i]].position.z - token_position_z*(s+1);
+					sphere.scale.x = this.scene.children[this.f3d_scene[0][i]].scale.x - token_scale_x*(s+1);
+					sphere.scale.y = this.scene.children[this.f3d_scene[0][i]].scale.y - token_scale_y*(s+1);
+					sphere.scale.z = this.scene.children[this.f3d_scene[0][i]].scale.z - token_scale_z*(s+1);
 					sphere.name = 'interpolation_'+i+'_'+s;
-					group.add( sphere );
+					this.group.add( sphere );
 				}
 				
 					
@@ -476,24 +480,24 @@ var f3dwebgl = class{
 			//ciclo fra tutte le sfere
 			//retta che connette le due sfere
 			//a secoda della sua lunghezza creo n token, sia posizione che scala
-			//scene.children[f3d_scene[0][i]].position
-			//scene.children[f3d_scene[0][i]].scale
+			//scene.children[this.f3d_scene[0][i]].position
+			//scene.children[this.f3d_scene[0][i]].scale
 			//creo n sfere di posizione token e scala += token_scala
 		}
-		//console.log(JSON.stringify(scene));
+		//console.log(JSON.stringify(this.scene));
 	}
 	
 	mouseup( event ){
-	        info2.innerHTML = '';
-		draw_mode = false;
-		if(indexPickedObject || indexPickedObject !== undefined){
-			indexPickedObject = undefined;
+	        this.info2.innerHTML = '';
+		this.draw_mode = false;
+		if(this.indexPickedObject || this.indexPickedObject !== undefined){
+			this.indexPickedObject = undefined;
 			var scene = f.getScene();
-			group.children.length = 0;
+			this.group.children.length = 0;
 						
 		}
 		render();
-		if(f3d_scene[0].length > 1){
+		if(this.f3d_scene[0].length > 1){
 			interpolateSpheres();
 		}
 		
@@ -511,7 +515,7 @@ var f3dwebgl = class{
 		geometry.vertices.push( new THREE.Vector3( _3dminX, 1,  _3dmaxZ) );
 		var material = new THREE.LineBasicMaterial( { color: 0xff0000, opacity: 1, transparent: false } );
 		var line = new THREE.LineSegments( geometry, material );
-		scene.add( line );
+		this.scene.add( line );
 		var width = _3dmaxX -_3dminX;
 		var height = _3dmaxZ -_3dminZ;
 		switch(matched.Name){
@@ -521,7 +525,7 @@ var f3dwebgl = class{
 				geometry.translate(_3dminX+width/2, 1, _3dminZ+height/2);
 				var material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );
 				var cube = new THREE.Mesh( geometry, material );
-				scene.add( cube );
+				this.scene.add( cube );
 				break;
 			case "circle":
 				if(width<height){
@@ -536,7 +540,7 @@ var f3dwebgl = class{
 				);
 				var material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );
 				var circle = new THREE.Mesh( circleGeometry, material );
-				scene.add( circle );
+				this.scene.add( circle );
 				circle_in_scene++;
 				draw_circle_link();
 				break;
@@ -567,7 +571,7 @@ var f3dwebgl = class{
 				geometry.vertices.push(new THREE.Vector3(mystroke[0].position.x, 1, mystroke[0].position.z));
 				geometry.vertices.push(new THREE.Vector3(mystroke[1].position.x, 1, mystroke[1].position.z));
 				var line = new THREE.Line(geometry, material);
-				scene.add(line);
+				this.scene.add(line);
 		}
 		*/
 	//document.getElementById('coordinates').innerText =  '_3dmaxX '+_3dmaxX+' _3dminX '+_3dminX+' _3dmaxZ '+_3dmaxZ+' _3dminZ '+_3dminZ;	               
@@ -580,52 +584,49 @@ var f3dwebgl = class{
 	
 	onDocumentKeyDown( event ) {
 		switch( event.keyCode ) {
-			case 16: isShiftDown = true; break;
+			case 16: this.isShiftDown = true; break;
 		}
 	}
 	
 	onDocumentKeyUp( event ) {
 		switch ( event.keyCode ) {
-			case 16: isShiftDown = false; break;
+			case 16: this.isShiftDown = false; break;
 		}
 	}
 	
 	setOldCoord(x,y){
-			oldX = x;
-			oldY = y;
+			this.oldX = x;
+			this.oldY = y;
 	}
 	
 	setLastSphereCenter(x,y){
-		lastSphereCenterX = x;
-		lastSphereCenterY = y;
+		this.lastSphereCenterX = x;
+		this.lastSphereCenterY = y;
 	}
 	
 	setSphereScaleFromMouseDistance(x,y){
-		let min_r = distance(lastSphereCenterX,lastSphereCenterY,oldX,oldY);
-		let max_r = distance(lastSphereCenterX,lastSphereCenterY,x,y);
+		let min_r = distance(this.lastSphereCenterX,this.lastSphereCenterY,this.oldX,this.oldY);
+		let max_r = distance(this.lastSphereCenterX,this.lastSphereCenterY,x,y);
 		if (min_r === 0)
 			min_r = 1;
 		let scale = max_r/min_r;
-		lastSphere.scale.x += 1;
-		lastSphere.scale.y += 1;
-		lastSphere.scale.z += 1;
+		this.lastSphere.scale.x += 1;
+		this.lastSphere.scale.y += 1;
+		this.lastSphere.scale.z += 1;
 	}
 	
 	getOldCoord(){
-		return {x:oldX,y:oldY};
+		return {x:this.oldX,y:this.oldY};
 	}
 	
 	getMouseDistance(x,y){
-		return distamce(oldX,oldY,x,y);
+		return distamce(this.oldX,this.oldY,x,y);
 	}
 	
 	getScene(){
-		return scene;
+		return this.scene;
 	}
 	
-	getF3dScene(){
-		return f3d_scene;
-	}
 
 }
 
