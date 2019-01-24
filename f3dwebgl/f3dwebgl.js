@@ -91,16 +91,16 @@ var f3dwebgl = class{
 		this.container.appendChild( this.renderer.domElement );
 		this.group = new THREE.Group();
 		this.scene.add(this.group);
-		document.addEventListener( 'mousemove', onDocumentMouseMove, false );
-		document.addEventListener( 'touchmove', onDocumentMobileMouseMove, false );
-		document.addEventListener( 'mousedown', onDocumentMouseDown, false );
-		document.addEventListener( 'touchstart', onDocumentMobileMouseDown, false );
-		document.addEventListener( 'keydown', onDocumentKeyDown, false );
-		document.addEventListener( 'keyup', onDocumentKeyUp, false );
-		document.addEventListener( 'mouseup', onDocumentMouseUp, false );
-		document.addEventListener( 'touchend', onDocumentMobileMouseUp, false );
+		document.addEventListener( 'mousemove', this.onDocumentMouseMove, false );
+		document.addEventListener( 'touchmove', this.onDocumentMobileMouseMove, false );
+		document.addEventListener( 'mousedown', this.onDocumentMouseDown, false );
+		document.addEventListener( 'touchstart', this.onDocumentMobileMouseDown, false );
+		document.addEventListener( 'keydown', this.onDocumentKeyDown, false );
+		document.addEventListener( 'keyup', this.onDocumentKeyUp, false );
+		document.addEventListener( 'mouseup', this.onDocumentMouseUp, false );
+		document.addEventListener( 'touchend', this.onDocumentMobileMouseUp, false );
 		//
-		window.addEventListener( 'resize', onWindowResize, false );
+		window.addEventListener( 'resize', this.onWindowResize, false );
 		Array.prototype.insertAt = function(pos,val){
 			let first = this.slice(0,pos+1);
 			let second = this.slice(pos+1,this.length);
@@ -139,13 +139,13 @@ var f3dwebgl = class{
 	onDocumentMobileMouseMove( event ){
 		var x = event.targetTouches[0].pageX;
 		var y = event.targetTouches[0].pageY;
-		mousemove(event, x,y);
+		this.mousemove(event, x,y);
 	}
 
 	onDocumentMouseMove( event ) {
 		var x = event.clientX;
 		var y =  event.clientY;
-		mousemove(event, x,y);
+		this.mousemove(event, x,y);
 	}
 
 	sketch(){
@@ -265,13 +265,13 @@ var f3dwebgl = class{
 			if ( intersects.length > 0 ) {
 
 				var intersect = intersects[ 0 ];
-				setSphereScaleFromMouseDistance(intersect.point.x,intersect.point.z);
+				this.setSphereScaleFromMouseDistance(intersect.point.x,intersect.point.z);
 
 			}
 		
 			
 
-			render();	
+			this.render();	
 		}else{
 			
 
@@ -300,13 +300,13 @@ var f3dwebgl = class{
 	onDocumentMobileMouseDown( event ){
 		var x = event.targetTouches[0].pageX;
 		var y = event.targetTouches[0].pageY;
-		mousedown(event, x,y);
+		this.mousedown(event, x,y);
 	}
 
 	onDocumentMouseDown( event ) {
 		var x = event.clientX;
 		var y =  event.clientY;
-		mousedown(event, x,y);
+		this.mousedown(event, x,y);
 	}
 
 	mousedown( event, x, y ) {
@@ -360,11 +360,11 @@ var f3dwebgl = class{
 			}else{
 				this.draw_mode = true;
 				var intersect = intersects[ 0 ];
-				var voxel = Sphere(0xffff00);
+				var voxel = this.Sphere(0xffff00);
 				voxel.name = 'f3d_sphere_' + this.number_of_f3d_spheres;
 				this.number_of_f3d_spheres += 1;
-				setOldCoord(intersect.point.x,intersect.point.z);
-				setLastSphereCenter(intersect.point.x,intersect.point.z);
+				this.setOldCoord(intersect.point.x,intersect.point.z);
+				this.setLastSphereCenter(intersect.point.x,intersect.point.z);
 				voxel.position.copy( intersect.point ).add( intersect.face.normal );
 				//voxel.position.divideScalar( 50 ).floor().multiplyScalar( 50 ).addScalar( 25 );
 				this.scene.add( voxel );
@@ -374,16 +374,16 @@ var f3dwebgl = class{
 		} else {
 			console.log('nothing here');
 		}
-		render();	
+		this.render();	
 	}
 
 	onDocumentMobileMouseUp( event ){
-		mouseup(event);
+		this.mouseup(event);
 	}
 
 	onDocumentMouseUp( event ){
 
-		mouseup(event);
+		this.mouseup(event);
 	}
 
 	draw_circle_link(){
@@ -438,7 +438,6 @@ var f3dwebgl = class{
 	}
 
 	interpolateSpheres(){
-		var this.scene = f.getScene();
 		
 		if(this.f3d_scene[0].length > 1){
 			for(let i = 0,f3d_scene_length = this.f3d_scene[0].length;i<f3d_scene_length-1;i++){
@@ -463,7 +462,7 @@ var f3dwebgl = class{
 				
 				//s<numberOfTokens-1, perché altrimenti la penultima sfera sarebbe grande come l'ultima
 				for(let s = 0;s<numberOfTokens-1;s++){
-					let sphere = f.sphere(0xff0000);
+					let sphere = this.Sphere(0xff0000);
 					sphere.position.x = this.scene.children[this.f3d_scene[0][i]].position.x - token_position_x*(s+1);
 					sphere.position.y = this.scene.children[this.f3d_scene[0][i]].position.y - token_position_y*(s+1);
 					sphere.position.z = this.scene.children[this.f3d_scene[0][i]].position.z - token_position_z*(s+1);
@@ -476,7 +475,7 @@ var f3dwebgl = class{
 				
 					
 			}
-			render();
+			this.render();
 			//ciclo fra tutte le sfere
 			//retta che connette le due sfere
 			//a secoda della sua lunghezza creo n token, sia posizione che scala
@@ -496,9 +495,9 @@ var f3dwebgl = class{
 			this.group.children.length = 0;
 						
 		}
-		render();
+		this.render();
 		if(this.f3d_scene[0].length > 1){
-			interpolateSpheres();
+			this.interpolateSpheres();
 		}
 		
 		/*
@@ -542,7 +541,7 @@ var f3dwebgl = class{
 				var circle = new THREE.Mesh( circleGeometry, material );
 				this.scene.add( circle );
 				circle_in_scene++;
-				draw_circle_link();
+				this.draw_circle_link();
 				break;
 			case "triangle":
 			case "x":
@@ -560,9 +559,9 @@ var f3dwebgl = class{
 			case "check":
 			case "caret":
 			case "zig-zag":
-				//drawPolyline();
-				//sketch();
-				drawTube();
+				//this.drawPolyline();
+				//this.sketch();
+				this.drawTube();
 			//}
 			break;
 			default:
@@ -579,7 +578,7 @@ var f3dwebgl = class{
 		mystroke = new Array();
 		draw = new Array();
 
-		render();	
+		this.render();	
 	}
 	
 	onDocumentKeyDown( event ) {
@@ -605,8 +604,8 @@ var f3dwebgl = class{
 	}
 	
 	setSphereScaleFromMouseDistance(x,y){
-		let min_r = distance(this.lastSphereCenterX,this.lastSphereCenterY,this.oldX,this.oldY);
-		let max_r = distance(this.lastSphereCenterX,this.lastSphereCenterY,x,y);
+		let min_r = this.distance(this.lastSphereCenterX,this.lastSphereCenterY,this.oldX,this.oldY);
+		let max_r = this.distance(this.lastSphereCenterX,this.lastSphereCenterY,x,y);
 		if (min_r === 0)
 			min_r = 1;
 		let scale = max_r/min_r;
