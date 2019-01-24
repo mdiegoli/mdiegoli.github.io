@@ -10,7 +10,7 @@ var f3dwebgl = class{
 		this.lastSphere;
 		this.container;
 		this.camera;
-		this.scene;
+		this.scene = [];
 		this.renderer;
 		this.rollOverGeo;
 		this.rollOverMesh;
