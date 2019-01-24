@@ -29,7 +29,7 @@ var f3dwebgl = class{
 		this.info2;
 	
 		this.container = document.createElement( 'div' );
-		document.body.appendChild( container );
+		document.body.appendChild( this.container );
 		this.info = document.createElement( 'div' );
 		this.info.style.position = 'absolute';
 		this.info.style.top = '10px';
