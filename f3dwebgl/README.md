@@ -9,6 +9,8 @@ todo:
   1.1- simplified sketch
   
     1.2- nell'intersezione degli sketch e nelle estremità, posizionare delle sfere interpolate
+      
+      Disegnando creo degli oggetti: gli sketch in un layer, gli oggetti 3d in un altro livello e le sfere in un terzo. In questo modo sarà possibile modificare il modello intervenendo sui singoli layer.
 
 2- using only sphere to modelling bodies
 
