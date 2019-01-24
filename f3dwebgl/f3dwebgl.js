@@ -498,7 +498,7 @@ var f3dwebgl = class{
 						
 		}
 		this.render();
-		if(this.f3d_scene[0].length > 1){
+		if(this.f3d_scene && this.f3d_scene[0] && this.f3d_scene[0].length > 1){
 			this.interpolateSpheres();
 		}
 		
