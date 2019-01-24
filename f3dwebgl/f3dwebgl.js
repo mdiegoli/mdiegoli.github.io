@@ -576,9 +576,8 @@ var f3dwebgl = class{
 		}
 		*/
 	//document.getElementById('coordinates').innerText =  '_3dmaxX '+_3dmaxX+' _3dminX '+_3dminX+' _3dmaxZ '+_3dmaxZ+' _3dminZ '+_3dminZ;	               
-		gest = new Array();
-		mystroke = new Array();
-		draw = new Array();
+		//mystroke = new Array();
+		//draw = new Array();
 
 		this.render();	
 	}
