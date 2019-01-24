@@ -100,7 +100,7 @@ var f3dwebgl = class{
 		document.addEventListener( 'mouseup', this.onDocumentMouseUp.bind(this), false );
 		document.addEventListener( 'touchend', this.onDocumentMobileMouseUp.bind(this), false );
 		//
-		window.addEventListener( 'resize', this.onWindowResize, false );
+		window.addEventListener( 'resize', this.onWindowResize.bind(this), false );
 		Array.prototype.insertAt = function(pos,val){
 			let first = this.slice(0,pos+1);
 			let second = this.slice(pos+1,this.length);
