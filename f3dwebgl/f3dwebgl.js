@@ -91,14 +91,14 @@ var f3dwebgl = class{
 		this.container.appendChild( this.renderer.domElement );
 		this.group = new THREE.Group();
 		this.scene.add(this.group);
-		document.addEventListener( 'mousemove', this.onDocumentMouseMove, false );
-		document.addEventListener( 'touchmove', this.onDocumentMobileMouseMove, false );
-		document.addEventListener( 'mousedown', this.onDocumentMouseDown, false );
-		document.addEventListener( 'touchstart', this.onDocumentMobileMouseDown, false );
-		document.addEventListener( 'keydown', this.onDocumentKeyDown, false );
-		document.addEventListener( 'keyup', this.onDocumentKeyUp, false );
-		document.addEventListener( 'mouseup', this.onDocumentMouseUp, false );
-		document.addEventListener( 'touchend', this.onDocumentMobileMouseUp, false );
+		document.addEventListener( 'mousemove', this.onDocumentMouseMove.bind(this), false );
+		document.addEventListener( 'touchmove', this.onDocumentMobileMouseMove.bind(this), false );
+		document.addEventListener( 'mousedown', this.onDocumentMouseDown.bind(this), false );
+		document.addEventListener( 'touchstart', this.onDocumentMobileMouseDown.bind(this), false );
+		document.addEventListener( 'keydown', this.onDocumentKeyDown.bind(this), false );
+		document.addEventListener( 'keyup', this.onDocumentKeyUp.bind(this), false );
+		document.addEventListener( 'mouseup', this.onDocumentMouseUp.bind(this), false );
+		document.addEventListener( 'touchend', this.onDocumentMobileMouseUp.bind(this), false );
 		//
 		window.addEventListener( 'resize', this.onWindowResize, false );
 		Array.prototype.insertAt = function(pos,val){
