@@ -306,77 +306,77 @@ var f3dwebgl = class{
 	onDocumentMouseDown( event ) {
 		var x = event.clientX;
 		var y =  event.clientY;
-		this.mousedown(event, x,y);
+		this.mousedown(event, x,y,this);
 	}
 
-	mousedown( event, x, y ) {
+	mousedown( event, x, y,me ) {
 		
 		
 		var maxX = x,
 		    minX = x,
 		    maxY = y,
 		    minY = y;
-		this.mouse.set( ( x / window.innerWidth ) * 2 - 1, - ( y / window.innerHeight ) * 2 + 1 );
-		this.raycaster.setFromCamera( this.mouse, this.camera );
-		var intersects = this.raycaster.intersectObjects( this.scene.children, true );
+		me.mouse.set( ( x / window.innerWidth ) * 2 - 1, - ( y / window.innerHeight ) * 2 + 1 );
+		me.raycaster.setFromCamera( me.mouse, me.camera );
+		var intersects = me.raycaster.intersectObjects( me.scene.children, true );
 		
 		if ( intersects.length > 0 ) {
 			intersects.map(
 				function(e){
-					this.info2.innerHTML += e.object.name;
+					me.info2.innerHTML += e.object.name;
 				}
 			);
 			if(intersects[ 0 ].object.name.indexOf('f3d_sphere_') !== -1){
-				for(let o = 0,scene_children_length = this.scene.children.length;o<scene_children_length;o++){
+				for(let o = 0,scene_children_length = me.scene.children.length;o<scene_children_length;o++){
 					let index_f3d_sphere = parseInt(intersects[ 0 ].object.name.split('_')[2])-1;
-					if(this.scene.children[o].name === intersects[ 0 ].object.name)
-						this.indexPickedObject = index_f3d_sphere;
+					if(me.scene.children[o].name === intersects[ 0 ].object.name)
+						me.indexPickedObject = index_f3d_sphere;
 				}
 			}else if(intersects[ 0 ].object.name.indexOf('interpolation_') !== -1){
-				for(let o = 0,group_children_length = this.group.children.length;o<group_children_length;o++){
-					if(this.group.children[o].name === intersects[ 0 ].object.name){
+				for(let o = 0,group_children_length = me.group.children.length;o<group_children_length;o++){
+					if(me.group.children[o].name === intersects[ 0 ].object.name){
 						//ottendo id sfera dal gruppo
 						//clono l'oggetto
 						//lo inserisco nella scena
 						//aggiungo un l'id alla this.f3d_scene(basta aggiungere, come ultimo elemento, l'ultimo id incrementato di uno)
 						let token_objId = intersects[ 0 ].object.name.split('_')[1];
-						let first = this.scene.children.slice(0,this.f3d_scene[0][token_objId]+1);
-						let second = this.scene.children.slice(this.f3d_scene[0][token_objId]+1,this.scene.children.length);
-						let obj = this.group.children[o].clone();
+						let first = me.scene.children.slice(0,me.f3d_scene[0][token_objId]+1);
+						let second = me.scene.children.slice(me.f3d_scene[0][token_objId]+1,me.scene.children.length);
+						let obj = me.group.children[o].clone();
 						obj.name = 'f3d_sphere_' + (parseInt(token_objId)+1);
 						obj.material.color = {r:1,g:1,b:0};
-						this.number_of_f3d_spheres += 1;
+						me.number_of_f3d_spheres += 1;
 						//scene.add( obj );						
 						let tmp = first.concat(obj);
 						second.map(function(e){
 							let str = e.name.split('_');
 							e.name = str[0]+'_'+str[1]+'_'+(parseInt(str[2])+1);
 						})
-						this.scene.children.length = 0;
-						this.scene.children = tmp.concat(second);
-						this.f3d_scene[0].push(this.f3d_scene[0][this.f3d_scene[0].length-1]+1);
-						this.indexPickedObject = (parseInt(token_objId)+1);
+						me.scene.children.length = 0;
+						me.scene.children = tmp.concat(second);
+						me.f3d_scene[0].push(me.f3d_scene[0][me.f3d_scene[0].length-1]+1);
+						me.indexPickedObject = (parseInt(token_objId)+1);
 					}
 						
 				}
 			}else{
-				this.draw_mode = true;
+				me.draw_mode = true;
 				var intersect = intersects[ 0 ];
-				var voxel = this.Sphere(0xffff00);
-				voxel.name = 'f3d_sphere_' + this.number_of_f3d_spheres;
-				this.number_of_f3d_spheres += 1;
-				this.setOldCoord(intersect.point.x,intersect.point.z);
-				this.setLastSphereCenter(intersect.point.x,intersect.point.z);
+				var voxel = me.Sphere(0xffff00);
+				voxel.name = 'f3d_sphere_' + me.number_of_f3d_spheres;
+				me.number_of_f3d_spheres += 1;
+				me.setOldCoord(intersect.point.x,intersect.point.z);
+				me.setLastSphereCenter(intersect.point.x,intersect.point.z);
 				voxel.position.copy( intersect.point ).add( intersect.face.normal );
 				//voxel.position.divideScalar( 50 ).floor().multiplyScalar( 50 ).addScalar( 25 );
-				this.scene.add( voxel );
-				this.f3d_scene[0].push(this.scene.children.length-1);
+				me.scene.add( voxel );
+				me.f3d_scene[0].push(me.scene.children.length-1);
 			}
 			
 		} else {
 			console.log('nothing here');
 		}
-		this.render();	
+		me.render();	
 	}
 
 	onDocumentMobileMouseUp( event ){
