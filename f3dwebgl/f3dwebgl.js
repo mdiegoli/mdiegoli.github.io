@@ -1,41 +1,27 @@
 //14:10
 if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 			
-var f3d = function(){
-	var lastSphereCenterX;
-	var lastSphereCenterY;
-	var oldX,oldY;
-	var lastSphere;
-	var container;
-	var camera, scene, renderer, rollOverGeo;
-	var rollOverMesh, rollOverMaterial;
-	var mouse, raycaster, isShiftDown = false;
-	var objects = [];
-	var plane, cube;
-	var number_of_f3d_spheres = 1;
-	var INTERSECTED;
-	var draw_mode = false;
-	var indexPickedObject;
-	var f3d_scene = [];
-	f3d_scene[0] = [];
-	var group;
-	var info, info2;
-			
-	function Sphere(color){
-		var geometry = new THREE.SphereGeometry( 5, 32, 32 );
-		var material = new THREE.MeshBasicMaterial( {color: color} );
-		lastSphere = new THREE.Mesh( geometry, material );
-		
-		
-		return lastSphere;
-	}
-	function distance(x1,y1,x2,y2){
-		var a = x1 - x2
-		var b = y1 - y2
-
-		return Math.sqrt( a*a + b*b );
-	}
-	function init() {
+var f3dwebgl = class{
+	constructor(){
+		this.lastSphereCenterX;
+		this.lastSphereCenterY;
+		this.oldX,oldY;
+		this.lastSphere;
+		this.container;
+		this.camera, scene, renderer, rollOverGeo;
+		this.rollOverMesh, rollOverMaterial;
+		this.mouse, raycaster, isShiftDown = false;
+		this.objects = [];
+		this.plane, cube;
+		this.number_of_f3d_spheres = 1;
+		this.INTERSECTED;
+		this.draw_mode = false;
+		this.indexPickedObject;
+		this.f3d_scene = [];
+		this.scene[0] = [];
+		this.group;
+		this.info, info2;
+	
 		container = document.createElement( 'div' );
 		document.body.appendChild( container );
 		info = document.createElement( 'div' );
@@ -116,30 +102,47 @@ var f3d = function(){
 		}
 	}
 	
-	function render() {
+			
+	Sphere(color){
+		var geometry = new THREE.SphereGeometry( 5, 32, 32 );
+		var material = new THREE.MeshBasicMaterial( {color: color} );
+		lastSphere = new THREE.Mesh( geometry, material );
+		
+		
+		return lastSphere;
+	}
+	
+	distance(x1,y1,x2,y2){
+		var a = x1 - x2
+		var b = y1 - y2
+
+		return Math.sqrt( a*a + b*b );
+	}
+	
+	render() {
 		renderer.render( scene, camera );
 		
 	}
 	
-	function onWindowResize() {
+	onWindowResize() {
 		camera.aspect = window.innerWidth / window.innerHeight;
 		camera.updateProjectionMatrix();
 		renderer.setSize( window.innerWidth, window.innerHeight );
 	}
 
-	function onDocumentMobileMouseMove( event ){
+	onDocumentMobileMouseMove( event ){
 		var x = event.targetTouches[0].pageX;
 		var y = event.targetTouches[0].pageY;
 		mousemove(event, x,y);
 	}
 
-	function onDocumentMouseMove( event ) {
+	onDocumentMouseMove( event ) {
 		var x = event.clientX;
 		var y =  event.clientY;
 		mousemove(event, x,y);
 	}
 
-	function sketch(){
+	sketch(){
 		var geometry = new THREE.Geometry();
 		for(var i = 0;i<draw.length-1;i++){
 			geometry.vertices.push(new THREE.Vector3(draw[i].x, 1, draw[i].z));
@@ -149,13 +152,13 @@ var f3d = function(){
 		}
 	}
 
-	function drawTube(){
+	drawTube(){
 		var result = simplify(draw, 1, false);
 		console.log('draw length '+draw.length);
 		console.log('result length '+result.length);
 	}
 
-	function drawPolyline(){
+	drawPolyline(){
 		var corners=[draw[0]]
 		var n=0
 		var t=0
@@ -232,7 +235,7 @@ var f3d = function(){
 	}
 
 
-	function mousemove( event, x, y ) {
+	mousemove( event, x, y ) {
 		if( draw_mode ){
 
 			
@@ -287,19 +290,20 @@ var f3d = function(){
 			
 		}
 	}
-	function onDocumentMobileMouseDown( event ){
+	
+	onDocumentMobileMouseDown( event ){
 		var x = event.targetTouches[0].pageX;
 		var y = event.targetTouches[0].pageY;
 		mousedown(event, x,y);
 	}
 
-	function onDocumentMouseDown( event ) {
+	onDocumentMouseDown( event ) {
 		var x = event.clientX;
 		var y =  event.clientY;
 		mousedown(event, x,y);
 	}
 
-	function mousedown( event, x, y ) {
+	mousedown( event, x, y ) {
 		
 		
 		maxX = minX = x;
@@ -368,16 +372,16 @@ var f3d = function(){
 		render();	
 	}
 
-	function onDocumentMobileMouseUp( event ){
+	onDocumentMobileMouseUp( event ){
 		mouseup(event);
 	}
 
-	function onDocumentMouseUp( event ){
+	onDocumentMouseUp( event ){
 
 		mouseup(event);
 	}
 
-	function draw_circle_link(){
+	draw_circle_link(){
 
 		if (circle_in_scene % 3 === 0){
 
@@ -428,7 +432,7 @@ var f3d = function(){
 
 	}
 
-	function interpolateSpheres(){
+	interpolateSpheres(){
 		var scene = f.getScene();
 		var f3d_scene = f.getF3dScene();
 		
@@ -479,7 +483,7 @@ var f3d = function(){
 		//console.log(JSON.stringify(scene));
 	}
 	
-	function mouseup( event ){
+	mouseup( event ){
 	        info2.innerHTML = '';
 		draw_mode = false;
 		if(indexPickedObject || indexPickedObject !== undefined){
@@ -573,27 +577,30 @@ var f3d = function(){
 
 		render();	
 	}
-	function onDocumentKeyDown( event ) {
+	
+	onDocumentKeyDown( event ) {
 		switch( event.keyCode ) {
 			case 16: isShiftDown = true; break;
 		}
 	}
-	function onDocumentKeyUp( event ) {
+	
+	onDocumentKeyUp( event ) {
 		switch ( event.keyCode ) {
 			case 16: isShiftDown = false; break;
 		}
 	}
-	function setOldCoord(x,y){
+	
+	setOldCoord(x,y){
 			oldX = x;
 			oldY = y;
 	}
 	
-	function setLastSphereCenter(x,y){
+	setLastSphereCenter(x,y){
 		lastSphereCenterX = x;
 		lastSphereCenterY = y;
 	}
 	
-	function setSphereScaleFromMouseDistance(x,y){
+	setSphereScaleFromMouseDistance(x,y){
 		let min_r = distance(lastSphereCenterX,lastSphereCenterY,oldX,oldY);
 		let max_r = distance(lastSphereCenterX,lastSphereCenterY,x,y);
 		if (min_r === 0)
@@ -603,23 +610,23 @@ var f3d = function(){
 		lastSphere.scale.y += 1;
 		lastSphere.scale.z += 1;
 	}
-	return{
-		getOldCoord: function(){
-			return {x:oldX,y:oldY};
-		},
-		sphere: Sphere,
-		getMouseDistance: function(x,y){
-			return distamce(oldX,oldY,x,y);
-		},
-		init: init,
-		render: render,
-		getScene: function(){
-			return scene;
-		},
-		getF3dScene: function(){
-			return f3d_scene;
-		}
+	
+	getOldCoord(){
+		return {x:oldX,y:oldY};
 	}
+	
+	getMouseDistance(x,y){
+		return distamce(oldX,oldY,x,y);
+	}
+	
+	getScene(){
+		return scene;
+	}
+	
+	getF3dScene(){
+		return f3d_scene;
+	}
+
 }
 
 var f = new f3d();
