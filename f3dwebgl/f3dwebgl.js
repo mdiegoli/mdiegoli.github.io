@@ -312,8 +312,10 @@ var f3dwebgl = class{
 	mousedown( event, x, y ) {
 		
 		
-		maxX = minX = x;
-		maxY = minY = y;
+		var maxX = x,
+		    minX = x,
+		    maxY = y,
+		    minY = y;
 		this.mouse.set( ( x / window.innerWidth ) * 2 - 1, - ( y / window.innerHeight ) * 2 + 1 );
 		this.raycaster.setFromCamera( this.mouse, this.camera );
 		var intersects = this.raycaster.intersectObjects( this.scene.children, true );
