@@ -23,7 +23,7 @@ var f3dwebgl = class{
 		this.draw_mode = false;
 		this.indexPickedObject;
 		this.f3d_scene = [];
-		this.scene[0] = [];
+		this.f3d_scene[0] = [];
 		this.group;
 		this.info;
 		this.info2;
