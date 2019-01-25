@@ -157,6 +157,7 @@ class utils{
             this.ctx.moveTo(ox, oy);
             this.ctx.lineTo(x, y);
             this.path = 'M '+ox+' '+oy+' L '+x+' '+y+' ';
+		this.sketches[this.numSketch] = [];
 		this.sketches[this.numSketch].push([ox,oy])
 		this.sketches[this.numSketch].push([x,y])
         }else{
