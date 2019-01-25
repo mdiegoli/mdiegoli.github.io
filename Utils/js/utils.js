@@ -275,6 +275,7 @@ getCubicBezierPathStr(ps) {
         if(type.indexOf('mat') !== -1) me.ctx.strokeStyle = '#0000FF';
         else me.ctx.strokeStyle = '#FF0000';
         me.ctx.stroke(o_path2d);
+		me.ctx.strokeStyle = '#000000';
         });
     }
 		me.path += 'Z';
