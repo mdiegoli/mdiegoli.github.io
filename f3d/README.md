@@ -21,3 +21,5 @@ http://perfectionkills.com/exploring-canvas-drawing-techniques/
 http://hackingforartists.com/
 
 https://robocatz.com/art-launcher.htm
+
+evidenzio intersezioni sketch, posiziono sfere agli estremi della linea e nelle intersezioni
