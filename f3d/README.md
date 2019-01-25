@@ -23,3 +23,7 @@ http://hackingforartists.com/
 https://robocatz.com/art-launcher.htm
 
 evidenzio intersezioni sketch, posiziono sfere agli estremi della linea e nelle intersezioni
+
+todo:
+
+  1. salvare le linee dello sketch in un array bidimensionale, da ciclare con due for per trovare le intersezioni
