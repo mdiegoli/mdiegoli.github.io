@@ -70,9 +70,9 @@ touchDown(e){
 
 touchUp(e){
     e.preventDefault()
-	let coord = Utils.getRealTouchPos(gC.canvas,e)
+	//let coord = Utils.getRealTouchPos(gC.canvas,e)
     gC.paint = false;
-	this.custom_touchUp(coord);
+	this.custom_touchUp();
 }
 	  
 custom_mouseMove(e){
