@@ -3,6 +3,8 @@
 class utils{
     constructor(){
 	    this.images = {};
+	    this.sketches = [];
+	    this.numSketch = 0;
     }
     random(s,e){
         return Math.floor(Math.random() * (e - s + 1)) + s;
@@ -155,9 +157,12 @@ class utils{
             this.ctx.moveTo(ox, oy);
             this.ctx.lineTo(x, y);
             this.path = 'M '+ox+' '+oy+' L '+x+' '+y+' ';
+		this.sketches[this.numSketch].push([ox,oy])
+		this.sketches[this.numSketch].push([x,y])
         }else{
             this.ctx.lineTo(x, y);
             this.path += 'L '+x+' '+y+' ';
+		this.sketches[this.numSketch].push([x,y])
         }
         this.ctx.stroke();
 
@@ -172,6 +177,7 @@ class utils{
     let sats = mats.map(mat => FloMat.toScaleAxis(mat, 1.5));
 
     this.drawMats(sats, 'sat');
+	    this.numSketch++;
         
     }
 	
