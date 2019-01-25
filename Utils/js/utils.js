@@ -172,6 +172,7 @@ class utils{
             this.ctx.lineTo(x, y);
             this.path += 'Z';
 	    let bezierLoops = FloMat.getPathsFromStr(this.path);
+	    delete this.path;
     	let mats = FloMat.findMats(bezierLoops, 3);
     this.drawMats(mats, 'mat');
     
