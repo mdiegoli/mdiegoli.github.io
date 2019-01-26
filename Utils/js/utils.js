@@ -169,11 +169,14 @@ class utils{
 
     }
     endsketch(x,y){
-            this.ctx.lineTo(x, y);
-            this.path += 'Z';
-	    let bezierLoops = FloMat.getPathsFromStr(this.path);
-	    
-    	let mats = FloMat.findMats(bezierLoops, 3);
+            
+            var last_first = this.sketches[this.numSketch][0];
+            this.path += 'L '+last_first[0]+' '+last_first[1]+' Z';
+            this.sketches[this.numSketch].push(this.sketches[this.numSketch][0])
+            this.ctx.lineTo(last_first[0],last_first[1]);
+            this.ctx.stroke();
+            let bezierLoops = FloMat.getPathsFromStr(this.path);
+	    let mats = FloMat.findMats(bezierLoops, 3);
     this.drawMats(mats, 'mat');
     
     let sats = mats.map(mat => FloMat.toScaleAxis(mat, 1.5));
@@ -432,6 +435,15 @@ getRealMousePos(canvas, evt) {
 		  x: evt.touches[0].clientX - rect.left,
 		  y: evt.touches[0].clientY - rect.top
 	};
+}
+lineSegmentsIntersect(x1, y1, x2, y2, x3, y3, x4, y4){
+    var a_dx = x2 - x1;
+    var a_dy = y2 - y1;
+    var b_dx = x4 - x3;
+    var b_dy = y4 - y3;
+    var s = (-a_dy * (x1 - x3) + a_dx * (y1 - y3)) / (-b_dx * a_dy + a_dx * b_dy);
+    var t = (+b_dx * (y1 - y3) - b_dy * (x1 - x3)) / (-b_dx * a_dy + a_dx * b_dy);
+    return (s >= 0 && s <= 1 && t >= 0 && t <= 1);
 }
 }
 
