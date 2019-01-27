@@ -152,17 +152,17 @@ class utils{
     	e.setAttribute(name,val);
     }
     sketch(ox,oy,x,y){
-        if(!this.path){ 
+        if(!this.mypath){ 
             this.ctx.beginPath();
             this.ctx.moveTo(ox, oy);
             this.ctx.lineTo(x, y);
-            this.path = 'M '+ox+' '+oy+' L '+x+' '+y+' ';
+            this.mypath = 'M '+ox+' '+oy+' L '+x+' '+y+' ';
 		this.sketches[this.numSketch] = [];
 		this.sketches[this.numSketch].push([ox,oy])
 		this.sketches[this.numSketch].push([x,y])
         }else{
             this.ctx.lineTo(x, y);
-            this.path += 'L '+x+' '+y+' ';
+            this.mypath += 'L '+x+' '+y+' ';
 		this.sketches[this.numSketch].push([x,y])
         }
         this.ctx.stroke();
@@ -170,21 +170,22 @@ class utils{
     }
     endsketch(x,y){
             
-            var last_first = this.sketches[this.numSketch][0];
-            this.path += 'L '+last_first[0]+' '+last_first[1]+' Z';
-            this.sketches[this.numSketch].push(this.sketches[this.numSketch][0])
-            this.ctx.lineTo(last_first[0],last_first[1]);
-            this.ctx.stroke();
-            let bezierLoops = FloMat.getPathsFromStr(this.path);
-	    let mats = FloMat.findMats(bezierLoops, 3);
-    this.drawMats(mats, 'mat');
-    
-    let sats = mats.map(mat => FloMat.toScaleAxis(mat, 1.5));
+        var last_first = this.sketches[this.numSketch][0];
+        this.mypath += 'L '+last_first[0]+' '+last_first[1]+' Z';
+        this.sketches[this.numSketch].push(this.sketches[this.numSketch][0])
+        this.ctx.lineTo(last_first[0],last_first[1]);
+        this.ctx.stroke();
+        let bezierLoops = FloMat.getPathsFromStr(this.mypath);
+        delete this.mypath;
+        let mats = FloMat.findMats(bezierLoops, 3);
+        this.drawMats(mats, 'mat');
 
-    this.drawMats(sats, 'sat');
-	    this.numSketch++;
-	    delete this.path;
-        
+        let sats = mats.map(mat => FloMat.toScaleAxis(mat, 1.5));
+
+        this.drawMats(sats, 'sat');
+        this.numSketch++;
+        this.findIntersection();
+    
     }
 	
 	getLinePathStr(ps) {
@@ -436,14 +437,87 @@ getRealMousePos(canvas, evt) {
 		  y: evt.touches[0].clientY - rect.top
 	};
 }
-lineSegmentsIntersect(x1, y1, x2, y2, x3, y3, x4, y4){
-    var a_dx = x2 - x1;
-    var a_dy = y2 - y1;
-    var b_dx = x4 - x3;
-    var b_dy = y4 - y3;
-    var s = (-a_dy * (x1 - x3) + a_dx * (y1 - y3)) / (-b_dx * a_dy + a_dx * b_dy);
-    var t = (+b_dx * (y1 - y3) - b_dy * (x1 - x3)) / (-b_dx * a_dy + a_dx * b_dy);
-    return (s >= 0 && s <= 1 && t >= 0 && t <= 1);
+intersects(a,b,c,d,p,q,r,s) {
+    var det, gamma, lambda;
+    det = (c - a) * (s - q) - (r - p) * (d - b);
+    if (det === 0) {
+        return false;
+    } else {
+        lambda = ((s - q) * (r - a) + (p - r) * (s - b)) / det;
+        gamma = ((b - d) * (r - a) + (c - a) * (s - b)) / det;
+        return (0 < lambda && lambda < 1) && (0 < gamma && gamma < 1);
+    }
+}
+drawPoint(x,y,color,r){
+    let center = Math.ceil(r/2);
+    this.ctx.save();
+    this.ctx.fillStyle  = color;
+    this.ctx.beginPath();
+    this.ctx.arc(x+center, y+center, r, 0, 2 * Math.PI);
+    this.ctx.fill();
+    this.ctx.restore();
+}
+findIntersection(){
+    if(this.numSketch>1){
+        var sketches_length = this.sketches.length;
+        for(var s = 0;s<sketches_length;s++){
+            for(var s2 = s+1;s2<sketches_length;s2++){
+                var sketch_length1 = this.sketches[s].length;
+                var sketch_length2 = this.sketches[s2].length;
+                for(var seg1 = 1;seg1<sketch_length1;seg1++){
+                    var seg1point1 =  this.sketches[s][seg1-1];
+                    var seg1point2 = this.sketches[s][seg1];
+                    for(var seg2 = 1;seg2<sketch_length2;seg2++){
+                        var seg2point1 =  this.sketches[s2][seg2-1];
+                        var seg2point2 = this.sketches[s2][seg2];
+                        var ret = this.intersects(seg1point1[0],seg1point1[1],seg1point2[0],seg1point2[1],seg2point1[0],seg2point1[1],seg2point2[0],seg2point2[1]);
+                        if(ret){
+                            let intersection = this.lineSegmentsIntersect(seg1point1[0],seg1point1[1],seg1point2[0],seg1point2[1],seg2point1[0],seg2point1[1],seg2point2[0],seg2point2[1]);
+                            this.drawPoint(intersection.x,intersection.y,'#00FF00',4);
+                        }
+                    }   
+                }
+            }
+        }
+    }
+}
+lineSegmentsIntersect(line1StartX, line1StartY, line1EndX, line1EndY, line2StartX, line2StartY, line2EndX, line2EndY) {
+    // if the lines intersect, the result contains the x and y of the intersection (treating the lines as infinite) and booleans for whether line segment 1 or line segment 2 contain the point
+    var denominator, a, b, numerator1, numerator2, result = {
+        x: null,
+        y: null,
+        onLine1: false,
+        onLine2: false
+    };
+    denominator = ((line2EndY - line2StartY) * (line1EndX - line1StartX)) - ((line2EndX - line2StartX) * (line1EndY - line1StartY));
+    if (denominator == 0) {
+        return result;
+    }
+    a = line1StartY - line2StartY;
+    b = line1StartX - line2StartX;
+    numerator1 = ((line2EndX - line2StartX) * a) - ((line2EndY - line2StartY) * b);
+    numerator2 = ((line1EndX - line1StartX) * a) - ((line1EndY - line1StartY) * b);
+    a = numerator1 / denominator;
+    b = numerator2 / denominator;
+
+    // if we cast these lines infinitely in both directions, they intersect here:
+    result.x = line1StartX + (a * (line1EndX - line1StartX));
+    result.y = line1StartY + (a * (line1EndY - line1StartY));
+/*
+        // it is worth noting that this should be the same as:
+        x = line2StartX + (b * (line2EndX - line2StartX));
+        y = line2StartX + (b * (line2EndY - line2StartY));
+        */
+    // if line1 is a segment and line2 is infinite, they intersect if:
+    if (a > 0 && a < 1) {
+        result.onLine1 = true;
+    }
+    // if line2 is a segment and line1 is infinite, they intersect if:
+    if (b > 0 && b < 1) {
+        result.onLine2 = true;
+    }
+    // if line1 and line2 are segments, they intersect if both of the above are true
+    return result;
 }
 }
 
