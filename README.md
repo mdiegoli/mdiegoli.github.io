@@ -1,8 +1,6 @@
 __todo__:
 
-line of enemies
-
-number of assets for every assets's kind
+"gaussian" animation
 
 splash/end
 
