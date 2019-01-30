@@ -52,6 +52,41 @@ class entity{
 		})
 		
 	}
+	
+	gaussian(){
+		return new Promise((res,rej)=>{
+			if(!this.dir)this.dir='r'
+			if(!this.animGaussX){
+				this.animGaussX = [];
+				for(let offset = this.offset;offset<0;){
+					offset /= 2;
+					this.animGaussX.push(offset)
+				}
+				this.animGaussXLength = this.animGaussX.length-1;
+				this.indexAnimGaussXLength = this.animGaussXLength;
+			}
+			/* To Finish */
+			if(this.indexAnimGaussXLength > 0 && this.dir === 'r'){
+				this.animOffsetX+=this.animGaussX[this.indexAnimGaussXLength];
+				this.indexAnimGaussXLength--;
+				this.randomX++;
+				this.BBoxX++;
+			}else{
+				if(this.animOffsetX === this.offset) this.dir = 'l';
+				if(this.animOffsetX>0 && this.dir === 'l'){
+					this.animOffsetX--;
+					this.randomX--;
+					this.BBoxX--;
+				}else{
+					this.dir = 'r';
+
+				}	
+			}
+			res();
+		})
+		
+	}
+	
     start(){
         var me = this;
         return new Promise((res,rej)=>{
