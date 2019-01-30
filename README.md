@@ -1,6 +1,6 @@
 __todo__:
 
-"gaussian" animation
+"gaussian" animation (entity.js)
 
 splash/end
 
