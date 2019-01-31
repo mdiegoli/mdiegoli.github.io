@@ -58,8 +58,14 @@ class entity{
 			if(!this.dir)this.dir='r'
 			if(!this.animGaussX){
 				this.animGaussX = [];
+				//filed used to choose a different methot from ceil or floor.
+				var round = true;
 				for(let offset = this.offset;offset>0;){
-					offset = Math.floor(offset/2);
+					if(round)
+						offset = Math.floor(offset/2);
+					else
+						offset = Math.ceil(offset/2);
+					round != round;
 					this.animGaussX.push(offset)
 				}
 				for(let anim_length = this.animGaussX.length-1;anim_length>=0;anim_length--){
