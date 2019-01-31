@@ -65,7 +65,7 @@ class entity{
 						offset = Math.floor(offset/2);
 					else
 						offset = Math.ceil(offset/2);
-					round != round;
+					round = !round;
 					this.animGaussX.push(offset)
 				}
 				for(let anim_length = this.animGaussX.length-1;anim_length>=0;anim_length--){
