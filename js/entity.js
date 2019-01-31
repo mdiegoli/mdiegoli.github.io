@@ -59,8 +59,8 @@ class entity{
 			if(!this.animGaussX){
 				this.animGaussX = [];
 				for(let offset = this.offset;offset>0;){
-					offset /= 2;
-					this.animGaussX.push(Math.round(offset))
+					offset = Math.round(offset/2);
+					this.animGaussX.push(offset)
 				}
 				for(let anim_length = this.animGaussX.length;anim_length>=0;anim_length--){
 					this.animGaussX.push(this.animGaussX[anim_length])
