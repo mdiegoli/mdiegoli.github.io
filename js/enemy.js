@@ -4,7 +4,7 @@ class enemy extends entity{
     }
 	animation(){
 		if(this.offset)
-			return this.animationOffset();
+			return this.gaussian();
 		else
 			return this.rightBorder2LeftBorder();
 		
