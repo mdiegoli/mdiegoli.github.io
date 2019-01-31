@@ -62,21 +62,29 @@ class entity{
 					offset /= 2;
 					this.animGaussX.push(offset)
 				}
+				for(let anim_length = this.animGaussX.length;anim_length>=0;anim_length--){
+					this.animGaussX.push(this.animGaussX[anim_length])
+				}
+				
 				this.animGaussXLength = this.animGaussX.length-1;
 				this.indexAnimGaussXLength = this.animGaussXLength;
 			}
-			/* To Finish */
-			if(this.indexAnimGaussXLength > 0 && this.dir === 'r'){
+			if(this.indexAnimGaussXLength >= 0 && this.dir === 'r'){
 				this.animOffsetX+=this.animGaussX[this.indexAnimGaussXLength];
+				this.randomX+=this.animGaussX[this.indexAnimGaussXLength];
+				this.BBoxX+=this.animGaussX[this.indexAnimGaussXLength];
 				this.indexAnimGaussXLength--;
-				this.randomX++;
-				this.BBoxX++;
+				
 			}else{
-				if(this.animOffsetX === this.offset) this.dir = 'l';
-				if(this.animOffsetX>0 && this.dir === 'l'){
-					this.animOffsetX--;
-					this.randomX--;
-					this.BBoxX--;
+				if(this.indexAnimGaussXLength < 0){ 
+					this.dir = 'l';
+					this.indexAnimGaussXLength = 0;
+				}
+				if(this.indexAnimGaussXLength<this.animGaussLength && this.dir === 'l'){
+					this.animOffsetX-=this.animGaussX[this.indexAnimGaussXLength];
+					this.randomX-=this.animGaussX[this.indexAnimGaussXLength];
+					this.BBoxX-=this.animGaussX[this.indexAnimGaussXLength];
+					this.indexAnimGaussXLength++;
 				}else{
 					this.dir = 'r';
 
