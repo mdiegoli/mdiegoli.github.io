@@ -58,7 +58,7 @@ class entity{
 			if(!this.dir)this.dir='r'
 			if(!this.animGaussX){
 				this.animGaussX = [];
-				for(let offset = this.offset;offset<0;){
+				for(let offset = this.offset;offset>0;){
 					offset /= 2;
 					this.animGaussX.push(offset)
 				}
