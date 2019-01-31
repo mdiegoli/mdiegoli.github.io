@@ -62,7 +62,7 @@ class entity{
 					offset = Math.floor(offset/2);
 					this.animGaussX.push(offset)
 				}
-				for(let anim_length = this.animGaussX.length;anim_length>=0;anim_length--){
+				for(let anim_length = this.animGaussX.length-1;anim_length>=0;anim_length--){
 					this.animGaussX.push(this.animGaussX[anim_length])
 				}
 				
