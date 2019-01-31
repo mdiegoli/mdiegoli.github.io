@@ -55,7 +55,8 @@ class entity{
 	
 	gaussian(){
 		return new Promise((res,rej)=>{
-			if(!this.dir)this.dir='r'
+			if(!this.dir)this.dir='r';
+			if(!this.animOffsetX)this.animOffsetX=0;
 			if(!this.animGaussX){
 				this.animGaussX = [];
 				//filed used to choose a different methot from ceil or floor.
@@ -86,7 +87,7 @@ class entity{
 					this.dir = 'l';
 					this.indexAnimGaussXLength = 0;
 				}
-				if(this.indexAnimGaussXLength<=this.animGaussXLength && this.dir === 'l'){
+				if(this.indexAnimGaussXLength<this.animGaussXLength && this.dir === 'l'){
 					this.animOffsetX-=this.animGaussX[this.indexAnimGaussXLength];
 					this.randomX-=this.animGaussX[this.indexAnimGaussXLength];
 					this.BBoxX-=this.animGaussX[this.indexAnimGaussXLength];
