@@ -84,8 +84,9 @@ class entity{
 				this.animGaussXLength = this.animGaussX.length-1;
 				this.indexAnimGaussXLength = this.animGaussXLength;
 			}
-			if(this.indexAnimGaussXLength > this.animGaussXLength) this.indexAnimGaussXLength = this.animGaussXLength;
+			
 			if(this.indexAnimGaussXLength >= 0 && this.dir === 'r'){
+				if(this.indexAnimGaussXLength > this.animGaussXLength) this.indexAnimGaussXLength = this.animGaussXLength;
 				this.animOffsetX+=this.animGaussX[this.indexAnimGaussXLength];
 				this.randomX+=this.animGaussX[this.indexAnimGaussXLength];
 				this.BBoxX+=this.animGaussX[this.indexAnimGaussXLength];
