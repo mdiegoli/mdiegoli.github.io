@@ -77,6 +77,7 @@ class entity{
 				}
 				var diff = (this.offset) - sum;
 				if(diff>0){
+					//put the difference in a step
 					this.animGaussX[0] += diff;
 				}
 					
