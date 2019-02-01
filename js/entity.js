@@ -95,7 +95,7 @@ class entity{
 					this.dir = 'l';
 					this.indexAnimGaussXLength = 0;
 				}
-				if(this.indexAnimGaussXLength<this.animGaussXLength && this.dir === 'l'){
+				if(this.indexAnimGaussXLength<=this.animGaussXLength && this.dir === 'l'){
 					this.animOffsetX-=this.animGaussX[this.indexAnimGaussXLength];
 					this.randomX-=this.animGaussX[this.indexAnimGaussXLength];
 					this.BBoxX-=this.animGaussX[this.indexAnimGaussXLength];
