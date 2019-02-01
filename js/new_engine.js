@@ -289,7 +289,7 @@ function l(){
                                 (succ) => {
                                     addHero('h_a').then(
                                         (succ) => {
-                                            addDemoAssets('e_a',2).then(
+                                            addDemoAssets('e_a',1).then(
                                                 
                                                 (succ) => {
                                                     requestAnimationFrame(gAF);
