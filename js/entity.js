@@ -69,10 +69,18 @@ class entity{
 					round = !round;
 					this.animGaussX.push(offset)
 				}
+				//used to store difference from sum animGaussX steps and offset
+				var sum = 0;
 				for(let anim_length = this.animGaussX.length-1;anim_length>=0;anim_length--){
 					this.animGaussX.push(this.animGaussX[anim_length])
+					sum += this.animGaussX[anim_length];
 				}
-				
+				var diff = (this.offset/2) - sum;
+				if(diff>0){
+					this.animGaussX[0] += diff;
+					this.animGaussX[this.animGaussX.length-1] += diff;
+				}
+					
 				this.animGaussXLength = this.animGaussX.length-1;
 				this.indexAnimGaussXLength = this.animGaussXLength;
 			}
