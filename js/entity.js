@@ -78,7 +78,6 @@ class entity{
 				var diff = (this.offset) - sum;
 				if(diff>0){
 					this.animGaussX[0] += diff;
-					this.animGaussX[this.animGaussX.length-1] += diff;
 				}
 					
 				this.animGaussXLength = this.animGaussX.length-1;
