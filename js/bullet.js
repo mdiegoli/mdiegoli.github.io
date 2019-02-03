@@ -27,7 +27,7 @@ class bullet extends entity{
 				me.BBoxX = me.randomX + gC.spriteW/2 - gC.bulletW/2;
 				me.BBoxY = me.randomY + gC.spriteH/2 - gC.bulletH/2;
 			}
-			if((me.randomY-gC.offset_bullet)>0 && me.dir === 'u'){
+			if((me.BBoxY-gC.offset_bullet)>0 && me.dir === 'u'){
 				me.randomY-=gC.offset_bullet;
 				me.BBoxY  -=gC.offset_bullet;
 				for(let a = 0,a_l = assets.length;a<a_l;a++){
@@ -45,7 +45,7 @@ class bullet extends entity{
 			}else{
 				let a_l = assets.length;
 				for(let b = 0;b<a_l;b++){
-					if(assets[b].id && assets[b].id === me.id){
+					if(typeof assets[b].id !== 'undefined' && assets[b].id === me.id){
 						assets.splice(b,1);
 					}
 				}	
