@@ -70,12 +70,17 @@ class entity{
 					this.animGaussX.push(offset)
 				}
 				//used to store difference from sum animGaussX steps and offset
+				for(let steps=0,anim_length = this.animGaussX.length-1;steps < anim_length-1;steps++){
+					
+					this.animGaussX[steps] = this.animGaussX[steps]-this.animGaussX[steps+1];
+					sum += this.animGaussX[steps];
+				}
 				var sum = 0;
 				for(let anim_length = this.animGaussX.length-1;anim_length>=0;anim_length--){
 					this.animGaussX.push(this.animGaussX[anim_length])
 					sum += this.animGaussX[anim_length];
 				}
-				var diff = (this.offset) - sum;
+				var diff = (this.offset) - sum*2;
 				if(diff>0){
 					//put the difference in a step
 					this.animGaussX[0] += diff;
@@ -87,6 +92,7 @@ class entity{
 			
 			if(this.indexAnimGaussXLength >= 0 && this.dir === 'r'){
 				if(this.indexAnimGaussXLength > this.animGaussXLength) this.indexAnimGaussXLength = this.animGaussXLength;
+				this.animGaussX[this.indexAnimGaussXLength]
 				this.animOffsetX+=this.animGaussX[this.indexAnimGaussXLength];
 				this.randomX+=this.animGaussX[this.indexAnimGaussXLength];
 				this.BBoxX+=this.animGaussX[this.indexAnimGaussXLength];
