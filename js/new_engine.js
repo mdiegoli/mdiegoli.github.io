@@ -231,6 +231,7 @@ function addCanvas(){
                         break;
                     case 32:
                         assets.push(gC.player.fire('b_a'));
+                        gC.fireAudio.play();
                         break;
                 }
             })
@@ -244,7 +245,7 @@ function addCanvas(){
                         gC.player.rightUp();
                         break;
                     case 32:
-                        assets.push(gC.player.fire('b_a'));
+                        //assets.push(gC.player.fire('b_a'));
                         break;
                 }
             })
@@ -272,8 +273,16 @@ function s(){
         }
         
     )
+}
 
-    }
+function loadMp3(){
+    return new Promise(function(res,rej){
+        gC.fireAudio = new Audio('assets/games/audio/Shoot001.mp3');
+        gC.explosionAudio1 = new Audio('assets/games/audio/Explosion001.mp3');
+        gC.explosionAudio2 = new Audio('assets/games/audio/Explosion002.mp3');
+        res();
+    })
+}
 //every frame value, draw scene
 function l(){
     gC.demoClock = 0;
@@ -289,35 +298,18 @@ function l(){
                                 (succ) => {
                                     addHero('h_a').then(
                                         (succ) => {
-                                            addDemoAssets('e_a',1).then(
+                                            addDemoAssets('e_a',5).then(
                                                 
                                                 (succ) => {
-                                                    requestAnimationFrame(gAF);
-                                                    /*
-                                                    addDemoAssets('e_b').then(
+                                                    loadMp3().then(
+                                                
                                                         (succ) => {
-                        
-                                                            addDemoAssets('e_c').then(
-                                                                (succ) => {
-                                
-                                                                    addDemoAssets('e_d').then(
-                                                                        (succ) => {
-                                                                            addBullet('b_a').then(
-                                                                                (succ) => {
-                                                                                    requestAnimationFrame(gAF);
-											//requestAnimationFrame(startGame);
-                                                                                }
-                                                                            )   
-                                                                            
-                                                                        }
-                                                                    )
-                                                                }
-                                                            )
+                                                            requestAnimationFrame(gAF);
+                                                            
                                                         }
-                                                    )*/
+                                                    )
                                                 }
                                             )
-                                            
                                         }
                                     )
                                 }

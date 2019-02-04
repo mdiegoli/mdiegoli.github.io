@@ -102,6 +102,15 @@ function addCanvas(){
         res();
     })
 }
+
+function loadMp3(){
+    return new Promise(function(res,rej){
+        gC.fireAudio = new Audio('assets/games/audio/Shoot001.mp3');
+        gC.explosionAudio1 = new Audio('assets/games/audio/Explosion001.mp3');
+        gC.explosionAudio2 = new Audio('assets/games/audio/Explosion002.mp3');
+        res();
+    })
+}
 //every frame value, draw scene
 function l(){
     var demoClock = 0;
@@ -110,7 +119,15 @@ function l(){
 			(succ)=>{
 				addCanvas().then(
 					(succ)=>{
-					    console.log('start!');
+					    loadMp3().then(
+                            (succ)=>{
+                                console.log('start!');
+                            }
+                            ).catch(
+                            (err) => {
+                                console.log(err);
+                            }
+                            )
 					}
 				    ).catch(
 					(err) => {

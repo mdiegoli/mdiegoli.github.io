@@ -13,6 +13,7 @@ class bullet extends entity{
 			Utils.drawImages(me.__proto__.images[this.level], me.randomX, me.randomY);
 			//add the echo feature
 			Utils.drawBBox(me.BBoxX, me.BBoxY,gC.bulletW,gC.bulletH,me.BBoxColor);
+			//gC.fireAudio.play();
 			res();
 		})
     }
@@ -33,6 +34,8 @@ class bullet extends entity{
 				for(let a = 0,a_l = assets.length;a<a_l;a++){
 					if(!(assets[a] instanceof bullet) && !(assets[a] instanceof hero) && assets[a].hit(me.BBoxX,me.BBoxY,gC.bulletW,me.bulletW)){
 						assets.splice(a,1);
+						//todo: class explosion, who show animation and play audio
+						gC.explosionAudio1.play();
 						for(let b = 0;b<a_l;b++){
 							if(assets[b].id && assets[b].id === me.id){
 								me.BBoxColor = 'red'

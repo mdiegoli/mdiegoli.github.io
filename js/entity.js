@@ -73,7 +73,7 @@ class entity{
 				for(let steps=0,anim_length = this.animGaussX.length-1;steps < anim_length-1;steps++){
 					
 					this.animGaussX[steps] = this.animGaussX[steps]-this.animGaussX[steps+1];
-					sum += this.animGaussX[steps];
+					//sum += this.animGaussX[steps];
 				}
 				var sum = 0;
 				for(let anim_length = this.animGaussX.length-1;anim_length>=0;anim_length--){
@@ -85,7 +85,9 @@ class entity{
 					//put the difference in a step
 					this.animGaussX[0] += diff;
 				}
-					
+				for(let anim_length = this.animGaussX.length-1;anim_length>=0;anim_length--){
+					this.animGaussX.push(-this.animGaussX[anim_length])
+				}	
 				this.animGaussXLength = this.animGaussX.length-1;
 				this.indexAnimGaussXLength = this.animGaussXLength;
 			}
@@ -104,9 +106,9 @@ class entity{
 					this.indexAnimGaussXLength = 0;
 				}
 				if(this.indexAnimGaussXLength<=this.animGaussXLength && this.dir === 'l'){
-					this.animOffsetX-=this.animGaussX[this.indexAnimGaussXLength];
-					this.randomX-=this.animGaussX[this.indexAnimGaussXLength];
-					this.BBoxX-=this.animGaussX[this.indexAnimGaussXLength];
+					this.animOffsetX+=this.animGaussX[this.indexAnimGaussXLength];
+					this.randomX+=this.animGaussX[this.indexAnimGaussXLength];
+					this.BBoxX+=this.animGaussX[this.indexAnimGaussXLength];
 					this.indexAnimGaussXLength++;
 				}else{
 					this.dir = 'r';

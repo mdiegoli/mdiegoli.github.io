@@ -345,7 +345,8 @@ setRandomData(){
 	if(gC.paint){
 		let coord = this.getMousePos(gC.canvas,e)
 		if(gC.brush) gC.brush.paint(coord.x,coord.y)
-	}
+    }
+    gC.fireAudio.play();
 }
 
  mouseDown(e){
@@ -353,7 +354,8 @@ setRandomData(){
     gC.paint = true;
     let coord = this.getMousePos(gC.canvas,e)
 		if(gC.brush) gC.brush.paint(coord.x,coord.y)
-	if(!gC.audioCtx){
+    /*
+    if(!gC.audioCtx){
 		this.createAudio().then(
 			(succ)=>{
 				gC.oscillatorNode.start(0);
@@ -366,7 +368,8 @@ setRandomData(){
 		      gC.audioCtx.resume()
 		    }
 	}
-	
+    */
+   gC.fireAudio.play();
 	
 }
 
@@ -375,7 +378,8 @@ setRandomData(){
 	if(gC.paint){
 		let coord = this.getTouchPos(gC.canvas,e)
 		if(gC.brush) gC.brush.paint(coord.x,coord.y)
-	}
+    }
+    gC.fireAudio.play();
 }
 
  touchDown(e){
@@ -383,7 +387,8 @@ setRandomData(){
     gC.paint = true;
     let coord = this.getTouchPos(gC.canvas,e)
 		if(gC.brush) gC.brush.paint(coord.x,coord.y)
-	if(!gC.audioCtx){
+    /*
+    if(!gC.audioCtx){
 		this.createAudio().then(
 			(succ)=>{
 				gC.oscillatorNode.start(0);
@@ -395,7 +400,9 @@ setRandomData(){
 		if(gC.audioCtx.state === 'suspended') {
 		      gC.audioCtx.resume()
 		    }
-	}
+    }
+    */
+   gC.fireAudio.play();
 	
 	
 }
@@ -404,14 +411,14 @@ setRandomData(){
 	e.preventDefault();
 	gC.paint = false;
 	
-      gC.audioCtx.suspend();
+      //gC.audioCtx.suspend();
 }
 
  touchUp(e){
 	e.preventDefault();
 	gC.paint = false;
 	
-      gC.audioCtx.suspend();
+      //gC.audioCtx.suspend();
 }
 
  getMousePos(canvas, evt) {
