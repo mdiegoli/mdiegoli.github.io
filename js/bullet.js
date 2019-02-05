@@ -3,17 +3,23 @@ class bullet extends entity{
 		super(level)
 		this.id = this.__proto__.bulletId++;
 		this.BBoxColor = 'green';
+		this.frames;
+		this.frame = 0;
     }
 	
     create(){
 		var me = this;
 		return new Promise((res,rej)=>{
 			
-			
-			Utils.drawImages(me.__proto__.images[this.level], me.randomX, me.randomY);
+			if(!me.frames) me.frames = me.__proto__.images[me.level]['BU'].width/gC.spriteW;
+			if(me.frame===me.frames){
+				me.frame=0;
+			}
+			Utils.drawAnimation(me.__proto__.images[me.level], gC.spriteW*me.frame, 0,gC.spriteW,gC.spriteH, me.randomX, me.randomY,gC.spriteW,gC.spriteH);
 			//add the echo feature
 			Utils.drawBBox(me.BBoxX, me.BBoxY,gC.bulletW,gC.bulletH,me.BBoxColor);
 			//gC.fireAudio.play();
+			me.frame++;
 			res();
 		})
     }
@@ -71,7 +77,8 @@ class bullet extends entity{
         
 		
 		var lI = Utils.loadImage;
-		lI(me.__proto__.images[me.level],'assets/games/bullets/BULLET-001.png', 'BU');
+		//lI(me.__proto__.images[me.level],'assets/games/bullets/BULLET-001.png', 'BU');
+		lI(me.__proto__.images[me.level],'assets/games/animations/bullets/bullet1.png', 'BU');
 		res();
         })
         

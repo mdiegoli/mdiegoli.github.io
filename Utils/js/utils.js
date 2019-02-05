@@ -85,6 +85,18 @@ class utils{
 	
         
     }
+
+    drawAnimation(images,srcX,srcY,width,height,realx,realy,realwidth,realheight){
+	    
+	
+		let keys = Object.keys(images);
+		for(let p = 0,p_l = keys.length;p<p_l;p++){
+			this.ctxo.drawImage(images[keys[p]], srcX,srcY,width,height,realx,realy,realwidth,realheight)
+		}
+		
+	
+        
+    }
 	
 	drawImagesNoDoubleBuffer(images,x,y){
 	    
@@ -131,7 +143,7 @@ class utils{
 	    
 		return new Promise((res,rej)=>{
         if(!images[type]){
-		    let img = new Image(gC.spriteW,gC.spriteH);
+		    let img = new Image();
 		    img.onload = function () {
 			images[type] = img;
 			res('image '+str+' loaded!')

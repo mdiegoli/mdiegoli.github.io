@@ -304,7 +304,13 @@ function l(){
                                                     loadMp3().then(
                                                 
                                                         (succ) => {
-                                                            requestAnimationFrame(gAF);
+                                                            addBullet('b_a').then(
+                                                
+                                                                (succ) => {
+                                                                    requestAnimationFrame(gAF);
+                                                                    
+                                                                }
+                                                            )
                                                             
                                                         }
                                                     )
