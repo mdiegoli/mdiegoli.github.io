@@ -39,6 +39,7 @@ class bullet extends entity{
 				me.BBoxY  -=gC.offset_bullet;
 				for(let a = 0,a_l = assets.length;a<a_l;a++){
 					if(!(assets[a] instanceof bullet) && !(assets[a] instanceof hero) && assets[a].hit(me.BBoxX,me.BBoxY,gC.bulletW,me.bulletW)){
+						assets.push(new explosion('x_a',assets[a].getPosX(),assets[a].getPosY()))
 						assets.splice(a,1);
 						//todo: class explosion, who show animation and play audio
 						gC.explosionAudio1.play();

@@ -4,6 +4,7 @@ class entity{
 		this.offset = offset;
 		this.randomX = xpos;
 		if(!this.__proto__.bulletId)this.__proto__.bulletId = 0;
+		if(!this.__proto__.explosionId)this.__proto__.explosionId = 0;
 		if(!this.__proto__.images)this.__proto__.images = {};
         if(!this.__proto__.images[level])this.__proto__.images[level] = {};
     }
@@ -212,7 +213,13 @@ paint(x,y){
 	})
 }
 
-    
+getPosX(){
+	return this.randomX;
+}
+
+getPosY(){
+	return this.randomY;
+}
 
 }
 

@@ -95,13 +95,7 @@ class hero extends entity{
         return new bullet(level);
     }
 
-    getPosX(){
-        return this.randomX;
-    }
-	
-	getPosY(){
-        return this.randomY;
-    }
+    
 	
 	bbox(){
 		var me = this;

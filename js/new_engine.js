@@ -124,6 +124,18 @@ function addBullet(l){
         
 }
 
+function addExplosion(l){
+    return new Promise(function(res,rej){
+    
+        gC.explosion = new explosion(l);
+        gC.explosion.preload().then(
+            (succ) => {
+                res();
+            }
+        )
+    })
+        
+}
 
 function addBack(l){
     return new Promise(function(res,rej){
@@ -307,7 +319,13 @@ function l(){
                                                             addBullet('b_a').then(
                                                 
                                                                 (succ) => {
-                                                                    requestAnimationFrame(gAF);
+                                                                    addExplosion('x_a').then(
+                                                
+                                                                        (succ) => {
+                                                                            requestAnimationFrame(gAF);
+                                                                            
+                                                                        }
+                                                                    )
                                                                     
                                                                 }
                                                             )
