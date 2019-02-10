@@ -12,6 +12,9 @@ class utils{
     getEBTN(str){
     	return document.getElementsByTagName(str);
     }
+    getEBCN(str){
+    	return document.getElementsByClassName(str);
+    }
     getEBI(str){
         return document.getElementById(str);
     }
@@ -537,6 +540,21 @@ lineSegmentsIntersect(line1StartX, line1StartY, line1EndX, line1EndY, line2Start
     }
     // if line1 and line2 are segments, they intersect if both of the above are true
     return result;
+}
+showScore(input) {
+    var output = this.getEBCN('score')[0];
+    output.innerHTML = '';
+    input = input.toString();
+    for (var i = 0; i < input.length; i++) {
+        var chr = input.substring(i, i + 1)
+        if (chr == '£') {
+            output.innerHTML += '<img border="0" height="30px" src="pound.gif">';
+        } else if (chr == '.') {
+            output.innerHTML += '<img border="0" height="30px" src="assets/games/layout-draft/score/score-dot.png">';
+        } else {
+            output.innerHTML += '<img border="0" height="30px" src="assets/games/layout-draft/score/score-'+(chr)+'.png">';
+        }
+    }
 }
 }
 

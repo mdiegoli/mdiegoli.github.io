@@ -1,7 +1,7 @@
 class explosion extends entity{
     constructor(level,x,y){
 		super(level)
-		this.id = this.__proto__.explosionId++;
+		//this.id = this.__proto__.explosionId++;
 		this.BBoxColor = 'green';
 		this.frames;
 		this.frame = 0;
@@ -15,7 +15,7 @@ class explosion extends entity{
 			
 			if(!me.frames) me.frames = me.__proto__.images[me.level]['EX'].width/gC.spriteW;
 			if(me.frame===me.frames){
-				assets.splice(me.explosionId,1);
+				assets[me.id].end = true;
 			}
 			Utils.drawAnimation(me.__proto__.images[me.level], gC.spriteW*me.frame, 0,gC.spriteW,gC.spriteH, me.randomX, me.randomY,gC.spriteW,gC.spriteH);
 			//add the echo feature

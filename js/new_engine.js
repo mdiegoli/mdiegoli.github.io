@@ -6,38 +6,46 @@ var assets = [];
 
 function startGame(){
     
-	
+	Utils.showScore(gC.score)
     	let a_l = assets.length;
 	for(let a = 0;a<a_l;a++){
-	    assets[a].start()
-		.then(
-		    (succ)=>{
-			if(assets[a].animation)
-			    assets[a].animation()
-				.then(
-				    (succ)=>{
-				    //console.log(succ);
-				    }
-				)
-				.catch(
-				    (err)=>{
-				    console.log(err);
-				    }
-				)
-			//else
-			//    console.log('asset senza animazione')
-		    }
-		)
-		.catch(
-		    (err)=>{
-			console.log(err);
-		    }
-		)
+        if(!assets[a].end){
+            assets[a].start()
+            .then(
+                (succ)=>{
+                if(assets[a].animation)
+                    assets[a].animation()
+                    .then(
+                        (succ)=>{
+                        //console.log(succ);
+                        }
+                    )
+                    .catch(
+                        (err)=>{
+                        console.log(err);
+                        }
+                    )
+                //else
+                //    console.log('asset senza animazione')
+                }
+            )
+            .catch(
+                (err)=>{
+                console.log(err);
+                }
+            )
+        }
         if(a==(a_l-1)){
-        
-        //Utils.c2osc();
-	Utils.c2c();
-        requestAnimationFrame(this.gAF)
+            
+            /*
+            for(let e = 0;e<a_l;e++){
+                if(assets[e].end)
+                    assets.splice(e,1);
+            }
+            */    
+            //Utils.c2osc();
+            Utils.c2c();
+            requestAnimationFrame(this.gAF)
         }
 	}
 }

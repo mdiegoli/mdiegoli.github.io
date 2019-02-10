@@ -1,5 +1,6 @@
 class entity{
     constructor(level,xpos,offset){
+		this.id = assets.length;
 		this.level = level;
 		this.offset = offset;
 		this.randomX = xpos;

@@ -1,7 +1,7 @@
 class bullet extends entity{
     constructor(level){
 		super(level)
-		this.id = this.__proto__.bulletId++;
+		//this.id = this.__proto__.bulletId++;
 		this.BBoxColor = 'green';
 		this.frames;
 		this.frame = 0;
@@ -41,16 +41,13 @@ class bullet extends entity{
 					for(let a = 0,a_l = assets.length;a<a_l;a++){
 						if(!(assets[a] instanceof bullet) && !(assets[a] instanceof hero) && assets[a].hit(me.BBoxX,me.BBoxY,gC.bulletW,me.bulletW)){
 							assets.push(new explosion('x_a',assets[a].getPosX(),assets[a].getPosY()))
-							assets.splice(a,1);
+							
+							console.log('remove demon')
+							assets[a].end = true;
 							this.removeBullet();
-							//todo: class explosion, who show animation and play audio
+							gC.score += 50;
 							gC.explosionAudio1.play();
-							for(let b = 0;b<a_l;b++){
-								if(assets[b].id && assets[b].id === me.id){
-									me.BBoxColor = 'red'
-									//assets.splice(b,1);
-								}
-							}		
+							
 						}
 					}
 					res();
@@ -66,12 +63,16 @@ class bullet extends entity{
 	
 	removeBullet(){
 		let a_l = assets.length;
-		for(let b = 0;b<a_l;b++){
-			if(typeof assets[b].id !== 'undefined' && assets[b].id === this.id){
-				assets.splice(b,1);
-			}
-		}	
-
+		return new Promise((res,rej)=>{
+			for(let b = 0;b<a_l;b++){
+				if(typeof assets[b].id !== 'undefined' && assets[b].id === this.id){
+					console.log('remove bullet')
+					assets[b].end = true;
+					return res();
+					
+				}
+			}	
+		})
 	}
 	
     preload(){

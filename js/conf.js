@@ -9,7 +9,8 @@ var gC = {
     muberAnimationPoints: 3,
     fr: 500,
     offset_arrow:5,
-    offset_bullet:5
+    offset_bullet:5,
+    score:0
 };
 
 gC.spritePosX = gC.width-gC.spriteW;
