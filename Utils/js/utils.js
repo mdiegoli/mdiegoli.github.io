@@ -541,10 +541,20 @@ lineSegmentsIntersect(line1StartX, line1StartY, line1EndX, line1EndY, line2Start
     // if line1 and line2 are segments, they intersect if both of the above are true
     return result;
 }
+	pad(num,length,fill){
+		if(!(typeof num === 'string'))
+			num = num.toString()
+		let num_length = num.length;
+		if(num_length < length)
+			for(;num_length<length;num_length++)
+				num = fill+num;
+		return num;
+	}
 showScore(input) {
     var output = this.getEBCN('score')[0];
     output.innerHTML = '';
     input = input.toString();
+	input = this.pad(input,7,0);
     for (var i = 0; i < input.length; i++) {
         var chr = input.substring(i, i + 1)
         if (chr == '£') {
