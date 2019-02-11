@@ -129,7 +129,7 @@ class utils{
         this.ctxo.drawImage(img, x, y)
     }
     drawText(src,x,y,c){
-        this.ctxo.font = "30px Arial";
+        this.ctxo.font = "30px Arcadeclassic";
 		this.ctxo.fillStyle = c;
         this.ctxo.fillText(src, x, y);
     }

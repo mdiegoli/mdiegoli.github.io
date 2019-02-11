@@ -8,7 +8,7 @@ class splash{
 	return new Promise((res,rej)=>{
 		
 		    var lI = Utils.loadImage;
-		    lI(me.images,'assets/games/layout-draft/title/keplerion-title.gif', 'SP').then(
+		    lI(me.images,'assets/games/demontitle/badge_A_HE_1_01.png', 'SP').then(
              (succ)=>{
 		        res();
              }   
@@ -24,8 +24,8 @@ class splash{
         var me = this;
         return new Promise((res,rej)=>{
         Utils.clearCanvas('#000');
-        Utils.drawImage(me.images['SP'],100,100);
-        Utils.drawText('Press s to start',100,200,'#FFF') 
+        Utils.drawImage(me.images['SP'],0,100);
+        Utils.drawText('Press  s  to  start',380,400,'#FFF') 
         function k(e){
             switch(e.keyCode){
                 case 83:
