@@ -3,6 +3,8 @@ height:50px;
 width:100%;
 }
 .button{
+  border: 1px solid 'black';
+  background: 'light blue';
 height:100%;
 width:50px;
 float:left;
