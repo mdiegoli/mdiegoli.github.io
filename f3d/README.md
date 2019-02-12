@@ -46,3 +46,5 @@ todo:
           move body
 
         b to make a boolean union
+        
+    2. https://github.com/tmpvar/2d-polygon-boolean  
