@@ -26,4 +26,23 @@ evidenzio intersezioni sketch, posiziono sfere agli estremi della linea e nelle 
 
 todo:
 
-  1. salvare le linee dello sketch in un array bidimensionale, da ciclare con due for per trovare le intersezioni
+    1. shape end
+        ...
+        interpolation based on distance and shape ray
+        ...
+        shape end
+
+        split a bone:
+          click and move a shape
+          mouse wheel
+
+        click and move on end:
+          move end
+
+        right click on shape:
+          move bone
+
+        middle click on shape:
+          move body
+
+        b to make a boolean union
