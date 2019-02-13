@@ -1,14 +1,10 @@
 __todo__:
 
-"gaussian" animation (entity.js)
+https://animejs.com/
 
-splash/end
+end
 
 echo
-
-score
-
-sound
 
 replace promise with async/await (https://mdiegoli.github.io/async_await.html)
 
