@@ -1,82 +1,86 @@
 'use strict';
 
 class toolMatSat{
-  constructor(){
-      b.addEventListener('mousedown',this.mouseDown.bind(this))
-      b.addEventListener('mouseup',this.mouseUp.bind(this))
-      b.addEventListener('mousemove',this.mouseMove.bind(this))
-      b.addEventListener('touchstart',this.touchDown.bind(this))
-      b.addEventListener('touchend',this.touchUp.bind(this))
-      b.addEventListener('touchmove',this.touchMove.bind(this))
-    }
-  }
-
-
-
-mouseMove(e){
-	e.preventDefault();
-	if(gC.paint){
-		let coord = Utils.getRealMousePos(gC.canvas,e)
-		this.custom_mouseMove(coord)
+	constructor(){
+		b.addEventListener('mousedown',this.mouseDown.bind(this))
+		b.addEventListener('mouseup',this.mouseUp.bind(this))
+		b.addEventListener('mousemove',this.mouseMove.bind(this))
+		b.addEventListener('touchstart',this.touchDown.bind(this))
+		b.addEventListener('touchend',this.touchUp.bind(this))
+		b.addEventListener('touchmove',this.touchMove.bind(this))
 	}
-}
+	
 
-mouseDown(e){
-    e.preventDefault()
-    let coord = Utils.getRealMousePos(gC.canvas,e)
-    gC.oldCoordX = coord.x
-    gC.oldCoordY = coord.y
-	gC.paint = true;
-	this.custom_mouseDown(coord);
-}
 
-mouseUp(e){
-	e.preventDefault();
-    gC.paint = false;
-    let coord = Utils.getRealMousePos(gC.canvas,e)
-	this.custom_mouseUp(coord)
-}
 
-touchMove(e){
-    e.preventDefault()
-	if(gC.paint){
-		let coord = Utils.getRealTouchPos(gC.canvas,e)
-		this.custom_touchMove(coord);
+	mouseMove(e){
+		e.preventDefault();
+		if(gC.paint){
+			let coord = Utils.getRealMousePos(gC.canvas,e)
+			this.custom_mouseMove(coord)
+		}
 	}
-}
 
-touchDown(e){
-    e.preventDefault()
-    let coord = Utils.getRealTouchPos(gC.canvas,e)
-    gC.oldCoordX = coord.x
-    gC.oldCoordY = coord.y
-	gC.paint = true;
-	this.custom_touchDown(coord);
-}
+	mouseDown(e){
+	    e.preventDefault()
+	    let coord = Utils.getRealMousePos(gC.canvas,e)
+	    gC.oldCoordX = coord.x
+	    gC.oldCoordY = coord.y
+		gC.paint = true;
+		this.custom_mouseDown(coord);
+	}
 
-touchUp(e){
-    e.preventDefault()
-	//let coord = Utils.getRealTouchPos(gC.canvas,e)
-    gC.paint = false;
-	this.custom_touchUp();
-}
-	  
-custom_mouseMove(e){
-}
+	mouseUp(e){
+		e.preventDefault();
+	    gC.paint = false;
+	    let coord = Utils.getRealMousePos(gC.canvas,e)
+		this.custom_mouseUp(coord)
+	}
 
-custom_mouseDown(e){
-}
+	touchMove(e){
+	    e.preventDefault()
+		if(gC.paint){
+			let coord = Utils.getRealTouchPos(gC.canvas,e)
+			this.custom_touchMove(coord);
+		}
+	}
 
-custom_mouseUp(e){
-}
+	touchDown(e){
+	    e.preventDefault()
+	    let coord = Utils.getRealTouchPos(gC.canvas,e)
+	    gC.oldCoordX = coord.x
+	    gC.oldCoordY = coord.y
+		gC.paint = true;
+		this.custom_touchDown(coord);
+	}
 
-custom_touchMove(e){
-}
+	touchUp(e){
+	    e.preventDefault()
+		//let coord = Utils.getRealTouchPos(gC.canvas,e)
+	    gC.paint = false;
+		this.custom_touchUp();
+	}
 
-custom_touchDown(e){
-}
+	custom_mouseMove(coord){
+		Utils.sketch(gC.oldCoordX,gC.oldCoordY,coord.x,coord.y)
+	}
 
-custom_touchUp(e){
-}
+	custom_mouseDown(coord){
+	}
+
+	custom_mouseUp(coord){
+		Utils.endsketch(coord.x,coord.y)
+	}
+
+	custom_touchMove(coord){
+		Utils.sketch(gC.oldCoordX,gC.oldCoordY,coord.x,coord.y)
+	}
+
+	custom_touchDown(coord){
+	}
+
+	custom_touchUp(coord){
+		Utils.endsketch(gC.oldCoordX,gC.oldCoordY)
+	}
 
 }
