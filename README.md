@@ -6,6 +6,8 @@ https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Advanced_an
 
 https://developer.mozilla.org/en-US/docs/Games/Techniques/Efficient_animation_for_web_games
 
+https://codepen.io/Tobsta/post/implementing-velocity-acceleration-and-friction-on-a-canvas
+
 end
 
 echo
