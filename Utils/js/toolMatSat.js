@@ -2,6 +2,10 @@
 
 class toolMatSat{
 	constructor(){
+		this.setEvents();
+	}
+	
+	setEvents(){
 		b.addEventListener('mousedown',this.mouseDown.bind(this))
 		b.addEventListener('mouseup',this.mouseUp.bind(this))
 		b.addEventListener('mousemove',this.mouseMove.bind(this))
@@ -9,8 +13,6 @@ class toolMatSat{
 		b.addEventListener('touchend',this.touchUp.bind(this))
 		b.addEventListener('touchmove',this.touchMove.bind(this))
 	}
-	
-
 
 
 	mouseMove(e){
