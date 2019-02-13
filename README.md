@@ -2,6 +2,10 @@ __todo__:
 
 https://animejs.com/
 
+https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Advanced_animations
+
+https://developer.mozilla.org/en-US/docs/Games/Techniques/Efficient_animation_for_web_games
+
 end
 
 echo
