@@ -1,32 +1,24 @@
 'use strict';
 
-var f3d = class extends artool{
+var f3d = class extends artCanvas{
 	constructor(){
 		super();
 	}
-
-
-custom_mouseMove(coord){
-	Utils.sketch(gC.oldCoordX,gC.oldCoordY,coord.x,coord.y)
 }
 
-custom_mouseDown(coord){
-}
-
-custom_mouseUp(coord){
-	Utils.endsketch(coord.x,coord.y)
-}
-
-custom_touchMove(coord){
-	Utils.sketch(gC.oldCoordX,gC.oldCoordY,coord.x,coord.y)
-}
-
-custom_touchDown(coord){
-}
-
-custom_touchUp(coord){
-	Utils.endsketch(gC.oldCoordX,gC.oldCoordY)
-}
+function setTool(str){
+	switch(str){
+		case 'mat-sat':
+			if(!gC.matsat)
+				gC.matsat = new toolMatSat();
+			gC.matsat.setEvents();
+			break;
+		case 'my2dzbrush':
+			if(!gC.my2dzbrush)
+				gC.my2dzbrush = new toolMy2DZBrush();
+			gC.my2dzbrush.setEvents();
+			break;
+	}
 }
 
 function l(){
