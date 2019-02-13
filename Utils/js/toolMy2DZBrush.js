@@ -6,6 +6,7 @@ class toolMy2DZBrush{
 	}
 	
 	setEvents(){
+		var b = Utils.getEBTN('canvas')[0]
 		b.addEventListener('mousedown',this.mouseDown.bind(this))
 		b.addEventListener('mouseup',this.mouseUp.bind(this))
 		b.addEventListener('mousemove',this.mouseMove.bind(this))
