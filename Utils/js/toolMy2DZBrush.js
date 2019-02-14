@@ -1,6 +1,6 @@
 'use strict';
 
-class toolMy2DZBrush extend tool{
+class toolMy2DZBrush extends tool{
 	constructor(){
 		super();
 	}
