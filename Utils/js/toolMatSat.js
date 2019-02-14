@@ -1,6 +1,6 @@
 'use strict';
 
-class toolMatSat extend tool{
+class toolMatSat extends tool{
 	constructor(){
 		super()
 	}
