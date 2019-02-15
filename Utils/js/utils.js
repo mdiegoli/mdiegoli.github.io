@@ -166,6 +166,45 @@ class utils{
     setAttribute(e,name,val){
     	e.setAttribute(name,val);
     }
+	
+	circle(ox,oy,x,y){
+        if(!this.mypath){ 
+            this.ctx.beginPath();
+            this.ctx.moveTo(ox, oy);
+            this.ctx.lineTo(x, y);
+            this.mypath = 'M '+ox+' '+oy+' L '+x+' '+y+' ';
+		this.sketches[this.numSketch] = [];
+		this.sketches[this.numSketch].push([ox,oy])
+		this.sketches[this.numSketch].push([x,y])
+        }else{
+            this.ctx.lineTo(x, y);
+            this.mypath += 'L '+x+' '+y+' ';
+		this.sketches[this.numSketch].push([x,y])
+        }
+        this.ctx.stroke();
+
+    }
+    endcircle(x,y){
+            
+        var last_first = this.sketches[this.numSketch][0];
+        this.mypath += 'L '+last_first[0]+' '+last_first[1]+' Z';
+        this.sketches[this.numSketch].push(this.sketches[this.numSketch][0])
+        this.ctx.lineTo(last_first[0],last_first[1]);
+        this.ctx.stroke();
+        let bezierLoops = FloMat.getPathsFromStr(this.mypath);
+        delete this.mypath;
+        let mats = FloMat.findMats(bezierLoops, 3);
+        this.drawMats(mats, 'mat');
+
+        let sats = mats.map(mat => FloMat.toScaleAxis(mat, 1.5));
+
+        this.drawMats(sats, 'sat');
+        this.numSketch++;
+        this.findIntersection();
+    
+    }
+	
+	
     sketch(ox,oy,x,y){
         if(!this.mypath){ 
             this.ctx.beginPath();
