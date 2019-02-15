@@ -6,25 +6,25 @@ class toolMy2DZBrush extends tool{
 	}
 
 	custom_mouseMove(coord){
-		Utils.sketch(gC.oldCoordX,gC.oldCoordY,coord.x,coord.y)
+		Utils.circle(gC.oldCoordX,gC.oldCoordY,coord.x,coord.y)
 	}
 
 	custom_mouseDown(coord){
 	}
 
 	custom_mouseUp(coord){
-		Utils.endsketch(coord.x,coord.y)
+		Utils.endcircle(coord.x,coord.y)
 	}
 
 	custom_touchMove(coord){
-		Utils.sketch(gC.oldCoordX,gC.oldCoordY,coord.x,coord.y)
+		Utils.circle(gC.oldCoordX,gC.oldCoordY,coord.x,coord.y)
 	}
 
 	custom_touchDown(coord){
 	}
 
 	custom_touchUp(coord){
-		Utils.endsketch(gC.oldCoordX,gC.oldCoordY)
+		Utils.endcircle(gC.oldCoordX,gC.oldCoordY)
 	}
 
 }
