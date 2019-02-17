@@ -8,21 +8,64 @@ class toolMy2DZBrush extends tool{
 
 	custom_mouseMove(coord){
 		Utils.clear()
-		this.endcircles.forEach((e,i)=>{
-			if(gC.circleSelection === i) e.draw(coord.x,coord.y)
-			else e.draw()
-		})
+		if(gC.mouseDown){
+			if(!gC.action){
+
+				if(!gC.circleSelection){
+					//draw
+					gC.action = 'draw';
+					gC.circleSelection = this.endcircles.length;
+					this.endcircles.push(new Circle(gC.originX,gC.originY))
+
+				}else{
+					//move
+					gC.action = 'move';
+				}
+			}
+			this.endcircles.forEach((e,i)=>{
+				if(gC.circleSelection === i){
+					if(gC.action.indexOf('draw') !== -1){
+						e.draw(coord.x,coord.y)
+					}else if(gC.action.indexOf('move') !== -1){
+						e.move(gC.originX-coord.x,gC.originY-coord.y)
+					}
+				}else e.draw()
+			})
+		}
+			
 	}
 
 	custom_mouseDown(coord){
+		//to calculate offset from start interaction position
 		gC.originX = coord.x;
 		gC.originY = coord.y;
-		gC.circleSelection = this.endcircles.length;
-		this.endcircles.push(new Circle(coord.x,coord.y))
+        gC.mouseDown = true;
+		let res;
+		for(let i = 0, l = this.endcircles.length;i<l;i++){
+			if(!res){
+				res = this.endcircles[i].hit(coord.x,coord.y)
+				if(res){
+					gC.circleSelection = i;
+					break;
+				}
+			}
+			 
+		}
+		
+		if(!res){
+			delete gC.action;
+		}
+		//if(!res) gC.circleSelection = this.endcircles.length;
+		//this.endcircles.push(new Circle(coord.x,coord.y))
 	}
 
 	custom_mouseUp(coord){
+		if(gC.action && gC.action.indexOf('move') !== -1) this.endcircles[gC.circleSelection].updatePosition(gC.originX-coord.x,gC.originY-coord.y);
+		delete gC.action;
 		delete gC.circleSelection;
+		delete gC.originX;
+		delete gC.originY;
+		gC.mouseDown = false;
 	}
 
 	custom_touchMove(coord){

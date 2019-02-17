@@ -588,6 +588,8 @@ var Utils = new utils();
 
 class Circle{
     constructor(ox,oy){
+        this.startPositionX = ox;
+        this.startPositionY = oy;
         this.ox = ox;
         this.oy = oy;
         this.ctx = Utils.getCtx();
@@ -598,30 +600,30 @@ class Circle{
                this.ex = x;
                this.ey = y;
            }
-            var r = Utils.distance(this.ox,this.oy,this.ex,this.ey);
+            this.r = Utils.distance(this.ox,this.oy,this.ex,this.ey);
             this.ctx.beginPath();
-            this.ctx.arc(this.ox,this.oy,r, 0, 2 * Math.PI)
+            this.ctx.arc(this.ox,this.oy,this.r, 0, 2 * Math.PI)
             this.ctx.stroke();
-
     }
     
     endcircle(x,y){
-            
-        var last_first = this.sketches[this.numSketch][0];
-        this.mypath += 'L '+last_first[0]+' '+last_first[1]+' Z';
-        this.sketches[this.numSketch].push(this.sketches[this.numSketch][0])
-        this.ctx.lineTo(last_first[0],last_first[1]);
-        this.ctx.stroke();
-        let bezierLoops = FloMat.getPathsFromStr(this.mypath);
-        delete this.mypath;
-        let mats = FloMat.findMats(bezierLoops, 3);
-        this.drawMats(mats, 'mat');
-
-        let sats = mats.map(mat => FloMat.toScaleAxis(mat, 1.5));
-
-        this.drawMats(sats, 'sat');
-        this.numSketch++;
-        this.findIntersection();
-    
     }
+
+    hit(x,y){
+        var r = Utils.distance(this.ox,this.oy,x,y);
+        if(r<=this.r) return true;
+        else return false;
+    }
+    updatePosition(x,y){
+        this.startPositionX += x;
+        this.startPositionY += y;
+        this.ox += x;
+        this.oy += y;
+    }
+    move(x,y){
+        this.ctx.beginPath();
+        this.ctx.arc(this.startPositionX-x,this.startPositionY-y,this.r, 0, 2 * Math.PI)
+        this.ctx.stroke();
+    }
+
 }
