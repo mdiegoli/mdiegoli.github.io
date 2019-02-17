@@ -594,7 +594,11 @@ class Circle{
     }
     
     draw(x,y){
-            var r = Utils.distance(this.ox,this.oy,x,y);
+           if(!isNaN(x) && !isNaN(y)){
+               this.ex = x;
+               this.ey = y;
+           }
+            var r = Utils.distance(this.ox,this.oy,this.ex,this.ey);
             this.ctx.beginPath();
             this.ctx.arc(this.ox,this.oy,r, 0, 2 * Math.PI)
             this.ctx.stroke();

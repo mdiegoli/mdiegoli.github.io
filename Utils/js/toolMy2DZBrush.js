@@ -8,18 +8,21 @@ class toolMy2DZBrush extends tool{
 
 	custom_mouseMove(coord){
 		Utils.clear()
-		this.endcircles.forEach((e)=>{
-			e.draw(coord.x,coord.y)
+		this.endcircles.forEach((e,i)=>{
+			if(gC.circleSelection === i) e.draw(coord.x,coord.y)
+			else e.draw()
 		})
 	}
 
 	custom_mouseDown(coord){
 		gC.originX = coord.x;
 		gC.originY = coord.y;
+		gC.circleSelection = this.endcircles.length;
 		this.endcircles.push(new Circle(coord.x,coord.y))
 	}
 
 	custom_mouseUp(coord){
+		delete gC.circleSelection;
 	}
 
 	custom_touchMove(coord){
