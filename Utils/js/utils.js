@@ -588,8 +588,6 @@ var Utils = new utils();
 
 class Circle{
     constructor(ox,oy){
-        this.startPositionX = ox;
-        this.startPositionY = oy;
         this.ox = ox;
         this.oy = oy;
         this.ctx = Utils.getCtx();
@@ -615,14 +613,12 @@ class Circle{
         else return false;
     }
     updatePosition(x,y){
-        this.startPositionX -= x;
-        this.startPositionY -= y;
         this.ox -= x;
         this.oy -= y;
     }
     move(x,y){
         this.ctx.beginPath();
-        this.ctx.arc(this.startPositionX-x,this.startPositionY-y,this.r, 0, 2 * Math.PI)
+        this.ctx.arc(this.ox-x,this.oy-y,this.r, 0, 2 * Math.PI)
         this.ctx.stroke();
     }
 

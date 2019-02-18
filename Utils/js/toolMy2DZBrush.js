@@ -56,8 +56,7 @@ class toolMy2DZBrush extends tool{
 			 
 		}
 		
-		//if(!res){
-		//	delete gC.action;
+		if(!gC.action) delete gC.action;
 		//}
 		//if(!res) gC.circleSelection = this.endcircles.length;
 		//this.endcircles.push(new Circle(coord.x,coord.y))
