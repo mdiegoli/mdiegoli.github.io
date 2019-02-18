@@ -8,7 +8,6 @@ class toolMy2DZBrush extends tool{
 
 	custom_mouseMove(coord){
 		Utils.clear();
-		var me = this;
 		if(gC.mouseDown){
 			if(!gC.action){
 
@@ -17,24 +16,28 @@ class toolMy2DZBrush extends tool{
 					gC.action = 'draw';
 					gC.circleSelection = this.endcircles.length;
 					this.endcircles.push(new Circle(gC.originX,gC.originY))
-					loop();
 				}else{
 					//move
 					gC.action = 'move';
-					loop();
 				}
 			}
-			function loop(){
-				me.endcircles.forEach((e,i)=>{
-					if(gC.circleSelection === i){
-						if(gC.action.indexOf('draw') !== -1){
-							e.draw(coord.x,coord.y)
-						}else if(gC.action.indexOf('move') !== -1){
-							e.move(gC.originX-coord.x,gC.originY-coord.y)
-						}
-					}else e.draw()
-				})
+			
+			for(let el = 0,endcircles_l = this.endcircles.length;el<endcircles_l;el++){
+				let e = this.endcircles[el];
+				if(gC.circleSelection === i){
+					if(gC.action.indexOf('draw') !== -1){
+						e.draw(coord.x,coord.y)
+					}else if(gC.action.indexOf('move') !== -1){
+						e.move(gC.originX-coord.x,gC.originY-coord.y)
+					}
+				}else{
+					e.draw()
+				}
 			}
+			this.endcircles.forEach((e,i)=>{
+				
+			})
+
 			
 		}
 			
