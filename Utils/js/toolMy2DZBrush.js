@@ -24,7 +24,7 @@ class toolMy2DZBrush extends tool{
 			
 			for(let el = 0,endcircles_l = this.endcircles.length;el<endcircles_l;el++){
 				let e = this.endcircles[el];
-				if(gC.circleSelection === i){
+				if(gC.circleSelection === el){
 					if(gC.action.indexOf('draw') !== -1){
 						e.draw(coord.x,coord.y)
 					}else if(gC.action.indexOf('move') !== -1){
