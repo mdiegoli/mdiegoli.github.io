@@ -615,10 +615,10 @@ class Circle{
         else return false;
     }
     updatePosition(x,y){
-        this.startPositionX += x;
-        this.startPositionY += y;
-        this.ox += x;
-        this.oy += y;
+        this.startPositionX -= x;
+        this.startPositionY -= y;
+        this.ox -= x;
+        this.oy -= y;
     }
     move(x,y){
         this.ctx.beginPath();

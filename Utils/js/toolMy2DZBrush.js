@@ -34,9 +34,6 @@ class toolMy2DZBrush extends tool{
 					e.draw()
 				}
 			}
-			this.endcircles.forEach((e,i)=>{
-				
-			})
 
 			
 		}
@@ -47,7 +44,6 @@ class toolMy2DZBrush extends tool{
 		//to calculate offset from start interaction position
 		gC.originX = coord.x;
 		gC.originY = coord.y;
-        gC.mouseDown = true;
 		let res;
 		for(let i = 0, l = this.endcircles.length;i<l;i++){
 			if(!res){
@@ -69,11 +65,22 @@ class toolMy2DZBrush extends tool{
 
 	custom_mouseUp(coord){
 		if(gC.action && gC.action.indexOf('move') !== -1) this.endcircles[gC.circleSelection].updatePosition(gC.originX-coord.x,gC.originY-coord.y);
+		for(let el = 0,endcircles_l = this.endcircles.length;el<endcircles_l;el++){
+			let e = this.endcircles[el];
+			if(gC.circleSelection === el){
+				if(gC.action.indexOf('draw') !== -1){
+					e.draw(coord.x,coord.y)
+				}else if(gC.action.indexOf('move') !== -1){
+					e.move(gC.originX-coord.x,gC.originY-coord.y)
+				}
+			}else{
+				e.draw()
+			}
+		}
 		delete gC.action;
 		delete gC.circleSelection;
 		delete gC.originX;
 		delete gC.originY;
-		gC.mouseDown = false;
 	}
 
 	custom_touchMove(coord){

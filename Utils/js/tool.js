@@ -25,19 +25,25 @@ class tool{
 	}
 
 	mouseDown(e){
-	    e.preventDefault()
-	    let coord = Utils.getRealMousePos(gC.canvas,e)
-	    gC.oldCoordX = coord.x
-	    gC.oldCoordY = coord.y
-		gC.paint = true;
-		this.custom_mouseDown(coord);
+		e.preventDefault()
+        if(!gC.mouseDown){ 
+			gC.mouseDown = true;
+			let coord = Utils.getRealMousePos(gC.canvas,e)
+			gC.oldCoordX = coord.x
+			gC.oldCoordY = coord.y
+			gC.paint = true;
+			this.custom_mouseDown(coord);
+		}
 	}
 
 	mouseUp(e){
 		e.preventDefault();
-	    gC.paint = false;
-	    let coord = Utils.getRealMousePos(gC.canvas,e)
-		this.custom_mouseUp(coord)
+		if(gC.mouseDown){ 
+			gC.mouseDown = false;
+			gC.paint = false;
+			let coord = Utils.getRealMousePos(gC.canvas,e)
+			this.custom_mouseUp(coord)
+		}
 	}
 
 	touchMove(e){
