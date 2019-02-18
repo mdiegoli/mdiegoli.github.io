@@ -26,7 +26,9 @@ evidenzio intersezioni sketch, posiziono sfere agli estremi della linea e nelle 
 
 todo:
 
-    1. shape end
+    1. c'è qualcosa che non va all'onmouseup, quando faccio l'updateposition....
+    
+    2. shape end
         ...
         interpolation based on distance and shape ray
         ...
