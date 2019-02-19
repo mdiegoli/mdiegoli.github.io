@@ -21,6 +21,10 @@ class utils{
     createE(str){
         return document.createElement(str);       
     }
+	writeInElement(id,str){
+		this.getEBI(id).innerHTML = str;
+	
+	}
     clearCanvas(c){
         if(!c)
             c = '#000';
