@@ -590,6 +590,8 @@ class Circle{
     constructor(ox,oy){
         this.ox = ox;
         this.oy = oy;
+	    this.offsetX = 0;
+	    this.offsetY = 0;
         this.ctx = Utils.getCtx();
     }
     
@@ -598,9 +600,9 @@ class Circle{
                this.ex = x;
                this.ey = y;
            }
-            this.r = Utils.distance(this.ox,this.oy,this.ex,this.ey);
+            this.r = Utils.distance(this.ox+this.offsetX,this.oy+this.offsetY,this.ex,this.ey);
             this.ctx.beginPath();
-            this.ctx.arc(this.ox,this.oy,this.r, 0, 2 * Math.PI)
+            this.ctx.arc(this.ox+this.offsetX,this.oy+this.offsetY,this.r, 0, 2 * Math.PI)
             this.ctx.stroke();
     }
     
@@ -618,6 +620,8 @@ class Circle{
     }
     move(x,y){
         this.ctx.beginPath();
+	    this.offsetX = x;
+	    this.offsetY = y;
         this.ctx.arc(this.ox-x,this.oy-y,this.r, 0, 2 * Math.PI)
         this.ctx.stroke();
     }
