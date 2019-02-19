@@ -21,7 +21,8 @@ class toolMy2DZBrush extends tool{
 					gC.action = 'move';
 				}
 			}
-			
+			Utils.writeInElement('Selection: '+gC.circleSelection+' x: '+coord.x+' y:'+coord.y+' action:'+gC.action)
+
 			for(let el = 0,endcircles_l = this.endcircles.length;el<endcircles_l;el++){
 				let e = this.endcircles[el];
 				if(gC.circleSelection === el){
@@ -49,7 +50,9 @@ class toolMy2DZBrush extends tool{
 			if(!res){
 				res = this.endcircles[i].hit(coord.x,coord.y)
 				if(res){
+					
 					gC.circleSelection = i;
+					Utils.writeInElement('Selection: '+gC.circleSelection+' x: '+coord.x+' y:'+coord.y)
 					return;
 				}
 			}
