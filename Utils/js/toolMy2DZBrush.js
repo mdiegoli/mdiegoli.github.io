@@ -63,7 +63,7 @@ class toolMy2DZBrush extends tool{
 	}
 
 	custom_mouseUp(coord){
-		//if(gC.action && gC.action.indexOf('move') !== -1) this.endcircles[gC.circleSelection].updatePosition(gC.originX-coord.x,gC.originY-coord.y);
+		/*if(gC.action && gC.action.indexOf('move') !== -1) this.endcircles[gC.circleSelection].updatePosition(gC.originX-coord.x,gC.originY-coord.y);
 		for(let el = 0,endcircles_l = this.endcircles.length;el<endcircles_l;el++){
 			let e = this.endcircles[el];
 			if(gC.circleSelection === el){
@@ -75,7 +75,7 @@ class toolMy2DZBrush extends tool{
 			}else{
 				e.draw()
 			}
-		}
+		}*/
 		delete gC.action;
 		delete gC.circleSelection;
 		delete gC.originX;
