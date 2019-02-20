@@ -7,47 +7,58 @@ var assets = [];
 function startGame(){
     
 	Utils.showScore(gC.score)
-    	let a_l = assets.length;
-	for(let a = 0;a<a_l;a++){
-        if(!assets[a].end){
-            assets[a].start()
-            .then(
-                (succ)=>{
-                if(assets[a].animation)
-                    assets[a].animation()
-                    .then(
-                        (succ)=>{
-                        //console.log(succ);
-                        }
-                    )
-                    .catch(
-                        (err)=>{
-                        console.log(err);
-                        }
-                    )
-                //else
-                //    console.log('asset senza animazione')
-                }
-            )
-            .catch(
-                (err)=>{
-                console.log(err);
-                }
-            )
-        }
-        if(a==(a_l-1)){
-            
-            /*
-            for(let e = 0;e<a_l;e++){
-                if(assets[e].end)
-                    assets.splice(e,1);
+    let a_l = assets.length;
+    if(gC.demonsCountdown){
+        for(let a = 0;a<a_l;a++){
+            if(!assets[a].end){
+                assets[a].start()
+                .then(
+                    (succ)=>{
+                    if(assets[a].animation)
+                        assets[a].animation()
+                        .then(
+                            (succ)=>{
+                            //console.log(succ);
+                            }
+                        )
+                        .catch(
+                            (err)=>{
+                            console.log(err);
+                            }
+                        )
+                    //else
+                    //    console.log('asset senza animazione')
+                    }
+                )
+                .catch(
+                    (err)=>{
+                    console.log(err);
+                    }
+                )
             }
-            */    
-            //Utils.c2osc();
-            Utils.c2c();
-            requestAnimationFrame(this.gAF)
+            if(a==(a_l-1)){
+                
+                /*
+                for(let e = 0;e<a_l;e++){
+                    if(assets[e].end)
+                        assets.splice(e,1);
+                }
+                */    
+                //Utils.c2osc();
+                Utils.c2c();
+                requestAnimationFrame(this.gAF)
+            }
         }
-	}
+    }else{
+        gC.gameLevel++;
+        gC.numbOfDemons--;
+        showSplashLevel().then(
+            (succ)=>{
+                l()
+            }
+        )
+    }
+	
 }
 
 function addDemoAssets(c,n){
@@ -55,6 +66,7 @@ function addDemoAssets(c,n){
 	    //ToDo:finish line of enemies
 	    var totFreeSpaceFromEnemies, freeSpaceBetweenEnemies;
 	    if(n){
+            gC.demonsCountdown = n;
             let spritesTotWidth = gC.spriteW * n;
             if(spritesTotWidth<gC.width){
                 totFreeSpaceFromEnemies = gC.width - spritesTotWidth;
@@ -115,6 +127,22 @@ function showSplash(){
                 )
             }
         )
+    })
+        
+}
+
+function showSplashLevel(){
+    return new Promise(function(res,rej){
+    
+        let splasho = new splash('Next Level: '+gC.gameLevelChar[gC.gameLevel-1]);
+        splasho.preload().then(
+            (succ) => {
+        splasho.createLevel().then(
+                    (succ) => {
+                        res();
+                    }
+                )
+                })
     })
         
 }
@@ -283,6 +311,9 @@ function gAF(c){
 
 function s(){
     gC.demoClock = 0;
+    gC.numbOfDemons = 5;
+    gC.gameLevel = 1;
+    gC.gameLevelChar = 'abcdefghijklmnopqrstuvwxyz';
     addCanvas().then(
         (succ)=>{
             showSplash().then(
@@ -305,7 +336,8 @@ function loadMp3(){
 }
 //every frame value, draw scene
 function l(){
-    gC.demoClock = 0;
+    
+    var levelChar = gC.gameLevelChar[gC.gameLevel-1];
     //addCanvas().then(
     //    (succ)=>{
     readBackData().then(
@@ -314,20 +346,20 @@ function l(){
                 (succ) => {
                     readShipData().then(
                         (succ) => {
-                            addBack('k_a').then(
+                            addBack('k_'+levelChar).then(
                                 (succ) => {
-                                    addHero('h_a').then(
+                                    addHero('h_'+levelChar).then(
                                         (succ) => {
-                                            addDemoAssets('e_a',5).then(
+                                            addDemoAssets('e_'+levelChar,gC.numbOfDemons).then(
                                                 
                                                 (succ) => {
                                                     loadMp3().then(
                                                 
                                                         (succ) => {
-                                                            addBullet('b_a').then(
+                                                            addBullet('b_'+levelChar).then(
                                                 
                                                                 (succ) => {
-                                                                    addExplosion('x_a').then(
+                                                                    addExplosion('x_'+levelChar).then(
                                                 
                                                                         (succ) => {
                                                                             requestAnimationFrame(gAF);

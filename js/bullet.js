@@ -46,6 +46,7 @@ class bullet extends entity{
 							assets[a].end = true;
 							this.removeBullet();
 							gC.score += 50;
+							gC.demonsCountdown--;
 							gC.explosionAudio1.play();
 							
 						}

@@ -1,6 +1,7 @@
 class splash{
-    constructor(){
+    constructor(str){
         this.images = {};
+        this.stringToWrite = str;
     }
     
     preload(){
@@ -25,7 +26,8 @@ class splash{
         return new Promise((res,rej)=>{
         Utils.clearCanvas('#000');
         Utils.drawImage(me.images['SP'],0,100);
-        Utils.drawText('Press  s  to  start',380,400,'#FFF') 
+        if(!this.stringToWrite) this.stringToWrite = 'Press  s  to  start';
+        Utils.drawText(this.stringToWrite,380,400,'#FFF') 
         function k(e){
             switch(e.keyCode){
                 case 83:
@@ -41,6 +43,8 @@ class splash{
         
         
     })
+
+    
 		/*   
 	createOffscreen(){
         var me = this;
@@ -64,7 +68,17 @@ class splash{
         
     })*/
 }
-
+createLevel(){
+    var me = this;
+    return new Promise((res,rej)=>{
+    Utils.clearCanvas('#000');
+    if(!this.stringToWrite) this.stringToWrite = 'Press  s  to  start';
+    Utils.drawText(this.stringToWrite,380,400,'#FFF') 
+    Utils.c2c();
+    res();
+        
+})
+}
 }
 
 //export { enemy };
