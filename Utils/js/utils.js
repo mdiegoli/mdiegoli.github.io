@@ -614,7 +614,7 @@ class Circle{
     }
 
     hit(x,y){
-        var r = Utils.distance(this.ox,this.oy,x,y);
+        var r = Utils.distance(this.ox+this.offsetX,this.oy+this.offsetY,x,y);
         if(r<=this.r) return true;
         else return false;
     }
