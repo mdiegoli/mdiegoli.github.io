@@ -131,6 +131,23 @@ function showSplash(){
         
 }
 
+function showSplashEnd(){
+    return new Promise(function(res,rej){
+    
+        let splasho = new splash('Game Over: Press s to restart');
+        splasho.preload().then(
+            (succ) => {
+                splasho.create().then(
+                    (succ) => {
+                        res();
+                    }
+                )
+            }
+        )
+    })
+        
+}
+
 function showSplashLevel(){
     return new Promise(function(res,rej){
     
@@ -339,52 +356,61 @@ function l(){
     
     var levelChar = gC.gameLevelChar[gC.gameLevel-1];
     assets.length = 0;
-    //addCanvas().then(
-    //    (succ)=>{
-    readBackData().then(
-        (succ)=>{
-            readDemonData().then(
-                (succ) => {
-                    readShipData().then(
-                        (succ) => {
-                            addBack('k_'+levelChar).then(
-                                (succ) => {
-                                    addHero('h_'+levelChar).then(
-                                        (succ) => {
-                                            addDemoAssets('e_'+levelChar,gC.numbOfDemons).then(
-                                                
-                                                (succ) => {
-                                                    loadMp3().then(
-                                                
-                                                        (succ) => {
-                                                            addBullet('b_'+levelChar).then(
-                                                
-                                                                (succ) => {
-                                                                    addExplosion('x_'+levelChar).then(
-                                                
-                                                                        (succ) => {
-                                                                            requestAnimationFrame(gAF);
-                                                                            
-                                                                        }
-                                                                    )
-                                                                    
-                                                                }
-                                                            )
-                                                            
-                                                        }
-                                                    )
-                                                }
-                                            )
-                                        }
-                                    )
-                                }
-                            )                                    
-                        }
-                    )
-                }
-            )
-        }
-    )
+    if(gC.numbOfDemons){
+        readBackData().then(
+            (succ)=>{
+                readDemonData().then(
+                    (succ) => {
+                        readShipData().then(
+                            (succ) => {
+                                addBack('k_'+levelChar).then(
+                                    (succ) => {
+                                        addHero('h_'+levelChar).then(
+                                            (succ) => {
+                                                addDemoAssets('e_'+levelChar,gC.numbOfDemons).then(
+                                                    
+                                                    (succ) => {
+                                                        loadMp3().then(
+                                                    
+                                                            (succ) => {
+                                                                addBullet('b_'+levelChar).then(
+                                                    
+                                                                    (succ) => {
+                                                                        addExplosion('x_'+levelChar).then(
+                                                    
+                                                                            (succ) => {
+                                                                                requestAnimationFrame(gAF);
+                                                                                
+                                                                            }
+                                                                        )
+                                                                        
+                                                                    }
+                                                                )
+                                                                
+                                                            }
+                                                        )
+                                                    }
+                                                )
+                                            }
+                                        )
+                                    }
+                                )                                    
+                            }
+                        )
+                    }
+                )
+            }
+        )
+    }else{
+        this.showSplashEnd().then(
+            (succ)=>{
+                gC.numbOfDemons = 5;
+                gC.gameLevel = 1;
+                l()
+            }
+        );
+    }
+    
     
     //    }
     //)
