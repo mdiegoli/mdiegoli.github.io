@@ -14,16 +14,23 @@ echo
 
 replace promise with async/await (https://mdiegoli.github.io/async_await.html)
 
-muoversi secondo pattern e possibilmente non sovrapporsi
-
-Quando si uccidono tutti i nemici si passa al livello successivo.
-
 I nemici sparano
 
 Vite
 
 badge
 
+BUGS:
+
+end bianco
+
+si passa di livello anche se non si colpiscono tutti i demoni
+
+la nave non dovrebbe cambiare
+
+score che non incrementa solo di 50
+
+audio da migliorare 
 
 Canvas optimization
 
