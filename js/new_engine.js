@@ -338,6 +338,7 @@ function loadMp3(){
 function l(){
     
     var levelChar = gC.gameLevelChar[gC.gameLevel-1];
+    assets.length = 0;
     //addCanvas().then(
     //    (succ)=>{
     readBackData().then(

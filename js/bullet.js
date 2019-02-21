@@ -39,7 +39,7 @@ class bullet extends entity{
 					me.randomY-=gC.offset_bullet;
 					me.BBoxY  -=gC.offset_bullet;
 					for(let a = 0,a_l = assets.length;a<a_l;a++){
-						if(!(assets[a] instanceof bullet) && !(assets[a] instanceof explosion) && !(assets[a] instanceof hero) && assets[a].hit(me.BBoxX,me.BBoxY,gC.bulletW,me.bulletW)){
+						if((assets[a] instanceof enemy) && assets[a].hit(me.BBoxX,me.BBoxY,gC.bulletW,me.bulletW)){
 							assets.push(new explosion('x_a',assets[a].getPosX(),assets[a].getPosY()))
 							
 							console.log('remove demon')
