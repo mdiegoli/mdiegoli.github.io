@@ -62,7 +62,7 @@ class utils{
 	}
 	c2c(){
 		this.ctx.drawImage(this.co,0,0)
-		this.ctxo.fillStyle = '#FFF';
+		this.ctxo.fillStyle = '#000';
         	this.ctxo.fillRect(0, 0, gC.width, gC.height);
         
 	}
@@ -70,7 +70,7 @@ class utils{
 	c2osc(){
 		var bitmapOne = this.co.transferToImageBitmap();
 		this.c.transferFromImageBitmap(bitmapOne);
-		this.ctxo.fillStyle = '#FFF';
+		this.ctxo.fillStyle = '#000';
         	this.ctxo.fillRect(0, 0, gC.width, gC.height);
         
     }
