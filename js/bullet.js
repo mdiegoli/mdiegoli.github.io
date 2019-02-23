@@ -1,10 +1,15 @@
 class bullet extends entity{
-    constructor(level){
+    constructor(level,dir,x,y){
 		super(level)
 		//this.id = this.__proto__.bulletId++;
 		this.BBoxColor = 'green';
 		this.frames;
 		this.frame = 0;
+		this.dir = dir;
+		this.randomX = x;
+		this.randomY = y;
+		this.BBoxX = this.randomX + gC.spriteW/2 - gC.bulletW/2;
+		this.BBoxY = this.randomY + gC.spriteH/2 - gC.bulletH/2;
     }
 	
     create(){
@@ -19,44 +24,58 @@ class bullet extends entity{
 			//add the echo feature
 			Utils.drawBBox(me.BBoxX, me.BBoxY,gC.bulletW,gC.bulletH,me.BBoxColor);
 			//gC.fireAudio.play();
+			gC.fireAudio.play();
 			me.frame++;
 			res();
 		})
     }
 	
-    animation(){
+    animation(x,y){
 		var me = this;
 		return new Promise((res,rej)=>{
-			if(!me.dir)me.dir='u'
-			if(!me.randomX && !me.randomY){
-				me.randomX = gC.player.getPosX();
-				me.randomY = gC.player.getPosY();
-				me.BBoxX = me.randomX + gC.spriteW/2 - gC.bulletW/2;
-				me.BBoxY = me.randomY + gC.spriteH/2 - gC.bulletH/2;
-			}
-			if((me.BBoxY-gC.offset_bullet)>0){
+			
 				if(me.dir === 'u'){
-					me.randomY-=gC.offset_bullet;
-					me.BBoxY  -=gC.offset_bullet;
-					for(let a = 0,a_l = assets.length;a<a_l;a++){
-						if((assets[a] instanceof enemy) && assets[a].hit(me.BBoxX,me.BBoxY,gC.bulletW,me.bulletW)){
-							assets.push(new explosion('x_a',assets[a].getPosX(),assets[a].getPosY()))
-							
-							console.log('remove demon')
-							assets[a].end = true;
-							this.removeBullet();
-							gC.score += 50;
-							gC.demonsCountdown--;
-							gC.explosionAudio1.play();
-							
-						}
+					if((me.BBoxY-gC.offset_bullet)>0){
+						me.randomY-=gC.offset_bullet;
+						me.BBoxY  -=gC.offset_bullet;
+					}else{
+						this.removeBullet();	
+						return rej();	
+					}		
+				}else if(me.dir === 'd'){
+					if((me.BBoxY+gC.offset_bullet)<gC.height){
+						me.randomY += gC.offset_bullet;
+						me.BBoxY += gC.offset_bullet;
+					}else{
+						this.removeBullet();	
+						return rej();	
 					}
-					res();
 				}
-			}else{
-				this.removeBullet();	
-				rej();	
-			}
+				for(let a = 0,a_l = assets.length;a<a_l;a++){
+					if((assets[a] instanceof enemy) && assets[a].hit(me.BBoxX,me.BBoxY,gC.bulletW,me.bulletW)){
+						assets.push(new explosion('x_a',assets[a].getPosX(),assets[a].getPosY()))
+						
+						console.log('remove demon')
+						assets[a].end = true;
+						this.removeBullet();
+						gC.score += 50;
+						gC.demonsCountdown--;
+						gC.explosionAudio1.play();
+						res();
+					}else if((assets[a] instanceof hero) && assets[a].hit(me.BBoxX,me.BBoxY,gC.bulletW,me.bulletW)){
+						assets.push(new explosion('x_a',assets[a].getPosX(),assets[a].getPosY()))
+						
+						console.log('remove hero')
+						assets[a].end = true;
+						this.removeBullet();
+						gC.lifes--;
+						gC.explosionAudio1.play();
+						res();
+					}else{
+						if(a == assets.length-1) res();
+					}
+				}
+			
 			
 		})
 

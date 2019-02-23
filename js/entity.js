@@ -222,5 +222,8 @@ getPosY(){
 	return this.randomY;
 }
 
+fire(level,dir){
+	return new bullet(level,dir,this.getPosX(),this.getPosY());
+}
 }
 

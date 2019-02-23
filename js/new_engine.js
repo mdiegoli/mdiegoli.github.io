@@ -8,14 +8,20 @@ function startGame(){
     
 	Utils.showScore(gC.score)
     let a_l = assets.length;
+    if(!(gC.demonBulletFrame%gC.demonBulletInterval)) var demonFire = true;
+    gC.demonBulletFrame++;
     if(gC.demonsCountdown){
         for(let a = 0;a<a_l;a++){
             if(!assets[a].end){
+                if(assets[a] instanceof enemy && demonFire){
+                     assets.push(assets[a].fire('bd_a','d'))
+                     demonFire = false;
+                }
                 assets[a].start()
                 .then(
                     (succ)=>{
                     if(assets[a].animation)
-                        assets[a].animation()
+                        assets[a].animation(assets[a].getPosX(),assets[a].getPosY())
                         .then(
                             (succ)=>{
                             //console.log(succ);
@@ -296,7 +302,7 @@ function addCanvas(){
                         break;
                     case 32:
                         assets.push(gC.player.fire('b_a'));
-                        gC.fireAudio.play();
+                        
                         break;
                 }
             })
@@ -330,6 +336,8 @@ function s(){
     gC.demoClock = 0;
     gC.numbOfDemons = 5;
     gC.gameLevel = 1;
+    gC.demonBulletInterval = 100;
+    gC.demonBulletFrame = 1;
     gC.gameLevelChar = 'abcdefghijklmnopqrstuvwxyz';
     addCanvas().then(
         (succ)=>{
