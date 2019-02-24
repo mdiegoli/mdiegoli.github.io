@@ -8,7 +8,10 @@ function startGame(){
     
 	Utils.showScore(gC.score)
     let a_l = assets.length;
-    if(!(gC.demonBulletFrame%gC.demonBulletInterval)) var demonFire = true;
+    gC.demonBulletFrame%=gC.demonBulletInterval;
+
+    if(!gC.demonBulletFrame) var demonFire = true;
+
     gC.demonBulletFrame++;
     if(gC.demonsCountdown){
         for(let a = 0;a<a_l;a++){
@@ -175,6 +178,19 @@ function addBullet(l){
     
         gC.bullet = new bullet(l);
         gC.bullet.preload().then(
+            (succ) => {
+                res();
+            }
+        )
+    })
+        
+}
+
+function addBulletD(l){
+    return new Promise(function(res,rej){
+    
+        gC.bulletD = new bulletD(l);
+        gC.bulletD.preload().then(
             (succ) => {
                 res();
             }
@@ -387,7 +403,13 @@ function l(){
                                                                         addExplosion('x_'+levelChar).then(
                                                     
                                                                             (succ) => {
-                                                                                requestAnimationFrame(gAF);
+                                                                                addBulletD('bd_'+levelChar).then(
+                                                    
+                                                                                    (succ) => {
+                                                                                        requestAnimationFrame(gAF);
+                                                                                        
+                                                                                    }
+                                                                                )
                                                                                 
                                                                             }
                                                                         )

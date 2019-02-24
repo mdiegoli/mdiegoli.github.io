@@ -1,4 +1,4 @@
-class bullet extends entity{
+class bulletD extends entity{
     constructor(level,dir,x,y){
 		super(level)
 		//this.id = this.__proto__.bulletId++;
@@ -52,14 +52,13 @@ class bullet extends entity{
 					}
 				}
 				for(let a = 0,a_l = assets.length;a<a_l;a++){
-					if((assets[a] instanceof enemy) && assets[a].hit(me.BBoxX,me.BBoxY,gC.bulletW,me.bulletW)){
+					if((assets[a] instanceof hero) && assets[a].hit(me.BBoxX,me.BBoxY,gC.bulletW,me.bulletW)){
 						assets.push(new explosion('x_a',assets[a].getPosX(),assets[a].getPosY()))
 						
-						console.log('remove demon')
+						console.log('remove hero')
 						assets[a].end = true;
 						this.removeBullet();
-						gC.score += 50;
-						gC.demonsCountdown--;
+						gC.lifes--;
 						gC.explosionAudio1.play();
 						res();
 					}else{
@@ -99,7 +98,7 @@ class bullet extends entity{
 		
 		var lI = Utils.loadImage;
 		//lI(me.__proto__.images[me.level],'assets/games/bullets/BULLET-001.png', 'BU');
-		lI(me.__proto__.images[me.level],'assets/games/animations/bullets/bullet1.png', 'BU');
+		lI(me.__proto__.images[me.level],'assets/games/animations/bullets/bullet2.png', 'BU');
 		res();
         })
         
@@ -110,11 +109,8 @@ class bullet extends entity{
 	return new Promise((res,rej)=>{
 		if(me.dead === undefined){
 			me.dead = false;
-				me.randomX = gC.player.getPosX();
-				me.randomY = gC.player.getPosY();
-				me.BBoxX = me.randomX + gC.spriteW/2 - gC.bulletW/2;
-				me.BBoxY = me.randomY + gC.spriteH/2 - gC.bulletH/2;
-			 
+            me.BBoxX = me.randomX + gC.spriteW/2 - gC.bulletW/2;
+            me.BBoxY = me.randomY + gC.spriteH/2 - gC.bulletH/2;
 			res();
                 
     }else{

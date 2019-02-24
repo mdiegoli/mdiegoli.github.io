@@ -223,7 +223,8 @@ getPosY(){
 }
 
 fire(level,dir){
-	return new bullet(level,dir,this.getPosX(),this.getPosY());
+	if(dir == 'u') return new bullet(level,dir,this.getPosX(),this.getPosY());
+	else if(dir == 'd') return new bulletD(level,dir,this.getPosX(),this.getPosY());
 }
 }
 
