@@ -34,15 +34,7 @@ class bulletD extends entity{
 		var me = this;
 		return new Promise((res,rej)=>{
 			
-				if(me.dir === 'u'){
-					if((me.BBoxY-gC.offset_bullet)>0){
-						me.randomY-=gC.offset_bullet;
-						me.BBoxY  -=gC.offset_bullet;
-					}else{
-						this.removeBullet();	
-						return rej();	
-					}		
-				}else if(me.dir === 'd'){
+				if(me.dir === 'd'){
 					if((me.BBoxY+gC.offset_bullet)<gC.height){
 						me.randomY += gC.offset_bullet;
 						me.BBoxY += gC.offset_bullet;

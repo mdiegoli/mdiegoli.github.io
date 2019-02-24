@@ -42,15 +42,8 @@ class bullet extends entity{
 						this.removeBullet();	
 						return rej();	
 					}		
-				}else if(me.dir === 'd'){
-					if((me.BBoxY+gC.offset_bullet)<gC.height){
-						me.randomY += gC.offset_bullet;
-						me.BBoxY += gC.offset_bullet;
-					}else{
-						this.removeBullet();	
-						return rej();	
-					}
 				}
+				
 				for(let a = 0,a_l = assets.length;a<a_l;a++){
 					if((assets[a] instanceof enemy) && assets[a].hit(me.BBoxX,me.BBoxY,gC.bulletW,me.bulletW)){
 						assets.push(new explosion('x_a',assets[a].getPosX(),assets[a].getPosY()))
