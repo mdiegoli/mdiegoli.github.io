@@ -21,7 +21,9 @@ class hero extends entity{
 			me.rightfn()
 		else if(me.left)
 			me.leftfn()
-	    Utils.drawImages(me.__proto__.images[this.level], me.randomX, me.randomY);
+        Utils.drawImages(me.__proto__.images[this.level], me.randomX, me.randomY);
+        Utils.drawBBox(me.BBoxX, me.BBoxY,me.BBoxW,me.BBoxH,'blue');
+
             
             res();
             
@@ -84,11 +86,17 @@ class hero extends entity{
     }    
 
     rightfn(){
-        if((this.randomX+gC.offset_arrow) <= gC.spritePosX) this.randomX += gC.offset_arrow;
+        if((this.randomX+gC.offset_arrow) <= gC.spritePosX){
+            this.randomX += gC.offset_arrow;
+            this.BBoxX += gC.offset_arrow;
+        } 
     }
 
     leftfn(){
-        if((this.randomX-gC.offset_arrow) > 0) this.randomX -= gC.offset_arrow;
+        if((this.randomX-gC.offset_arrow) > 0){
+            this.randomX -= gC.offset_arrow;
+            this.BBoxX -= gC.offset_arrow;
+        } 
     }
 
     
@@ -101,11 +109,11 @@ class hero extends entity{
 		if(me.dead === undefined){
 			me.dead = false;
 			me.randomX = Utils.random(1,gC.spritePosX);;
-			me.BBoxX = me.randomX;
+			me.BBoxX = me.randomX+gC.spriteW/4;
 			me.randomY = gC.spritePosY;
-			me.BBoxY = me.randomY;
-			me.BBoxH = gC.spriteH;
-			me.BBoxW = gC.spriteW;
+			me.BBoxY = me.randomY+gC.spriteH/2;
+			me.BBoxH = gC.spriteH/2;
+			me.BBoxW = gC.spriteW/2;
 			res();
 			
                 

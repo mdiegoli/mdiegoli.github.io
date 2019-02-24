@@ -45,16 +45,19 @@ class bullet extends entity{
 				}
 				
 				for(let a = 0,a_l = assets.length;a<a_l;a++){
-					if((assets[a] instanceof enemy) && assets[a].hit(me.BBoxX,me.BBoxY,gC.bulletW,me.bulletW)){
+					if((assets[a] instanceof enemy) && !assets[a].end && assets[a].hit(me.BBoxX,me.BBoxY,gC.bulletW,me.bulletW)){
 						assets.push(new explosion('x_a',assets[a].getPosX(),assets[a].getPosY()))
 						
 						console.log('remove demon')
 						assets[a].end = true;
-						this.removeBullet();
 						gC.score += 50;
 						gC.demonsCountdown--;
 						gC.explosionAudio1.play();
-						res();
+						this.removeBullet().then(
+							()=>{
+								res();
+							}
+						)
 					}else{
 						if(a == assets.length-1) res();
 					}
