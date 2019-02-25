@@ -8,23 +8,17 @@ https://developer.mozilla.org/en-US/docs/Games/Techniques/Efficient_animation_fo
 
 https://codepen.io/Tobsta/post/implementing-velocity-acceleration-and-friction-on-a-canvas
 
-end
-
 echo
 
 replace promise with async/await (https://mdiegoli.github.io/async_await.html)
 
-I nemici sparano
+audio(deve essere sincronizzato)
 
 Vite
 
 badge
 
 BUGS:
-
-end bianco
-
-si passa di livello anche se non si colpiscono tutti i demoni
 
 la nave non dovrebbe cambiare
 
