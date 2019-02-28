@@ -10,6 +10,10 @@ https://developer.mozilla.org/en-US/docs/Games/Techniques/Efficient_animation_fo
 
 https://codepen.io/Tobsta/post/implementing-velocity-acceleration-and-friction-on-a-canvas
 
+offscreencanvas
+
+https://developers.google.com/web/updates/2018/08/offscreen-canvas
+
 echo
 
 replace promise with async/await (https://mdiegoli.github.io/async_await.html)
