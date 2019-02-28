@@ -1,5 +1,5 @@
 class bullet extends entity{
-    constructor(level,dir,x,y){
+    constructor(level,dir,x,y,start){
 		super(level)
 		//this.id = this.__proto__.bulletId++;
 		this.BBoxColor = 'green';
@@ -10,6 +10,7 @@ class bullet extends entity{
 		this.randomY = y;
 		this.BBoxX = this.randomX + gC.spriteW/2 - gC.bulletW/2;
 		this.BBoxY = this.randomY + gC.spriteH/2 - gC.bulletH/2;
+		if(!start) gC.fireAudio.play();
     }
 	
     create(){
@@ -24,7 +25,7 @@ class bullet extends entity{
 			//add the echo feature
 			Utils.drawBBox(me.BBoxX, me.BBoxY,gC.bulletW,gC.bulletH,me.BBoxColor);
 			//gC.fireAudio.play();
-			gC.fireAudio.play();
+			
 			me.frame++;
 			res();
 		})

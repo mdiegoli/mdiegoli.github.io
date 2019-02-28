@@ -175,8 +175,8 @@ function showSplashLevel(){
 
 function addBullet(l){
     return new Promise(function(res,rej){
-    
-        gC.bullet = new bullet(l);
+    //il secondo parametro serve per non far parire l'audio
+        gC.bullet = new bullet(l,'','','',true);
         gC.bullet.preload().then(
             (succ) => {
                 res();
@@ -189,7 +189,7 @@ function addBullet(l){
 function addBulletD(l){
     return new Promise(function(res,rej){
     
-        gC.bulletD = new bulletD(l);
+        gC.bulletD = new bulletD(l,'','','',true);
         gC.bulletD.preload().then(
             (succ) => {
                 res();

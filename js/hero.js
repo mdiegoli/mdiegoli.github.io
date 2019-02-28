@@ -22,7 +22,7 @@ class hero extends entity{
 		else if(me.left)
 			me.leftfn()
         Utils.drawImages(me.__proto__.images[this.level], me.randomX, me.randomY);
-        Utils.drawBBox(me.BBoxX, me.BBoxY,me.BBoxW,me.BBoxH,'blue');
+        //Utils.drawBBox(me.BBoxX, me.BBoxY,me.BBoxW,me.BBoxH,'blue');
 
             
             res();
