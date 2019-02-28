@@ -1,5 +1,7 @@
 __todo__:
 
+aggiungere https://github.com/mrdoob/stats.js/
+
 https://animejs.com/
 
 https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Advanced_animations
