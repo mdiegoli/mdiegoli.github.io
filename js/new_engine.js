@@ -352,7 +352,7 @@ function s(){
     gC.demoClock = 0;
     gC.numbOfDemons = 5;
     gC.gameLevel = 1;
-    gC.demonBulletInterval = 100;
+    gC.demonBulletInterval = 50;
     gC.demonBulletFrame = 1;
     gC.gameLevelChar = 'abcdefghijklmnopqrstuvwxyz';
     addCanvas().then(
