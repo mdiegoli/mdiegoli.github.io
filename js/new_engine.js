@@ -18,7 +18,7 @@ function startGame(){
             if(!assets[a].end){
                 if(assets[a] instanceof enemy && demonFire){
                      assets.push(assets[a].fire('bd_a','d'))
-                     demonFire = false;
+                     //demonFire = false;
                 }
                 assets[a].start()
                 .then(
