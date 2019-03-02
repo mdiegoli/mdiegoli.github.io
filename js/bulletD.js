@@ -49,7 +49,7 @@ class bulletD extends entity{
 						assets.push(new explosion('x_a',assets[a].getPosX(),assets[a].getPosY()))
 						
 						console.log('remove hero')
-						assets[a].end = true;
+						//assets[a].end = true;
 						gC.lifes--;
 						gC.explosionAudio1.play();
 						
