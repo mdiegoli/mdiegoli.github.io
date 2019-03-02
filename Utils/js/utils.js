@@ -559,7 +559,11 @@ showScore(input) {
     var output = this.getEBCN('score')[0];
     output.innerHTML = '';
     input = input.toString();
-	input = this.pad(input,7,0);
+    input = this.pad(input,7,0);
+    output.innerHTML += '<img border="0" height="30px" src="assets/games/layout-draft/score/life.png">';
+    output.innerHTML += '<img border="0" height="30px" src="assets/games/layout-draft/score/score-p0.png">';
+    output.innerHTML += '<img border="0" height="30px" src="assets/games/layout-draft/score/score-'+(gC.lifes)+'.png">';
+    output.innerHTML += '<img border="0" height="30px" src="assets/games/layout-draft/score/score-p0.png">';
     for (var i = 0; i < input.length; i++) {
         var chr = input.substring(i, i + 1)
         if (chr == '£') {

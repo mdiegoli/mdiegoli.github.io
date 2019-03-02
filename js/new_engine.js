@@ -13,7 +13,7 @@ function startGame(){
     if(!gC.demonBulletFrame) var demonFire = true;
 
     gC.demonBulletFrame++;
-    if(gC.demonsCountdown){
+    if(gC.demonsCountdown && gC.lifes){
         for(let a = 0;a<a_l;a++){
             if(!assets[a].end){
                 if(assets[a] instanceof enemy && demonFire){
@@ -348,12 +348,17 @@ function gAF(c){
     startGame()
 }
 
-function s(){
+function reset(){
     gC.demoClock = 0;
     gC.numbOfDemons = 5;
     gC.gameLevel = 1;
     gC.demonBulletInterval = 50;
     gC.demonBulletFrame = 1;
+    gC.lifes = 3;
+}
+
+function s(){
+    reset();
     gC.gameLevelChar = 'abcdefghijklmnopqrstuvwxyz';
     addCanvas().then(
         (succ)=>{
@@ -434,8 +439,7 @@ function l(){
     }else{
         this.showSplashEnd().then(
             (succ)=>{
-                gC.numbOfDemons = 5;
-                gC.gameLevel = 1;
+                reset()
                 l()
             }
         );
