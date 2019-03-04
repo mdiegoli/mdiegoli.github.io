@@ -42,6 +42,66 @@ class utils{
         this.setAttribute(this.co,'height',gC.height)
         this.ctxo = this.co.getContext("2d");
     }
+setCanvas3D(e){
+        this.c = e;
+        this.ctx = e.getContext("3d");
+        this.co = this.createE('canvas');
+        this.setAttribute(this.co,'width',gC.width)
+        this.setAttribute(this.co,'height',gC.height)
+        this.ctxo = this.co.getContext("2d");
+    }
+	init3D(){
+	gC.camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 10000 );
+		gC.camera.position.set(0, 1000, 0 );
+		gC.camera.lookAt( new THREE.Vector3() );
+		gC.scene = new THREE.Scene();
+		// roll-over helpers
+		gC.rollOverGeo = new THREE.BoxGeometry( 50, 50, 50 );
+		gC.rollOverMaterial = new THREE.MeshBasicMaterial( { color: 0xff0000, opacity: 0.5, transparent: true } );
+		gC.rollOverMesh = new THREE.Mesh( rollOverGeo, rollOverMaterial );
+		//scene.add( rollOverMesh );
+		// grid
+		
+		var sizeH = window.innerHeight, sizeW = window.innerWidth, step = 100;
+		var geometry = new THREE.Geometry();
+		for ( var i = -sizeH; i <= sizeH; i += step ) {
+			geometry.vertices.push( new THREE.Vector3( -sizeW, 0, i ) );
+			geometry.vertices.push( new THREE.Vector3(   sizeW, 0, i ) );
+		}
+		for ( var i = -sizeW; i <= sizeW; i += step ) {
+			geometry.vertices.push( new THREE.Vector3( i, 0, -sizeH ) );
+			geometry.vertices.push( new THREE.Vector3( i, 0,   sizeH ) );
+		}
+		var material = new THREE.LineBasicMaterial( { color: 0x000000, opacity: 0.2, transparent: true } );
+		var line = new THREE.LineSegments( geometry, material );
+		gC.scene.add( line );
+		
+		//
+		gC.raycaster = new THREE.Raycaster();
+		gC.mouse = new THREE.Vector2();
+		var geometry = new THREE.PlaneBufferGeometry( 2000, 2000 );
+		geometry.rotateX( - Math.PI / 2 );
+		gC.plane = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial( { visible: false } ) );
+		gC.scene.add( gC.plane );
+		//objects.push( plane );
+		// Lights
+		var ambientLight = new THREE.AmbientLight( 0x606060 );
+		scene.add( ambientLight );
+		var directionalLight = new THREE.DirectionalLight( 0xffffff );
+		directionalLight.position.set( 1, 0.75, 0.5 ).normalize();
+		gC.scene.add( directionalLight );
+		gC.renderer = new THREE.WebGLRenderer( { antialias: true } );
+		gC.renderer.setClearColor( 0xf0f0f0 );
+		gC.renderer.setPixelRatio( window.devicePixelRatio );
+		gC.renderer.setSize( window.innerWidth, window.innerHeight );
+		var a = Utils.getEBI('box');
+            
+		
+	    //Utils.setOffScreen(b)
+            Utils.appendB2A(a,gC.renderer.domElement)
+		gC.group = new THREE.Group();
+		gC.scene.add(gC.group);
+	}
 	setCanvas2(e){
         this.c2 = e;
         this.ctx2 = e.getContext("2d");
