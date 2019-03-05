@@ -1,137 +1,1205 @@
 {
-    "LB": {
+    "LW": {
+        "49": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_49.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "50": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_50.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "51": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_51.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "52": {
+            "type": "leftwing",
+            "img": "anims\/dem_A_LW_1_52-f=8-t=.7-d=0.png",
+            "partname": "",
+            "effect": "var:A",
+            "frames": "8",
+            "time": ".7"
+        },
+        "53": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_53.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "54": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_54.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "55": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_55.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "56": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_56.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "57": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_57.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "01": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_01.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "02": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_02.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "03": {
+            "type": "leftwing",
+            "img": "anims\/dem_A_LW_1_03-f=8-t=1-d=0.png",
+            "partname": "",
+            "effect": "var:A",
+            "frames": "8",
+            "time": "1"
+        },
+        "04": {
+            "type": "leftwing",
+            "img": "anims\/dem_A_LW_1_04-f=8-t=1-d=0.png",
+            "partname": "",
+            "effect": "var:A",
+            "frames": "8",
+            "time": "1"
+        },
+        "05": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_05.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "06": {
+            "type": "leftwing",
+            "img": "anims\/dem_A_LW_1_06-f=8-t=1-d=0.png",
+            "partname": "",
+            "effect": "var:A",
+            "frames": "8",
+            "time": "1"
+        },
+        "07": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_07.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "08": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_08.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "09": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_09.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "10": {
+            "type": "leftwing",
+            "img": "anims\/dem_A_LW_1_10-f=8-t=1-d=0.png",
+            "partname": "",
+            "effect": "var:A",
+            "frames": "8",
+            "time": "1"
+        },
+        "11": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_11.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "12": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_12.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "13": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_13.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "14": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_14.png",
+            "partname": "",
+            "effect": "var:A"
+        },
         "15": {
-            "type": "lowerbody",
-            "img": "dem_A_LB_2_15.png",
-            "partname": "i",
-            "effect": "weapon:Q"
+            "type": "leftwing",
+            "img": "dem_A_LW_1_15.png",
+            "partname": "",
+            "effect": "var:A"
         },
         "16": {
-            "type": "lowerbody",
-            "img": "dem_A_LB_2_16.png",
-            "partname": "lu",
-            "effect": "weapon:Q"
+            "type": "leftwing",
+            "img": "anims\/dem_A_LW_1_16-f=8-t=1-d=0.png",
+            "partname": "",
+            "effect": "var:A",
+            "frames": "8",
+            "time": "1"
         },
         "17": {
-            "type": "lowerbody",
-            "img": "dem_A_LB_2_17.png",
-            "partname": "ka",
-            "effect": "weapon:Q"
+            "type": "leftwing",
+            "img": "dem_A_LW_1_17.png",
+            "partname": "",
+            "effect": "var:A"
         },
         "18": {
-            "type": "lowerbody",
-            "img": "dem_A_LB_2_18.png",
-            "partname": "kar",
-            "effect": "weapon:Q"
+            "type": "leftwing",
+            "img": "dem_A_LW_1_18.png",
+            "partname": "",
+            "effect": "var:A"
         },
         "19": {
-            "type": "lowerbody",
-            "img": "dem_A_LB_2_19.png",
-            "partname": "kor",
-            "effect": "weapon:Q"
+            "type": "leftwing",
+            "img": "dem_A_LW_1_19.png",
+            "partname": "",
+            "effect": "var:A"
         },
         "20": {
-            "type": "lowerbody",
-            "img": "dem_A_LB_2_20.png",
-            "partname": "me",
-            "effect": "weapon:Q"
+            "type": "leftwing",
+            "img": "dem_A_LW_1_20.png",
+            "partname": "",
+            "effect": "var:A"
         },
         "21": {
-            "type": "lowerbody",
-            "img": "dem_A_LB_2_21.png",
-            "partname": "mel",
-            "effect": "weapon:Q"
+            "type": "leftwing",
+            "img": "dem_A_LW_1_21.png",
+            "partname": "",
+            "effect": "var:A"
         },
         "22": {
-            "type": "lowerbody",
-            "img": "dem_A_LB_2_22.png",
-            "partname": "mor",
-            "effect": "weapon:Q"
+            "type": "leftwing",
+            "img": "anims\/dem_A_LW_1_22-f=8-t=1-d=0.png",
+            "partname": "",
+            "effect": "var:A",
+            "frames": "8",
+            "time": "1"
         },
         "23": {
-            "type": "lowerbody",
-            "img": "dem_A_LB_2_23.png",
-            "partname": "nar",
-            "effect": "weapon:Q"
+            "type": "leftwing",
+            "img": "dem_A_LW_1_23.png",
+            "partname": "",
+            "effect": "var:A"
         },
         "24": {
-            "type": "lowerbody",
-            "img": "dem_A_LB_2_24.png",
-            "partname": "ra",
-            "effect": "weapon:Q"
+            "type": "leftwing",
+            "img": "dem_A_LW_1_24.png",
+            "partname": "",
+            "effect": "var:A"
         },
         "25": {
-            "type": "lowerbody",
-            "img": "dem_A_LB_2_25.png",
-            "partname": "sa",
-            "effect": "weapon:Q"
+            "type": "leftwing",
+            "img": "dem_A_LW_1_25.png",
+            "partname": "",
+            "effect": "var:A"
         },
         "26": {
-            "type": "lowerbody",
-            "img": "dem_A_LB_2_26.png",
-            "partname": null,
-            "effect": "weapon:Q"
+            "type": "leftwing",
+            "img": "dem_A_LW_1_26.png",
+            "partname": "",
+            "effect": "var:A"
         },
         "27": {
-            "type": "lowerbody",
-            "img": "dem_A_LB_2_27.png",
-            "partname": null,
-            "effect": "weapon:Q"
+            "type": "leftwing",
+            "img": "dem_A_LW_1_27.png",
+            "partname": "",
+            "effect": "var:A"
         },
         "28": {
-            "type": "lowerbody",
-            "img": "dem_A_LB_2_28.png",
-            "partname": null,
-            "effect": "weapon:Q"
+            "type": "leftwing",
+            "img": "dem_A_LW_1_28.png",
+            "partname": "",
+            "effect": "var:A"
         },
         "29": {
-            "type": "lowerbody",
-            "img": "dem_A_LB_2_29.png",
-            "partname": null,
-            "effect": "weapon:Q"
+            "type": "leftwing",
+            "img": "dem_A_LW_1_29.png",
+            "partname": "",
+            "effect": "var:A"
         },
         "30": {
-            "type": "lowerbody",
-            "img": "dem_A_LB_2_30.png",
-            "partname": null,
-            "effect": "weapon:Q"
+            "type": "leftwing",
+            "img": "dem_A_LW_1_30.png",
+            "partname": "",
+            "effect": "var:A"
         },
         "31": {
-            "type": "lowerbody",
-            "img": "dem_A_LB_2_31.png",
-            "partname": null,
-            "effect": "weapon:Q"
+            "type": "leftwing",
+            "img": "dem_A_LW_1_31.png",
+            "partname": "",
+            "effect": "var:A"
         },
         "32": {
-            "type": "lowerbody",
-            "img": "dem_A_LB_2_32.png",
-            "partname": null,
-            "effect": "weapon:Q"
+            "type": "leftwing",
+            "img": "dem_A_LW_1_32.png",
+            "partname": "",
+            "effect": "var:A"
         },
         "33": {
-            "type": "lowerbody",
-            "img": "dem_A_LB_2_33.png",
-            "partname": null,
-            "effect": "weapon:Q"
+            "type": "leftwing",
+            "img": "dem_A_LW_1_33.png",
+            "partname": "",
+            "effect": "var:A"
         },
         "34": {
-            "type": "lowerbody",
-            "img": "dem_A_LB_2_34.png",
-            "partname": null,
-            "effect": "weapon:Q"
+            "type": "leftwing",
+            "img": "dem_A_LW_1_34.png",
+            "partname": "",
+            "effect": "var:A"
         },
         "35": {
-            "type": "lowerbody",
-            "img": "dem_A_LB_2_35.png",
-            "partname": null,
-            "effect": "weapon:Q"
+            "type": "leftwing",
+            "img": "anims\/dem_A_LW_1_35-f=8-t=1-d=0.png",
+            "partname": "",
+            "effect": "var:A",
+            "frames": "8",
+            "time": "1"
         },
         "36": {
-            "type": "lowerbody",
-            "img": "dem_A_LB_2_36.png",
-            "partname": null,
-            "effect": "weapon:Q"
+            "type": "leftwing",
+            "img": "dem_A_LW_1_36.png",
+            "partname": "",
+            "effect": "var:A"
         },
+        "37": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_37.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "38": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_38.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "39": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_39.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "40": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_40.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "41": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_41.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "42": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_42.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "43": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_43.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "44": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_44.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "45": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_45.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "46": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_46.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "47": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_47.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "48": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_48.png",
+            "partname": "",
+            "effect": "var:A"
+        }
+    },
+    "RW": {
+        "01": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_01.png",
+            "partname": "",
+            "effect": ""
+        },
+        "02": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_02.png",
+            "partname": "",
+            "effect": ""
+        },
+        "03": {
+            "type": "rightwing",
+            "img": "anims\/dem_A_RW_1_03-f=8-t=1-d=0.png",
+            "partname": "",
+            "effect": "",
+            "frames": "8",
+            "time": "1"
+        },
+        "04": {
+            "type": "rightwing",
+            "img": "anims\/dem_A_RW_1_04-f=8-t=1-d=0.png",
+            "partname": "",
+            "effect": "",
+            "frames": "8",
+            "time": "1"
+        },
+        "05": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_05.png",
+            "partname": "",
+            "effect": ""
+        },
+        "06": {
+            "type": "rightwing",
+            "img": "anims\/dem_A_RW_1_06-f=8-t=1-d=0.png",
+            "partname": "",
+            "effect": "",
+            "frames": "8",
+            "time": "1"
+        },
+        "07": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_07.png",
+            "partname": "",
+            "effect": ""
+        },
+        "08": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_08.png",
+            "partname": "",
+            "effect": ""
+        },
+        "09": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_09.png",
+            "partname": "",
+            "effect": ""
+        },
+        "10": {
+            "type": "rightwing",
+            "img": "anims\/dem_A_RW_1_10-f=8-t=1-d=0.png",
+            "partname": "",
+            "effect": "",
+            "frames": "8",
+            "time": "1"
+        },
+        "11": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_11.png",
+            "partname": "",
+            "effect": ""
+        },
+        "12": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_12.png",
+            "partname": "",
+            "effect": ""
+        },
+        "13": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_13.png",
+            "partname": "",
+            "effect": ""
+        },
+        "14": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_14.png",
+            "partname": "",
+            "effect": ""
+        },
+        "15": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_15.png",
+            "partname": "",
+            "effect": ""
+        },
+        "16": {
+            "type": "rightwing",
+            "img": "anims\/dem_A_RW_1_16-f=8-t=1-d=0.png",
+            "partname": "",
+            "effect": "",
+            "frames": "8",
+            "time": "1"
+        },
+        "17": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_17.png",
+            "partname": "",
+            "effect": ""
+        },
+        "18": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_18.png",
+            "partname": "",
+            "effect": ""
+        },
+        "19": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_19.png",
+            "partname": "",
+            "effect": ""
+        },
+        "20": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_20.png",
+            "partname": "",
+            "effect": ""
+        },
+        "21": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_21.png",
+            "partname": "",
+            "effect": ""
+        },
+        "22": {
+            "type": "rightwing",
+            "img": "anims\/dem_A_RW_1_22-f=8-t=1-d=0.png",
+            "partname": "",
+            "effect": "",
+            "frames": "8",
+            "time": "1"
+        },
+        "23": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_23.png",
+            "partname": "",
+            "effect": ""
+        },
+        "24": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_24.png",
+            "partname": "",
+            "effect": ""
+        },
+        "25": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_25.png",
+            "partname": "",
+            "effect": ""
+        },
+        "26": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_26.png",
+            "partname": "",
+            "effect": ""
+        },
+        "27": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_27.png",
+            "partname": "",
+            "effect": ""
+        },
+        "28": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_28.png",
+            "partname": "",
+            "effect": ""
+        },
+        "29": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_29.png",
+            "partname": "",
+            "effect": ""
+        },
+        "30": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_30.png",
+            "partname": "",
+            "effect": ""
+        },
+        "31": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_31.png",
+            "partname": "",
+            "effect": ""
+        },
+        "32": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_32.png",
+            "partname": "",
+            "effect": ""
+        },
+        "33": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_33.png",
+            "partname": "",
+            "effect": ""
+        },
+        "34": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_34.png",
+            "partname": "",
+            "effect": ""
+        },
+        "35": {
+            "type": "rightwing",
+            "img": "anims\/dem_A_RW_1_35-f=8-t=1-d=0.png",
+            "partname": "",
+            "effect": "",
+            "frames": "8",
+            "time": "1"
+        },
+        "36": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_36.png",
+            "partname": "",
+            "effect": ""
+        },
+        "37": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_37.png",
+            "partname": "",
+            "effect": ""
+        },
+        "38": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_38.png",
+            "partname": "",
+            "effect": ""
+        },
+        "39": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_39.png",
+            "partname": "",
+            "effect": ""
+        },
+        "40": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_40.png",
+            "partname": "",
+            "effect": ""
+        },
+        "41": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_41.png",
+            "partname": "",
+            "effect": ""
+        },
+        "42": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_42.png",
+            "partname": "",
+            "effect": ""
+        },
+        "43": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_43.png",
+            "partname": "",
+            "effect": ""
+        },
+        "44": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_44.png",
+            "partname": "",
+            "effect": ""
+        },
+        "45": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_45.png",
+            "partname": "",
+            "effect": ""
+        },
+        "46": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_46.png",
+            "partname": "",
+            "effect": ""
+        },
+        "47": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_47.png",
+            "partname": "",
+            "effect": ""
+        },
+        "48": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_48.png",
+            "partname": "",
+            "effect": ""
+        },
+        "49": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_49.png",
+            "partname": "",
+            "effect": ""
+        },
+        "50": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_50.png",
+            "partname": "",
+            "effect": ""
+        },
+        "51": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_51.png",
+            "partname": "",
+            "effect": ""
+        },
+        "52": {
+            "type": "rightwing",
+            "img": "anims\/dem_A_RW_1_52-f=8-t=.7-d=0.png",
+            "partname": "",
+            "effect": "",
+            "frames": "8",
+            "time": ".7"
+        },
+        "53": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_53.png",
+            "partname": "",
+            "effect": ""
+        },
+        "54": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_54.png",
+            "partname": "",
+            "effect": ""
+        },
+        "55": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_55.png",
+            "partname": "",
+            "effect": ""
+        },
+        "56": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_56.png",
+            "partname": "",
+            "effect": ""
+        },
+        "57": {
+            "type": "rightwing",
+            "img": "dem_A_RW_1_57.png",
+            "partname": "",
+            "effect": ""
+        }
+    },
+    "HE": {
+        "61": {
+            "type": "head",
+            "img": "dem_A_HE_4_61.png",
+            "partname": "anl",
+            "effect": "pattern:M"
+        },
+        "62": {
+            "type": "head",
+            "img": "anims\/dem_A_HE_4_62-f=8-t=0.2-d=0.png",
+            "partname": "anv",
+            "effect": "pattern:M",
+            "frames": "8",
+            "time": "0.2"
+        },
+        "63": {
+            "type": "head",
+            "img": "dem_A_HE_4_63.png",
+            "partname": "as",
+            "effect": "pattern:M"
+        },
+        "64": {
+            "type": "head",
+            "img": "dem_A_HE_4_64.png",
+            "partname": "az",
+            "effect": "pattern:M"
+        },
+        "65": {
+            "type": "head",
+            "img": "dem_A_HE_4_65.png",
+            "partname": "ba",
+            "effect": "pattern:M"
+        },
+        "66": {
+            "type": "head",
+            "img": "anims\/dem_A_HE_4_66-f=4-t=.8-d=0.png",
+            "partname": "be",
+            "effect": "pattern:M",
+            "frames": "4",
+            "time": ".8"
+        },
+        "67": {
+            "type": "head",
+            "img": "dem_A_HE_4_67.png",
+            "partname": "de",
+            "effect": "pattern:M"
+        },
+        "68": {
+            "type": "head",
+            "img": "anims\/dem_A_HE_4_68-f=8-t=.2-d=0.png",
+            "partname": "du",
+            "effect": "pattern:M",
+            "frames": "8",
+            "time": ".2"
+        },
+        "69": {
+            "type": "head",
+            "img": "dem_A_HE_4_69.png",
+            "partname": "bal",
+            "effect": "pattern:M"
+        },
+        "70": {
+            "type": "head",
+            "img": "dem_A_HE_4_70.png",
+            "partname": "ang",
+            "effect": "pattern:M"
+        },
+        "71": {
+            "type": "head",
+            "img": "dem_A_HE_4_71.png",
+            "partname": "bav",
+            "effect": "pattern:M"
+        },
+        "72": {
+            "type": "head",
+            "img": "anims\/dem_A_HE_4_72-f=16-t=1.8-d=0.png",
+            "partname": "dul",
+            "effect": "pattern:M",
+            "frames": "16",
+            "time": "1.8"
+        },
+        "73": {
+            "type": "head",
+            "img": "dem_A_HE_4_73.png",
+            "partname": "ban",
+            "effect": "pattern:M"
+        },
+        "74": {
+            "type": "head",
+            "img": "dem_A_HE_4_74.png",
+            "partname": "bav",
+            "effect": "pattern:M"
+        },
+        "75": {
+            "type": "head",
+            "img": "dem_A_HE_4_75.png",
+            "partname": "ank",
+            "effect": "pattern:M"
+        },
+        "76": {
+            "type": "head",
+            "img": "dem_A_HE_4_76.png",
+            "partname": "ant",
+            "effect": "pattern:M"
+        },
+        "77": {
+            "type": "head",
+            "img": "dem_A_HE_4_77.png",
+            "partname": "eh",
+            "effect": "pattern:M"
+        },
+        "78": {
+            "type": "head",
+            "img": "dem_A_HE_4_78.png",
+            "partname": "akh",
+            "effect": "pattern:M"
+        },
+        "01": {
+            "type": "head",
+            "img": "anims\/dem_A_HE_4_01-f=16-t=1.6-d=0.png",
+            "partname": "ahl",
+            "effect": "pattern:M",
+            "frames": "16",
+            "time": "1.6"
+        },
+        "02": {
+            "type": "head",
+            "img": "dem_A_HE_4_02.png",
+            "partname": "ahn",
+            "effect": "pattern:M"
+        },
+        "03": {
+            "type": "head",
+            "img": "dem_A_HE_4_03.png",
+            "partname": "ahv",
+            "effect": "pattern:M"
+        },
+        "04": {
+            "type": "head",
+            "img": "dem_A_HE_4_04.png",
+            "partname": "an",
+            "effect": "pattern:M"
+        },
+        "05": {
+            "type": "head",
+            "img": "dem_A_HE_4_05.png",
+            "partname": "anl",
+            "effect": "pattern:M"
+        },
+        "06": {
+            "type": "head",
+            "img": "dem_A_HE_4_06.png",
+            "partname": "anv",
+            "effect": "pattern:M"
+        },
+        "07": {
+            "type": "head",
+            "img": "dem_A_HE_4_07.png",
+            "partname": "as",
+            "effect": "pattern:M"
+        },
+        "08": {
+            "type": "head",
+            "img": "dem_A_HE_4_08.png",
+            "partname": "az",
+            "effect": "pattern:M"
+        },
+        "09": {
+            "type": "head",
+            "img": "dem_A_HE_4_09.png",
+            "partname": "ba",
+            "effect": "pattern:M"
+        },
+        "10": {
+            "type": "head",
+            "img": "dem_A_HE_4_10.png",
+            "partname": "be",
+            "effect": "pattern:M"
+        },
+        "11": {
+            "type": "head",
+            "img": "dem_A_HE_4_11.png",
+            "partname": "de",
+            "effect": "pattern:M"
+        },
+        "12": {
+            "type": "head",
+            "img": "dem_A_HE_4_12.png",
+            "partname": "du",
+            "effect": "pattern:M"
+        },
+        "13": {
+            "type": "head",
+            "img": "dem_A_HE_4_13.png",
+            "partname": "bal",
+            "effect": "pattern:M"
+        },
+        "14": {
+            "type": "head",
+            "img": "dem_A_HE_4_14.png",
+            "partname": "ang",
+            "effect": "pattern:M"
+        },
+        "15": {
+            "type": "head",
+            "img": "dem_A_HE_4_15.png",
+            "partname": "bav",
+            "effect": "pattern:M"
+        },
+        "16": {
+            "type": "head",
+            "img": "dem_A_HE_4_16.png",
+            "partname": "dul",
+            "effect": "pattern:M"
+        },
+        "17": {
+            "type": "head",
+            "img": "dem_A_HE_4_17.png",
+            "partname": "ban",
+            "effect": "pattern:M"
+        },
+        "18": {
+            "type": "head",
+            "img": "dem_A_HE_4_18.png",
+            "partname": "bav",
+            "effect": "pattern:M"
+        },
+        "19": {
+            "type": "head",
+            "img": "dem_A_HE_4_19.png",
+            "partname": "ank",
+            "effect": "pattern:M"
+        },
+        "20": {
+            "type": "head",
+            "img": "dem_A_HE_4_20.png",
+            "partname": "ant",
+            "effect": "pattern:M"
+        },
+        "21": {
+            "type": "head",
+            "img": "dem_A_HE_4_21.png",
+            "partname": "eh",
+            "effect": "pattern:M"
+        },
+        "22": {
+            "type": "head",
+            "img": "dem_A_HE_4_22.png",
+            "partname": "akh",
+            "effect": "pattern:M"
+        },
+        "23": {
+            "type": "head",
+            "img": "dem_A_HE_4_23.png",
+            "partname": "el",
+            "effect": "pattern:M"
+        },
+        "24": {
+            "type": "head",
+            "img": "dem_A_HE_4_24.png",
+            "partname": "elh",
+            "effect": "pattern:M"
+        },
+        "25": {
+            "type": "head",
+            "img": "dem_A_HE_4_25.png",
+            "partname": "fel",
+            "effect": "pattern:M"
+        },
+        "26": {
+            "type": "head",
+            "img": "dem_A_HE_4_26.png",
+            "partname": "fen",
+            "effect": "pattern:M"
+        },
+        "27": {
+            "type": "head",
+            "img": "dem_A_HE_4_27.png",
+            "partname": "pah",
+            "effect": "pattern:M"
+        },
+        "28": {
+            "type": "head",
+            "img": "dem_A_HE_4_28.png",
+            "partname": "pal",
+            "effect": "pattern:M"
+        },
+        "29": {
+            "type": "head",
+            "img": "dem_A_HE_4_29.png",
+            "partname": "dun",
+            "effect": "pattern:M"
+        },
+        "30": {
+            "type": "head",
+            "img": "dem_A_HE_4_30.png",
+            "partname": "bra",
+            "effect": "pattern:M"
+        },
+        "31": {
+            "type": "head",
+            "img": "dem_A_HE_4_31.png",
+            "partname": "brah",
+            "effect": "pattern:M"
+        },
+        "32": {
+            "type": "head",
+            "img": "dem_A_HE_4_32.png",
+            "partname": "dum",
+            "effect": "pattern:M"
+        },
+        "33": {
+            "type": "head",
+            "img": "dem_A_HE_4_33.png",
+            "partname": "dug",
+            "effect": "pattern:M"
+        },
+        "34": {
+            "type": "head",
+            "img": "dem_A_HE_4_34.png",
+            "partname": "duc",
+            "effect": "pattern:M"
+        },
+        "35": {
+            "type": "head",
+            "img": "dem_A_HE_4_35.png",
+            "partname": "duq",
+            "effect": "pattern:M"
+        },
+        "36": {
+            "type": "head",
+            "img": "dem_A_HE_4_36.png",
+            "partname": "dugh",
+            "effect": "pattern:M"
+        },
+        "37": {
+            "type": "head",
+            "img": "dem_A_HE_4_37.png",
+            "partname": "hec",
+            "effect": "pattern:M"
+        },
+        "38": {
+            "type": "head",
+            "img": "dem_A_HE_4_38.png",
+            "partname": "dur",
+            "effect": "pattern:M"
+        },
+        "39": {
+            "type": "head",
+            "img": "dem_A_HE_4_39.png",
+            "partname": "hek",
+            "effect": "pattern:M"
+        },
+        "40": {
+            "type": "head",
+            "img": "dem_A_HE_4_40.png",
+            "partname": "doc",
+            "effect": "pattern:M"
+        },
+        "41": {
+            "type": "head",
+            "img": "dem_A_HE_4_41.png",
+            "partname": "doq",
+            "effect": "pattern:M"
+        },
+        "42": {
+            "type": "head",
+            "img": "dem_A_HE_4_42.png",
+            "partname": "dugr",
+            "effect": "pattern:M"
+        },
+        "43": {
+            "type": "head",
+            "img": "dem_A_HE_4_43.png",
+            "partname": "ih",
+            "effect": "pattern:M"
+        },
+        "44": {
+            "type": "head",
+            "img": "dem_A_HE_4_44.png",
+            "partname": "il",
+            "effect": "pattern:M"
+        },
+        "45": {
+            "type": "head",
+            "img": "dem_A_HE_4_45.png",
+            "partname": "lu",
+            "effect": "pattern:M"
+        },
+        "46": {
+            "type": "head",
+            "img": "dem_A_HE_4_46.png",
+            "partname": "ka",
+            "effect": "pattern:M"
+        },
+        "47": {
+            "type": "head",
+            "img": "dem_A_HE_4_47.png",
+            "partname": "kah",
+            "effect": "pattern:M"
+        },
+        "48": {
+            "type": "head",
+            "img": "dem_A_HE_4_48.png",
+            "partname": "keh",
+            "effect": "pattern:M"
+        },
+        "49": {
+            "type": "head",
+            "img": "dem_A_HE_4_49.png",
+            "partname": "kev",
+            "effect": "pattern:M"
+        },
+        "50": {
+            "type": "head",
+            "img": "dem_A_HE_4_50.png",
+            "partname": "mih",
+            "effect": "pattern:M"
+        },
+        "51": {
+            "type": "head",
+            "img": "dem_A_HE_4_51.png",
+            "partname": "mil",
+            "effect": "pattern:M"
+        },
+        "52": {
+            "type": "head",
+            "img": "dem_A_HE_4_52.png",
+            "partname": "moh",
+            "effect": "pattern:M"
+        },
+        "53": {
+            "type": "head",
+            "img": "dem_A_HE_4_53.png",
+            "partname": "mor",
+            "effect": "pattern:M"
+        },
+        "54": {
+            "type": "head",
+            "img": "dem_A_HE_4_54.png",
+            "partname": "nak",
+            "effect": "pattern:M"
+        },
+        "55": {
+            "type": "head",
+            "img": "dem_A_HE_4_55.png",
+            "partname": "nat",
+            "effect": "pattern:M"
+        },
+        "56": {
+            "type": "head",
+            "img": "dem_A_HE_4_56.png",
+            "partname": "ah",
+            "effect": "pattern:M"
+        },
+        "57": {
+            "type": "head",
+            "img": "dem_A_HE_4_57.png",
+            "partname": "ahl",
+            "effect": "pattern:M"
+        },
+        "58": {
+            "type": "head",
+            "img": "dem_A_HE_4_58.png",
+            "partname": "ahn",
+            "effect": "pattern:M"
+        },
+        "59": {
+            "type": "head",
+            "img": "dem_A_HE_4_59.png",
+            "partname": "ahv",
+            "effect": "pattern:M"
+        },
+        "60": {
+            "type": "head",
+            "img": "dem_A_HE_4_60.png",
+            "partname": "an",
+            "effect": "pattern:M"
+        }
+    },
+    "LB": {
         "01": {
             "type": "lowerbody",
             "img": "dem_A_LB_2_01.png",
@@ -146,1175 +1214,579 @@
         },
         "03": {
             "type": "lowerbody",
-            "img": "dem_A_LB_2_03.png",
-            "partname": "az",
-            "effect": "weapon:Q"
+            "img": "anims\/dem_A_LB_2_03-f=8-t=1-d=0.png",
+            "partname": "ash",
+            "effect": "weapon:Q",
+            "frames": "8",
+            "time": "1"
         },
         "04": {
             "type": "lowerbody",
             "img": "dem_A_LB_2_04.png",
-            "partname": "ba",
+            "partname": "tl",
             "effect": "weapon:Q"
         },
         "05": {
             "type": "lowerbody",
             "img": "dem_A_LB_2_05.png",
-            "partname": "bal",
+            "partname": "ask",
             "effect": "weapon:Q"
         },
         "06": {
             "type": "lowerbody",
             "img": "dem_A_LB_2_06.png",
-            "partname": "be",
+            "partname": "ba",
             "effect": "weapon:Q"
         },
         "07": {
             "type": "lowerbody",
             "img": "dem_A_LB_2_07.png",
-            "partname": "bel",
+            "partname": "bub",
             "effect": "weapon:Q"
         },
         "08": {
             "type": "lowerbody",
             "img": "dem_A_LB_2_08.png",
-            "partname": "del",
+            "partname": "buv",
             "effect": "weapon:Q"
         },
         "09": {
             "type": "lowerbody",
             "img": "dem_A_LB_2_09.png",
-            "partname": "dra",
+            "partname": "gra",
             "effect": "weapon:Q"
         },
         "10": {
             "type": "lowerbody",
             "img": "dem_A_LB_2_10.png",
-            "partname": "du",
+            "partname": "del",
             "effect": "weapon:Q"
         },
         "11": {
             "type": "lowerbody",
             "img": "dem_A_LB_2_11.png",
-            "partname": "e",
+            "partname": "isk",
             "effect": "weapon:Q"
         },
         "12": {
             "type": "lowerbody",
             "img": "dem_A_LB_2_12.png",
-            "partname": "go",
+            "partname": "eg",
             "effect": "weapon:Q"
         },
         "13": {
             "type": "lowerbody",
             "img": "dem_A_LB_2_13.png",
-            "partname": "gri",
+            "partname": "gor",
             "effect": "weapon:Q"
         },
         "14": {
             "type": "lowerbody",
-            "img": "dem_A_LB_2_14.png",
-            "partname": "hex",
+            "img": "anims\/dem_A_LB_2_14-f=8-t=1-d=0.png",
+            "partname": "las",
+            "effect": "weapon:Q",
+            "frames": "8",
+            "time": "1"
+        },
+        "15": {
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_15.png",
+            "partname": "nal",
             "effect": "weapon:Q"
-        }
-    },
-    "LW": {
-        "01": {
-            "type": "leftwing",
-            "img": "dem_A_LW_1_01.png",
-            "partname": "an",
-            "effect": "var:A"
-        },
-        "02": {
-            "type": "leftwing",
-            "img": "dem_A_LW_1_02.png",
-            "partname": "as",
-            "effect": "var:A"
-        },
-        "03": {
-            "type": "leftwing",
-            "img": "dem_A_LW_1_03.png",
-            "partname": "az",
-            "effect": "var:A"
-        },
-        "04": {
-            "type": "leftwing",
-            "img": "dem_A_LW_1_04.png",
-            "partname": "ba",
-            "effect": "var:A"
-        },
-        "05": {
-            "type": "leftwing",
-            "img": "dem_A_LW_1_05.png",
-            "partname": "bal",
-            "effect": "var:A"
-        },
-        "06": {
-            "type": "leftwing",
-            "img": "dem_A_LW_1_06.png",
-            "partname": "be",
-            "effect": "var:A"
-        },
-        "07": {
-            "type": "leftwing",
-            "img": "dem_A_LW_1_07.png",
-            "partname": "bel",
-            "effect": "var:A"
-        },
-        "08": {
-            "type": "leftwing",
-            "img": "dem_A_LW_1_08.png",
-            "partname": "del",
-            "effect": "var:A"
-        },
-        "09": {
-            "type": "leftwing",
-            "img": "dem_A_LW_1_09.png",
-            "partname": "dra",
-            "effect": "var:A"
-        },
-        "10": {
-            "type": "leftwing",
-            "img": "dem_A_LW_1_10.png",
-            "partname": "du",
-            "effect": "var:A"
-        },
-        "11": {
-            "type": "leftwing",
-            "img": "dem_A_LW_1_11.png",
-            "partname": "e",
-            "effect": "var:A"
-        },
-        "12": {
-            "type": "leftwing",
-            "img": "dem_A_LW_1_12.png",
-            "partname": "go",
-            "effect": "var:A"
-        },
-        "13": {
-            "type": "leftwing",
-            "img": "dem_A_LW_1_13.png",
-            "partname": "gri",
-            "effect": "var:A"
-        },
-        "14": {
-            "type": "leftwing",
-            "img": "dem_A_LW_1_14.png",
-            "partname": "hex",
-            "effect": "var:A"
-        },
-        "15": {
-            "type": "leftwing",
-            "img": "dem_A_LW_1_15.png",
-            "partname": "i",
-            "effect": "var:A"
         },
         "16": {
-            "type": "leftwing",
-            "img": "dem_A_LW_1_16.png",
-            "partname": "lu",
-            "effect": "var:A"
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_16.png",
+            "partname": "el",
+            "effect": "weapon:Q"
         },
         "17": {
-            "type": "leftwing",
-            "img": "dem_A_LW_1_17.png",
-            "partname": "ka",
-            "effect": "var:A"
+            "type": "lowerbody",
+            "img": "anims\/dem_A_LB_2_17-f=8-t=1.2-d=0.png",
+            "partname": "eh",
+            "effect": "weapon:Q",
+            "frames": "8",
+            "time": "1.2"
         },
         "18": {
-            "type": "leftwing",
-            "img": "dem_A_LW_1_18.png",
-            "partname": "kar",
-            "effect": "var:A"
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_18.png",
+            "partname": "lac",
+            "effect": "weapon:Q"
         },
         "19": {
-            "type": "leftwing",
-            "img": "dem_A_LW_1_19.png",
-            "partname": "kor",
-            "effect": "var:A"
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_19.png",
+            "partname": "lah",
+            "effect": "weapon:Q"
         },
         "20": {
-            "type": "leftwing",
-            "img": "dem_A_LW_1_20.png",
-            "partname": "me",
-            "effect": "var:A"
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_20.png",
+            "partname": "ehl",
+            "effect": "weapon:Q"
         },
         "21": {
-            "type": "leftwing",
-            "img": "dem_A_LW_1_21.png",
-            "partname": "mel",
-            "effect": "var:A"
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_21.png",
+            "partname": "ehk",
+            "effect": "weapon:Q"
         },
         "22": {
-            "type": "leftwing",
-            "img": "dem_A_LW_1_22.png",
-            "partname": "mor",
-            "effect": "var:A"
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_22.png",
+            "partname": "leth",
+            "effect": "weapon:Q"
         },
         "23": {
-            "type": "leftwing",
-            "img": "dem_A_LW_1_23.png",
-            "partname": "nar",
-            "effect": "var:A"
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_23.png",
+            "partname": "lekh",
+            "effect": "weapon:Q"
         },
         "24": {
-            "type": "leftwing",
-            "img": "dem_A_LW_1_24.png",
-            "partname": "ra",
-            "effect": "var:A"
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_24.png",
+            "partname": "lev",
+            "effect": "weapon:Q"
         },
         "25": {
-            "type": "leftwing",
-            "img": "dem_A_LW_1_25.png",
-            "partname": "sa",
-            "effect": "var:A"
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_25.png",
+            "partname": "leh",
+            "effect": "weapon:Q"
         },
         "26": {
-            "type": "leftwing",
-            "img": "dem_A_LW_1_26.png",
-            "partname": null,
-            "effect": "var:A"
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_26.png",
+            "partname": "roh",
+            "effect": "weapon:Q"
         },
         "27": {
-            "type": "leftwing",
-            "img": "dem_A_LW_1_27.png",
-            "partname": null,
-            "effect": "var:A"
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_27.png",
+            "partname": "sh",
+            "effect": "weapon:Q"
         },
         "28": {
-            "type": "leftwing",
-            "img": "dem_A_LW_1_28.png",
-            "partname": null,
-            "effect": "var:A"
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_28.png",
+            "partname": "l",
+            "effect": "weapon:Q"
         },
         "29": {
-            "type": "leftwing",
-            "img": "dem_A_LW_1_29.png",
-            "partname": null,
-            "effect": "var:A"
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_29.png",
+            "partname": "lak",
+            "effect": "weapon:Q"
         },
         "30": {
-            "type": "leftwing",
-            "img": "dem_A_LW_1_30.png",
-            "partname": null,
-            "effect": "var:A"
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_30.png",
+            "partname": "ehr",
+            "effect": "weapon:Q"
         },
         "31": {
-            "type": "leftwing",
-            "img": "dem_A_LW_1_31.png",
-            "partname": null,
-            "effect": "var:A"
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_31.png",
+            "partname": "meh",
+            "effect": "weapon:Q"
         },
         "32": {
-            "type": "leftwing",
-            "img": "dem_A_LW_1_32.png",
-            "partname": null,
-            "effect": "var:A"
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_32.png",
+            "partname": "mel",
+            "effect": "weapon:Q"
         },
         "33": {
-            "type": "leftwing",
-            "img": "dem_A_LW_1_33.png",
-            "partname": null,
-            "effect": "var:A"
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_33.png",
+            "partname": "moh",
+            "effect": "weapon:Q"
         },
         "34": {
-            "type": "leftwing",
-            "img": "dem_A_LW_1_34.png",
-            "partname": null,
-            "effect": "var:A"
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_34.png",
+            "partname": "mok",
+            "effect": "weapon:Q"
         },
         "35": {
-            "type": "leftwing",
-            "img": "dem_A_LW_1_35.png",
-            "partname": null,
-            "effect": "var:A"
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_35.png",
+            "partname": "ron",
+            "effect": "weapon:Q"
         },
         "36": {
-            "type": "leftwing",
-            "img": "dem_A_LW_1_36.png",
-            "partname": null,
-            "effect": "var:A"
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_36.png",
+            "partname": "ah",
+            "effect": "weapon:Q"
         },
         "37": {
-            "type": "leftwing",
-            "img": "dem_A_LW_1_37.png",
-            "partname": null,
-            "effect": "var:A"
-        },
-        "38": {
-            "type": "leftwing",
-            "img": "dem_A_LW_1_38.png",
-            "partname": null,
-            "effect": "var:A"
-        },
-        "39": {
-            "type": "leftwing",
-            "img": "dem_A_LW_1_39.png",
-            "partname": null,
-            "effect": "var:A"
-        },
-        "40": {
-            "type": "leftwing",
-            "img": "dem_A_LW_1_40.png",
-            "partname": null,
-            "effect": "var:A"
-        },
-        "41": {
-            "type": "leftwing",
-            "img": "dem_A_LW_1_41.png",
-            "partname": null,
-            "effect": "var:A"
-        },
-        "42": {
-            "type": "leftwing",
-            "img": "dem_A_LW_1_42.png",
-            "partname": null,
-            "effect": "var:A"
-        },
-        "43": {
-            "type": "leftwing",
-            "img": "dem_A_LW_1_43.png",
-            "partname": null,
-            "effect": "var:A"
-        }
-    },
-    "RW": {
-        "01": {
-            "type": "rightwing",
-            "img": "dem_A_RW_1_01.png",
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_37.png",
             "partname": "an",
-            "effect": ""
-        },
-        "02": {
-            "type": "rightwing",
-            "img": "dem_A_RW_1_02.png",
-            "partname": "as",
-            "effect": ""
-        },
-        "03": {
-            "type": "rightwing",
-            "img": "dem_A_RW_1_03.png",
-            "partname": "az",
-            "effect": ""
-        },
-        "04": {
-            "type": "rightwing",
-            "img": "dem_A_RW_1_04.png",
-            "partname": "ba",
-            "effect": ""
-        },
-        "05": {
-            "type": "rightwing",
-            "img": "dem_A_RW_1_05.png",
-            "partname": "bal",
-            "effect": ""
-        },
-        "06": {
-            "type": "rightwing",
-            "img": "dem_A_RW_1_06.png",
-            "partname": "be",
-            "effect": ""
-        },
-        "07": {
-            "type": "rightwing",
-            "img": "dem_A_RW_1_07.png",
-            "partname": "bel",
-            "effect": ""
-        },
-        "08": {
-            "type": "rightwing",
-            "img": "dem_A_RW_1_08.png",
-            "partname": "del",
-            "effect": ""
-        },
-        "09": {
-            "type": "rightwing",
-            "img": "dem_A_RW_1_09.png",
-            "partname": "dra",
-            "effect": ""
-        },
-        "10": {
-            "type": "rightwing",
-            "img": "dem_A_RW_1_10.png",
-            "partname": "du",
-            "effect": ""
-        },
-        "11": {
-            "type": "rightwing",
-            "img": "dem_A_RW_1_11.png",
-            "partname": "e",
-            "effect": ""
-        },
-        "12": {
-            "type": "rightwing",
-            "img": "dem_A_RW_1_12.png",
-            "partname": "go",
-            "effect": ""
-        },
-        "13": {
-            "type": "rightwing",
-            "img": "dem_A_RW_1_13.png",
-            "partname": "gri",
-            "effect": ""
-        },
-        "14": {
-            "type": "rightwing",
-            "img": "dem_A_RW_1_14.png",
-            "partname": "hex",
-            "effect": ""
-        },
-        "15": {
-            "type": "rightwing",
-            "img": "dem_A_RW_1_15.png",
-            "partname": "i",
-            "effect": ""
-        },
-        "16": {
-            "type": "rightwing",
-            "img": "dem_A_RW_1_16.png",
-            "partname": "lu",
-            "effect": ""
-        },
-        "17": {
-            "type": "rightwing",
-            "img": "dem_A_RW_1_17.png",
-            "partname": "ka",
-            "effect": ""
-        },
-        "18": {
-            "type": "rightwing",
-            "img": "dem_A_RW_1_18.png",
-            "partname": "kar",
-            "effect": ""
-        },
-        "19": {
-            "type": "rightwing",
-            "img": "dem_A_RW_1_19.png",
-            "partname": "kor",
-            "effect": ""
-        },
-        "20": {
-            "type": "rightwing",
-            "img": "dem_A_RW_1_20.png",
-            "partname": "me",
-            "effect": ""
-        },
-        "21": {
-            "type": "rightwing",
-            "img": "dem_A_RW_1_21.png",
-            "partname": "mel",
-            "effect": ""
-        },
-        "22": {
-            "type": "rightwing",
-            "img": "dem_A_RW_1_22.png",
-            "partname": "mor",
-            "effect": ""
-        },
-        "23": {
-            "type": "rightwing",
-            "img": "dem_A_RW_1_23.png",
-            "partname": "nar",
-            "effect": ""
-        },
-        "24": {
-            "type": "rightwing",
-            "img": "dem_A_RW_1_24.png",
-            "partname": "ra",
-            "effect": ""
-        },
-        "25": {
-            "type": "rightwing",
-            "img": "dem_A_RW_1_25.png",
-            "partname": "sa",
-            "effect": ""
-        },
-        "26": {
-            "type": "rightwing",
-            "img": "dem_A_RW_1_26.png",
-            "partname": null,
-            "effect": ""
-        },
-        "27": {
-            "type": "rightwing",
-            "img": "dem_A_RW_1_27.png",
-            "partname": null,
-            "effect": ""
-        },
-        "28": {
-            "type": "rightwing",
-            "img": "dem_A_RW_1_28.png",
-            "partname": null,
-            "effect": ""
-        },
-        "29": {
-            "type": "rightwing",
-            "img": "dem_A_RW_1_29.png",
-            "partname": null,
-            "effect": ""
-        },
-        "30": {
-            "type": "rightwing",
-            "img": "dem_A_RW_1_30.png",
-            "partname": null,
-            "effect": ""
-        },
-        "31": {
-            "type": "rightwing",
-            "img": "dem_A_RW_1_31.png",
-            "partname": null,
-            "effect": ""
-        },
-        "32": {
-            "type": "rightwing",
-            "img": "dem_A_RW_1_32.png",
-            "partname": null,
-            "effect": ""
-        },
-        "33": {
-            "type": "rightwing",
-            "img": "dem_A_RW_1_33.png",
-            "partname": null,
-            "effect": ""
-        },
-        "34": {
-            "type": "rightwing",
-            "img": "dem_A_RW_1_34.png",
-            "partname": null,
-            "effect": ""
-        },
-        "35": {
-            "type": "rightwing",
-            "img": "dem_A_RW_1_35.png",
-            "partname": null,
-            "effect": ""
-        },
-        "36": {
-            "type": "rightwing",
-            "img": "dem_A_RW_1_36.png",
-            "partname": null,
-            "effect": ""
-        },
-        "37": {
-            "type": "rightwing",
-            "img": "dem_A_RW_1_37.png",
-            "partname": null,
-            "effect": ""
+            "effect": "weapon:Q"
         },
         "38": {
-            "type": "rightwing",
-            "img": "dem_A_RW_1_38.png",
-            "partname": null,
-            "effect": ""
+            "type": "lowerbody",
+            "img": "anims\/dem_A_LB_2_38-f=8-t=.5-d=0.png",
+            "partname": "as",
+            "effect": "weapon:Q",
+            "frames": "8",
+            "time": ".5"
         },
         "39": {
-            "type": "rightwing",
-            "img": "dem_A_RW_1_39.png",
-            "partname": null,
-            "effect": ""
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_39.png",
+            "partname": "ash",
+            "effect": "weapon:Q"
         },
         "40": {
-            "type": "rightwing",
-            "img": "dem_A_RW_1_40.png",
-            "partname": null,
-            "effect": ""
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_40.png",
+            "partname": "tl",
+            "effect": "weapon:Q"
         },
         "41": {
-            "type": "rightwing",
-            "img": "dem_A_RW_1_41.png",
-            "partname": null,
-            "effect": ""
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_41.png",
+            "partname": "ask",
+            "effect": "weapon:Q"
         },
         "42": {
-            "type": "rightwing",
-            "img": "dem_A_RW_1_42.png",
-            "partname": null,
-            "effect": ""
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_42.png",
+            "partname": "ba",
+            "effect": "weapon:Q"
         },
         "43": {
-            "type": "rightwing",
-            "img": "dem_A_RW_1_43.png",
-            "partname": null,
-            "effect": ""
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_43.png",
+            "partname": "bub",
+            "effect": "weapon:Q"
+        },
+        "44": {
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_44.png",
+            "partname": "buv",
+            "effect": "weapon:Q"
+        },
+        "45": {
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_45.png",
+            "partname": "gra",
+            "effect": "weapon:Q"
+        },
+        "46": {
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_46.png",
+            "partname": "del",
+            "effect": "weapon:Q"
+        },
+        "47": {
+            "type": "lowerbody",
+            "img": "dem_A_LB_2_47.png",
+            "partname": "isk",
+            "effect": "weapon:Q"
         }
     },
     "BO": {
         "01": {
             "type": "body",
             "img": "dem_A_BO_3_01.png",
-            "partname": "bi",
+            "partname": "bal",
             "effect": "energy:K"
         },
         "02": {
             "type": "body",
             "img": "dem_A_BO_3_02.png",
-            "partname": "bra",
+            "partname": "bav",
             "effect": "energy:K"
         },
         "03": {
             "type": "body",
             "img": "dem_A_BO_3_03.png",
-            "partname": "ci",
+            "partname": "ol",
             "effect": "energy:K"
         },
         "04": {
             "type": "body",
             "img": "dem_A_BO_3_04.png",
-            "partname": "da",
+            "partname": "bam",
             "effect": "energy:K"
         },
         "05": {
             "type": "body",
             "img": "dem_A_BO_3_05.png",
-            "partname": "de",
+            "partname": "ci",
             "effect": "energy:K"
         },
         "06": {
             "type": "body",
             "img": "dem_A_BO_3_06.png",
-            "partname": "fa",
+            "partname": "bat",
             "effect": "energy:K"
         },
         "07": {
             "type": "body",
             "img": "dem_A_BO_3_07.png",
-            "partname": "fri",
+            "partname": "cih",
             "effect": "energy:K"
         },
         "08": {
             "type": "body",
             "img": "dem_A_BO_3_08.png",
-            "partname": "for",
+            "partname": "da",
             "effect": "energy:K"
         },
         "09": {
             "type": "body",
             "img": "dem_A_BO_3_09.png",
-            "partname": "gi",
+            "partname": "ske",
             "effect": "energy:K"
         },
         "10": {
             "type": "body",
             "img": "dem_A_BO_3_10.png",
-            "partname": "gra",
+            "partname": "ste",
             "effect": "energy:K"
         },
         "11": {
             "type": "body",
             "img": "dem_A_BO_3_11.png",
-            "partname": "gri",
+            "partname": "cil",
             "effect": "energy:K"
         },
         "12": {
             "type": "body",
             "img": "dem_A_BO_3_12.png",
-            "partname": "hu",
+            "partname": "om",
             "effect": "energy:K"
         },
         "13": {
             "type": "body",
             "img": "dem_A_BO_3_13.png",
-            "partname": "la",
+            "partname": "de",
             "effect": "energy:K"
         },
         "14": {
             "type": "body",
             "img": "dem_A_BO_3_14.png",
-            "partname": "las",
+            "partname": "civ",
             "effect": "energy:K"
         },
         "15": {
             "type": "body",
             "img": "dem_A_BO_3_15.png",
-            "partname": "li",
+            "partname": "do",
             "effect": "energy:K"
         },
         "16": {
             "type": "body",
             "img": "dem_A_BO_3_16.png",
-            "partname": "mai",
+            "partname": "dov",
             "effect": "energy:K"
         },
         "17": {
             "type": "body",
             "img": "dem_A_BO_3_17.png",
-            "partname": "mo",
+            "partname": "dok",
             "effect": "energy:K"
         },
         "18": {
             "type": "body",
             "img": "dem_A_BO_3_18.png",
-            "partname": "mu",
+            "partname": "mah",
             "effect": "energy:K"
         },
         "19": {
             "type": "body",
             "img": "dem_A_BO_3_19.png",
-            "partname": "phis",
+            "partname": "mal",
             "effect": "energy:K"
         },
         "20": {
             "type": "body",
             "img": "dem_A_BO_3_20.png",
-            "partname": "pho",
+            "partname": "mo",
             "effect": "energy:K"
         },
         "21": {
             "type": "body",
             "img": "dem_A_BO_3_21.png",
-            "partname": "ra",
+            "partname": "moh",
             "effect": "energy:K"
         },
         "22": {
             "type": "body",
             "img": "dem_A_BO_3_22.png",
-            "partname": "su",
+            "partname": "mol",
             "effect": "energy:K"
         },
         "23": {
             "type": "body",
             "img": "dem_A_BO_3_23.png",
-            "partname": "ta",
+            "partname": "mov",
             "effect": "energy:K"
         },
         "24": {
             "type": "body",
             "img": "dem_A_BO_3_24.png",
-            "partname": "tel",
+            "partname": "mok",
             "effect": "energy:K"
         },
         "25": {
             "type": "body",
             "img": "dem_A_BO_3_25.png",
-            "partname": "va",
+            "partname": "mog",
             "effect": "energy:K"
         },
         "26": {
             "type": "body",
             "img": "dem_A_BO_3_26.png",
-            "partname": "vi",
+            "partname": "mogg",
             "effect": "energy:K"
         },
         "27": {
             "type": "body",
             "img": "dem_A_BO_3_27.png",
-            "partname": "yan",
+            "partname": "me",
             "effect": "energy:K"
         },
         "28": {
             "type": "body",
             "img": "dem_A_BO_3_28.png",
-            "partname": "za",
+            "partname": "mu",
             "effect": "energy:K"
         },
         "29": {
             "type": "body",
             "img": "dem_A_BO_3_29.png",
-            "partname": null,
+            "partname": "mi",
             "effect": "energy:K"
         },
         "30": {
             "type": "body",
             "img": "dem_A_BO_3_30.png",
-            "partname": null,
+            "partname": "mih",
             "effect": "energy:K"
         },
         "31": {
             "type": "body",
             "img": "dem_A_BO_3_31.png",
-            "partname": null,
+            "partname": "miv",
             "effect": "energy:K"
         },
         "32": {
             "type": "body",
             "img": "dem_A_BO_3_32.png",
-            "partname": null,
+            "partname": "nol",
             "effect": "energy:K"
         },
         "33": {
             "type": "body",
             "img": "dem_A_BO_3_33.png",
-            "partname": null,
+            "partname": "nov",
             "effect": "energy:K"
         },
         "34": {
             "type": "body",
             "img": "dem_A_BO_3_34.png",
-            "partname": null,
+            "partname": "pa",
             "effect": "energy:K"
         },
         "35": {
             "type": "body",
             "img": "dem_A_BO_3_35.png",
-            "partname": null,
+            "partname": "pav",
             "effect": "energy:K"
         },
         "36": {
             "type": "body",
             "img": "dem_A_BO_3_36.png",
-            "partname": null,
+            "partname": "nog",
             "effect": "energy:K"
         },
         "37": {
             "type": "body",
             "img": "dem_A_BO_3_37.png",
-            "partname": null,
+            "partname": "og",
             "effect": "energy:K"
         },
         "38": {
             "type": "body",
             "img": "dem_A_BO_3_38.png",
-            "partname": null,
+            "partname": "qo",
             "effect": "energy:K"
         },
         "39": {
             "type": "body",
             "img": "dem_A_BO_3_39.png",
-            "partname": null,
+            "partname": "pav",
             "effect": "energy:K"
         },
         "40": {
             "type": "body",
             "img": "dem_A_BO_3_40.png",
-            "partname": null,
-            "effect": "energy:K"
-        }
-    },
-    "HE": {
-        "01": {
-            "type": "head",
-            "img": "dem_A_HE_4_01.png",
-            "partname": "an",
-            "effect": "pattern:M"
-        },
-        "02": {
-            "type": "head",
-            "img": "dem_A_HE_4_02.png",
-            "partname": "as",
-            "effect": "pattern:M"
-        },
-        "03": {
-            "type": "head",
-            "img": "dem_A_HE_4_03.png",
-            "partname": "az",
-            "effect": "pattern:M"
-        },
-        "04": {
-            "type": "head",
-            "img": "dem_A_HE_4_04.png",
             "partname": "ba",
-            "effect": "pattern:M"
-        },
-        "05": {
-            "type": "head",
-            "img": "dem_A_HE_4_05.png",
-            "partname": "bal",
-            "effect": "pattern:M"
-        },
-        "06": {
-            "type": "head",
-            "img": "dem_A_HE_4_06.png",
-            "partname": "be",
-            "effect": "pattern:M"
-        },
-        "07": {
-            "type": "head",
-            "img": "dem_A_HE_4_07.png",
-            "partname": "bel",
-            "effect": "pattern:M"
-        },
-        "08": {
-            "type": "head",
-            "img": "dem_A_HE_4_08.png",
-            "partname": "del",
-            "effect": "pattern:M"
-        },
-        "09": {
-            "type": "head",
-            "img": "dem_A_HE_4_09.png",
-            "partname": "dra",
-            "effect": "pattern:M"
-        },
-        "10": {
-            "type": "head",
-            "img": "dem_A_HE_4_10.png",
-            "partname": "du",
-            "effect": "pattern:M"
-        },
-        "11": {
-            "type": "head",
-            "img": "dem_A_HE_4_11.png",
-            "partname": "e",
-            "effect": "pattern:M"
-        },
-        "12": {
-            "type": "head",
-            "img": "dem_A_HE_4_12.png",
-            "partname": "go",
-            "effect": "pattern:M"
-        },
-        "13": {
-            "type": "head",
-            "img": "dem_A_HE_4_13.png",
-            "partname": "gri",
-            "effect": "pattern:M"
-        },
-        "14": {
-            "type": "head",
-            "img": "dem_A_HE_4_14.png",
-            "partname": "hex",
-            "effect": "pattern:M"
-        },
-        "15": {
-            "type": "head",
-            "img": "dem_A_HE_4_15.png",
-            "partname": "i",
-            "effect": "pattern:M"
-        },
-        "16": {
-            "type": "head",
-            "img": "dem_A_HE_4_16.png",
-            "partname": "lu",
-            "effect": "pattern:M"
-        },
-        "17": {
-            "type": "head",
-            "img": "dem_A_HE_4_17.png",
-            "partname": "ka",
-            "effect": "pattern:M"
-        },
-        "18": {
-            "type": "head",
-            "img": "dem_A_HE_4_18.png",
-            "partname": "kar",
-            "effect": "pattern:M"
-        },
-        "19": {
-            "type": "head",
-            "img": "dem_A_HE_4_19.png",
-            "partname": "kor",
-            "effect": "pattern:M"
-        },
-        "20": {
-            "type": "head",
-            "img": "dem_A_HE_4_20.png",
-            "partname": "me",
-            "effect": "pattern:M"
-        },
-        "21": {
-            "type": "head",
-            "img": "dem_A_HE_4_21.png",
-            "partname": "mel",
-            "effect": "pattern:M"
-        },
-        "22": {
-            "type": "head",
-            "img": "dem_A_HE_4_22.png",
-            "partname": "mor",
-            "effect": "pattern:M"
-        },
-        "23": {
-            "type": "head",
-            "img": "dem_A_HE_4_23.png",
-            "partname": "nar",
-            "effect": "pattern:M"
-        },
-        "24": {
-            "type": "head",
-            "img": "dem_A_HE_4_24.png",
-            "partname": "ra",
-            "effect": "pattern:M"
-        },
-        "25": {
-            "type": "head",
-            "img": "dem_A_HE_4_25.png",
-            "partname": "sa",
-            "effect": "pattern:M"
-        },
-        "26": {
-            "type": "head",
-            "img": "dem_A_HE_4_26.png",
-            "partname": null,
-            "effect": "pattern:M"
-        },
-        "27": {
-            "type": "head",
-            "img": "dem_A_HE_4_27.png",
-            "partname": null,
-            "effect": "pattern:M"
-        },
-        "28": {
-            "type": "head",
-            "img": "dem_A_HE_4_28.png",
-            "partname": null,
-            "effect": "pattern:M"
-        },
-        "29": {
-            "type": "head",
-            "img": "dem_A_HE_4_29.png",
-            "partname": null,
-            "effect": "pattern:M"
-        },
-        "30": {
-            "type": "head",
-            "img": "dem_A_HE_4_30.png",
-            "partname": null,
-            "effect": "pattern:M"
-        },
-        "31": {
-            "type": "head",
-            "img": "dem_A_HE_4_31.png",
-            "partname": null,
-            "effect": "pattern:M"
-        },
-        "32": {
-            "type": "head",
-            "img": "dem_A_HE_4_32.png",
-            "partname": null,
-            "effect": "pattern:M"
-        },
-        "33": {
-            "type": "head",
-            "img": "dem_A_HE_4_33.png",
-            "partname": null,
-            "effect": "pattern:M"
-        },
-        "34": {
-            "type": "head",
-            "img": "dem_A_HE_4_34.png",
-            "partname": null,
-            "effect": "pattern:M"
-        },
-        "35": {
-            "type": "head",
-            "img": "dem_A_HE_4_35.png",
-            "partname": null,
-            "effect": "pattern:M"
-        },
-        "36": {
-            "type": "head",
-            "img": "dem_A_HE_4_36.png",
-            "partname": null,
-            "effect": "pattern:M"
-        },
-        "37": {
-            "type": "head",
-            "img": "dem_A_HE_4_37.png",
-            "partname": null,
-            "effect": "pattern:M"
-        },
-        "38": {
-            "type": "head",
-            "img": "dem_A_HE_4_38.png",
-            "partname": null,
-            "effect": "pattern:M"
-        },
-        "39": {
-            "type": "head",
-            "img": "dem_A_HE_4_39.png",
-            "partname": null,
-            "effect": "pattern:M"
-        },
-        "40": {
-            "type": "head",
-            "img": "dem_A_HE_4_40.png",
-            "partname": null,
-            "effect": "pattern:M"
+            "effect": "energy:K"
         },
         "41": {
-            "type": "head",
-            "img": "dem_A_HE_4_41.png",
-            "partname": null,
-            "effect": "pattern:M"
+            "type": "body",
+            "img": "dem_A_BO_3_41.png",
+            "partname": "bal",
+            "effect": "energy:K"
         },
         "42": {
-            "type": "head",
-            "img": "dem_A_HE_4_42.png",
-            "partname": null,
-            "effect": "pattern:M"
+            "type": "body",
+            "img": "dem_A_BO_3_42.png",
+            "partname": "bav",
+            "effect": "energy:K"
         },
         "43": {
-            "type": "head",
-            "img": "dem_A_HE_4_43.png",
-            "partname": null,
-            "effect": "pattern:M"
+            "type": "body",
+            "img": "dem_A_BO_3_43.png",
+            "partname": "ol",
+            "effect": "energy:K"
         },
         "44": {
-            "type": "head",
-            "img": "dem_A_HE_4_44.png",
-            "partname": null,
-            "effect": "pattern:M"
+            "type": "body",
+            "img": "dem_A_BO_3_44.png",
+            "partname": "bam",
+            "effect": "energy:K"
         },
         "45": {
-            "type": "head",
-            "img": "dem_A_HE_4_45.png",
-            "partname": null,
-            "effect": "pattern:M"
+            "type": "body",
+            "img": "dem_A_BO_3_45.png",
+            "partname": "ci",
+            "effect": "energy:K"
         },
         "46": {
-            "type": "head",
-            "img": "dem_A_HE_4_46.png",
-            "partname": null,
-            "effect": "pattern:M"
+            "type": "body",
+            "img": "dem_A_BO_3_46.png",
+            "partname": "bat",
+            "effect": "energy:K"
         },
         "47": {
-            "type": "head",
-            "img": "dem_A_HE_4_47.png",
-            "partname": null,
-            "effect": "pattern:M"
+            "type": "body",
+            "img": "anims\/dem_A_BO_3_47-f=4-t=.7-d=0.png",
+            "partname": "cih",
+            "effect": "energy:K",
+            "frames": "4",
+            "time": ".7"
         },
         "48": {
-            "type": "head",
-            "img": "dem_A_HE_4_48.png",
-            "partname": null,
-            "effect": "pattern:M"
+            "type": "body",
+            "img": "dem_A_BO_3_48.png",
+            "partname": "da",
+            "effect": "energy:K"
         },
         "49": {
-            "type": "head",
-            "img": "dem_A_HE_4_49.png",
-            "partname": null,
-            "effect": "pattern:M"
-        },
-        "50": {
-            "type": "head",
-            "img": "dem_A_HE_4_50.png",
-            "partname": null,
-            "effect": "pattern:M"
-        },
-        "51": {
-            "type": "head",
-            "img": "dem_A_HE_4_51.png",
-            "partname": null,
-            "effect": "pattern:M"
-        },
-        "52": {
-            "type": "head",
-            "img": "dem_A_HE_4_52.png",
-            "partname": null,
-            "effect": "pattern:M"
-        },
-        "53": {
-            "type": "head",
-            "img": "dem_A_HE_4_53.png",
-            "partname": null,
-            "effect": "pattern:M"
-        },
-        "54": {
-            "type": "head",
-            "img": "dem_A_HE_4_54.png",
-            "partname": null,
-            "effect": "pattern:M"
-        },
-        "55": {
-            "type": "head",
-            "img": "dem_A_HE_4_55.png",
-            "partname": null,
-            "effect": "pattern:M"
-        },
-        "56": {
-            "type": "head",
-            "img": "dem_A_HE_4_56.png",
-            "partname": null,
-            "effect": "pattern:M"
+            "type": "body",
+            "img": "dem_A_BO_3_49.png",
+            "partname": "ske",
+            "effect": "energy:K"
         }
     }
 }
