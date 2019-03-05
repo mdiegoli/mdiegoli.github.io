@@ -146,7 +146,17 @@ setCanvas3D(e){
 	
 		let keys = Object.keys(images);
 		for(let p = 0,p_l = keys.length;p<p_l;p++){
-			this.ctxo.drawImage(images[keys[p]], x, y)
+            let i = images[keys[p]];
+            if(i.frames){
+                if(i.frame===i.frames){
+                    i.frame = 0;
+                }
+                this.drawAnimation(images, gC.spriteW*i.frame, 0,gC.spriteW,gC.spriteH, x,y,gC.spriteW,gC.spriteH);
+                i.frame++;
+            }else{
+                this.ctxo.drawImage(i, x, y)
+            }
+			
 		}
 		
 	
@@ -205,7 +215,7 @@ setCanvas3D(e){
 		this.ctx.globalAlpha = 1.0;
 		//ctx.fill();
 	}
-    loadImage(images,str,type){
+    loadImage(images,str,type,frames){
 	    var me = this;
 	    
 		return new Promise((res,rej)=>{
@@ -217,7 +227,9 @@ setCanvas3D(e){
 		    }
 		    img.onerror = function (e) {
 			rej('load image '+str+' error: '+e)
-		    }
+            }
+            img.frames = frames;
+            img.frame = 0;
 		    img.src = str;
 		}else{
 			res('image just loaded')
