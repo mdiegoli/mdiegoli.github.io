@@ -17,7 +17,7 @@ class explosion extends entity{
 			if(me.frame===me.frames){
 				assets[me.id].end = true;
 			}
-			Utils.drawAnimation(me.__proto__.images[me.level], gC.spriteW*me.frame, 0,gC.spriteW,gC.spriteH, me.randomX, me.randomY,gC.spriteW,gC.spriteH);
+			Utils.drawAnimation(me.__proto__.images[me.level]['EX'], gC.spriteW*me.frame, 0,gC.spriteW,gC.spriteH, me.randomX, me.randomY,gC.spriteW,gC.spriteH);
 			//add the echo feature
 			Utils.drawBBox(me.BBoxX, me.BBoxY,gC.bulletW,gC.bulletH,me.BBoxColor);
 			//gC.fireAudio.play();
