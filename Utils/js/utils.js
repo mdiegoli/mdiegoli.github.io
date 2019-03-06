@@ -163,13 +163,10 @@ setCanvas3D(e){
         
     }
 
-    drawAnimation(images,srcX,srcY,width,height,realx,realy,realwidth,realheight){
+    drawAnimation(image,srcX,srcY,width,height,realx,realy,realwidth,realheight){
 	    
 	
-		let keys = Object.keys(images);
-		for(let p = 0,p_l = keys.length;p<p_l;p++){
-			this.ctxo.drawImage(images[keys[p]], srcX,srcY,width,height,realx,realy,realwidth,realheight)
-		}
+			this.ctxo.drawImage(image, srcX,srcY,width,height,realx,realy,realwidth,realheight)
 		
 	
         
