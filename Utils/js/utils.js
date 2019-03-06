@@ -151,7 +151,7 @@ setCanvas3D(e){
                 if(i.frame===i.frames){
                     i.frame = 0;
                 }
-                this.drawAnimation(images, gC.spriteW*i.frame, 0,gC.spriteW,gC.spriteH, x,y,gC.spriteW,gC.spriteH);
+                this.drawAnimation(i, gC.spriteW*i.frame, 0,gC.spriteW,gC.spriteH, x,y,gC.spriteW,gC.spriteH);
                 i.frame++;
             }else{
                 this.ctxo.drawImage(i, x, y)
