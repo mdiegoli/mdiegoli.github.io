@@ -164,9 +164,11 @@
         },
         "17": {
             "type": "leftwing",
-            "img": "dem_A_LW_1_17.png",
+            "img": "anims\/dem_A_LW_1_17-f=8-t=1-d=0.png",
             "partname": "",
-            "effect": "var:A"
+            "effect": "var:A",
+            "frames": "8",
+            "time": "1"
         },
         "18": {
             "type": "leftwing",
@@ -468,9 +470,11 @@
         },
         "17": {
             "type": "rightwing",
-            "img": "dem_A_RW_1_17.png",
+            "img": "anims\/dem_A_RW_1_17-f=8-t=1-d=0.png",
             "partname": "",
-            "effect": ""
+            "effect": "",
+            "frames": "8",
+            "time": "1"
         },
         "18": {
             "type": "rightwing",
@@ -1122,9 +1126,11 @@
         },
         "48": {
             "type": "head",
-            "img": "dem_A_HE_4_48.png",
+            "img": "anims\/dem_A_HE_4_48-f=8-t=0.6-d=0.png",
             "partname": "keh",
-            "effect": "pattern:M"
+            "effect": "pattern:M",
+            "frames": "8",
+            "time": "0.6"
         },
         "49": {
             "type": "head",
@@ -1444,9 +1450,11 @@
         },
         "40": {
             "type": "lowerbody",
-            "img": "dem_A_LB_2_40.png",
+            "img": "anims\/dem_A_LB_2_40-f=8-t=1-d=0.png",
             "partname": "tl",
-            "effect": "weapon:Q"
+            "effect": "weapon:Q",
+            "frames": "8",
+            "time": "1"
         },
         "41": {
             "type": "lowerbody",
@@ -1512,9 +1520,11 @@
         },
         "04": {
             "type": "body",
-            "img": "dem_A_BO_3_04.png",
+            "img": "anims\/dem_A_BO_3_04-f=16-t=1-d=0.png",
             "partname": "bam",
-            "effect": "energy:K"
+            "effect": "energy:K",
+            "frames": "16",
+            "time": "1"
         },
         "05": {
             "type": "body",
