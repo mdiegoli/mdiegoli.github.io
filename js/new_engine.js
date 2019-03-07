@@ -380,6 +380,13 @@ function loadMp3(){
         res();
     })
 }
+
+function loadWav(){
+    return new Promise(function(res,rej){
+        gC.coinAudio = new Audio('assets/games/audio/Coin001.mp3');
+        res();
+    })
+}
 //every frame value, draw scene
 function l(){
     
