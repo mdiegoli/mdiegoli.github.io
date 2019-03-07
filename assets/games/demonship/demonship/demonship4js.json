@@ -1,12 +1,4 @@
 {
-    "": {
-        "": {
-            "type": "",
-            "img": "demonship4js.json",
-            "partname": "",
-            "effect": ""
-        }
-    },
     "BO": {
         "01": {
             "type": "body",
@@ -36,6 +28,66 @@
             "type": "body",
             "img": "ship_A_BO_3_05.png",
             "partname": "ci",
+            "effect": "energy:K"
+        },
+        "06": {
+            "type": "body",
+            "img": "ship_A_BO_3_06.png",
+            "partname": "bat",
+            "effect": "energy:K"
+        },
+        "07": {
+            "type": "body",
+            "img": "ship_A_BO_3_07.png",
+            "partname": "cih",
+            "effect": "energy:K"
+        },
+        "08": {
+            "type": "body",
+            "img": "ship_A_BO_3_08.png",
+            "partname": "da",
+            "effect": "energy:K"
+        },
+        "09": {
+            "type": "body",
+            "img": "ship_A_BO_3_09.png",
+            "partname": "ske",
+            "effect": "energy:K"
+        },
+        "10": {
+            "type": "body",
+            "img": "ship_A_BO_3_10.png",
+            "partname": "ste",
+            "effect": "energy:K"
+        },
+        "11": {
+            "type": "body",
+            "img": "ship_A_BO_3_11.png",
+            "partname": "cil",
+            "effect": "energy:K"
+        },
+        "12": {
+            "type": "body",
+            "img": "ship_A_BO_3_12.png",
+            "partname": "om",
+            "effect": "energy:K"
+        },
+        "13": {
+            "type": "body",
+            "img": "ship_A_BO_3_13.png",
+            "partname": "de",
+            "effect": "energy:K"
+        },
+        "14": {
+            "type": "body",
+            "img": "ship_A_BO_3_14.png",
+            "partname": "civ",
+            "effect": "energy:K"
+        },
+        "15": {
+            "type": "body",
+            "img": "ship_A_BO_3_15.png",
+            "partname": "do",
             "effect": "energy:K"
         }
     },
@@ -68,6 +120,72 @@
             "type": "head",
             "img": "ship_A_HE_4_05.png",
             "partname": "anl",
+            "effect": "pattern:M"
+        },
+        "06": {
+            "type": "head",
+            "img": "ship_A_HE_4_06.png",
+            "partname": "anv",
+            "effect": "pattern:M"
+        },
+        "07": {
+            "type": "head",
+            "img": "ship_A_HE_4_07.png",
+            "partname": "as",
+            "effect": "pattern:M"
+        },
+        "08": {
+            "type": "head",
+            "img": "ship_A_HE_4_08.png",
+            "partname": "az",
+            "effect": "pattern:M"
+        },
+        "09": {
+            "type": "head",
+            "img": "ship_A_HE_4_09.png",
+            "partname": "ba",
+            "effect": "pattern:M"
+        },
+        "10": {
+            "type": "head",
+            "img": "ship_A_HE_4_10.png",
+            "partname": "be",
+            "effect": "pattern:M"
+        },
+        "11": {
+            "type": "head",
+            "img": "ship_A_HE_4_11.png",
+            "partname": "de",
+            "effect": "pattern:M"
+        },
+        "12": {
+            "type": "head",
+            "img": "ship_A_HE_4_12.png",
+            "partname": "du",
+            "effect": "pattern:M"
+        },
+        "13": {
+            "type": "head",
+            "img": "ship_A_HE_4_13.png",
+            "partname": "bal",
+            "effect": "pattern:M"
+        },
+        "14": {
+            "type": "head",
+            "img": "ship_A_HE_4_14.png",
+            "partname": "ang",
+            "effect": "pattern:M"
+        },
+        "15": {
+            "type": "head",
+            "img": "ship_A_HE_4_15.png",
+            "partname": "bav",
+            "effect": "pattern:M"
+        },
+        "16": {
+            "type": "head",
+            "img": "ship_A_HE_4_16.png",
+            "partname": "dul",
             "effect": "pattern:M"
         }
     },
@@ -113,6 +231,48 @@
             "img": "ship_A_LB_2_07.png",
             "partname": "bub",
             "effect": "weapon:Q"
+        },
+        "08": {
+            "type": "lowerbody",
+            "img": "ship_A_LB_2_08.png",
+            "partname": "buv",
+            "effect": "weapon:Q"
+        },
+        "09": {
+            "type": "lowerbody",
+            "img": "ship_A_LB_2_09.png",
+            "partname": "gra",
+            "effect": "weapon:Q"
+        },
+        "10": {
+            "type": "lowerbody",
+            "img": "ship_A_LB_2_10.png",
+            "partname": "del",
+            "effect": "weapon:Q"
+        },
+        "11": {
+            "type": "lowerbody",
+            "img": "ship_A_LB_2_11.png",
+            "partname": "isk",
+            "effect": "weapon:Q"
+        },
+        "12": {
+            "type": "lowerbody",
+            "img": "ship_A_LB_2_12.png",
+            "partname": "eg",
+            "effect": "weapon:Q"
+        },
+        "13": {
+            "type": "lowerbody",
+            "img": "ship_A_LB_2_13.png",
+            "partname": "gor",
+            "effect": "weapon:Q"
+        },
+        "14": {
+            "type": "lowerbody",
+            "img": "ship_A_LB_2_14.png",
+            "partname": "las",
+            "effect": "weapon:Q"
         }
     },
     "LW": {
@@ -157,6 +317,114 @@
             "img": "ship_A_LW_1_07.png",
             "partname": "",
             "effect": "var:A"
+        },
+        "08": {
+            "type": "leftwing",
+            "img": "ship_A_LW_1_08.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "09": {
+            "type": "leftwing",
+            "img": "ship_A_LW_1_09.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "10": {
+            "type": "leftwing",
+            "img": "ship_A_LW_1_10.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "11": {
+            "type": "leftwing",
+            "img": "ship_A_LW_1_11.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "12": {
+            "type": "leftwing",
+            "img": "ship_A_LW_1_12.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "13": {
+            "type": "leftwing",
+            "img": "ship_A_LW_1_13.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "14": {
+            "type": "leftwing",
+            "img": "ship_A_LW_1_14.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "15": {
+            "type": "leftwing",
+            "img": "ship_A_LW_1_15.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "16": {
+            "type": "leftwing",
+            "img": "ship_A_LW_1_16.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "17": {
+            "type": "leftwing",
+            "img": "ship_A_LW_1_17.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "18": {
+            "type": "leftwing",
+            "img": "ship_A_LW_1_18.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "19": {
+            "type": "leftwing",
+            "img": "ship_A_LW_1_19.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "20": {
+            "type": "leftwing",
+            "img": "ship_A_LW_1_20.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "21": {
+            "type": "leftwing",
+            "img": "ship_A_LW_1_21.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "22": {
+            "type": "leftwing",
+            "img": "ship_A_LW_1_22.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "23": {
+            "type": "leftwing",
+            "img": "ship_A_LW_1_23.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "24": {
+            "type": "leftwing",
+            "img": "ship_A_LW_1_24.png",
+            "partname": "",
+            "effect": "var:A"
+        },
+        "25": {
+            "type": "leftwing",
+            "img": "ship_A_LW_1_25.png",
+            "partname": "",
+            "effect": "var:A"
         }
     },
     "RW": {
@@ -199,6 +467,114 @@
         "07": {
             "type": "rightwing",
             "img": "ship_A_RW_1_07.png",
+            "partname": "",
+            "effect": ""
+        },
+        "08": {
+            "type": "rightwing",
+            "img": "ship_A_RW_1_08.png",
+            "partname": "",
+            "effect": ""
+        },
+        "09": {
+            "type": "rightwing",
+            "img": "ship_A_RW_1_09.png",
+            "partname": "",
+            "effect": ""
+        },
+        "10": {
+            "type": "rightwing",
+            "img": "ship_A_RW_1_10.png",
+            "partname": "",
+            "effect": ""
+        },
+        "11": {
+            "type": "rightwing",
+            "img": "ship_A_RW_1_11.png",
+            "partname": "",
+            "effect": ""
+        },
+        "12": {
+            "type": "rightwing",
+            "img": "ship_A_RW_1_12.png",
+            "partname": "",
+            "effect": ""
+        },
+        "13": {
+            "type": "rightwing",
+            "img": "ship_A_RW_1_13.png",
+            "partname": "",
+            "effect": ""
+        },
+        "14": {
+            "type": "rightwing",
+            "img": "ship_A_RW_1_14.png",
+            "partname": "",
+            "effect": ""
+        },
+        "15": {
+            "type": "rightwing",
+            "img": "ship_A_RW_1_15.png",
+            "partname": "",
+            "effect": ""
+        },
+        "16": {
+            "type": "rightwing",
+            "img": "ship_A_RW_1_16.png",
+            "partname": "",
+            "effect": ""
+        },
+        "17": {
+            "type": "rightwing",
+            "img": "ship_A_RW_1_17.png",
+            "partname": "",
+            "effect": ""
+        },
+        "18": {
+            "type": "rightwing",
+            "img": "ship_A_RW_1_18.png",
+            "partname": "",
+            "effect": ""
+        },
+        "19": {
+            "type": "rightwing",
+            "img": "ship_A_RW_1_19.png",
+            "partname": "",
+            "effect": ""
+        },
+        "20": {
+            "type": "rightwing",
+            "img": "ship_A_RW_1_20.png",
+            "partname": "",
+            "effect": ""
+        },
+        "21": {
+            "type": "rightwing",
+            "img": "ship_A_RW_1_21.png",
+            "partname": "",
+            "effect": ""
+        },
+        "22": {
+            "type": "rightwing",
+            "img": "ship_A_RW_1_22.png",
+            "partname": "",
+            "effect": ""
+        },
+        "23": {
+            "type": "rightwing",
+            "img": "ship_A_RW_1_23.png",
+            "partname": "",
+            "effect": ""
+        },
+        "24": {
+            "type": "rightwing",
+            "img": "ship_A_RW_1_24.png",
+            "partname": "",
+            "effect": ""
+        },
+        "25": {
+            "type": "rightwing",
+            "img": "ship_A_RW_1_25.png",
             "partname": "",
             "effect": ""
         }
