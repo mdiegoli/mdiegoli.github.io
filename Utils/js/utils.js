@@ -220,7 +220,7 @@ setCanvas3D(e){
 		this.ctx.globalAlpha = 1.0;
 		//ctx.fill();
 	}
-    loadImage(images,o,type){
+    loadImage(images,str,type,o){
 	    var me = this;
 	    
 		return new Promise((res,rej)=>{
@@ -231,7 +231,7 @@ setCanvas3D(e){
 			res('image '+str+' loaded!')
 		    }
 		    img.onerror = function (e) {
-			rej('load image '+o.str+' error: '+e)
+			rej('load image '+str+' error: '+e)
             }
             if(typeof frames == 'string') frames = -(-frames);
             img.frames = o.frames;
