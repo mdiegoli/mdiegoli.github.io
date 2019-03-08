@@ -233,11 +233,11 @@ setCanvas3D(e){
 		    img.onerror = function (e) {
 			rej('load image '+str+' error: '+e)
             }
-            if(typeof frames == 'string') frames = -(-frames);
+            if(0 && typeof o.frames == 'string') o.frames = -(-o.frames);
             img.frames = o.frames;
 		img.time = o.time;
             img.frame = 0;
-		    img.src = o.str;
+		    img.src = str;
 		}else{
 			res('image just loaded')
 		    }
