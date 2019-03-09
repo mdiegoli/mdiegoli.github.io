@@ -148,11 +148,19 @@ setCanvas3D(e){
 		for(let p = 0,p_l = keys.length;p<p_l;p++){
             let i = images[keys[p]];
             if(i.frames){
-                if(i.frame===i.frames){
-                    i.frame = 0;
-                }
-                this.drawAnimation(i, gC.spriteW*i.frame, 0,gC.spriteW,gC.spriteH, x,y,gC.spriteW,gC.spriteH);
-                i.frame++;
+		    if(!i.timer) {
+			    i.timer = new Date().getTime();
+		    }else {
+			    let diff = new Date().getTime()-i.timer;
+			    if(diff<(i.time*1000/i.frames))
+				    if(i.frame===i.frames){
+					    i.frame = 0;
+					}
+					this.drawAnimation(i, gC.spriteW*i.frame, 0,gC.spriteW,gC.spriteH, x,y,gC.spriteW,gC.spriteH);
+				i.timer = new Date().getTime();		
+			    i.frame++;
+		    }
+                
             }else{
                 this.ctxo.drawImage(i, x, y)
             }
@@ -212,23 +220,26 @@ setCanvas3D(e){
 		this.ctx.globalAlpha = 1.0;
 		//ctx.fill();
 	}
-    loadImage(images,str,type,frames){
+    loadImage(images,str,type,o){
 	    var me = this;
 	    
 		return new Promise((res,rej)=>{
         if(!images[type]){
 		    let img = new Image();
 		    img.onload = function () {
-			images[type] = img;
+			images[type] = o.img;
 			res('image '+str+' loaded!')
 		    }
 		    img.onerror = function (e) {
 			rej('load image '+str+' error: '+e)
             }
-            if(typeof frames == 'string') frames = -(-frames);
-            img.frames = frames;
+            if(o){
+		    if(typeof o.frames == 'string') o.frames = -(-o.frames);
+            img.frames = o.frames;
+		img.time = o.time;
             img.frame = 0;
 		    img.src = str;
+	    }
 		}else{
 			res('image just loaded')
 		    }

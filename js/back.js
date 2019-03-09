@@ -11,15 +11,15 @@ class back extends entity{
 			this.indexes = {}
 		
 	    if(!this.indexes.LW)
-            this.indexes.LW= Utils.random(1,9).toString().padStart(2,'0');
+            this.indexes.LW= Utils.random(1,Object.keys(gC.demonBack.LW).length).toString().padStart(2,'0');
         if(!this.indexes.RW)
             this.indexes.RW= this.indexes.LW;
         if(!this.indexes.LB)
-            this.indexes.LB= Utils.random(1,9).toString().padStart(2,'0');
+            this.indexes.LB= Utils.random(1,Object.keys(gC.demonBack.LB).length).toString().padStart(2,'0');
         if(!this.indexes.HE)
-            this.indexes.HE= Utils.random(1,9).toString().padStart(2,'0');
+            this.indexes.HE= Utils.random(1,Object.keys(gC.demonBack.HE).length).toString().padStart(2,'0');
         if(!this.indexes.BO)
-            this.indexes.BO= Utils.random(1,9).toString().padStart(2,'0');
+            this.indexes.BO= Utils.random(1,Object.keys(gC.demonBack.BO).length).toString().padStart(2,'0');
 		
 		var lI = Utils.loadImage;
 		preloaded.push(lI(me.__proto__.images[me.level],'assets/games/demonback/'+gC.demonBack['LW'][this.indexes.LW].img, 'LW'));
