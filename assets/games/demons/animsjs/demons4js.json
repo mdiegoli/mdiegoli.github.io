@@ -26,7 +26,7 @@
         },
         "52": {
             "type": "leftwing",
-            "img": "anims\/dem_A_LW_1_52-f=8-t=.7-d=0.png",
+            "img": "dem_A_LW_1_52.png",
             "partname": "",
             "effect": "var:A",
             "frames": "8",
@@ -76,7 +76,7 @@
         },
         "03": {
             "type": "leftwing",
-            "img": "anims\/dem_A_LW_1_03-f=8-t=1-d=0.png",
+            "img": "dem_A_LW_1_03.png",
             "partname": "",
             "effect": "var:A",
             "frames": "8",
@@ -84,7 +84,7 @@
         },
         "04": {
             "type": "leftwing",
-            "img": "anims\/dem_A_LW_1_04-f=8-t=1-d=0.png",
+            "img": "dem_A_LW_1_04.png",
             "partname": "",
             "effect": "var:A",
             "frames": "8",
@@ -98,7 +98,7 @@
         },
         "06": {
             "type": "leftwing",
-            "img": "anims\/dem_A_LW_1_06-f=8-t=1-d=0.png",
+            "img": "dem_A_LW_1_06.png",
             "partname": "",
             "effect": "var:A",
             "frames": "8",
@@ -124,7 +124,7 @@
         },
         "10": {
             "type": "leftwing",
-            "img": "anims\/dem_A_LW_1_10-f=8-t=1-d=0.png",
+            "img": "dem_A_LW_1_10.png",
             "partname": "",
             "effect": "var:A",
             "frames": "8",
@@ -138,7 +138,7 @@
         },
         "12": {
             "type": "leftwing",
-            "img": "anims\/dem_A_LW_1_12-f=8-t=0.6-d=0.png",
+            "img": "dem_A_LW_1_12.png",
             "partname": "",
             "effect": "var:A",
             "frames": "8",
@@ -164,7 +164,7 @@
         },
         "16": {
             "type": "leftwing",
-            "img": "anims\/dem_A_LW_1_16-f=8-t=1-d=0.png",
+            "img": "dem_A_LW_1_16.png",
             "partname": "",
             "effect": "var:A",
             "frames": "8",
@@ -172,7 +172,7 @@
         },
         "17": {
             "type": "leftwing",
-            "img": "anims\/dem_A_LW_1_17-f=8-t=1-d=0.png",
+            "img": "dem_A_LW_1_17.png",
             "partname": "",
             "effect": "var:A",
             "frames": "8",
@@ -204,7 +204,7 @@
         },
         "22": {
             "type": "leftwing",
-            "img": "anims\/dem_A_LW_1_22-f=8-t=1-d=0.png",
+            "img": "dem_A_LW_1_22.png",
             "partname": "",
             "effect": "var:A",
             "frames": "8",
@@ -284,7 +284,7 @@
         },
         "35": {
             "type": "leftwing",
-            "img": "anims\/dem_A_LW_1_35-f=8-t=1-d=0.png",
+            "img": "dem_A_LW_1_35.png",
             "partname": "",
             "effect": "var:A",
             "frames": "8",
@@ -358,7 +358,7 @@
         },
         "47": {
             "type": "leftwing",
-            "img": "anims\/dem_A_LW_1_47-f=8-t=0.6-d=0.png",
+            "img": "dem_A_LW_1_47.png",
             "partname": "",
             "effect": "var:A",
             "frames": "8",
@@ -380,7 +380,7 @@
         },
         "03": {
             "type": "rightwing",
-            "img": "anims\/dem_A_RW_1_03-f=8-t=1-d=0.png",
+            "img": "dem_A_RW_1_03.png",
             "partname": "",
             "effect": "",
             "frames": "8",
@@ -388,7 +388,7 @@
         },
         "04": {
             "type": "rightwing",
-            "img": "anims\/dem_A_RW_1_04-f=8-t=1-d=0.png",
+            "img": "dem_A_RW_1_04.png",
             "partname": "",
             "effect": "",
             "frames": "8",
@@ -402,7 +402,7 @@
         },
         "06": {
             "type": "rightwing",
-            "img": "anims\/dem_A_RW_1_06-f=8-t=1-d=0.png",
+            "img": "dem_A_RW_1_06.png",
             "partname": "",
             "effect": "",
             "frames": "8",
@@ -428,7 +428,7 @@
         },
         "10": {
             "type": "rightwing",
-            "img": "anims\/dem_A_RW_1_10-f=8-t=1-d=0.png",
+            "img": "dem_A_RW_1_10.png",
             "partname": "",
             "effect": "",
             "frames": "8",
@@ -442,7 +442,7 @@
         },
         "12": {
             "type": "rightwing",
-            "img": "anims\/dem_A_RW_1_12-f=8-t=0.6-d=0.png",
+            "img": "dem_A_RW_1_12.png",
             "partname": "",
             "effect": "",
             "frames": "8",
@@ -468,7 +468,7 @@
         },
         "16": {
             "type": "rightwing",
-            "img": "anims\/dem_A_RW_1_16-f=8-t=1-d=0.png",
+            "img": "dem_A_RW_1_16.png",
             "partname": "",
             "effect": "",
             "frames": "8",
@@ -476,7 +476,7 @@
         },
         "17": {
             "type": "rightwing",
-            "img": "anims\/dem_A_RW_1_17-f=8-t=1-d=0.png",
+            "img": "dem_A_RW_1_17.png",
             "partname": "",
             "effect": "",
             "frames": "8",
@@ -508,7 +508,7 @@
         },
         "22": {
             "type": "rightwing",
-            "img": "anims\/dem_A_RW_1_22-f=8-t=1-d=0.png",
+            "img": "dem_A_RW_1_22.png",
             "partname": "",
             "effect": "",
             "frames": "8",
@@ -588,7 +588,7 @@
         },
         "35": {
             "type": "rightwing",
-            "img": "anims\/dem_A_RW_1_35-f=8-t=1-d=0.png",
+            "img": "dem_A_RW_1_35.png",
             "partname": "",
             "effect": "",
             "frames": "8",
@@ -662,7 +662,7 @@
         },
         "47": {
             "type": "rightwing",
-            "img": "anims\/dem_A_RW_1_47-f=8-t=0.6-d=0.png",
+            "img": "dem_A_RW_1_47.png",
             "partname": "",
             "effect": "",
             "frames": "8",
@@ -694,7 +694,7 @@
         },
         "52": {
             "type": "rightwing",
-            "img": "anims\/dem_A_RW_1_52-f=8-t=.7-d=0.png",
+            "img": "dem_A_RW_1_52.png",
             "partname": "",
             "effect": "",
             "frames": "8",
@@ -746,7 +746,7 @@
         },
         "62": {
             "type": "head",
-            "img": "anims\/dem_A_HE_4_62-f=8-t=0.2-d=0.png",
+            "img": "dem_A_HE_4_62.png",
             "partname": "anv",
             "effect": "pattern:M",
             "frames": "8",
@@ -772,7 +772,7 @@
         },
         "66": {
             "type": "head",
-            "img": "anims\/dem_A_HE_4_66-f=4-t=.8-d=0.png",
+            "img": "dem_A_HE_4_66.png",
             "partname": "be",
             "effect": "pattern:M",
             "frames": "4",
@@ -786,7 +786,7 @@
         },
         "68": {
             "type": "head",
-            "img": "anims\/dem_A_HE_4_68-f=8-t=.2-d=0.png",
+            "img": "dem_A_HE_4_68.png",
             "partname": "du",
             "effect": "pattern:M",
             "frames": "8",
@@ -812,7 +812,7 @@
         },
         "72": {
             "type": "head",
-            "img": "anims\/dem_A_HE_4_72-f=16-t=1.8-d=0.png",
+            "img": "dem_A_HE_4_72.png",
             "partname": "dul",
             "effect": "pattern:M",
             "frames": "16",
@@ -856,7 +856,7 @@
         },
         "01": {
             "type": "head",
-            "img": "anims\/dem_A_HE_4_01-f=16-t=1.6-d=0.png",
+            "img": "dem_A_HE_4_01.png",
             "partname": "ahl",
             "effect": "pattern:M",
             "frames": "16",
@@ -1140,7 +1140,7 @@
         },
         "48": {
             "type": "head",
-            "img": "anims\/dem_A_HE_4_48-f=8-t=0.6-d=0.png",
+            "img": "dem_A_HE_4_48.png",
             "partname": "keh",
             "effect": "pattern:M",
             "frames": "8",
@@ -1228,7 +1228,7 @@
         },
         "03": {
             "type": "lowerbody",
-            "img": "anims\/dem_A_LB_2_03-f=8-t=1-d=0.png",
+            "img": "dem_A_LB_2_03.png",
             "partname": "ash",
             "effect": "weapon:Q",
             "frames": "8",
@@ -1236,7 +1236,7 @@
         },
         "04": {
             "type": "lowerbody",
-            "img": "anims\/dem_A_LB_2_04-f=8-t=1-d=0.png",
+            "img": "dem_A_LB_2_04.png",
             "partname": "tl",
             "effect": "weapon:Q",
             "frames": "8",
@@ -1298,7 +1298,7 @@
         },
         "14": {
             "type": "lowerbody",
-            "img": "anims\/dem_A_LB_2_14-f=8-t=1-d=0.png",
+            "img": "dem_A_LB_2_14.png",
             "partname": "las",
             "effect": "weapon:Q",
             "frames": "8",
@@ -1318,7 +1318,7 @@
         },
         "17": {
             "type": "lowerbody",
-            "img": "anims\/dem_A_LB_2_17-f=8-t=1.2-d=0.png",
+            "img": "dem_A_LB_2_17.png",
             "partname": "eh",
             "effect": "weapon:Q",
             "frames": "8",
@@ -1446,7 +1446,7 @@
         },
         "38": {
             "type": "lowerbody",
-            "img": "anims\/dem_A_LB_2_38-f=8-t=.5-d=0.png",
+            "img": "dem_A_LB_2_38.png",
             "partname": "as",
             "effect": "weapon:Q",
             "frames": "8",
@@ -1460,7 +1460,7 @@
         },
         "40": {
             "type": "lowerbody",
-            "img": "anims\/dem_A_LB_2_40-f=8-t=1-d=0.png",
+            "img": "dem_A_LB_2_40.png",
             "partname": "tl",
             "effect": "weapon:Q",
             "frames": "8",
@@ -1530,7 +1530,7 @@
         },
         "04": {
             "type": "body",
-            "img": "anims\/dem_A_BO_3_04-f=16-t=1-d=0.png",
+            "img": "dem_A_BO_3_04.png",
             "partname": "bam",
             "effect": "energy:K",
             "frames": "16",
@@ -1790,7 +1790,7 @@
         },
         "47": {
             "type": "body",
-            "img": "anims\/dem_A_BO_3_47-f=4-t=.7-d=0.png",
+            "img": "dem_A_BO_3_47.png",
             "partname": "cih",
             "effect": "energy:K",
             "frames": "4",

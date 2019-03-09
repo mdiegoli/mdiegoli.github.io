@@ -1,12 +1,25 @@
 {
   "data": "demon",
-  "width": 240,
+  "width": 150,
+  "height": 130,
   "original_width": 128,
+  "font_size": "20px",
   "layers": {
-    "LW": "",
-    "RW": "LW",
-    "LB": "",
+    "LW": "100",
+    "RW": "100",
+    "LB": "100",
+    "BO": "100",
+    "HE": "100"
+  },
+  "names": {
+    "BO":   ["ba","bal","bav","ol","bam","ci","bat","cih","da","ske","ste","cil","om","de","civ","do","dov","dok","mah","mal","mo","moh","mol","mov","mok","mog","mogg","me","mu","mi","mih","miv","nol","nov","pa","pav","nog","og","qo","pav", "ba","bal","bav","ol","bam","ci","bat","cih","da","ske","ste","cil","om","de","civ","do","dov","dok","mah","mal","mo","moh","mol","mov","mok","mog","mogg","me","mu","mi","mih","miv","nol","nov","pa","pav","nog","og","qo","pav"],
+    "HE":   ["ah","ahl","ahn","ahv","an","anl","anv","as","az","ba","be","de","du","bal","ang","bav","dul","ban","bav","ank","ant","eh","akh","el","elh","fel","fen","pah","pal","dun","bra","brah","dum","dug","duc","duq","dugh","hec","dur","hek","doc","doq","dugr","ih","il","lu","ka","kah","keh","kev","mih","mil","moh","mor","nak","nat", "ah","ahl","ahn","ahv","an","anl","anv","as","az","ba","be","de","du","bal","ang","bav","dul","ban","bav","ank","ant","eh","akh","el","elh","fel","fen","pah","pal","dun","bra","brah","dum","dug","duc","duq","dugh","hec","dur","hek","doc","doq","dugr","ih","il","lu","ka","kah","keh","kev","mih","mil","moh","mor","nak","nat"],
+    "LB":   ["ah","an","as","ash","tl","ask","ba","bub","buv","gra","del","isk","eg","gor","las","nal","el","eh","lac","lah","ehl","ehk","leth","lekh","lev","leh","roh","sh","l","lak","ehr","meh","mel","moh","mok","ron","ah","an","as","ash","tl","ask","ba","bub","buv","gra","del","isk","eg","gor","las","nal","el","eh","lac","lah","ehl","ehk","leth","lekh","lev","leh","roh","sh","l","lak","ehr","meh","mel","moh","mok","ron"]
+  },
+  "name_struct": {
+    "HE": "",
     "BO": "",
-    "HE": ""
+    "LB": ""
   }
+
 }
