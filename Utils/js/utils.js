@@ -153,13 +153,14 @@ setCanvas3D(e){
                     i.timer = mytimer;
                 let diff = mytimer-i.timer;
                 if(diff>(i.time*1000/i.frames)){
-                    if(i.frame>=i.frames){
+                    if(i.frame==i.frames-1){
                         i.frame = 0;
                     }
-                    this.drawAnimation(i, gC.spriteW*i.frame, 0,gC.spriteW,gC.spriteH, x,y,gC.spriteW,gC.spriteH);
                     i.timer = mytimer;		
                     i.frame++;
                 }
+                this.drawAnimation(i, gC.spriteW*i.frame, 0,gC.spriteW,gC.spriteH, x,y,gC.spriteW,gC.spriteH);
+                    
             }else{
                 this.ctxo.drawImage(i, x, y)
             }
