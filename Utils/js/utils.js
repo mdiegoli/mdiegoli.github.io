@@ -144,23 +144,22 @@ setCanvas3D(e){
     drawImages(images,x,y){
 	    
 	
-		let keys = Object.keys(images);
+        let keys = Object.keys(images);
+        let mytimer = new Date().getTime();
 		for(let p = 0,p_l = keys.length;p<p_l;p++){
             let i = images[keys[p]];
-            if(i.frames){
-		    if(!i.timer) {
-			    i.timer = new Date().getTime();
-		    }else {
-			    let diff = new Date().getTime()-i.timer;
-			    if(diff<(i.time*1000/i.frames))
-				    if(i.frame===i.frames){
-					    i.frame = 0;
-					}
-					this.drawAnimation(i, gC.spriteW*i.frame, 0,gC.spriteW,gC.spriteH, x,y,gC.spriteW,gC.spriteH);
-				i.timer = new Date().getTime();		
-			    i.frame++;
-		    }
-                
+            if(i.frames && typeof i.frames == 'number'){
+                if(!i.timer) 
+                    i.timer = mytimer;
+                let diff = mytimer-i.timer;
+                if(diff>(i.time*1000/i.frames)){
+                    if(i.frame>=i.frames){
+                        i.frame = 0;
+                    }
+                    this.drawAnimation(i, gC.spriteW*i.frame, 0,gC.spriteW,gC.spriteH, x,y,gC.spriteW,gC.spriteH);
+                    i.timer = mytimer;		
+                    i.frame++;
+                }
             }else{
                 this.ctxo.drawImage(i, x, y)
             }
@@ -227,19 +226,20 @@ setCanvas3D(e){
         if(!images[type]){
 		    let img = new Image();
 		    img.onload = function () {
-			images[type] = o.img;
-			res('image '+str+' loaded!')
+                if(o){
+                    if(typeof o.frames == 'string') o.frames = -(-o.frames);
+                    img.frames = o.frames;
+                    if(typeof o.time == 'string') o.time = -(-o.time);
+                    img.time = o.time;
+                    img.frame = 0;
+                }
+                images[type] = img;
+                res('image '+str+' loaded!')
 		    }
 		    img.onerror = function (e) {
-			rej('load image '+str+' error: '+e)
-            }
-            if(o){
-		    if(typeof o.frames == 'string') o.frames = -(-o.frames);
-            img.frames = o.frames;
-		img.time = o.time;
-            img.frame = 0;
-		    img.src = str;
-	    }
+			    rej('load image '+str+' error: '+e)
+            }    
+            img.src = str;
 		}else{
 			res('image just loaded')
 		    }
