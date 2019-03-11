@@ -387,6 +387,7 @@ function loadWav(){
         res();
     })
 }
+
 //every frame value, draw scene
 function l(){
     
