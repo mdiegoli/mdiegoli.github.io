@@ -59,7 +59,7 @@ setCanvas3D(e){
 			// roll-over helpers
 			gC.rollOverGeo = new THREE.BoxGeometry( 50, 50, 50 );
 			gC.rollOverMaterial = new THREE.MeshBasicMaterial( { color: 0xff0000, opacity: 0.5, transparent: true } );
-			gC.rollOverMesh = new THREE.Mesh( rollOverGeo, rollOverMaterial );
+			gC.rollOverMesh = new THREE.Mesh( gC.rollOverGeo, gC.rollOverMaterial );
 			//scene.add( rollOverMesh );
 			// grid
 
