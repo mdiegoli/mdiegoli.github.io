@@ -52,7 +52,7 @@ setCanvas3D(e){
     }
 	init3D(){
 		return new Promise((res,rej)=>{
-			gC.camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 10000 );
+			gC.camera = new THREE.PerspectiveCamera( 45, gC.width / gC.height, 1, 10000 );
 			gC.camera.position.set(0, 1000, 0 );
 			gC.camera.lookAt( new THREE.Vector3() );
 			gC.scene = new THREE.Scene();
@@ -60,62 +60,71 @@ setCanvas3D(e){
 			gC.rollOverGeo = new THREE.BoxGeometry( 50, 50, 50 );
 			gC.rollOverMaterial = new THREE.MeshBasicMaterial( { color: 0xff0000, opacity: 0.5, transparent: true } );
 			gC.rollOverMesh = new THREE.Mesh( gC.rollOverGeo, gC.rollOverMaterial );
-			//scene.add( rollOverMesh );
-			// grid
-
-			var sizeH = window.innerHeight, sizeW = window.innerWidth, step = 100;
-			var geometry = new THREE.Geometry();
-			for ( var i = -sizeH; i <= sizeH; i += step ) {
-				geometry.vertices.push( new THREE.Vector3( -sizeW, 0, i ) );
-				geometry.vertices.push( new THREE.Vector3(   sizeW, 0, i ) );
-			}
-			for ( var i = -sizeW; i <= sizeW; i += step ) {
-				geometry.vertices.push( new THREE.Vector3( i, 0, -sizeH ) );
-				geometry.vertices.push( new THREE.Vector3( i, 0,   sizeH ) );
-			}
-			var material = new THREE.LineBasicMaterial( { color: 0x000000, opacity: 0.2, transparent: true } );
-			var line = new THREE.LineSegments( geometry, material );
-			gC.scene.add( line );
-
 			//
 			gC.raycaster = new THREE.Raycaster();
 			gC.mouse = new THREE.Vector2();
 			var geometry = new THREE.PlaneBufferGeometry( 2000, 2000 );
 			geometry.rotateX( - Math.PI / 2 );
 
-			gC.texture = THREE.ImageUtils.loadTexture( "assets/games/layout-draft/bezel/bezel-02.png" );
+            gC.texture = new THREE.TextureLoader( );
+            
+            gC.texture.load(
+                // resource URL
+                "assets/games/layout-draft/title/keplerion-title.gif",
+            
+                // onLoad callback
+                function ( texture ) {
+                    // in this example we create the material when the texture is loaded
+                    
+
+                    gC.plane = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial({ map : texture }) );
+                    gC.plane.material.side = THREE.DoubleSide;
+
+                    gC.scene.add( gC.plane );
+                    //objects.push( plane );
+                    // Lights
+                    var ambientLight = new THREE.AmbientLight( 0x606060 );
+                    gC.scene.add( ambientLight );
+                    var directionalLight = new THREE.DirectionalLight( 0xffffff );
+                    directionalLight.position.set( 1, 0.75, 0.5 ).normalize();
+                    gC.scene.add( directionalLight );
+                    gC.renderer = new THREE.WebGLRenderer( { antialias: true } );
+                    gC.renderer.setClearColor( 0xf0f0f0 );
+                    gC.renderer.setPixelRatio( window.devicePixelRatio );
+                    gC.renderer.setSize( gC.width, gC.height );
+                    var a = Utils.getEBI('box');
+
+
+                        //Utils.setOffScreen(b)
+                        Utils.appendB2A(a,gC.renderer.domElement)
+                    gC.group = new THREE.Group();
+                    gC.scene.add(gC.group);	
+                    gC.renderer.render( gC.scene, gC.camera );
+                    this.co = this.createE('canvas');
+                    this.setAttribute(this.co,'width',gC.width)
+                    this.setAttribute(this.co,'height',gC.height)
+                    this.ctxo = this.co.getContext("2d");
+                    res();
+                },
+            
+                // onProgress callback currently not supported
+                undefined,
+            
+                // onError callback
+                function ( err ) {
+                    console.error( 'An error happened.' );
+                }
+            );
 
 			// assuming you want the texture to repeat in both directions:
-			gC.texture.wrapS = THREE.RepeatWrapping; 
-			gC.texture.wrapT = THREE.RepeatWrapping;
+			//gC.texture.wrapS = THREE.RepeatWrapping; 
+			//gC.texture.wrapT = THREE.RepeatWrapping;
 
 			// how many times to repeat in each direction; the default is (1,1),
 			//   which is probably why your example wasn't working
-			gC.texture.repeat.set( 4, 4 ); 
+			//gC.texture.repeat.set( 4, 4 ); 
 
-			gC.plane = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial({ map : gC.texture }) );
-			gC.plane.material.side = THREE.DoubleSide;
-
-			gC.scene.add( gC.plane );
-			//objects.push( plane );
-			// Lights
-			var ambientLight = new THREE.AmbientLight( 0x606060 );
-			gC.scene.add( ambientLight );
-			var directionalLight = new THREE.DirectionalLight( 0xffffff );
-			directionalLight.position.set( 1, 0.75, 0.5 ).normalize();
-			gC.scene.add( directionalLight );
-			gC.renderer = new THREE.WebGLRenderer( { antialias: true } );
-			gC.renderer.setClearColor( 0xf0f0f0 );
-			gC.renderer.setPixelRatio( window.devicePixelRatio );
-			gC.renderer.setSize( window.innerWidth, window.innerHeight );
-			var a = Utils.getEBI('box');
-
-
-			    //Utils.setOffScreen(b)
-			    Utils.appendB2A(a,gC.renderer.domElement)
-			gC.group = new THREE.Group();
-			gC.scene.add(gC.group);	
-			res();
+			
 		})
 	
 	}
