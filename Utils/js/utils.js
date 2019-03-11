@@ -100,7 +100,7 @@ setCanvas3D(e){
 			//objects.push( plane );
 			// Lights
 			var ambientLight = new THREE.AmbientLight( 0x606060 );
-			scene.add( ambientLight );
+			gC.scene.add( ambientLight );
 			var directionalLight = new THREE.DirectionalLight( 0xffffff );
 			directionalLight.position.set( 1, 0.75, 0.5 ).normalize();
 			gC.scene.add( directionalLight );
