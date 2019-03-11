@@ -81,7 +81,20 @@ setCanvas3D(e){
 		gC.mouse = new THREE.Vector2();
 		var geometry = new THREE.PlaneBufferGeometry( 2000, 2000 );
 		geometry.rotateX( - Math.PI / 2 );
-		gC.plane = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial( { visible: false } ) );
+		
+		gC.texture = THREE.ImageUtils.loadTexture( "../img/texture.jpg" );
+
+		// assuming you want the texture to repeat in both directions:
+		gC.texture.wrapS = THREE.RepeatWrapping; 
+		gC.texture.wrapT = THREE.RepeatWrapping;
+
+		// how many times to repeat in each direction; the default is (1,1),
+		//   which is probably why your example wasn't working
+		gC.texture.repeat.set( 4, 4 ); 
+		
+		gC.plane = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial({ map : gC.texture }) );
+		gC.plane.material.side = THREE.DoubleSide;
+		
 		gC.scene.add( gC.plane );
 		//objects.push( plane );
 		// Lights
@@ -134,6 +147,10 @@ setCanvas3D(e){
         	this.ctxo.fillRect(0, 0, gC.width, gC.height);
         
     }
+	c23d(){
+		gC.texture = THREE.ImageUtils.loadTexture( this.co.getImageData(0, 0, gC.width, gC.height) );
+
+	}
     
 	writeOnSecondCanvas(str,x,y){
         this.ctx2.font = "30px Arial";
