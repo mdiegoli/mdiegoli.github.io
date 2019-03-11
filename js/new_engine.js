@@ -389,7 +389,7 @@ function loadWav(){
 }
 
 function webgl(){
-	Utils.init3d();
+	Utils.init3D();
 }
 //every frame value, draw scene
 function l(){
