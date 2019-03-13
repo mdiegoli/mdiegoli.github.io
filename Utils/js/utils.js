@@ -50,6 +50,9 @@ setCanvas3D(e){
         this.setAttribute(this.co,'height',gC.height)
         this.ctxo = this.co.getContext("2d");
     }
+	//https://stackoverflow.com/questions/12447734/three-js-updating-texture-on-plane
+	updateTexture(){
+	}
 	init3D(){
 		return new Promise((res,rej)=>{
 			gC.camera = new THREE.PerspectiveCamera( 45, gC.width / gC.height, 1, 10000 );
@@ -70,7 +73,7 @@ setCanvas3D(e){
             
             gC.texture.load(
                 // resource URL
-                "assets/games/layout-draft/title/keplerion-title.gif",
+                "black.jpg",
             
                 // onLoad callback
                 function ( texture ) {
