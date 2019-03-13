@@ -52,6 +52,20 @@ setCanvas3D(e){
     }
 	//https://stackoverflow.com/questions/12447734/three-js-updating-texture-on-plane
 	updateTexture(){
+		return new Promise((res,rej)=>{
+			gC.texture.load(
+			// resource URL
+			this.co,
+
+			// onLoad callback
+			function ( texture ) {
+				gC.plane.geometry.materials[ 0 ].map = texture;
+				texture.needsUpdate = true;
+				res();
+			})		   
+		})
+		
+		
 	}
 	init3D(){
 		return new Promise((res,rej)=>{
@@ -150,9 +164,14 @@ setCanvas3D(e){
   		this.ctx.shadowColor = 'rgb(0, 0, 0)';
 	}
 	c2c(){
-		this.ctx.drawImage(this.co,0,0)
-		this.ctxo.fillStyle = '#000';
-        	this.ctxo.fillRect(0, 0, gC.width, gC.height);
+		//this.ctx.drawImage(this.co,0,0)
+		this.updateTexture().then(
+			(succ)=>{
+				this.ctxo.fillStyle = '#000';
+				this.ctxo.fillRect(0, 0, gC.width, gC.height);
+			}
+		)
+		
         
 	}
 	
