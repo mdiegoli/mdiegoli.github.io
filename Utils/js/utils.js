@@ -87,6 +87,8 @@ setCanvas3D(e){
                     me.setAttribute(me.co,'width',gC.width)
                     me.setAttribute(me.co,'height',gC.height)
                     me.ctxo = me.co.getContext("2d");
+			this.ctxo.fillStyle = '#000';
+			this.ctxo.fillRect(0, 0, gC.width, gC.height);
             gC.texture = new THREE.CanvasTexture(me.co); //new THREE.TextureLoader( );
              //objects.push( plane );
 			gC.plane = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial({ map : gC.texture }) );
