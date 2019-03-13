@@ -68,6 +68,7 @@ setCanvas3D(e){
 		
 	}
 	init3D(){
+		var me = this;
 		return new Promise((res,rej)=>{
 			gC.camera = new THREE.PerspectiveCamera( 45, gC.width / gC.height, 1, 10000 );
 			gC.camera.position.set(0, 1000, 0 );
