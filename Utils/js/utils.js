@@ -83,7 +83,10 @@ setCanvas3D(e){
 			gC.mouse = new THREE.Vector2();
 			var geometry = new THREE.PlaneBufferGeometry( 2000, 2000 );
 			geometry.rotateX( - Math.PI / 2 );
-	    
+	    me.co = me.createE('canvas');
+                    me.setAttribute(me.co,'width',gC.width)
+                    me.setAttribute(me.co,'height',gC.height)
+                    me.ctxo = me.co.getContext("2d");
             gC.texture = new THREE.CanvasTexture(me.oc); //new THREE.TextureLoader( );
              //objects.push( plane );
 			gC.plane = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial({ map : gC.texture }) );
@@ -108,10 +111,7 @@ setCanvas3D(e){
                     gC.group = new THREE.Group();
                     gC.scene.add(gC.group);	
                     gC.renderer.render( gC.scene, gC.camera );
-                    me.co = me.createE('canvas');
-                    me.setAttribute(me.co,'width',gC.width)
-                    me.setAttribute(me.co,'height',gC.height)
-                    me.ctxo = me.co.getContext("2d");
+                    
 			/*
             gC.texture.load(
                 // resource URL
