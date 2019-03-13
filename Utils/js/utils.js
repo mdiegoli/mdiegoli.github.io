@@ -83,9 +83,32 @@ setCanvas3D(e){
 			gC.mouse = new THREE.Vector2();
 			var geometry = new THREE.PlaneBufferGeometry( 2000, 2000 );
 			geometry.rotateX( - Math.PI / 2 );
+	    
+            gC.texture = new THREE.CanvasTexture(canvas); //new THREE.TextureLoader( );
+             //objects.push( plane );
+                    // Lights
+                    var ambientLight = new THREE.AmbientLight( 0x606060 );
+                    gC.scene.add( ambientLight );
+                    var directionalLight = new THREE.DirectionalLight( 0xffffff );
+                    directionalLight.position.set( 1, 0.75, 0.5 ).normalize();
+                    gC.scene.add( directionalLight );
+                    gC.renderer = new THREE.WebGLRenderer( { antialias: true } );
+                    gC.renderer.setClearColor( 0xf0f0f0 );
+                    gC.renderer.setPixelRatio( window.devicePixelRatio );
+                    gC.renderer.setSize( gC.width, gC.height );
+                    var a = Utils.getEBI('box');
 
-            gC.texture = new THREE.TextureLoader( );
-            
+
+                        //Utils.setOffScreen(b)
+                        Utils.appendB2A(a,gC.renderer.domElement)
+                    gC.group = new THREE.Group();
+                    gC.scene.add(gC.group);	
+                    gC.renderer.render( gC.scene, gC.camera );
+                    me.co = me.createE('canvas');
+                    me.setAttribute(me.co,'width',gC.width)
+                    me.setAttribute(me.co,'height',gC.height)
+                    me.ctxo = me.co.getContext("2d");
+			/*
             gC.texture.load(
                 // resource URL
                 "black.jpg",
@@ -133,6 +156,7 @@ setCanvas3D(e){
                     console.error( 'An error happened.' );
                 }
             );
+	    */
 
 			// assuming you want the texture to repeat in both directions:
 			//gC.texture.wrapS = THREE.RepeatWrapping; 
