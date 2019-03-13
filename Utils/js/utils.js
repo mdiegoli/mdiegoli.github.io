@@ -117,10 +117,10 @@ setCanvas3D(e){
                     gC.group = new THREE.Group();
                     gC.scene.add(gC.group);	
                     gC.renderer.render( gC.scene, gC.camera );
-                    this.co = this.createE('canvas');
-                    this.setAttribute(this.co,'width',gC.width)
-                    this.setAttribute(this.co,'height',gC.height)
-                    this.ctxo = this.co.getContext("2d");
+                    me.co = me.createE('canvas');
+                    me.setAttribute(me.co,'width',gC.width)
+                    me.setAttribute(me.co,'height',gC.height)
+                    me.ctxo = me.co.getContext("2d");
                     res();
                 },
             
