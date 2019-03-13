@@ -84,8 +84,12 @@ setCanvas3D(e){
 			var geometry = new THREE.PlaneBufferGeometry( 2000, 2000 );
 			geometry.rotateX( - Math.PI / 2 );
 	    
-            gC.texture = new THREE.CanvasTexture(canvas); //new THREE.TextureLoader( );
+            gC.texture = new THREE.CanvasTexture(me.oc); //new THREE.TextureLoader( );
              //objects.push( plane );
+			gC.plane = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial({ map : gC.texture }) );
+                    gC.plane.material.side = THREE.DoubleSide;
+
+                    gC.scene.add( gC.plane );
                     // Lights
                     var ambientLight = new THREE.AmbientLight( 0x606060 );
                     gC.scene.add( ambientLight );
@@ -190,12 +194,14 @@ setCanvas3D(e){
 	}
 	c2c(){
 		//this.ctx.drawImage(this.co,0,0)
-		this.updateTexture().then(
+		/* this.updateTexture().then(
 			(succ)=>{
 				this.ctxo.fillStyle = '#000';
 				this.ctxo.fillRect(0, 0, gC.width, gC.height);
 			}
-		)
+		) */
+		this.ctxo.fillStyle = '#000';
+		this.ctxo.fillRect(0, 0, gC.width, gC.height);
 		
         
 	}
