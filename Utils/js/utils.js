@@ -27,9 +27,9 @@ class utils{
 	}
     clearCanvas(c){
         if(!c)
-            c = '#000';
-        this.ctx.fillStyle = c;
-        this.ctx.clearRect(0, 0, gC.width, gC.height);
+            c = '#f00';
+        this.ctxo.fillStyle = c;
+        this.ctxo.clearRect(0, 0, gC.width, gC.height);
     }
     appendB2A(a,b){
         a.appendChild(b);
@@ -87,11 +87,13 @@ setCanvas3D(e){
                     me.setAttribute(me.co,'width',gC.width)
                     me.setAttribute(me.co,'height',gC.height)
                     me.ctxo = me.co.getContext("2d");
-			this.ctxo.fillStyle = '#000';
-			this.ctxo.fillRect(0, 0, gC.width, gC.height);
-            gC.texture = new THREE.CanvasTexture(me.co); //new THREE.TextureLoader( );
+			me.ctxo.fillStyle = '#070';
+			me.ctxo.fillRect(0, 0, gC.width, gC.height);
+            gC.texture = new THREE.Texture(me.co); //new THREE.TextureLoader( );
+            gC.texture.needsUpdate = true;
+
              //objects.push( plane );
-			gC.plane = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial({ map : gC.texture }) );
+			gC.plane = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial({ map : gC.texture }) );
                     gC.plane.material.side = THREE.DoubleSide;
 
                     gC.scene.add( gC.plane );
@@ -113,6 +115,7 @@ setCanvas3D(e){
                     gC.group = new THREE.Group();
                     gC.scene.add(gC.group);	
                     gC.renderer.render( gC.scene, gC.camera );
+                    res();
                     
 			/*
             gC.texture.load(
@@ -196,14 +199,21 @@ setCanvas3D(e){
 	}
 	c2c(){
 		//this.ctx.drawImage(this.co,0,0)
-		/* this.updateTexture().then(
+        /* 
+        this.updateTexture().then(
 			(succ)=>{
 				this.ctxo.fillStyle = '#000';
 				this.ctxo.fillRect(0, 0, gC.width, gC.height);
 			}
-		) */
+        )
+
+        gC.texture = new THREE.CanvasTexture(this.co); //new THREE.TextureLoader( );
 		this.ctxo.fillStyle = '#000';
 		this.ctxo.fillRect(0, 0, gC.width, gC.height);
+        */
+       gC.plane.material.map.needsUpdate = true;
+
+       gC.renderer.render( gC.scene, gC.camera );
 		
         
 	}
