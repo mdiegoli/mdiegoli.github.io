@@ -1,5 +1,7 @@
 __todo__:
 
+https://gist.github.com/MAKIO135/eab7b74e85ed2be48eeb
+
 aggiungere https://github.com/mrdoob/stats.js/
 
 https://animejs.com/
@@ -9,6 +11,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Advanced_an
 https://developer.mozilla.org/en-US/docs/Games/Techniques/Efficient_animation_for_web_games
 
 https://codepen.io/Tobsta/post/implementing-velocity-acceleration-and-friction-on-a-canvas
+
 
 offscreencanvas
 
