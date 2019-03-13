@@ -1,6 +1,6 @@
 __todo__:
 
-https://gist.github.com/MAKIO135/eab7b74e85ed2be48eeb
+https://dustinpfister.github.io/2018/04/17/threejs-canvas-texture/
 
 aggiungere https://github.com/mrdoob/stats.js/
 
