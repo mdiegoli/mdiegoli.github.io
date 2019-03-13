@@ -341,6 +341,47 @@ function addCanvas(){
     })
 }
 
+function addCanvas3D(){
+    var me = this;
+    return new Promise(function(res,rej){
+        Utils.init3D().then(
+		(succ)=>{
+			document.addEventListener('keydown',(e)=>{
+				switch(e.keyCode){
+				    case 37:
+					gC.player.leftDown();
+					break;
+				    case 39:
+					gC.player.rightDown();
+					break;
+				    case 32:
+					assets.push(gC.player.fire('b_a','u'));
+
+					break;
+				}
+			    })
+
+			document.addEventListener('keyup',(e)=>{
+				switch(e.keyCode){
+				    case 37:
+					gC.player.leftUp();
+					break;
+				    case 39:
+					gC.player.rightUp();
+					break;
+				    case 32:
+					//assets.push(gC.player.fire('b_a'));
+					break;
+				}
+			    })
+			
+        		res();
+		}
+	)
+        
+    })
+}
+
 function gAF(c){
     gC.demoClock++;
     Utils.clearCanvas();
@@ -360,7 +401,19 @@ function reset(){
 function s(){
     reset();
     gC.gameLevelChar = 'abcdefghijklmnopqrstuvwxyz';
+	/*
     addCanvas().then(
+        (succ)=>{
+            showSplash().then(
+                (succ)=>{
+                    l()
+                }
+            )
+        }
+        
+    )
+    */
+	addCanvas3D().then(
         (succ)=>{
             showSplash().then(
                 (succ)=>{
