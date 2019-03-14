@@ -91,8 +91,7 @@ setCanvas3D(e){
 			me.ctxo.fillRect(0, 0, gC.width, gC.height);
             gC.texture = new THREE.Texture(me.co); //new THREE.TextureLoader( );
             gC.texture.needsUpdate = true;
-	gC.texture.wrapS = THREE.RepeatWrapping;
-  	gC.texture.wrapT = THREE.RepeatWrapping;
+	gC.texture.repeat.set(0.5,0.5)
 
              //objects.push( plane );
 			gC.plane = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial({ map : gC.texture }) );
