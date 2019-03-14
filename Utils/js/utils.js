@@ -92,7 +92,7 @@ setCanvas3D(e){
             gC.texture = new THREE.Texture(me.co); //new THREE.TextureLoader( );
             gC.texture.needsUpdate = true;
 	gC.texture.repeat.set(2,2)
-			gC.texture.offset.set(0.5,0.5)
+			gC.texture.offset.set(0,0)
 
              //objects.push( plane );
 			gC.plane = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial({ map : gC.texture }) );
