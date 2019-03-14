@@ -94,7 +94,7 @@ setCanvas3D(e){
 
              //objects.push( plane );
 			gC.plane = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial({ map : gC.texture }) );
-                    gC.plane.material.side = THREE.DoubleSide;
+                    //gC.plane.material.side = THREE.DoubleSide;
 
                     gC.scene.add( gC.plane );
                     // Lights
