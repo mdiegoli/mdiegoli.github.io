@@ -71,7 +71,8 @@ setCanvas3D(e){
 		var me = this;
 		return new Promise((res,rej)=>{
 			gC.camera = new THREE.PerspectiveCamera( 45, gC.width / gC.height, 1, 10000 );
-			gC.camera.position.set(0, 1000, 0 );
+            //gC.camera.position.set(0, 1000, 0 );
+            gC.camera.position.set(0, 1500, 0 );
 			gC.camera.lookAt( new THREE.Vector3() );
 			gC.scene = new THREE.Scene();
 			// roll-over helpers
