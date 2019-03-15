@@ -92,7 +92,7 @@ setCanvas3D(e){
 			me.ctxo.fillRect(0, 0, gC.width, gC.height);
             gC.texture = new THREE.Texture(me.co); //new THREE.TextureLoader( );
             gC.texture.needsUpdate = true;
-	gC.texture.repeat.set(2,2)
+	gC.texture.repeat.set(1,1)
 			gC.texture.offset.set(0,0)
 
              //objects.push( plane );
