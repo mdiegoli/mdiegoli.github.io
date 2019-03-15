@@ -82,7 +82,7 @@ setCanvas3D(e){
 			//
 			gC.raycaster = new THREE.Raycaster();
 			gC.mouse = new THREE.Vector2();
-			var geometry = new THREE.PlaneBufferGeometry( 2000, 2000 );
+			var geometry = new THREE.PlaneBufferGeometry( 2000, 1000 );
 			geometry.rotateX( - Math.PI / 2 );
 	    me.co = me.createE('canvas');
                     me.setAttribute(me.co,'width',gC.width)
