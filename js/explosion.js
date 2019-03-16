@@ -16,13 +16,16 @@ class explosion extends entity{
 			if(!me.frames) me.frames = me.__proto__.images[me.level]['EX'].width/gC.spriteW;
 			if(me.frame===me.frames){
 				assets[me.id].end = true;
-			}
-			Utils.drawAnimation(me.__proto__.images[me.level]['EX'], gC.spriteW*me.frame, 0,gC.spriteW,gC.spriteH, me.randomX, me.randomY,gC.spriteW,gC.spriteH);
+				res();
+			}else{
+				Utils.drawAnimation(me.__proto__.images[me.level]['EX'], gC.spriteW*me.frame, 0,gC.spriteW,gC.spriteH, me.randomX, me.randomY,gC.spriteW,gC.spriteH);
 			//add the echo feature
-			Utils.drawBBox(me.BBoxX, me.BBoxY,gC.bulletW,gC.bulletH,me.BBoxColor);
+			//Utils.drawBBox(me.BBoxX, me.BBoxY,gC.bulletW,gC.bulletH,me.BBoxColor);
 			//gC.fireAudio.play();
 			me.frame++;
 			res();
+			}
+			
 		})
     }
 	

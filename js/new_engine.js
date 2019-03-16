@@ -384,7 +384,7 @@ function addCanvas3D(){
 
 function gAF(c){
     gC.demoClock++;
-    Utils.clearCanvas();
+    //Utils.clearCanvas();
     
     startGame()
 }
