@@ -6,7 +6,7 @@ var assets = [];
 
 function startGame(){
     
-	Utils.clearCanvas()
+	//Utils.clearCanvas()
     let a_l = assets.length;
 	for(let a = 0;a<a_l;a++)
     assets[a].start()

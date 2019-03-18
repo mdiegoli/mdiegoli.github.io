@@ -29,7 +29,7 @@ class utils{
         if(!c)
             c = '#f00';
         this.ctxo.fillStyle = c;
-        this.ctxo.clearRect(0, 0, gC.width, gC.height);
+        this.ctxo.fillRect(0, 0, gC.width, gC.height);
     }
     appendB2A(a,b){
         a.appendChild(b);
@@ -71,7 +71,8 @@ setCanvas3D(e){
 		var me = this;
 		return new Promise((res,rej)=>{
 			gC.camera = new THREE.PerspectiveCamera( 45, gC.width / gC.height, 1, 10000 );
-			gC.camera.position.set(0, 1000, 0 );
+            //gC.camera.position.set(0, 1000, 0 );
+            gC.camera.position.set(0, 1200, 0 );
 			gC.camera.lookAt( new THREE.Vector3() );
 			gC.scene = new THREE.Scene();
 			// roll-over helpers
@@ -81,7 +82,7 @@ setCanvas3D(e){
 			//
 			gC.raycaster = new THREE.Raycaster();
 			gC.mouse = new THREE.Vector2();
-			var geometry = new THREE.PlaneBufferGeometry( 2000, 2000 );
+			var geometry = new THREE.PlaneBufferGeometry( 2000, 1000 );
 			geometry.rotateX( - Math.PI / 2 );
 	    me.co = me.createE('canvas');
                     me.setAttribute(me.co,'width',gC.width)
@@ -90,12 +91,15 @@ setCanvas3D(e){
 			me.ctxo.fillStyle = '#070';
 			me.ctxo.fillRect(0, 0, gC.width, gC.height);
             gC.texture = new THREE.Texture(me.co); //new THREE.TextureLoader( );
-            gC.texture.needsUpdate = true;
+            //gC.texture.needsUpdate = true;
+	gC.texture.repeat.set(1,1)
+			gC.texture.offset.set(0,0)
 
              //objects.push( plane );
-			gC.plane = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial({ map : gC.texture }) );
-                    gC.plane.material.side = THREE.DoubleSide;
-
+             gC.material = new THREE.MeshBasicMaterial({ map : gC.texture })
+			gC.plane = new THREE.Mesh( geometry, gC.material );
+                    //gC.plane.material.side = THREE.DoubleSide;
+			
                     gC.scene.add( gC.plane );
                     // Lights
                     var ambientLight = new THREE.AmbientLight( 0x606060 );
@@ -112,8 +116,8 @@ setCanvas3D(e){
 
                         //Utils.setOffScreen(b)
                         Utils.appendB2A(a,gC.renderer.domElement)
-                    gC.group = new THREE.Group();
-                    gC.scene.add(gC.group);	
+                    //gC.group = new THREE.Group();
+                    //gC.scene.add(gC.group);	
                     gC.renderer.render( gC.scene, gC.camera );
                     res();
                     
@@ -211,7 +215,8 @@ setCanvas3D(e){
 		this.ctxo.fillStyle = '#000';
 		this.ctxo.fillRect(0, 0, gC.width, gC.height);
         */
-       gC.plane.material.map.needsUpdate = true;
+       gC.material.map.needsUpdate = true;
+      gC.texture.needsUpdate = true;
 
        gC.renderer.render( gC.scene, gC.camera );
 		
