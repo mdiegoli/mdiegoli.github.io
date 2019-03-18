@@ -1,15 +1,3 @@
-
-
-
-float height;
-float bottomRadius = 1;
-float topRadius = 1;
-public int nbSides = 18;
-
-public GameObject sphere1;
-public GameObject sphere2;
-
-
 var envelop = class {
    constructor (a, b){
       this.CreateMesh(a, b);
