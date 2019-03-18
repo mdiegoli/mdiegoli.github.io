@@ -1,4 +1,4 @@
-envelop mesh betweeb two different spheres
+!!!envelop mesh betweeb two different spheres
 
 https://answers.unity.com/questions/1167261/create-mesh-that-encapsulates-two-different-sized.html
 
