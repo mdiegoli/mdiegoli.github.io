@@ -2,6 +2,10 @@
 
 https://answers.unity.com/questions/1167261/create-mesh-that-encapsulates-two-different-sized.html
 
+SkinnedMesh
+
+https://threejs.org/docs/#api/en/objects/SkinnedMesh
+
 build visual coding
 
 https://developers.google.com/blockly/guides/create-custom-blocks/overview
