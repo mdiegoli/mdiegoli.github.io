@@ -4,26 +4,23 @@ var envelop = class {
    }
 
    CreateMesh (a, b) {
-      MeshFilter filter = GetComponent<MeshFilter>();
-      Mesh mesh = filter.mesh;
-      mesh.Clear();
+      this.geometry = new THREE.BoxBufferGeometry( 1, 1, 1 );
+      this.material = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
+      this.mesh = new THREE.Mesh( geometry, material );
+      scene.add( mesh );
 
-      float scaleBottom = sphere1.transform.localScale.x;
-      bottomRadius *= scaleBottom/2f;
-      Debug.Log (bottomRadius.ToString ());
+      var scaleBottom = a.transform.localScale.x;
+      var bottomRadius *= scaleBottom/2f;
+      
+      var scaleTop = b.transform.localScale.x;
+      var topRadius *= scaleTop/2f;
+      
+      var height = Vector3.Distance(a.transform.localPosition, b.transform.localPosition);
+      
+      var bottomPos = -height / 2;
+      var topPos = height/2;
 
-      float scaleTop = sphere2.transform.localScale.x;
-      topRadius *= scaleTop/2f;
-      Debug.Log (topRadius.ToString ());
-
-      height = Vector3.Distance(sphere1.transform.localPosition, sphere2.transform.localPosition);
-      Debug.Log (height.ToString ());
-
-
-      float bottomPos = -height / 2;
-      float topPos = height/2;
-
-      Vector3 vectorBetweenSpheres = sphere2.transform.localPosition - sphere1.transform.localPosition;
+      var vectorBetweenSpheres = b.transform.localPosition - a.transform.localPosition;
       transform.localPosition = sphere1.transform.localPosition + (vectorBetweenSpheres) / 2;
 
       transform.rotation = Quaternion.FromToRotation(transform.up, vectorBetweenSpheres);
