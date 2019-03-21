@@ -57,6 +57,8 @@ f3d
 
 https://mdiegoli.github.io/f3d.html
 
+https://mdiegoli.github.io/skinned.html
+
 f3dwebgl
 
 https://mdiegoli.github.io/f3dwebgl.html
