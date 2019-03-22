@@ -6,6 +6,10 @@ SkinnedMesh
 
 https://threejs.org/docs/#api/en/objects/SkinnedMesh
 
+Threejs tips and triks
+
+https://discoverthreejs.com/tips-and-tricks/
+
 build visual coding
 
 https://developers.google.com/blockly/guides/create-custom-blocks/overview
