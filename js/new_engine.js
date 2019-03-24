@@ -438,11 +438,9 @@ function loadMp3(){
         gC.coin = new Audio('assets/games/audio/Coin001.wav');
         gC.explosionAudio1 = new Audio('assets/games/audio/Explosion001.mp3');
         gC.explosionAudio2 = new Audio('assets/games/audio/Explosion002.mp3');
-        gC.fireAudio.preload = 'auto';
-        gC.coin.preload = 'auto';
-        gC.explosionAudio1.preload = 'auto';
-        gC.explosionAudio2.preload = 'auto';
-        res();
+        gC.explosionAudio2.addEventListener("canplay", function() {
+            res();
+          }, true);
     })
 }
 
