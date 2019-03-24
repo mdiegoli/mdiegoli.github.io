@@ -131,7 +131,11 @@ function showSplash(){
             (succ) => {
                 splasho.create().then(
                     (succ) => {
-                        res();
+                        loadMp3().then(
+                            (succ) => {
+                                res();
+                            }        
+                        )
                     }
                 )
             }
@@ -148,7 +152,9 @@ function showSplashEnd(){
             (succ) => {
                 splasho.create().then(
                     (succ) => {
+                        gC.coin.play();
                         res();
+                            
                     }
                 )
             }
@@ -417,7 +423,8 @@ function s(){
         (succ)=>{
             showSplash().then(
                 (succ)=>{
-                    l()
+                    gC.coin.play();
+                    l();
                 }
             )
         }
@@ -428,8 +435,13 @@ function s(){
 function loadMp3(){
     return new Promise(function(res,rej){
         gC.fireAudio = new Audio('assets/games/audio/Shoot001.mp3');
+        gC.coin = new Audio('assets/games/audio/Coin001.wav');
         gC.explosionAudio1 = new Audio('assets/games/audio/Explosion001.mp3');
         gC.explosionAudio2 = new Audio('assets/games/audio/Explosion002.mp3');
+        gC.fireAudio.preload = 'auto';
+        gC.coin.preload = 'auto';
+        gC.explosionAudio1.preload = 'auto';
+        gC.explosionAudio2.preload = 'auto';
         res();
     })
 }

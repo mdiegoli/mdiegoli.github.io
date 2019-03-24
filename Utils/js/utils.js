@@ -772,6 +772,14 @@ showScore(input) {
     getCtx(){
         return this.ctx;
     }
+
+    playAudio(str,name){
+        return new Promise(function(res,rej){
+            gC[name] = new Audio(str);
+            gC[name].play();
+            res();
+        })
+    }
 }
 
 var Utils = new utils();

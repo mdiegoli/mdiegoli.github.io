@@ -10,10 +10,10 @@ var envelop = class {
       scene.add( mesh );
 
       var scaleBottom = a.transform.localScale.x;
-      var bottomRadius *= scaleBottom/2f;
+      var bottomRadius = scaleBottom/2;
       
       var scaleTop = b.transform.localScale.x;
-      var topRadius *= scaleTop/2f;
+      var topRadius = scaleTop/2;
       
       var height = Vector3.Distance(a.transform.localPosition, b.transform.localPosition);
       
@@ -26,9 +26,8 @@ var envelop = class {
       transform.rotation = Quaternion.FromToRotation(transform.up, vectorBetweenSpheres);
       Debug.Log(transform.rotation.eulerAngles.ToString());
 
-      int nbVerticesCap = nbSides + 1;
-      #region Vertices
-
+      var nbVerticesCap = nbSides + 1;
+      
       // bottom + top + sides
       Vector3[] vertices = new Vector3[nbVerticesCap + nbVerticesCap + nbSides * 2 + 2];
       int vert = 0;
