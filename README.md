@@ -1,9 +1,5 @@
 __todo__:
 
-https://dustinpfister.github.io/2018/04/17/threejs-canvas-texture/
-
-aggiungere https://github.com/mrdoob/stats.js/
-
 https://animejs.com/
 
 https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Advanced_animations
@@ -12,6 +8,7 @@ https://developer.mozilla.org/en-US/docs/Games/Techniques/Efficient_animation_fo
 
 https://codepen.io/Tobsta/post/implementing-velocity-acceleration-and-friction-on-a-canvas
 
+asset 3d con texture 2d (piani che si muovono in uno spazio 3d)
 
 offscreencanvas
 
