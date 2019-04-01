@@ -1,0 +1,17 @@
+{
+  "data": "demon",
+  "width": 150,
+  "height": 130,
+  "original_width": 128,
+  "font_size": "20px",
+  "layers": {
+    "BO": "100"
+  },
+  "names": {
+    "BO":   ["ba","bal","bav","ol","bam","ci","bat","cih","da","ske","ste","cil","om","de","civ","do","dov","dok","mah","mal","mo","moh","mol","mov","mok","mog","mogg","me","mu","mi","mih","miv","nol","nov","pa","pav","nog","og","qo","pav", "ba","bal","bav","ol","bam","ci","bat","cih","da","ske","ste","cil","om","de","civ","do","dov","dok","mah","mal","mo","moh","mol","mov","mok","mog","mogg","me","mu","mi","mih","miv","nol","nov","pa","pav","nog","og","qo","pav"]
+  },
+  "name_struct": {
+    "BO": ""
+  }
+
+}
