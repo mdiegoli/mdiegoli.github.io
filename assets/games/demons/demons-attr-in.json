@@ -1,0 +1,11 @@
+{
+    "HE": {
+        "68": {
+            "speed": "0",
+            "pattern": "A",
+            "partname": "",
+            "effect": "var:A"
+        }
+    }
+
+}

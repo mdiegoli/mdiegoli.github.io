@@ -1,5 +1,13 @@
 {
     "LW": {
+        "47": {
+            "type": "leftwing",
+            "img": "dem_A_LW_1_47.png",
+            "partname": "",
+            "effect": "var:A",
+            "frames": "8",
+            "time": "0.3"
+        },
         "48": {
             "type": "leftwing",
             "img": "dem_A_LW_1_48.png",
@@ -50,7 +58,9 @@
             "type": "leftwing",
             "img": "dem_A_LW_1_54.png",
             "partname": "",
-            "effect": "var:A"
+            "effect": "var:A",
+            "frames": "16",
+            "time": "1.2"
         },
         "55": {
             "type": "leftwing",
@@ -82,7 +92,9 @@
             "type": "leftwing",
             "img": "dem_A_LW_1_02.png",
             "partname": "",
-            "effect": "var:A"
+            "effect": "var:A",
+            "frames": "8",
+            "time": "0.8"
         },
         "03": {
             "type": "leftwing",
@@ -124,7 +136,9 @@
             "type": "leftwing",
             "img": "dem_A_LW_1_08.png",
             "partname": "",
-            "effect": "var:A"
+            "effect": "var:A",
+            "frames": "16",
+            "time": "2"
         },
         "09": {
             "type": "leftwing",
@@ -296,7 +310,9 @@
             "type": "leftwing",
             "img": "dem_A_LW_1_33.png",
             "partname": "",
-            "effect": "var:A"
+            "effect": "var:A",
+            "frames": "16",
+            "time": "2"
         },
         "34": {
             "type": "leftwing",
@@ -383,14 +399,6 @@
             "img": "dem_A_LW_1_46.png",
             "partname": "",
             "effect": "var:A"
-        },
-        "47": {
-            "type": "leftwing",
-            "img": "dem_A_LW_1_47.png",
-            "partname": "",
-            "effect": "var:A",
-            "frames": "8",
-            "time": "0.6"
         }
     },
     "RW": {
@@ -404,7 +412,9 @@
             "type": "rightwing",
             "img": "dem_A_RW_1_02.png",
             "partname": "",
-            "effect": ""
+            "effect": "",
+            "frames": "8",
+            "time": "0.8"
         },
         "03": {
             "type": "rightwing",
@@ -446,7 +456,9 @@
             "type": "rightwing",
             "img": "dem_A_RW_1_08.png",
             "partname": "",
-            "effect": ""
+            "effect": "",
+            "frames": "16",
+            "time": "2"
         },
         "09": {
             "type": "rightwing",
@@ -618,7 +630,9 @@
             "type": "rightwing",
             "img": "dem_A_RW_1_33.png",
             "partname": "",
-            "effect": ""
+            "effect": "",
+            "frames": "16",
+            "time": "2"
         },
         "34": {
             "type": "rightwing",
@@ -712,7 +726,7 @@
             "partname": "",
             "effect": "",
             "frames": "8",
-            "time": "0.6"
+            "time": "0.3"
         },
         "48": {
             "type": "rightwing",
@@ -764,7 +778,9 @@
             "type": "rightwing",
             "img": "dem_A_RW_1_54.png",
             "partname": "",
-            "effect": ""
+            "effect": "",
+            "frames": "16",
+            "time": "1.2"
         },
         "55": {
             "type": "rightwing",
@@ -788,6 +804,12 @@
         }
     },
     "HE": {
+        "59": {
+            "type": "head",
+            "img": "dem_A_HE_4_59.png",
+            "partname": "ahv",
+            "effect": "pattern:M"
+        },
         "60": {
             "type": "head",
             "img": "dem_A_HE_4_60.png",
@@ -812,7 +834,9 @@
             "type": "head",
             "img": "dem_A_HE_4_63.png",
             "partname": "as",
-            "effect": "pattern:M"
+            "effect": "pattern:M",
+            "frames": "8",
+            "time": "1"
         },
         "64": {
             "type": "head",
@@ -845,10 +869,12 @@
         "68": {
             "type": "head",
             "img": "dem_A_HE_4_68.png",
-            "partname": "du",
-            "effect": "pattern:M",
+            "partname": "",
+            "effect": "var:A",
             "frames": "8",
-            "time": ".2"
+            "time": ".2",
+            "speed": "0",
+            "pattern": "A"
         },
         "69": {
             "type": "head",
@@ -1184,7 +1210,9 @@
             "type": "head",
             "img": "dem_A_HE_4_44.png",
             "partname": "il",
-            "effect": "pattern:M"
+            "effect": "pattern:M",
+            "frames": "16",
+            "time": "2"
         },
         "45": {
             "type": "head",
@@ -1266,18 +1294,14 @@
             "type": "head",
             "img": "dem_A_HE_4_57.png",
             "partname": "ahl",
-            "effect": "pattern:M"
+            "effect": "pattern:M",
+            "frames": "16",
+            "time": "2"
         },
         "58": {
             "type": "head",
             "img": "dem_A_HE_4_58.png",
             "partname": "ahn",
-            "effect": "pattern:M"
-        },
-        "59": {
-            "type": "head",
-            "img": "dem_A_HE_4_59.png",
-            "partname": "ahv",
             "effect": "pattern:M"
         }
     },
@@ -1386,7 +1410,9 @@
             "type": "lowerbody",
             "img": "dem_A_LB_2_15.png",
             "partname": "nal",
-            "effect": "weapon:Q"
+            "effect": "weapon:Q",
+            "frames": "24",
+            "time": "2"
         },
         "16": {
             "type": "lowerbody",
@@ -1432,7 +1458,9 @@
             "type": "lowerbody",
             "img": "dem_A_LB_2_22.png",
             "partname": "leth",
-            "effect": "weapon:Q"
+            "effect": "weapon:Q",
+            "frames": "16",
+            "time": "2"
         },
         "23": {
             "type": "lowerbody",
@@ -1444,7 +1472,9 @@
             "type": "lowerbody",
             "img": "dem_A_LB_2_24.png",
             "partname": "lev",
-            "effect": "weapon:Q"
+            "effect": "weapon:Q",
+            "frames": "16",
+            "time": "2"
         },
         "25": {
             "type": "lowerbody",
@@ -1486,7 +1516,9 @@
             "type": "lowerbody",
             "img": "dem_A_LB_2_31.png",
             "partname": "meh",
-            "effect": "weapon:Q"
+            "effect": "weapon:Q",
+            "frames": "48",
+            "time": "4"
         },
         "32": {
             "type": "lowerbody",
@@ -1506,13 +1538,17 @@
             "type": "lowerbody",
             "img": "dem_A_LB_2_34.png",
             "partname": "mok",
-            "effect": "weapon:Q"
+            "effect": "weapon:Q",
+            "frames": "8",
+            "time": "1"
         },
         "35": {
             "type": "lowerbody",
             "img": "dem_A_LB_2_35.png",
             "partname": "ron",
-            "effect": "weapon:Q"
+            "effect": "weapon:Q",
+            "frames": "16",
+            "time": "2"
         },
         "36": {
             "type": "lowerbody",
@@ -1538,7 +1574,9 @@
             "type": "lowerbody",
             "img": "dem_A_LB_2_39.png",
             "partname": "ash",
-            "effect": "weapon:Q"
+            "effect": "weapon:Q",
+            "frames": "16",
+            "time": "2"
         },
         "40": {
             "type": "lowerbody",
@@ -1558,7 +1596,9 @@
             "type": "lowerbody",
             "img": "dem_A_LB_2_42.png",
             "partname": "ba",
-            "effect": "weapon:Q"
+            "effect": "weapon:Q",
+            "frames": "8",
+            "time": "1"
         },
         "43": {
             "type": "lowerbody",
@@ -1588,7 +1628,9 @@
             "type": "lowerbody",
             "img": "dem_A_LB_2_46.png",
             "partname": "del",
-            "effect": "weapon:Q"
+            "effect": "weapon:Q",
+            "frames": "16",
+            "time": "2"
         },
         "47": {
             "type": "lowerbody",
@@ -1820,7 +1862,9 @@
             "type": "body",
             "img": "dem_A_BO_3_37.png",
             "partname": "og",
-            "effect": "energy:K"
+            "effect": "energy:K",
+            "frames": "24",
+            "time": "1.4"
         },
         "38": {
             "type": "body",
@@ -1832,7 +1876,9 @@
             "type": "body",
             "img": "dem_A_BO_3_39.png",
             "partname": "pav",
-            "effect": "energy:K"
+            "effect": "energy:K",
+            "frames": "8",
+            "time": "0.8"
         },
         "40": {
             "type": "body",
