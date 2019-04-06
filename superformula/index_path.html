@@ -279,7 +279,7 @@ document.addEventListener('mouseup',(e)=>{
     var offsetX = 0,offsetY = 0, oldoffsetX = 0, oldoffsetY = 0;
     var oldCoordX, oldCoordY;
     var f2d_links = [];
-    this.scale = 1;
+    this.scale = 100;
     
     function hit(x,y){
       //console.log(`${x} in ${this.maxX - this.offsetX - this.oldoffsetX} e ${this.minX - this.offsetX - this.oldoffsetX}, ${y} in ${this.maxY - this.offsetY - this.oldoffsetY} e ${this.minY - this.offsetY - this.oldoffsetY}`)
@@ -373,7 +373,9 @@ document.addEventListener('mouseup',(e)=>{
     }
     
     function drawFormula(m,n1,n2,n3,a,b) {
-     
+      return new Promise((res,rej)=>{
+
+      
       //context.beginPath();
       var points_length = this.points.length;
       let str_path = '';
@@ -418,10 +420,11 @@ document.addEventListener('mouseup',(e)=>{
       }
       //context.stroke();
       //rc.path(str_path, { stroke: stroke_color,fill: stroke_color, fillStyle: 'zigzag' });
-	  return ret_points;
+    return res(ret_points);
+      })
     }
     
-    function renderFormula(m,n1,n2,n3,a,b,i,x,y) {
+    function renderFormula(m,n1,n2,n3,a,b,i,x_par,y_par) {
       return new Promise((res,rej)=>{
 
       
@@ -434,10 +437,10 @@ document.addEventListener('mouseup',(e)=>{
       this.points = [];
       if(isFinite(i))
         this.shapeindex = i;
-      if(isFinite(x))
-        this.moveX = x;
-      if(isFinite(y))
-        this.moveY = y;
+      if(isFinite(x_par))
+        this.moveX = x_par;
+      if(isFinite(y_par))
+        this.moveY = y_par;
       
       if(!isFinite(a))
         a = -(-document.getElementById('a').value);
@@ -468,8 +471,8 @@ document.addEventListener('mouseup',(e)=>{
         var x,y;
         
         const radius = superformula(index / numberOfPoints * Math.PI * 2,a,b,m,n1,n2,n3);
-        x = Math.cos(index / numberOfPoints * Math.PI * 2) * radius + this.moveX;
-        y = Math.sin(index / numberOfPoints * Math.PI * 2) * radius + this.moveY;
+        x = Math.cos(index / numberOfPoints * Math.PI * 2) * radius;
+        y = Math.sin(index / numberOfPoints * Math.PI * 2) * radius;
         
         if(index===0){
           this.minX=x;
@@ -486,7 +489,10 @@ document.addEventListener('mouseup',(e)=>{
           if(y>this.maxY)
             this.maxY=y;
         }
-        this.points.push({_x:x,_y:y});
+        function toFixed(n,mul,off){
+          return (n.toFixed(2)*mul)+off;
+        }
+        this.points.push({_x:toFixed(x,60,this.moveX),_y:toFixed(y,20,this.moveY)});
         if(index==numberOfPoints-1)res();
       }
       })
@@ -730,14 +736,25 @@ window.dispatchEvent(new Event("resize"));
 function addPath(){
       //disegno
       sf = new superformulaobj();
-      let a = 1;
-      let b = 1;
-      let m = -(-document.getElementById('m').value);
-      let n1 = -(-document.getElementById('n1').value);
-      let n2 = -(-document.getElementById('n2').value);
-      let n3 = -(-document.getElementById('n3').value);
-      sf.renderFormula(m,n1,n2,n3,a,b).then(
-      ()=>{sf.drawFormula(m,n1,n2,n3,a,b);}
+      
+      let a = 9;
+      let b = 6;
+      let m = 4;
+      let n1 = 2;
+      let n2 = 2;
+      let n3 = 2;
+      //gli ultimi due valori settano la posizione del centro della figura
+      sf.renderFormula(m,n1,n2,n3,a,b,1,600,200).then(
+        ()=>{
+          var ctx = c.getContext('2d');
+          sf.drawFormula(m,n1,n2,n3,a,b).then(
+            (vec)=>{
+              for(let v = 0,vec_l=vec.length;v<vec_l;v++){
+                ctx.fillRect(vec[v].x,vec[v].y,2,2);
+              }
+            }
+          )
+        }
       )
     
   
