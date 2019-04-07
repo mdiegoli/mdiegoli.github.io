@@ -3,10 +3,15 @@ class enemy extends entity{
 		super(level,xpos,offset)
     }
 	animation(){
-		if(this.offset)
-			return this.gaussian();
-		else
-			return this.rightBorder2LeftBorder();
+        /**
+            if(this.offset)
+                return this.gaussian();
+            else
+                return this.rightBorder2LeftBorder(); 
+         */
+        
+        return this.superformula(9,6,4,2,2,2,1,600,200);
+		
 		
 	}
     

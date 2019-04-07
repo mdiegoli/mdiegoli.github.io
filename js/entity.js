@@ -122,6 +122,31 @@ class entity{
 		
 	}
 	
+	superformula(m,n1,n2,n3,a,b,i,x,y){
+		var me = this;
+        return new Promise((res,rej)=>{
+			function anim(){
+				if(!me.sf_index || me.sf_index==me.sf_points.length)
+					me.sf_index=0;
+				me.randomX = me.sf_points[me.sf_index].x;
+				me.randomY = me.sf_points[me.sf_index].y;
+				me.sf_index++;
+			}
+			if(!me.sf_points){
+				var sf = new superformulaobj(m,n1,n2,n3,a,b,i,x,y);
+				sf.create().then(
+					(vec)=>{
+						me.sf_points = vec;
+						anim();
+					}
+				)
+			}else{
+				anim();
+			}
+			
+        })
+	}
+
     start(){
         var me = this;
         return new Promise((res,rej)=>{
