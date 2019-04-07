@@ -70,6 +70,17 @@ function startGame(){
 	
 }
 
+function addDemon(c){
+    return new Promise(function(res,rej){
+        var e = new enemy(c);
+        e.preload().then(
+            (succ) => {
+                res()
+            }
+        )
+    })     
+}
+
 function addDemoAssets(c,n){
     return new Promise(function(res,rej){
 	    //ToDo:finish line of enemies
@@ -276,6 +287,7 @@ function readShipData(){
     
 }
 
+
 function readBackData(){
     var me = this;
     return new Promise(function(res,rej){
@@ -439,7 +451,7 @@ function loadMp3(){
         gC.explosionAudio1 = new Audio('assets/games/audio/Explosion001.mp3');
         gC.explosionAudio2 = new Audio('assets/games/audio/Explosion002.mp3');
         gC.explosionAudio2.addEventListener("canplay", function() {
-            res();
+            res(); 
           }, true);
     })
 }
@@ -470,7 +482,7 @@ function l(){
                                     (succ) => {
                                         addHero('h_'+levelChar).then(
                                             (succ) => {
-                                                addDemoAssets('e_'+levelChar,gC.numbOfDemons).then(
+                                                addDemon('e_'+levelChar).then(
                                                     
                                                     (succ) => {
                                                         loadMp3().then(
