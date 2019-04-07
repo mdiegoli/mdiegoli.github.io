@@ -122,7 +122,7 @@ class entity{
 		
 	}
 	
-	superformula(m,n1,n2,n3,a,b,i,x,y){
+	superformula(m,n1,n2,n3,a,b,i,x,y,np){
 		var me = this;
         return new Promise((res,rej)=>{
 			function anim(){
@@ -133,7 +133,7 @@ class entity{
 				me.sf_index++;
 			}
 			if(!me.sf_points){
-				var sf = new superformulaobj(m,n1,n2,n3,a,b,i,x,y);
+				var sf = new superformulaobj(m,n1,n2,n3,a,b,i,x,y,np);
 				sf.create().then(
 					(vec)=>{
 						me.sf_points = vec;

@@ -1,6 +1,6 @@
 class superformulaobj{
-    constructor(m,n1,n2,n3,a,b,i,x,y){
-        this.numberOfPoints = 45;
+    constructor(m,n1,n2,n3,a,b,i,x,y,numberOfP){
+        this.numberOfPoints = numberOfP;
         this.m = m;
         this.n1 = n1;
         this.n2 = n2;
@@ -145,7 +145,7 @@ class superformulaobj{
         function toFixed(n,mul,off){
           return (n.toFixed(2)*mul)+off;
         }
-        this.points.push({_x:toFixed(x,60,this.moveX),_y:toFixed(y,20,this.moveY)});
+        this.points.push({_x:toFixed(x,100,this.moveX),_y:toFixed(y,20,this.moveY)});
         if(index==this.numberOfPoints-1)res();
       }
       })
