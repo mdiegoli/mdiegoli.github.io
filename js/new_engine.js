@@ -75,6 +75,7 @@ function addDemon(c){
         var e = new enemy(c);
         e.preload().then(
             (succ) => {
+		gC.demonsCountdown = 1;
                 res()
             }
         )
