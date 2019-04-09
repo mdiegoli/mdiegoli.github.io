@@ -52,7 +52,6 @@ class bullet extends entity{
 						console.log('remove demon')
 						assets[a].end = true;
 						gC.score += 50;
-						gC.demonsCountdown--;
 						gC.explosionAudio1.play();
 						this.removeBullet().then(
 							()=>{

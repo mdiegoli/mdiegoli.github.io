@@ -143,7 +143,7 @@ class superformulaobj{
             this.maxY=y;
         }
         function toFixed(n,mul,off){
-          return (n.toFixed(2)*mul)+off;
+          return Math.round((n.toFixed(2)*mul)+off);
         }
         this.points.push({_x:toFixed(x,100,this.moveX),_y:toFixed(y,20,this.moveY)});
         if(index==this.numberOfPoints-1)res();
