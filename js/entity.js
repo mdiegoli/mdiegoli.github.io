@@ -129,7 +129,9 @@ class entity{
 				if(!me.sf_index || me.sf_index==me.sf_points.length)
 					me.sf_index=0;
 				me.randomX = me.sf_points[me.sf_index].x;
+				me.BBoxX=me.randomX;
 				me.randomY = me.sf_points[me.sf_index].y;
+				me.BBoxY=me.randomY;
 				me.sf_index++;
 			}
 			if(!me.sf_points){
