@@ -10,7 +10,7 @@ class enemy extends entity{
                 return this.rightBorder2LeftBorder(); 
          */
         
-        return this.superformula(9,6,4,2,2,2,1,400,1,60);
+        return this.superformula(9,6,4,2,2,2,1,400,1,100);
 		
 		
 	}
