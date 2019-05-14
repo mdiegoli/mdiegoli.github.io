@@ -9,9 +9,9 @@ class toolMy2DZBrush extends tool{
 	custom_mouseMove(coord){
 		Utils.clear();
 		if(gC.mouseDown){
-			if(!gC.action){
+			if(gC.action == undefined){
 
-				if(!gC.circleSelection){
+				if(gC.circleSelection == undefined){
 					//draw
 					gC.action = 'draw';
 					gC.circleSelection = this.endcircles.length;
@@ -47,7 +47,7 @@ class toolMy2DZBrush extends tool{
 		gC.originY = coord.y;
 		let res;
 		for(let i = 0, l = this.endcircles.length;i<l;i++){
-			if(!res){
+			if(res == undefined || res == false){
 				res = this.endcircles[i].hit(coord.x,coord.y)
 				if(res){
 					
@@ -87,7 +87,7 @@ class toolMy2DZBrush extends tool{
 
 	custom_touchMove(coord){
 		Utils.clear()
-		gC.endcircles.push(new circle(coord.x,coord.y))
+		//gC.endcircles.push(new circle(coord.x,coord.y))
 	}
 
 	custom_touchDown(coord){
@@ -96,7 +96,7 @@ class toolMy2DZBrush extends tool{
 	}
 
 	custom_touchUp(coord){
-		Utils.endcircle(gC.oldCoordX,gC.oldCoordY)
+		//Utils.endcircle(gC.oldCoordX,gC.oldCoordY)
 	}
 
 }
