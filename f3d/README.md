@@ -4,7 +4,10 @@ https://answers.unity.com/questions/1167261/create-mesh-that-encapsulates-two-di
 
 SkinnedMesh
 
+Cannot create mesh from bones, only control it. 
+
 https://threejs.org/docs/#api/en/objects/SkinnedMesh
+
 
 Threejs tips and triks
 
