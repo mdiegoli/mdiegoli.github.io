@@ -1,3 +1,11 @@
+liner notes of spore
+
+http://www.chrishecker.com/My_liner_notes_for_spore
+
+new algorithm:
+
+sketch, spheres on edges and intersection, marching cubes ( https://github.com/mrdoob/three.js/blob/master/examples/webgl_marchingcubes.html ), skinning mesh using spheres as skeleton join on mesh generated with marching cunes 
+
 !!!envelop mesh betweeb two different spheres
 
 https://answers.unity.com/questions/1167261/create-mesh-that-encapsulates-two-different-sized.html
