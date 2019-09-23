@@ -11,7 +11,7 @@ import {
 	Color,
 	ImmediateRenderObject,
 	NoColors
-} from "/Utils/js/three.module.js";
+} from "../three.module.js";
 
 var MarchingCubes = function ( resolution, material, enableUvs, enableColors ) {
 
