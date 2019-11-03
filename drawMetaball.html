@@ -31,13 +31,22 @@
 		var effectController;
 		var time = 0;
 		var clock = new THREE.Clock();
+		var raycaster = new THREE.Raycaster();
+		var mouse = new THREE.Vector2();
+		var geometry = new THREE.PlaneBufferGeometry( 2000, 2000 );
+		geometry.rotateX( - Math.PI / 2 );
+		var plane = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial( { visible: false } ) );
+
+
 		init();
 		animate();
 		function init() {
 			container = document.getElementById( 'container' );
 			// CAMERA
 			camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 10000 );
-			camera.position.set( - 500, 500, 1500 );
+			//camera.position.set( - 500, 500, 1500 );
+			camera.position.set(0, 1000, 0 );
+			camera.lookAt( new THREE.Vector3() );
 			// SCENE
 			scene = new THREE.Scene();
 			scene.background = new THREE.Color( 0x050505 );
@@ -60,7 +69,11 @@
 			effect.scale.set( 700, 700, 700 );
 			effect.enableUvs = false;
 			effect.enableColors = false;
+			effect.addPlaneY( 2, 12 );
+
 			scene.add( effect );
+			scene.add( plane );
+
 			// RENDERER
 			renderer = new THREE.WebGLRenderer();
 			renderer.gammaOutput = true;
@@ -71,7 +84,7 @@
 			renderer.domElement.style.left = "0px";
 			container.appendChild( renderer.domElement );
 			// CONTROLS
-			var controls = new OrbitControls( camera, renderer.domElement );
+			//var controls = new OrbitControls( camera, renderer.domElement );
 			// STATS
 			stats = new Stats();
 			container.appendChild( stats.dom );
@@ -79,12 +92,86 @@
 			setupGui();
 			// EVENTS
 			window.addEventListener( 'resize', onWindowResize, false );
+			document.addEventListener( 'mousedown', onDocumentMouseDown.bind(this), false );
 		}
 		//
 		function onWindowResize() {
 			camera.aspect = window.innerWidth / window.innerHeight;
 			camera.updateProjectionMatrix();
 			renderer.setSize( window.innerWidth, window.innerHeight );
+		}
+		function onDocumentMouseDown( event ) {
+			var x = event.clientX;
+			var y =  event.clientY;
+			mousedown(event, x,y);
+		}
+		function mousedown( event, x, y,me ) {
+			var maxX = x,
+				minX = x,
+				maxY = y,
+				minY = y;
+			mouse.set( ( x / window.innerWidth ) * 2 - 1, - ( y / window.innerHeight ) * 2 + 1 );
+			raycaster.setFromCamera( mouse, camera );
+			var intersects = raycaster.intersectObjects( scene.children, true );
+			
+			if ( intersects.length > 0 ) {
+				intersects.map(
+					function(e){
+						//info2.innerHTML += e.object.name;
+					}
+				);
+				if(intersects[ 0 ].object.name.indexOf('f3d_sphere_') !== -1){
+					for(let o = 0,scene_children_length = scene.children.length;o<scene_children_length;o++){
+						let index_f3d_sphere = parseInt(intersects[ 0 ].object.name.split('_')[2])-1;
+						if(scene.children[o].name === intersects[ 0 ].object.name)
+							indexPickedObject = index_f3d_sphere;
+					}
+				}else if(intersects[ 0 ].object.name.indexOf('interpolation_') !== -1){
+					for(let o = 0,group_children_length = group.children.length;o<group_children_length;o++){
+						if(group.children[o].name === intersects[ 0 ].object.name){
+							//ottendo id sfera dal gruppo
+							//clono l'oggetto
+							//lo inserisco nella scena
+							//aggiungo un l'id alla this.f3d_scene(basta aggiungere, come ultimo elemento, l'ultimo id incrementato di uno)
+							let token_objId = intersects[ 0 ].object.name.split('_')[1];
+							let first = scene.children.slice(0,f3d_scene[0][token_objId]+1);
+							let second = scene.children.slice(f3d_scene[0][token_objId]+1,scene.children.length);
+							let obj = group.children[o].clone();
+							obj.name = 'f3d_sphere_' + (parseInt(token_objId)+1);
+							obj.material.color = {r:1,g:1,b:0};
+							number_of_f3d_spheres += 1;
+							//scene.add( obj );						
+							let tmp = first.concat(obj);
+							second.map(function(e){
+								let str = e.name.split('_');
+								e.name = str[0]+'_'+str[1]+'_'+(parseInt(str[2])+1);
+							})
+							scene.children.length = 0;
+							scene.children = tmp.concat(second);
+							f3d_scene[0].push(f3d_scene[0][f3d_scene[0].length-1]+1);
+							indexPickedObject = (parseInt(token_objId)+1);
+						}
+							
+					}
+				}else{
+					//me.draw_mode = true
+					var intersect = intersects[ 0 ];
+					addCubes(effect,intersect.point.x,intersect.point.y,intersect.point.z);
+					/*var voxel = me.Sphere(0xffff00);
+					voxel.name = 'f3d_sphere_' + me.number_of_f3d_spheres;
+					me.number_of_f3d_spheres += 1;
+					me.setOldCoord(intersect.point.x,intersect.point.z);
+					me.setLastSphereCenter(intersect.point.x,intersect.point.z);
+					voxel.position.copy( intersect.point ).add( intersect.face.normal );
+					//voxel.position.divideScalar( 50 ).floor().multiplyScalar( 50 ).addScalar( 25 );
+					me.scene.add( voxel );
+					me.f3d_scene[0].push(me.scene.children.length-1);*/
+				}
+				
+			} else {
+				console.log('nothing here');
+			}
+			//me.render();	
 		}
 		function generateMaterials() {
 			// environment map
@@ -274,6 +361,16 @@
 			if ( wallz ) object.addPlaneZ( 2, 12 );
 			if ( wallx ) object.addPlaneX( 2, 12 );
 		}
+		//addCubes( effect, time, effectController.numBlobs, effectController.floor, effectController.wallx, effectController.wallz );
+
+		function addCubes( object, x, y, z ) {
+			// fill the field with some metaballs
+			var subtract, strength;
+			
+			subtract = 12;
+			strength = 1.2;
+			object.addBall( x, y, z, strength, subtract, new THREE.Color( 0xff7f00 ) );
+		}
 		//
 		function animate() {
 			requestAnimationFrame( animate );
@@ -291,7 +388,7 @@
 			if ( effectController.isolation !== effect.isolation ) {
 				effect.isolation = effectController.isolation;
 			}
-			updateCubes( effect, time, effectController.numBlobs, effectController.floor, effectController.wallx, effectController.wallz );
+			//updateCubes( effect, time, effectController.numBlobs, effectController.floor, effectController.wallx, effectController.wallz );
 			// materials
 			if ( effect.material instanceof THREE.ShaderMaterial ) {
 				effect.material.uniforms[ "uBaseColor" ].value.setHSL( effectController.hue, effectController.saturation, effectController.lightness );
