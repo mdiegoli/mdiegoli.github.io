@@ -36,7 +36,9 @@
 		var geometry = new THREE.PlaneBufferGeometry( 2000, 2000 );
 		geometry.rotateX( - Math.PI / 2 );
 		var plane = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial( { visible: false } ) );
+		plane.name = 'workingplane';
 		var metaball = [];
+		var dimension = 500;
 		/**/
 
 		init();
@@ -67,7 +69,7 @@
 			resolution = 28;
 			effect = new MarchingCubes( resolution, materials[ current_material ].m, true, true );
 			effect.position.set( 0, 0, 0 );
-			effect.scale.set( 700, 700, 700 );
+			effect.scale.set( dimension, dimension, dimension );
 			effect.enableUvs = false;
 			effect.enableColors = false;
 			effect.addPlaneY( 2, 12 );
@@ -121,43 +123,13 @@
 						//info2.innerHTML += e.object.name;
 					}
 				);
-				if(intersects[ 0 ].object.name.indexOf('f3d_sphere_') !== -1){
-					for(let o = 0,scene_children_length = scene.children.length;o<scene_children_length;o++){
-						let index_f3d_sphere = parseInt(intersects[ 0 ].object.name.split('_')[2])-1;
-						if(scene.children[o].name === intersects[ 0 ].object.name)
-							indexPickedObject = index_f3d_sphere;
-					}
-				}else if(intersects[ 0 ].object.name.indexOf('interpolation_') !== -1){
-					for(let o = 0,group_children_length = group.children.length;o<group_children_length;o++){
-						if(group.children[o].name === intersects[ 0 ].object.name){
-							//ottendo id sfera dal gruppo
-							//clono l'oggetto
-							//lo inserisco nella scena
-							//aggiungo un l'id alla this.f3d_scene(basta aggiungere, come ultimo elemento, l'ultimo id incrementato di uno)
-							let token_objId = intersects[ 0 ].object.name.split('_')[1];
-							let first = scene.children.slice(0,f3d_scene[0][token_objId]+1);
-							let second = scene.children.slice(f3d_scene[0][token_objId]+1,scene.children.length);
-							let obj = group.children[o].clone();
-							obj.name = 'f3d_sphere_' + (parseInt(token_objId)+1);
-							obj.material.color = {r:1,g:1,b:0};
-							number_of_f3d_spheres += 1;
-							//scene.add( obj );						
-							let tmp = first.concat(obj);
-							second.map(function(e){
-								let str = e.name.split('_');
-								e.name = str[0]+'_'+str[1]+'_'+(parseInt(str[2])+1);
-							})
-							scene.children.length = 0;
-							scene.children = tmp.concat(second);
-							f3d_scene[0].push(f3d_scene[0][f3d_scene[0].length-1]+1);
-							indexPickedObject = (parseInt(token_objId)+1);
-						}
-							
-					}
-				}else{
+				if(intersects[ 0 ].object.name.indexOf('workingplane') !== -1){
 					//me.draw_mode = true
-					var intersect = intersects[ 0 ];
-					addCubes(effect,intersect.point.x,intersect.point.y,intersect.point.z);
+					let intersect = intersects[ 0 ];
+					let X = 0.5-(intersect.point.x/1000);
+					let Y = 0.5-(intersect.point.y/1000);
+					let Z = 0.5-(intersect.point.z/1000);
+					addCubes(effect,X,Y,Z);
 					/*var voxel = me.Sphere(0xffff00);
 					voxel.name = 'f3d_sphere_' + me.number_of_f3d_spheres;
 					me.number_of_f3d_spheres += 1;
@@ -168,7 +140,6 @@
 					me.scene.add( voxel );
 					me.f3d_scene[0].push(me.scene.children.length-1);*/
 				}
-				
 			} else {
 				console.log('nothing here');
 			}
@@ -348,23 +319,24 @@
 			];
 			subtract = 12;
 			strength = 1.2 / ( ( Math.sqrt( numblobs ) - 1 ) / 4 + 1 );
-			//numblobs = metaball.length;
+			numblobs = metaball.length;
 			for ( i = 0; i < numblobs; i ++ ) {
 				ballx = Math.sin( i + 1.26 * time * ( 1.03 + 0.5 * Math.cos( 0.21 * i ) ) ) * 0.27 + 0.5;
 				bally = Math.abs( Math.cos( i + 1.12 * time * Math.cos( 1.22 + 0.1424 * i ) ) ) * 0.77; // dip into the floor
 				ballz = Math.cos( i + 1.32 * time * 0.1 * Math.sin( ( 0.92 + 0.53 * i ) ) ) * 0.27 + 0.5;
-				/*
+				
 				if ( current_material === 'multiColors' ) {
-					object.addBall( metaball[i]._X/1000, metaball[i]._Y, metaball[i]._Z/1000, strength, subtract, rainbow[ i % 7 ] );
+					object.addBall( metaball[i]._X, metaball[i]._Y, metaball[i]._Z, strength, subtract, rainbow[ i % 7 ] );
 				} else {
-					object.addBall( metaball[i]._X/1000, metaball[i]._Y, metaball[i]._Z/1000, strength, subtract );
+					object.addBall( metaball[i]._X, metaball[i]._Y, metaball[i]._Z, strength, subtract );
 				}
-				*/
+				/*
 				if ( current_material === 'multiColors' ) {
 					object.addBall( ballx, bally, ballz, strength, subtract, rainbow[ i % 7 ] );
 				} else {
 					object.addBall( ballx, bally, ballz, strength, subtract );
 				}
+				*/
 			}
 			if ( floor ) object.addPlaneY( 2, 12 );
 			if ( wallz ) object.addPlaneZ( 2, 12 );
