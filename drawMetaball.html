@@ -13,7 +13,8 @@
 	<div id="info">
 		<a href="http://threejs.org" target="_blank" rel="noopener">three.js</a> -
 		marching cubes<br/>
-		based on greggman's <a href="https://webglsamples.org/blob/blob.html">blob</a>, original code by Henrik Rydgård
+		based on greggman's <a href="https://webglsamples.org/blob/blob.html">blob</a>, original code by Henrik Rydgård<br />
+		<div id="coord"></div>
 	</div>
 
 	<script type="module">
@@ -39,6 +40,7 @@
 		plane.name = 'workingplane';
 		var metaball = [];
 		var dimension = 500;
+		var infohtml = '';
 		/**/
 
 		init();
@@ -96,6 +98,7 @@
 			// EVENTS
 			window.addEventListener( 'resize', onWindowResize, false );
 			document.addEventListener( 'mousedown', onDocumentMouseDown.bind(this), false );
+			infohtml = document.getElementById('coord');
 		}
 		//
 		function onWindowResize() {
@@ -348,7 +351,8 @@
 		//addCubes( effect, time, effectController.numBlobs, effectController.floor, effectController.wallx, effectController.wallz );
 
 		function addCubes( object, x, y, z ) {
-			metaball.push({_X:x,_Y:y,_Z:z})
+			infohtml.innerText = 'x: ' + (1-x) + ', y: ' + y + ', z: ' + (1-z);
+			metaball.push({_X:(1-x),_Y:y,_Z:(1-z)})
 		}
 		//
 		function animate() {
