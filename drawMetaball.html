@@ -126,9 +126,9 @@
 				if(intersects[ 0 ].object.name.indexOf('workingplane') !== -1){
 					//me.draw_mode = true
 					let intersect = intersects[ 0 ];
-					let X = 0.5-(intersect.point.x/1000);
-					let Y = 0.5-(intersect.point.y/1000);
-					let Z = 0.5-(intersect.point.z/1000);
+					let X = -(intersect.point.x/1000);
+					let Y = -(intersect.point.y/1000);
+					let Z = -(intersect.point.z/1000);
 					addCubes(effect,X,Y,Z);
 					/*var voxel = me.Sphere(0xffff00);
 					voxel.name = 'f3d_sphere_' + me.number_of_f3d_spheres;
