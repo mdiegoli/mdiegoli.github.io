@@ -27,7 +27,7 @@ var f3dwebgl = class{
 		this.group;
 		this.info;
 		this.info2;
-	
+		//div di debug
 		this.container = document.createElement( 'div' );
 		document.body.appendChild( this.container );
 		this.info = document.createElement( 'div' );
@@ -44,7 +44,7 @@ var f3dwebgl = class{
 		this.info2.style.textAlign = 'center';
 		this.info2.innerHTML = 'selezione';
 		this.container.appendChild( this.info2 );
-		
+		//camera
 		this.camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 10000 );
 		this.camera.position.set(0, 1000, 0 );
 		this.camera.lookAt( new THREE.Vector3() );
@@ -54,8 +54,7 @@ var f3dwebgl = class{
 		this.rollOverMaterial = new THREE.MeshBasicMaterial( { color: 0xff0000, opacity: 0.5, transparent: true } );
 		this.rollOverMesh = new THREE.Mesh( this.rollOverGeo, this.rollOverMaterial );
 		//scene.add( rollOverMesh );
-		// grid
-		
+		// WP
 		var sizeH = window.innerHeight, sizeW = window.innerWidth, step = 100;
 		var geometry = new THREE.Geometry();
 		for ( var i = -sizeH; i <= sizeH; i += step ) {
@@ -91,6 +90,8 @@ var f3dwebgl = class{
 		this.container.appendChild( this.renderer.domElement );
 		this.group = new THREE.Group();
 		this.scene.add(this.group);
+		
+		//eventi
 		document.addEventListener( 'mousemove', this.onDocumentMouseMove.bind(this), false );
 		document.addEventListener( 'touchmove', this.onDocumentMobileMouseMove.bind(this), false );
 		document.addEventListener( 'mousedown', this.onDocumentMouseDown.bind(this), false );
@@ -99,7 +100,6 @@ var f3dwebgl = class{
 		document.addEventListener( 'keyup', this.onDocumentKeyUp.bind(this), false );
 		document.addEventListener( 'mouseup', this.onDocumentMouseUp.bind(this), false );
 		document.addEventListener( 'touchend', this.onDocumentMobileMouseUp.bind(this), false );
-		//
 		window.addEventListener( 'resize', this.onWindowResize.bind(this), false );
 		Array.prototype.insertAt = function(pos,val){
 			let first = this.slice(0,pos+1);
@@ -243,11 +243,6 @@ var f3dwebgl = class{
 
 	mousemove( event, x, y ) {
 		if( this.draw_mode ){
-
-			
-			
-
-
 			/*	
 			console.log('minX '+minX);
 			console.log('maxX '+maxX);
@@ -261,20 +256,12 @@ var f3dwebgl = class{
 			this.raycaster.setFromCamera( this.mouse, this.camera );
 			var intersects = this.raycaster.intersectObjects( this.scene.children );
 
-			
 			if ( intersects.length > 0 ) {
-
 				var intersect = intersects[ 0 ];
 				this.setSphereScaleFromMouseDistance(intersect.point.x,intersect.point.z);
-
 			}
-		
-			
-
 			this.render();	
 		}else{
-			
-
 			this.mouse.set( ( x / window.innerWidth ) * 2 - 1, - ( y / window.innerHeight ) * 2 + 1 );
 
 			this.raycaster.setFromCamera( this.mouse, this.camera );
@@ -287,13 +274,9 @@ var f3dwebgl = class{
 					for(let i = 0,intersect_length = intersects.length;i<intersect_length;i++){
 						if(intersects[i].object.name.length === 0)
 							this.scene.children[this.f3d_scene[0][this.indexPickedObject]].position.copy( intersects[i].point );
-					}
-					
-					
+					}	
 				}
-
 			}
-			
 		}
 	}
 	
@@ -310,8 +293,6 @@ var f3dwebgl = class{
 	}
 
 	mousedown( event, x, y,me ) {
-		
-		
 		var maxX = x,
 		    minX = x,
 		    maxY = y,
