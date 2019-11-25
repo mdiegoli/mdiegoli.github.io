@@ -1,3 +1,5 @@
+25/11/2019: se sposto le sfere sui vertici della polilinea creati a mano, o non quelle interpolate, da problemi.
+
 https://github.com/geomensione/geomensione.github.io/tree/master/threejs
 
 clean and usingi t as superclass form f3dwebgl
