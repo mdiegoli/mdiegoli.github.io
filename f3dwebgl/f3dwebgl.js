@@ -308,8 +308,9 @@ var f3dwebgl = class{
 				}
 			);
 			if(intersects[ 0 ].object.name.indexOf('f3d_sphere_') !== -1){
+				let index_f3d_sphere = parseInt(intersects[ 0 ].object.name.split('_')[2])-1;
 				for(let o = 0,scene_children_length = me.scene.children.length;o<scene_children_length;o++){
-					let index_f3d_sphere = parseInt(intersects[ 0 ].object.name.split('_')[2])-1;
+					
 					if(me.scene.children[o].name === intersects[ 0 ].object.name)
 						me.indexPickedObject = index_f3d_sphere;
 				}
@@ -474,7 +475,7 @@ var f3dwebgl = class{
 		this.draw_mode = false;
 		if(this.indexPickedObject || this.indexPickedObject !== undefined){
 			this.indexPickedObject = undefined;
-			var scene = f.getScene();
+			//var scene = f.getScene();
 			this.group.children.length = 0;
 						
 		}
