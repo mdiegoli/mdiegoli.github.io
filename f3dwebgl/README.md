@@ -12,6 +12,10 @@ sfera               ...
   |
   ...
 ```
+
+https://threejsfundamentals.org/threejs/lessons/threejs-picking.html
+
+
 https://github.com/geomensione/geomensione.github.io/tree/master/threejs
 
 clean and usingi t as superclass form f3dwebgl
