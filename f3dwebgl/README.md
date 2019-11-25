@@ -1,7 +1,15 @@
 25/11/2019: se sposto le sfere sui vertici della polilinea creati a mano, o non quelle interpolate, da problemi.
 
 Elaborare una struttura dati fatta da sfere che hanno collegamenti ad altre sfere: se clicco sulle sfere interpolate, la fera selezionata va a sostituire le sfere collegate precedentemente
-
+  ...              ...
+  |                 |
+sfera             sfera \
+  |  <- mouse_down        new sfera
+sfera             sfera /
+  |                 |
+sfera               ...
+  |
+  ...
 https://github.com/geomensione/geomensione.github.io/tree/master/threejs
 
 clean and usingi t as superclass form f3dwebgl
