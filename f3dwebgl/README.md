@@ -1,3 +1,4 @@
+01/12/2019:creao tre sfere, clicco in mezzo alla seconda e terza sfera, sposto la sfera interpolata selezionata e mi si creano tante altre sfere.
 25/11/2019: se sposto le sfere sui vertici della polilinea creati a mano, o non quelle interpolate, da problemi.
 
 Elaborare una struttura dati fatta da sfere che hanno collegamenti ad altre sfere: se clicco sulle sfere interpolate, la fera selezionata va a sostituire le sfere collegate precedentemente

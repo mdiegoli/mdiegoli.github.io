@@ -242,34 +242,27 @@ var f3dwebgl = class{
 
 
 	mousemove( event, x, y ) {
+		this.mouse.set( ( x / window.innerWidth ) * 2 - 1, - ( y / window.innerHeight ) * 2 + 1 );
+
+		this.raycaster.setFromCamera( this.mouse, this.camera );
+
+		var intersects = this.raycaster.intersectObjects( this.scene.children );
 		if( this.draw_mode ){
-			/*	
-			console.log('minX '+minX);
-			console.log('maxX '+maxX);
-			console.log('minY '+minY);
-			console.log('maxY '+maxY);
-			console.log('clientX '+event.clientX);
-			console.log('clientY '+event.clientY);
-			*/
-			this.mouse.set( ( x / window.innerWidth ) * 2 - 1, - ( y / window.innerHeight ) * 2 + 1 );
-
-			this.raycaster.setFromCamera( this.mouse, this.camera );
-			var intersects = this.raycaster.intersectObjects( this.scene.children );
-
 			if ( intersects.length > 0 ) {
 				var intersect = intersects[ 0 ];
+				//aumenta il raggio della sfera in fase di creazione
 				this.setSphereScaleFromMouseDistance(intersect.point.x,intersect.point.z);
 			}
 			this.render();	
 		}else{
-			this.mouse.set( ( x / window.innerWidth ) * 2 - 1, - ( y / window.innerHeight ) * 2 + 1 );
-
-			this.raycaster.setFromCamera( this.mouse, this.camera );
-
-			var intersects = this.raycaster.intersectObjects( this.scene.children );
-
+			this.info2.innerHTML = '';
+			var me = this;
 			if ( intersects.length > 0 ) {
-
+				intersects.map(
+					function(e){
+						me.info2.innerHTML += e.object.name + ' ';
+					}
+				);
 				if(this.indexPickedObject || this.indexPickedObject === 0){
 					for(let i = 0,intersect_length = intersects.length;i<intersect_length;i++){
 						if(intersects[i].object.name.length === 0)
@@ -311,8 +304,11 @@ var f3dwebgl = class{
 				let index_f3d_sphere = parseInt(intersects[ 0 ].object.name.split('_')[2])-1;
 				for(let o = 0,scene_children_length = me.scene.children.length;o<scene_children_length;o++){
 					
-					if(me.scene.children[o].name === intersects[ 0 ].object.name)
+					if(me.scene.children[o].name === intersects[ 0 ].object.name){
 						me.indexPickedObject = index_f3d_sphere;
+						me.render();
+					}
+						
 				}
 			}else if(intersects[ 0 ].object.name.indexOf('interpolation_') !== -1){
 				for(let o = 0,group_children_length = me.group.children.length;o<group_children_length;o++){
@@ -338,6 +334,7 @@ var f3dwebgl = class{
 						me.scene.children = tmp.concat(second);
 						me.f3d_scene[0].push(me.f3d_scene[0][me.f3d_scene[0].length-1]+1);
 						me.indexPickedObject = (parseInt(token_objId)+1);
+						me.render();
 					}
 						
 				}
@@ -353,6 +350,7 @@ var f3dwebgl = class{
 				//voxel.position.divideScalar( 50 ).floor().multiplyScalar( 50 ).addScalar( 25 );
 				me.scene.add( voxel );
 				me.f3d_scene[0].push(me.scene.children.length-1);
+				me.render();
 			}
 			
 		} else {
@@ -368,57 +366,6 @@ var f3dwebgl = class{
 	onDocumentMouseUp( event ){
 
 		this.mouseup(event);
-	}
-
-	draw_circle_link(){
-
-		if (circle_in_scene % 3 === 0){
-
-			var geometry = new THREE.Geometry(),
-			colors = [];
-
-			n_sub = 6;
-
-			var position, index;
-
-			var spline = new THREE.Spline( points );
-
-			for ( i = 0; i < points.length * n_sub; i ++ ) {
-
-				index = i / ( points.length * n_sub );
-				position = spline.getPoint( index );
-
-				geometry.vertices[ i ] = new THREE.Vector3( position.x, position.y, position.z );
-
-				colors[ i ] = new THREE.Color( 0xffffff );
-				colors[ i ].setHSL( 0.6, 1.0, Math.max( 0, - position.x / 200 ) + 0.5 );
-
-			}
-			geometry.colors = colors;
-
-			// lines
-
-			material = new THREE.LineBasicMaterial( { color: 0x000000, opacity: 1, linewidth: 3, vertexColors: THREE.VertexColors } );
-
-			var line, p, scale = 0.3, d = 225;
-			var parameters =  [
-				[ material, scale*1.5, [-d,0,0],  geometry ],
-			];
-
-			for ( i = 0; i < parameters.length; ++ i ) {
-
-				p = parameters[ i ];
-				line = new THREE.Line( p[ 3 ],  p[ 0 ] );
-				//line.scale.x = line.scale.y = line.scale.z =  p[ 1 ];
-				//line.position.x = p[ 2 ][ 0 ];
-				//line.position.y = p[ 2 ][ 1 ];
-				//line.position.z = p[ 2 ][ 2 ];
-				this.scene.add( line );
-
-			}
-			points = [];
-		}
-
 	}
 
 	interpolateSpheres(){
@@ -453,7 +400,7 @@ var f3dwebgl = class{
 					sphere.scale.x = this.scene.children[this.f3d_scene[0][i]].scale.x - token_scale_x*(s+1);
 					sphere.scale.y = this.scene.children[this.f3d_scene[0][i]].scale.y - token_scale_y*(s+1);
 					sphere.scale.z = this.scene.children[this.f3d_scene[0][i]].scale.z - token_scale_z*(s+1);
-					sphere.name = 'interpolation_'+i+'_'+s;
+					sphere.name = 'interpolation_'+i+'_'+(i+1);
 					this.group.add( sphere );
 				}
 				
@@ -479,88 +426,12 @@ var f3dwebgl = class{
 			this.group.children.length = 0;
 						
 		}
-		this.render();
+		//this.render();
 		if(this.f3d_scene && this.f3d_scene[0] && this.f3d_scene[0].length > 1){
 			this.interpolateSpheres();
 		}
 		
-		/*
-		//var matched = r.Recognize(gest);
-		//console.log(matched);
-		var geometry = new THREE.Geometry();
-		geometry.vertices.push( new THREE.Vector3( _3dminX, 1, _3dminZ ) );
-		geometry.vertices.push( new THREE.Vector3( _3dminX, 1, _3dmaxZ ) );
-		geometry.vertices.push( new THREE.Vector3( _3dminX, 1, _3dminZ ) );
-		geometry.vertices.push( new THREE.Vector3( _3dmaxX, 1, _3dminZ ) );
-		geometry.vertices.push( new THREE.Vector3(   _3dmaxX, 1, _3dmaxZ ) );
-		geometry.vertices.push( new THREE.Vector3( _3dmaxX, 1,  _3dminZ) );
-		geometry.vertices.push( new THREE.Vector3(   _3dmaxX, 1, _3dmaxZ ) );
-		geometry.vertices.push( new THREE.Vector3( _3dminX, 1,  _3dmaxZ) );
-		var material = new THREE.LineBasicMaterial( { color: 0xff0000, opacity: 1, transparent: false } );
-		var line = new THREE.LineSegments( geometry, material );
-		this.scene.add( line );
-		var width = _3dmaxX -_3dminX;
-		var height = _3dmaxZ -_3dminZ;
-		switch(matched.Name){
-			case "rectangle":
-				//console.log('width '+width+', height '+height);
-				var geometry = new THREE.BoxGeometry( width, 1 , height );
-				geometry.translate(_3dminX+width/2, 1, _3dminZ+height/2);
-				var material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );
-				var cube = new THREE.Mesh( geometry, material );
-				this.scene.add( cube );
-				break;
-			case "circle":
-				if(width<height){
-					var radius = width/2;
-				}else{
-					var radius = height/2;
-				}
-				var circleGeometry = new THREE.SphereGeometry( radius, 32, 32 );
-				circleGeometry.translate(_3dminX+width/2, 3, _3dminZ+height/2);
-				points.push(
-					new THREE.Vector3(_3dminX+width/2, 3, _3dminZ+height/2)
-				);
-				var material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );
-				var circle = new THREE.Mesh( circleGeometry, material );
-				this.scene.add( circle );
-				circle_in_scene++;
-				this.draw_circle_link();
-				break;
-			case "triangle":
-			case "x":
-			case "arrow":
-			case "delete":
-			case "star":
-			case "pigtail":
-				console.log('unsupported sign');
-				break;
-			case "v":
-			case "left square bracket":
-			case "right square bracket":
-			case "left curly brace":
-			case "right curly brace":
-			case "check":
-			case "caret":
-			case "zig-zag":
-				//this.drawPolyline();
-				//this.sketch();
-				this.drawTube();
-			//}
-			break;
-			default:
-				console.log(mystroke);
-				var geometry = new THREE.Geometry();
-				geometry.vertices.push(new THREE.Vector3(mystroke[0].position.x, 1, mystroke[0].position.z));
-				geometry.vertices.push(new THREE.Vector3(mystroke[1].position.x, 1, mystroke[1].position.z));
-				var line = new THREE.Line(geometry, material);
-				this.scene.add(line);
-		}
-		*/
-	//document.getElementById('coordinates').innerText =  '_3dmaxX '+_3dmaxX+' _3dminX '+_3dminX+' _3dmaxZ '+_3dmaxZ+' _3dminZ '+_3dminZ;	               
-		//mystroke = new Array();
-		//draw = new Array();
-
+		
 		this.render();	
 	}
 	
