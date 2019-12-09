@@ -90,7 +90,7 @@ var f3dwebgl = class{
 		this.container.appendChild( this.renderer.domElement );
 		this.group = new THREE.Group();
 		this.scene.add(this.group);
-		
+		this.sphereScale = 10;
 		//eventi
 		document.addEventListener( 'mousemove', this.onDocumentMouseMove.bind(this), false );
 		document.addEventListener( 'touchmove', this.onDocumentMobileMouseMove.bind(this), false );
@@ -109,12 +109,13 @@ var f3dwebgl = class{
 	}
 	
 			
-	Sphere(color){
+	Sphere(color,scale){
 		var geometry = new THREE.SphereGeometry( 5, 32, 32 );
 		var material = new THREE.MeshBasicMaterial( {color: color} );
 		this.lastSphere = new THREE.Mesh( geometry, material );
-		
-		
+		this.lastSphere.scale.x = scale;
+		this.lastSphere.scale.y = scale;
+		this.lastSphere.scale.z = scale;
 		return this.lastSphere;
 	}
 	
@@ -156,6 +157,7 @@ var f3dwebgl = class{
 		this.raycaster.setFromCamera( this.mouse, this.camera );
 
 		var intersects = this.raycaster.intersectObjects( this.scene.children );
+		/*
 		if( this.draw_mode ){
 			if ( intersects.length > 0 ) {
 				var intersect = intersects[ 0 ];
@@ -164,22 +166,24 @@ var f3dwebgl = class{
 			}
 			this.render();	
 		}else{
-			this.info2.innerHTML = '';
-			var me = this;
-			if ( intersects.length > 0 ) {
-				intersects.map(
-					function(e){
-						me.info2.innerHTML += e.object.name + ' ';
-					}
-				);
-				if(this.indexPickedObject || this.indexPickedObject === 0){
-					for(let i = 0,intersect_length = intersects.length;i<intersect_length;i++){
-						if(intersects[i].object.name.length === 0)
-							this.scene.children[this.f3d_scene[0][this.indexPickedObject]].position.copy( intersects[i].point );
-					}	
+		*/
+		this.info2.innerHTML = '';
+		var me = this;
+		if ( intersects.length > 0 ) {
+			intersects.map(
+				function(e){
+					me.info2.innerHTML += e.object.name + ' ';
 				}
+			);
+			if(this.indexPickedObject || this.indexPickedObject === 0){
+				for(let i = 0,intersect_length = intersects.length;i<intersect_length;i++){
+					if(intersects[i].object.name.length === 0)
+						this.scene.children[this.f3d_scene[0][this.indexPickedObject]].position.copy( intersects[i].point );
+				}	
 			}
 		}
+
+		//}
 		this.render()
 	}
 	
@@ -251,7 +255,7 @@ var f3dwebgl = class{
 			}else{
 				me.draw_mode = true;
 				var intersect = intersects[ 0 ];
-				var voxel = me.Sphere(0xffff00);
+				var voxel = me.Sphere(0xffff00,me.sphereScale);
 				voxel.name = 'f3d_sphere_' + me.number_of_f3d_spheres;
 				me.number_of_f3d_spheres += 1;
 				me.setOldCoord(intersect.point.x,intersect.point.z);
