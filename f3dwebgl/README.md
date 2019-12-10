@@ -7,36 +7,8 @@ When I add a sphere? When I click on plane.
 What happen when I add a sphere? I create a new ring in chain. 
 
   A ring has a references to a sphere and to other rings,so:
-
-    add refernce to sphere
+  add sphere to scene means to add ring to world->body->chain:  
     
-    if first node back and head is empty
-    
-    else back = 'prev node' and 'prev node'.head = this 
-    
-    for every ring -1
-    
-      interpolate ring - ring+1 with name interp_ring_ring+1
-      
-      0
-        interpolate 0-1
-      1 r: 0-1
-        interpolate 1-2
-      2 r: 1-2
-        interpolate 2-3
-      3 r: 2-3
-      
-      add ring between other rings
-
-      0
-        interpolate 0-1 <-click!
-      1 r: 4-1 <- change!
-        interpolate 1-2
-      2 r: 1-2
-        interpolate 2-3
-      3 r: 2-3
-      4 r: 0-4 <- new!
-        interpolate 0-4
 '''
 
 https://threejsfundamentals.org/threejs/lessons/threejs-picking.html
