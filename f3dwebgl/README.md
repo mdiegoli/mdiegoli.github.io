@@ -1,21 +1,35 @@
-01/12/2019:creao tre sfere, clicco in mezzo alla seconda e terza sfera, sposto la sfera interpolata selezionata e mi si creano tante altre sfere.
+10/12/2019:
+'''
+When I add a sphere? When I click on plane.
 
-note:aggiorno la scena col mouse up, che pulisco il group
-se seleziono una interpolation, allora prendo gli indici delle sfere che stanno agli estremi ed inserisco una nuova sfera, con la posizione e la scala della sfera interpolation, ed incremento gli indici delle sfere successive?
-25/11/2019: se sposto le sfere sui vertici della polilinea creati a mano, o non quelle interpolate, da problemi.
+What happen when I add a sphere? I create a new ring in chain. 
+  A ring has a references to a sphere and to other rings,so:
+    add refernce to sphere
+    if first node back and head is empty
+    else back = 'prev node' and 'prev node'.head = this 
+    for every ring -1
+      interpolate ring - ring+1 with name interp_ring_ring+1
+      
+      0
+        interpolate 0-1
+      1 r: 0-1
+        interpolate 1-2
+      2 r: 1-2
+        interpolate 2-3
+      3 r: 2-3
+      
+      add ring between other rings
 
-Elaborare una struttura dati fatta da sfere che hanno collegamenti ad altre sfere: se clicco sulle sfere interpolate, la fera selezionata va a sostituire le sfere collegate precedentemente
-```
-...              ...
-  |                 |
-sfera             sfera \
-  |  <- mouse_down        new sfera
-sfera             sfera /
-  |                 |
-sfera               ...
-  |
-  ...
-```
+      0
+        interpolate 0-1 <-click!
+      1 r: 4-1 <- change!
+        interpolate 1-2
+      2 r: 1-2
+        interpolate 2-3
+      3 r: 2-3
+      4 r: 0-4 <- new!
+        interpolate 0-4
+'''
 
 https://threejsfundamentals.org/threejs/lessons/threejs-picking.html
 
