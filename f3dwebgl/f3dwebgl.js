@@ -107,11 +107,13 @@ var f3dwebgl = class{
 			let second = this.slice(pos+1,this.length);
 			return first.concat(val).concat(second);
 		}
-		
 		this.spheresNumber = 0;
 		this.chainsNumber = 0;
 		this.bodyNumber = 0;
 		this.f3dWorld = {};
+		this.f3dWorld[+this.bodyNumber] = {};
+		this.f3dWorld[+this.bodyNumber][+this.chainsNumber] = {};
+		this.f3dWorld[+this.bodyNumber][+this.chainsNumber][+this.spheresNumber] = {};
 
 		
 	}
