@@ -1,6 +1,7 @@
 //14:10
 if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
-			
+
+
 var f3dwebgl = class{
 	constructor(){
 		this.lastSphereCenterX;
@@ -106,8 +107,19 @@ var f3dwebgl = class{
 			let second = this.slice(pos+1,this.length);
 			return first.concat(val).concat(second);
 		}
+		
+		this.spheresNumber = 0;
+		this.chainsNumber = 0;
+		this.bodyNumber = 0;
+		this.f3dWorld = {};
+
+		
 	}
 	
+	addSphere (s){
+		this.f3dWorld[this.bodyNumber][this.chainsNumber][this.spheresNumber] = s;
+		this.spheresNumber++;
+	}
 			
 	Sphere(color,scale){
 		var geometry = new THREE.SphereGeometry( 5, 32, 32 );
