@@ -3,11 +3,17 @@
 When I add a sphere? When I click on plane.
 
 What happen when I add a sphere? I create a new ring in chain. 
+
   A ring has a references to a sphere and to other rings,so:
+
     add refernce to sphere
+    
     if first node back and head is empty
+    
     else back = 'prev node' and 'prev node'.head = this 
+    
     for every ring -1
+    
       interpolate ring - ring+1 with name interp_ring_ring+1
       
       0
