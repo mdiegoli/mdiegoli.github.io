@@ -287,6 +287,7 @@ var f3dwebgl = class{
 					this.f3dWorld[+this.bodyNumber][+this.chainsNumber][+(this.spheresNumber-1)].head = this.spheresNumber;
 				}	
 				this.f3dWorld[+this.bodyNumber][+this.chainsNumber][+this.spheresNumber] = ring;
+				this.spheresNumber++;
 				//me.render();
 			}
 			
