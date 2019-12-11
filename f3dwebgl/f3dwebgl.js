@@ -277,7 +277,16 @@ var f3dwebgl = class{
 				voxel.position.copy( intersect.point ).add( intersect.face.normal );
 				//voxel.position.divideScalar( 50 ).floor().multiplyScalar( 50 ).addScalar( 25 );
 				me.scene.add( voxel );
-				me.f3d_scene[0].push(me.scene.children.length-1);
+				//me.f3d_scene[0].push(me.scene.children.length-1);
+				var ring = {};
+				if(this.spheresNumber = 0){
+					ring = {back:null,head:null,sphere:voxel};
+				}else{
+					ring = {back:this.sphereNumber-1,head:null,sphere:voxel};
+					//last ring point to me
+					this.f3dWorld[+this.bodyNumber][+this.chainsNumber][+(this.spheresNumber-1)].head = this.spheresNumber;
+				}	
+				this.f3dWorld[+this.bodyNumber][+this.chainsNumber][+this.spheresNumber] = ring;
 				//me.render();
 			}
 			
