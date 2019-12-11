@@ -282,7 +282,7 @@ var f3dwebgl = class{
 				if(this.spheresNumber == 0){
 					ring = {back:null,head:null,sphere:voxel};
 				}else{
-					ring = {back:this.sphereNumber-1,head:null,sphere:voxel};
+					ring = {back:this.spheresNumber-1,head:null,sphere:voxel};
 					//last ring point to me
 					this.f3dWorld[+this.bodyNumber][+this.chainsNumber][+(this.spheresNumber-1)].head = this.spheresNumber;
 				}	
