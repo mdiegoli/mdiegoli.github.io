@@ -279,7 +279,7 @@ var f3dwebgl = class{
 				me.scene.add( voxel );
 				//me.f3d_scene[0].push(me.scene.children.length-1);
 				var ring = {};
-				if(this.spheresNumber = 0){
+				if(this.spheresNumber == 0){
 					ring = {back:null,head:null,sphere:voxel};
 				}else{
 					ring = {back:this.sphereNumber-1,head:null,sphere:voxel};
