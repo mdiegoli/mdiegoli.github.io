@@ -373,7 +373,7 @@ var f3dwebgl = class{
 						
 		}
 		//this.render();
-		if(this.f3dWorld[+this.bodyNumber][+this.chainsNumber][+this.spheresNumber].length > 1){
+		if(this.f3dWorld[+this.bodyNumber][+this.chainsNumber].length > 1){
 			this.interpolateSpheres();
 		}
 		
