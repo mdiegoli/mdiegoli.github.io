@@ -307,7 +307,15 @@ var f3dwebgl = class{
 	}
 
 	interpolateSpheres(){
-		
+		for(len b = 0,b_l = this.f3dWorld.length;b<b_l;b++){
+			for(len c = 0,c_l = this.f3dWorld[b].length;c<c_l;c++){
+				for(len s = 0,s_l = this.f3dWorld[b][c].length;s<s_l;s++){
+					console.log('interpolate '+JSON.stringify(this.f3dWorld[b][c][s]));
+				}
+			}
+		}
+		this.f3dWorld[+this.bodyNumber][+this.chainsNumber][+(this.spheresNumber-1)].head = this.spheresNumber;
+
 		if(this.f3d_scene[0].length > 1){
 			for(let i = 0,f3d_scene_length = this.f3d_scene[0].length;i<f3d_scene_length-1;i++){
 				let x_diff = this.scene.children[this.f3d_scene[0][i]].position.x - this.scene.children[this.f3d_scene[0][i+1]].position.x;
