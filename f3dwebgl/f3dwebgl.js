@@ -307,9 +307,9 @@ var f3dwebgl = class{
 	}
 
 	interpolateSpheres(){
-		for(len b = 0,b_l = this.f3dWorld.length;b<b_l;b++){
-			for(len c = 0,c_l = this.f3dWorld[b].length;c<c_l;c++){
-				for(len s = 0,s_l = this.f3dWorld[b][c].length;s<s_l;s++){
+		for(let b = 0,b_l = this.f3dWorld.length;b<b_l;b++){
+			for(let c = 0,c_l = this.f3dWorld[b].length;c<c_l;c++){
+				for(let s = 0,s_l = this.f3dWorld[b][c].length;s<s_l;s++){
 					console.log('interpolate '+JSON.stringify(this.f3dWorld[b][c][s]));
 				}
 			}
