@@ -307,10 +307,10 @@ var f3dwebgl = class{
 	}
 
 	interpolateSpheres(){
-		for(let b = 0,b_l = this.f3dWorld.length;b<b_l;b++){
-			for(let c = 0,c_l = this.f3dWorld[b].length;c<c_l;c++){
-				for(let s = 0,s_l = this.f3dWorld[b][c].length;s<s_l;s++){
-					console.log('interpolate '+JSON.stringify(this.f3dWorld[b][c][s]));
+		for(let b = 0,b_l = Object.keys(this.f3dWorld).length;b<b_l;b++){
+			for(let c = 0,c_l = Object.keys(this.f3dWorld[+b]).length;c<c_l;c++){
+				for(let s = 0,s_l = Object.keys(this.f3dWorld[+b][+c]).length;s<s_l;s++){
+					console.log('interpolate '+JSON.stringify(this.f3dWorld[+b][+c][+s]));
 				}
 			}
 		}
@@ -373,7 +373,7 @@ var f3dwebgl = class{
 						
 		}
 		//this.render();
-		if(this.f3dWorld[+this.bodyNumber][+this.chainsNumber].length > 1){
+		if(Object.keys(this.f3dWorld[+this.bodyNumber][+this.chainsNumber]).length > 1){
 			this.interpolateSpheres();
 		}
 		
