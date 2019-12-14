@@ -309,57 +309,49 @@ var f3dwebgl = class{
 	interpolateSpheres(){
 		for(let b = 0,b_l = Object.keys(this.f3dWorld).length;b<b_l;b++){
 			for(let c = 0,c_l = Object.keys(this.f3dWorld[+b]).length;c<c_l;c++){
-				for(let s = 0,s_l = Object.keys(this.f3dWorld[+b][+c]).length;s<s_l;s++){
-					console.log('interpolate '+JSON.stringify(this.f3dWorld[+b][+c][+s]));
+				for(let s = 0,s_l = Object.keys(this.f3dWorld[+b][+c]).length-1;s<s_l;s++){
+					let st = this.f3dWorld[+b][+c][+s];
+					let s1 = st.sphere;
+					let s2 = this.f3dWorld[+b][+c][+st.head].sphere;
+					this.interpolate2Spheres(s1,s2,s,st.head);
 				}
 			}
 		}
-		this.f3dWorld[+this.bodyNumber][+this.chainsNumber][+(this.spheresNumber-1)].head = this.spheresNumber;
+	}
 
-		if(this.f3d_scene[0].length > 1){
-			for(let i = 0,f3d_scene_length = this.f3d_scene[0].length;i<f3d_scene_length-1;i++){
-				let x_diff = this.scene.children[this.f3d_scene[0][i]].position.x - this.scene.children[this.f3d_scene[0][i+1]].position.x;
-				let y_diff = this.scene.children[this.f3d_scene[0][i]].position.y - this.scene.children[this.f3d_scene[0][i+1]].position.y;
-				let z_diff = this.scene.children[this.f3d_scene[0][i]].position.z - this.scene.children[this.f3d_scene[0][i+1]].position.z;
-				let scale_x_diff = this.scene.children[this.f3d_scene[0][i]].scale.x - this.scene.children[this.f3d_scene[0][i+1]].scale.x;
-				let scale_y_diff = this.scene.children[this.f3d_scene[0][i]].scale.y - this.scene.children[this.f3d_scene[0][i+1]].scale.y;
-				let scale_z_diff = this.scene.children[this.f3d_scene[0][i]].scale.z - this.scene.children[this.f3d_scene[0][i+1]].scale.z;
-				let token_position_x,token_position_y,token_position_z, token_scale_x,token_scale_y,token_scale_z;
-				let distance = Math.sqrt(x_diff * x_diff + y_diff * y_diff + z_diff * z_diff);
-				let numberOfTokens;
-				//todo: calcolare il numero dei tokens in base alla dimensione delle due sfere
-				numberOfTokens = distance/60;
-				
-				token_position_x = x_diff/numberOfTokens;
-				token_position_y = y_diff/numberOfTokens;
-				token_position_z = z_diff/numberOfTokens;
-				token_scale_x = scale_x_diff/numberOfTokens;
-				token_scale_y = scale_y_diff/numberOfTokens;
-				token_scale_z = scale_z_diff/numberOfTokens;
-				
-				//s<numberOfTokens-1, perché altrimenti la penultima sfera sarebbe grande come l'ultima
-				for(let s = 0;s<numberOfTokens-1;s++){
-					let sphere = this.Sphere(0xff0000);
-					sphere.position.x = this.scene.children[this.f3d_scene[0][i]].position.x - token_position_x*(s+1);
-					sphere.position.y = this.scene.children[this.f3d_scene[0][i]].position.y - token_position_y*(s+1);
-					sphere.position.z = this.scene.children[this.f3d_scene[0][i]].position.z - token_position_z*(s+1);
-					sphere.scale.x = this.scene.children[this.f3d_scene[0][i]].scale.x - token_scale_x*(s+1);
-					sphere.scale.y = this.scene.children[this.f3d_scene[0][i]].scale.y - token_scale_y*(s+1);
-					sphere.scale.z = this.scene.children[this.f3d_scene[0][i]].scale.z - token_scale_z*(s+1);
-					sphere.name = 'interpolation_'+i+'_'+(i+1);
-					this.group.add( sphere );
-				}
-				
-					
-			}
-			this.render();
-			//ciclo fra tutte le sfere
-			//retta che connette le due sfere
-			//a secoda della sua lunghezza creo n token, sia posizione che scala
-			//scene.children[this.f3d_scene[0][i]].position
-			//scene.children[this.f3d_scene[0][i]].scale
-			//creo n sfere di posizione token e scala += token_scala
+	interpolate2Spheres(s1,s2,i,ii){
+		let x_diff = s1.position.x - s2.position.x;
+		let y_diff = s1.position.y - s2.position.y;
+		let z_diff = s1.position.z - s2.position.z;
+		let scale_x_diff = s1.scale.x - s2.scale.x;
+		let scale_y_diff = s1.scale.y - s2.scale.y;
+		let scale_z_diff = s1.scale.z - s2.scale.z;
+		let token_position_x,token_position_y,token_position_z, token_scale_x,token_scale_y,token_scale_z;
+		let distance = Math.sqrt(x_diff * x_diff + y_diff * y_diff + z_diff * z_diff);
+		let numberOfTokens;
+		//todo: calcolare il numero dei tokens in base alla dimensione delle due sfere
+		numberOfTokens = distance/60;
+		
+		token_position_x = x_diff/numberOfTokens;
+		token_position_y = y_diff/numberOfTokens;
+		token_position_z = z_diff/numberOfTokens;
+		token_scale_x = scale_x_diff/numberOfTokens;
+		token_scale_y = scale_y_diff/numberOfTokens;
+		token_scale_z = scale_z_diff/numberOfTokens;
+		
+		//s<numberOfTokens-1, perché altrimenti la penultima sfera sarebbe grande come l'ultima
+		for(let s = 0;s<numberOfTokens-1;s++){
+			let sphere = this.Sphere(0xff0000);
+			sphere.position.x = s1.position.x - token_position_x*(s+1);
+			sphere.position.y = s1.position.y - token_position_y*(s+1);
+			sphere.position.z = s1.position.z - token_position_z*(s+1);
+			sphere.scale.x = s1.scale.x - token_scale_x*(s+1);
+			sphere.scale.y = s1.scale.y - token_scale_y*(s+1);
+			sphere.scale.z = s1.scale.z - token_scale_z*(s+1);
+			sphere.name = 'interpolation_'+i+'_'+(ii);
+			this.group.add( sphere );
 		}
+				
 		//console.log(JSON.stringify(this.scene));
 	}
 	
