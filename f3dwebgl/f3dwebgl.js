@@ -20,7 +20,6 @@ var f3dwebgl = class{
 		this.raycaster;
 		this.isShiftDown = false;
 		this.plane;
-		this.number_of_f3d_spheres = 1;
 		this.draw_mode = false;
 		this.indexPickedObject;
 		this.f3d_scene = [];
@@ -118,12 +117,18 @@ var f3dwebgl = class{
 		
 	}
 	
-	addSphere (s){
-		this.f3dWorld[this.bodyNumber][this.chainsNumber][this.spheresNumber] = s;
-		this.spheresNumber++;
+	addSphereToScene (me,voxel,intersect){
+		voxel.name = 'f3d_sphere_' + me.spheresNumber;
+		
+		me.setOldCoord(intersect.point.x,intersect.point.z);
+		me.setLastSphereCenter(intersect.point.x,intersect.point.z);
+		voxel.position.copy( intersect.point ).add( intersect.face.normal );
+		//voxel.position.divideScalar( 50 ).floor().multiplyScalar( 50 ).addScalar( 25 );
+		me.scene.add( voxel );
+		me.spheresNumber += 1;		
 	}
 			
-	Sphere(color,scale){
+	createSphere(color,scale){
 		var geometry = new THREE.SphereGeometry( 5, 32, 32 );
 		var material = new THREE.MeshBasicMaterial( {color: color} );
 		this.lastSphere = new THREE.Mesh( geometry, material );
@@ -133,6 +138,17 @@ var f3dwebgl = class{
 		return this.lastSphere;
 	}
 	
+	addNextRing(me,voxel){
+		var ring = {};
+		if(me.spheresNumber == 1){
+			ring = {back:null,head:null,sphere:voxel};
+		}else{
+			ring = {back:me.spheresNumber-2,head:null,sphere:voxel};
+			me.f3dWorld[+me.bodyNumber][+me.chainsNumber][+(me.spheresNumber-2)].head = me.spheresNumber-1;
+		}	
+		me.f3dWorld[+me.bodyNumber][+me.chainsNumber][+(me.spheresNumber-1)] = ring;
+	}
+
 	distance(x1,y1,x2,y2){
 		var a = x1 - x2
 		var b = y1 - y2
@@ -234,11 +250,15 @@ var f3dwebgl = class{
 					
 					if(me.scene.children[o].name === intersects[ 0 ].object.name){
 						me.indexPickedObject = index_f3d_sphere;
-						me.render();
+						//me.render();
 					}
 						
 				}
 			}else if(intersects[ 0 ].object.name.indexOf('interpolation_') !== -1){
+				let token_objId1 = intersects[ 0 ].object.name.split('_')[1];
+				let token_objId2 = intersects[ 0 ].object.name.split('_')[2];
+				let first = me.f3dWorld[+me.bodyNumber][+me.chainsNumber][+token_objId1];
+				let second = me.f3dWorld[+me.bodyNumber][+me.chainsNumber][+token_objId2];
 				for(let o = 0,group_children_length = me.group.children.length;o<group_children_length;o++){
 					if(me.group.children[o].name === intersects[ 0 ].object.name){
 						//ottendo id sfera dal gruppo
@@ -251,7 +271,7 @@ var f3dwebgl = class{
 						let obj = me.group.children[o].clone();
 						obj.name = 'f3d_sphere_' + (parseInt(token_objId)+1);
 						obj.material.color = {r:1,g:1,b:0};
-						me.number_of_f3d_spheres += 1;
+						me.spheresNumber += 1;
 						//scene.add( obj );						
 						let tmp = first.concat(obj);
 						second.map(function(e){
@@ -269,25 +289,11 @@ var f3dwebgl = class{
 			}else{
 				me.draw_mode = true;
 				var intersect = intersects[ 0 ];
-				var voxel = me.Sphere(0xffff00,me.sphereScale);
-				voxel.name = 'f3d_sphere_' + me.number_of_f3d_spheres;
-				me.number_of_f3d_spheres += 1;
-				me.setOldCoord(intersect.point.x,intersect.point.z);
-				me.setLastSphereCenter(intersect.point.x,intersect.point.z);
-				voxel.position.copy( intersect.point ).add( intersect.face.normal );
-				//voxel.position.divideScalar( 50 ).floor().multiplyScalar( 50 ).addScalar( 25 );
-				me.scene.add( voxel );
+				var voxel = me.createSphere(0xffff00,me.sphereScale);
+				me.addSphereToScene(me, voxel, intersect);
 				//me.f3d_scene[0].push(me.scene.children.length-1);
-				var ring = {};
-				if(this.spheresNumber == 0){
-					ring = {back:null,head:null,sphere:voxel};
-				}else{
-					ring = {back:this.spheresNumber-1,head:null,sphere:voxel};
-					//last ring point to me
-					this.f3dWorld[+this.bodyNumber][+this.chainsNumber][+(this.spheresNumber-1)].head = this.spheresNumber;
-				}	
-				this.f3dWorld[+this.bodyNumber][+this.chainsNumber][+this.spheresNumber] = ring;
-				this.spheresNumber++;
+				me.addNextRing(me,voxel);
+				
 				//me.render();
 			}
 			
@@ -341,7 +347,7 @@ var f3dwebgl = class{
 		
 		//s<numberOfTokens-1, perché altrimenti la penultima sfera sarebbe grande come l'ultima
 		for(let s = 0;s<numberOfTokens-1;s++){
-			let sphere = this.Sphere(0xff0000);
+			let sphere = this.createSphere(0xff0000);
 			sphere.position.x = s1.position.x - token_position_x*(s+1);
 			sphere.position.y = s1.position.y - token_position_y*(s+1);
 			sphere.position.z = s1.position.z - token_position_z*(s+1);
