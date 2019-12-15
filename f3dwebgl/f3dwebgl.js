@@ -208,7 +208,8 @@ var f3dwebgl = class{
 			if(this.indexPickedObject || this.indexPickedObject === 0){
 				for(let i = 0,intersect_length = intersects.length;i<intersect_length;i++){
 					if(intersects[i].object.name.length === 0)
-						this.scene.children[this.f3d_scene[0][this.indexPickedObject]].position.copy( intersects[i].point );
+						me.f3dWorld[+me.bodyNumber][+me.chainsNumber][+(this.indexPickedObject)].sphere.position.copy( intersects[i].point );
+						//this.scene.children[this.f3d_scene[0][this.indexPickedObject]].position.copy( intersects[i].point );
 				}	
 			}
 		}
@@ -257,8 +258,16 @@ var f3dwebgl = class{
 			}else if(intersects[ 0 ].object.name.indexOf('interpolation_') !== -1){
 				let token_objId1 = intersects[ 0 ].object.name.split('_')[1];
 				let token_objId2 = intersects[ 0 ].object.name.split('_')[2];
-				let first = me.f3dWorld[+me.bodyNumber][+me.chainsNumber][+token_objId1];
-				let second = me.f3dWorld[+me.bodyNumber][+me.chainsNumber][+token_objId2];
+				let firstRing = me.f3dWorld[+me.bodyNumber][+me.chainsNumber][+token_objId1];
+				var voxel = me.createSphere(0xffff00,me.sphereScale);
+				let ring = {back:null,head:firstRing.head,sphere:voxel};
+				firstRing.head = me.spheresNumber;
+				me.f3dWorld[+me.bodyNumber][+me.chainsNumber][+(me.spheresNumber)] = ring;
+				me.indexPickedObject = me.spheresNumber;
+				me.addSphereToScene(me, voxel, intersects[0]);
+				me.render();
+
+				/*
 				for(let o = 0,group_children_length = me.group.children.length;o<group_children_length;o++){
 					if(me.group.children[o].name === intersects[ 0 ].object.name){
 						//ottendo id sfera dal gruppo
@@ -286,6 +295,7 @@ var f3dwebgl = class{
 					}
 						
 				}
+				*/
 			}else{
 				me.draw_mode = true;
 				var intersect = intersects[ 0 ];
@@ -315,11 +325,11 @@ var f3dwebgl = class{
 	interpolateSpheres(){
 		for(let b = 0,b_l = Object.keys(this.f3dWorld).length;b<b_l;b++){
 			for(let c = 0,c_l = Object.keys(this.f3dWorld[+b]).length;c<c_l;c++){
-				for(let s = 0,s_l = Object.keys(this.f3dWorld[+b][+c]).length-1;s<s_l;s++){
+				for(let s = 0,s_l = Object.keys(this.f3dWorld[+b][+c]).length;s<s_l;s++){
 					let st = this.f3dWorld[+b][+c][+s];
 					let s1 = st.sphere;
 					let s2 = this.f3dWorld[+b][+c][+st.head].sphere;
-					this.interpolate2Spheres(s1,s2,s,st.head);
+					st.head?this.interpolate2Spheres(s1,s2,s,st.head):'';
 				}
 			}
 		}
@@ -370,7 +380,8 @@ var f3dwebgl = class{
 			//this.group.children.length = 0;
 						
 		}
-		//this.render();
+		//this.group = new THREE.Group();
+
 		if(Object.keys(this.f3dWorld[+this.bodyNumber][+this.chainsNumber]).length > 1){
 			this.interpolateSpheres();
 		}

@@ -1,15 +1,6 @@
-10/12/2019:
-
-'''
-
-When I add a sphere? When I click on plane.
-
-What happen when I add a sphere? I create a new ring in chain. 
-
-  A ring has a references to a sphere and to other rings,so:
-  add sphere to scene means to add ring to world->body->chain:  
-    
-'''
+15/12/2019:
+clean scene from old interpolation spheres
+wrong index when move yellow sphere
 
 https://threejsfundamentals.org/threejs/lessons/threejs-picking.html
 
