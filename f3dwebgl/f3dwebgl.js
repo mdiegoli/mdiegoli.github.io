@@ -246,15 +246,17 @@ var f3dwebgl = class{
 				}
 			);
 			if(intersects[ 0 ].object.name.indexOf('f3d_sphere_') !== -1){
-				let index_f3d_sphere = parseInt(intersects[ 0 ].object.name.split('_')[2])-1;
+				let index_f3d_sphere = parseInt(intersects[ 0 ].object.name.split('_')[2]);
+				me.indexPickedObject = index_f3d_sphere;
+				/*				
 				for(let o = 0,scene_children_length = me.scene.children.length;o<scene_children_length;o++){
 					
 					if(me.scene.children[o].name === intersects[ 0 ].object.name){
 						me.indexPickedObject = index_f3d_sphere;
 						//me.render();
-					}
-						
+					}	
 				}
+				*/
 			}else if(intersects[ 0 ].object.name.indexOf('interpolation_') !== -1){
 				let token_objId1 = intersects[ 0 ].object.name.split('_')[1];
 				let token_objId2 = intersects[ 0 ].object.name.split('_')[2];
