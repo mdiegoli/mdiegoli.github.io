@@ -170,7 +170,7 @@ var f3dwebgl = class{
 			
 	createSphere(color,scale){
 		var geometry = new THREE.SphereGeometry( 5, 32, 32 );
-		var material = new THREE.MeshPhysicalMaterial( {color: color} );
+		var material = new THREE.MeshToonMaterial( {color: color} );
 		this.lastSphere = new THREE.Mesh( geometry, material );
 		this.lastSphere.scale.x = scale;
 		this.lastSphere.scale.y = scale;
