@@ -35,7 +35,8 @@ var f3dwebgl = class{
 		this.info.style.top = '10px';
 		this.info.style.width = '100%';
 		this.info.style.textAlign = 'center';
-		this.info.innerHTML = '<a href="http://threejs.org" target="_blank">three.js</a>';
+		this.info.innerHTML = 'B to add new Body, C to add new Chain';
+
 		this.container.appendChild( this.info );
 		this.info2 = document.createElement( 'div' );
 		this.info2.style.position = 'absolute';
@@ -117,6 +118,34 @@ var f3dwebgl = class{
 		
 	}
 	
+	addBody(){
+		//controllo se nel body precedente c'è almeno una sfera
+		let canAdd = false;
+		for(let c = 0,c_l = Object.keys(this.f3dWorld[+this.bodyNumber]).length;c<c_l;c++)
+			if(Object.keys(this.f3dWorld[+this.bodyNumber][+c]).length > 0)
+				canAdd = true;
+		if(canAdd){
+			this.bodyNumber++;
+			this.chainsNumber = 0;
+			this.spheresNumber = 0;
+			this.f3dWorld[+this.bodyNumber] = {};
+			this.f3dWorld[+this.bodyNumber][+this.chainsNumber] = {};
+			this.f3dWorld[+this.bodyNumber][+this.chainsNumber][+this.spheresNumber] = {};
+		} 
+	}
+
+	addChain(){
+		//controllo se nella chain precedente c'è almeno una sfera
+		if(Object.keys(this.f3dWorld[+this.bodyNumber][+this.chainsNumber]).length > 0){
+			this.chainsNumber++;
+			this.spheresNumber = 0;
+			this.f3dWorld[+this.bodyNumber][+this.chainsNumber] = {};
+			this.f3dWorld[+this.bodyNumber][+this.chainsNumber][+this.spheresNumber] = {};
+
+		}
+			
+	}
+
 	addSphereToScene (me,voxel,intersect){
 		voxel.name = 'f3d_sphere_' + me.spheresNumber;
 		
@@ -384,17 +413,19 @@ var f3dwebgl = class{
 		}
 		this.group.children.length = 0;
 
-		if(Object.keys(this.f3dWorld[+this.bodyNumber][+this.chainsNumber]).length > 1){
-			this.interpolateSpheres();
-		}
+		//if(Object.keys(this.f3dWorld[+this.bodyNumber][+this.chainsNumber]).length > 1){
+		this.interpolateSpheres();
+		//}
 		
 		
 		this.render();	
 	}
 	
 	onDocumentKeyDown( event ) {
+		let x = event.which || event.keyCode;
 		switch( event.keyCode ) {
-			case 16: this.isShiftDown = true; break;
+			case 66: this.addBody(); break;
+			case 67: this.addChain(); break;
 		}
 	}
 	
