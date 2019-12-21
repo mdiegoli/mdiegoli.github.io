@@ -1,9 +1,6 @@
-15/12/2019:
-clean scene from old interpolation spheres
-wrong index when move yellow sphere
+todo:
 
-https://threejsfundamentals.org/threejs/lessons/threejs-picking.html
-
+change camera https://github.com/mrdoob/three.js/blob/master/examples/webgl_camera.html
 
 https://github.com/geomensione/geomensione.github.io/tree/master/threejs
 
