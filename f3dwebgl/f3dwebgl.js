@@ -13,9 +13,9 @@ var f3dwebgl = class{
 		this.camera;
 		this.scene = [];
 		this.renderer;
-		this.rollOverGeo;
-		this.rollOverMesh;
-		this.rollOverMaterial;
+		//this.rollOverGeo;
+		//this.rollOverMesh;
+		//this.rollOverMaterial;
 		this.mouse;
 		this.raycaster;
 		this.isShiftDown = false;
@@ -51,9 +51,9 @@ var f3dwebgl = class{
 		this.camera.lookAt( new THREE.Vector3() );
 		this.scene = new THREE.Scene();
 		// roll-over helpers
-		this.rollOverGeo = new THREE.BoxGeometry( 50, 50, 50 );
-		this.rollOverMaterial = new THREE.MeshBasicMaterial( { color: 0xff0000, opacity: 0.5, transparent: true } );
-		this.rollOverMesh = new THREE.Mesh( this.rollOverGeo, this.rollOverMaterial );
+		//this.rollOverGeo = new THREE.BoxGeometry( 50, 50, 50 );
+		//this.rollOverMaterial = new THREE.MeshBasicMaterial( { color: 0xff0000, opacity: 0.5, transparent: true } );
+		//this.rollOverMesh = new THREE.Mesh( this.rollOverGeo, this.rollOverMaterial );
 		//scene.add( rollOverMesh );
 		// WP
 		var sizeH = window.innerHeight, sizeW = window.innerWidth, step = 100;
@@ -79,11 +79,22 @@ var f3dwebgl = class{
 		this.scene.add( this.plane );
 		
 		// Lights
-		var ambientLight = new THREE.AmbientLight( 0x606060 );
-		this.scene.add( ambientLight );
-		var directionalLight = new THREE.DirectionalLight( 0xffffff );
-		directionalLight.position.set( 1, 0.75, 0.5 ).normalize();
-		this.scene.add( directionalLight );
+		//var ambientLight = new THREE.AmbientLight( 0x606060 );
+		//this.scene.add( ambientLight );
+		var spotLight = new THREE.SpotLight( 0xffffff );
+		spotLight.position.set( 0, 1000, 0 );
+
+		spotLight.castShadow = true;
+
+		spotLight.shadow.mapSize.width = 1024;
+		spotLight.shadow.mapSize.height = 1024;
+
+		spotLight.shadow.camera.near = 500;
+		spotLight.shadow.camera.far = 4000;
+		spotLight.shadow.camera.fov = 30;
+		spotLight.target = this.plane;
+		this.scene.add( spotLight );
+
 		this.renderer = new THREE.WebGLRenderer( { antialias: true } );
 		this.renderer.setClearColor( 0xf0f0f0 );
 		this.renderer.setPixelRatio( window.devicePixelRatio );
