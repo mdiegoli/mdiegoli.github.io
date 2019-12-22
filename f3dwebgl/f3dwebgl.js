@@ -261,7 +261,7 @@ var f3dwebgl = class{
 	onDocumentMobileMouseDown( event ){
 		var x = event.targetTouches[0].pageX;
 		var y = event.targetTouches[0].pageY;
-		this.mousedown(event, x,y);
+		this.mousedown(event, x,y,this);
 	}
 
 	onDocumentMouseDown( event ) {
