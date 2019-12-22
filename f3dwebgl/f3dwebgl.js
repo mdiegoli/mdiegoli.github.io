@@ -75,7 +75,7 @@ var f3dwebgl = class{
 		this.mouse = new THREE.Vector2();
 		var geometry = new THREE.PlaneBufferGeometry( 2000, 2000 );
 		geometry.rotateX( - Math.PI / 2 );
-		this.plane = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial( { visible: false } ) );
+		this.plane = new THREE.Mesh( geometry, new THREE.MeshToonMaterial( { visible: false } ) );
 		this.scene.add( this.plane );
 		
 		// Lights
