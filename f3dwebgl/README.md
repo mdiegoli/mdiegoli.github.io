@@ -4,7 +4,8 @@ https://mdiegoli.github.io/f3dwebgl_v1.html
 
 todo:
 
-convex hull between 2 spheres at time to build mesh (extract spheres point, create convex hull, boolean union of these meshes)
+convex hull between 2 spheres at time to build mesh (extract spheres point (   console.log(sphereGeometry.vertices.length);
+), create convex hull, boolean union of these meshes)
 
 change camera https://github.com/mrdoob/three.js/blob/master/examples/webgl_camera.html
 
