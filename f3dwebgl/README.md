@@ -1,4 +1,10 @@
+https://mdiegoli.github.io/f3dwebgl.html
+
+https://mdiegoli.github.io/f3dwebgl_v1.html
+
 todo:
+
+convex hull between 2 spheres at time to build mesh (extract spheres point, create convex hull, boolean union of these meshes)
 
 change camera https://github.com/mrdoob/three.js/blob/master/examples/webgl_camera.html
 
