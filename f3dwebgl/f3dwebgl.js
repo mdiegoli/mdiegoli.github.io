@@ -1,7 +1,6 @@
 //14:10
 if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 
-import { ConvexGeometry } from './jsm/geometries/ConvexGeometry.js';
 var f3dwebgl = class{
 	constructor(){
 		this.lastSphereCenterX;
