@@ -1,7 +1,7 @@
 //14:10
 if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 
-
+import { ConvexGeometry } from './jsm/geometries/ConvexGeometry.js';
 var f3dwebgl = class{
 	constructor(){
 		this.lastSphereCenterX;
@@ -380,7 +380,7 @@ var f3dwebgl = class{
 
 	convexHullBetween2Spheres(s1,s2){
 		let points = [...s1.geometry.vertices, ...s2.geometry.vertices];
-		var geometry = new THREE.ConvexBufferGeometry( points );
+		var geometry = new ConvexGeometry( points );
 		var material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );
 		var mesh = new THREE.Mesh( geometry, material );
 		scene.add( mesh );
