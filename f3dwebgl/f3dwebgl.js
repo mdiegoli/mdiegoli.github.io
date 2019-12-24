@@ -372,11 +372,20 @@ var f3dwebgl = class{
 					let s1 = st.sphere;
 					let s2 = this.f3dWorld[+b][+c][+st.head].sphere;
 					st.head?this.interpolate2Spheres(s1,s2,s,st.head):'';
+					st.head?this.convexHullBetween2Spheres(s1,s2):'';
 				}
 			}
 		}
 	}
 
+	convexHullBetween2Spheres(s1,s2){
+		let points = [...s1.vertices, ...s2.vertices];
+		var geometry = new THREE.ConvexGeometry( points );
+		var material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );
+		var mesh = new THREE.Mesh( geometry, material );
+		scene.add( mesh );
+	}
+	
 	interpolate2Spheres(s1,s2,i,ii){
 		let x_diff = s1.position.x - s2.position.x;
 		let y_diff = s1.position.y - s2.position.y;
