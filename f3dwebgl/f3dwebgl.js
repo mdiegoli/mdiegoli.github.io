@@ -379,7 +379,7 @@ var f3dwebgl = class{
 	}
 
 	convexHullBetween2Spheres(s1,s2){
-		let points = [...s1.vertices, ...s2.vertices];
+		let points = [...s1.geometry.vertices, ...s2.geometry.vertices];
 		var geometry = new THREE.ConvexGeometry( points );
 		var material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );
 		var mesh = new THREE.Mesh( geometry, material );
