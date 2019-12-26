@@ -5,12 +5,19 @@
  *
  */
 
-THREE.ConvexHull = ( function () {
+import {
+	Line3,
+	Plane,
+	Triangle,
+	Vector3
+} from "../three.module.js";
+
+var ConvexHull = ( function () {
 
 	var Visible = 0;
 	var Deleted = 1;
 
-	var v1 = new THREE.Vector3();
+	var v1 = new Vector3();
 
 	function ConvexHull() {
 
@@ -101,7 +108,7 @@ THREE.ConvexHull = ( function () {
 
 							for ( i = 0, l = attribute.count; i < l; i ++ ) {
 
-								point = new THREE.Vector3();
+								point = new Vector3();
 
 								point.fromBufferAttribute( attribute, i ).applyMatrix4( node.matrixWorld );
 
@@ -429,8 +436,8 @@ THREE.ConvexHull = ( function () {
 
 		computeExtremes: function () {
 
-			var min = new THREE.Vector3();
-			var max = new THREE.Vector3();
+			var min = new Vector3();
+			var max = new Vector3();
 
 			var minVertices = [];
 			var maxVertices = [];
@@ -506,9 +513,9 @@ THREE.ConvexHull = ( function () {
 
 				if ( line3 === undefined ) {
 
-					line3 = new THREE.Line3();
-					plane = new THREE.Plane();
-					closestPoint = new THREE.Vector3();
+					line3 = new Line3();
+					plane = new Plane();
+					closestPoint = new Vector3();
 
 				}
 
@@ -944,8 +951,8 @@ THREE.ConvexHull = ( function () {
 
 	function Face() {
 
-		this.normal = new THREE.Vector3();
-		this.midpoint = new THREE.Vector3();
+		this.normal = new Vector3();
+		this.midpoint = new Vector3();
 		this.area = 0;
 
 		this.constant = 0; // signed distance from face to the origin
@@ -1011,7 +1018,7 @@ THREE.ConvexHull = ( function () {
 
 			return function compute() {
 
-				if ( triangle === undefined ) triangle = new THREE.Triangle();
+				if ( triangle === undefined ) triangle = new Triangle();
 
 				var a = this.edge.tail();
 				var b = this.edge.head();
@@ -1314,3 +1321,5 @@ THREE.ConvexHull = ( function () {
 	return ConvexHull;
 
 } )();
+
+export { ConvexHull };
