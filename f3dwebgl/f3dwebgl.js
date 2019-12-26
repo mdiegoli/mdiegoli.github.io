@@ -1,4 +1,5 @@
-//14:10
+import { ConvexGeometry } from '../Utils/js/mod/ConvexGeometry.js';
+
 if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 
 var f3dwebgl = class{
@@ -382,7 +383,7 @@ var f3dwebgl = class{
 		var geometry = new ConvexGeometry( points );
 		var material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );
 		var mesh = new THREE.Mesh( geometry, material );
-		scene.add( mesh );
+		this.group.add( mesh );
 	}
 	
 	interpolate2Spheres(s1,s2,i,ii){
