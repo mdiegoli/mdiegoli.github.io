@@ -7,8 +7,9 @@
 		</style>
 	</head>
 	<body>
-		<script type="module" src="Utils/js/three.module.js"></script>
-		<script>
+		<script type="module">
+			import * as THREE from 'Utils/js/three.module.js';
+			import { ConvexBufferGeometry } from 'Utils/js/mod/ConvexGeometry.js';
 			var scene = new THREE.Scene();
 			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
 
