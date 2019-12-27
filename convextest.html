@@ -22,6 +22,12 @@
 			var cube = new THREE.Mesh( geometry, material );
 			scene.add( cube );
 			cube.position.set(2, 0, 0);
+			
+			var geometry2 = new THREE.SphereGeometry( 1, 1, 1 );
+			var material2 = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+			var cube2 = new THREE.Mesh( geometry2, material2 );
+			scene.add( cube2 );
+			cube2.position.set(-2, 0, 0);
 
 			camera.position.z = 5;
 
