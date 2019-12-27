@@ -1,5 +1,6 @@
-if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
-
+//if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
+import * as THREE from '../Utils/js/three.module.js';
+import { ConvexGeometry } from '../Utils/js/mod/ConvexGeometry.js';
 var f3dwebgl = class{
 	constructor(){
 		this.lastSphereCenterX;
@@ -369,7 +370,7 @@ var f3dwebgl = class{
 					let st = this.f3dWorld[+b][+c][+s];
 					let s1 = st.sphere;
 					let s2 = this.f3dWorld[+b][+c][+st.head].sphere;
-					//st.head?this.interpolate2Spheres(s1,s2,s,st.head):'';
+					st.head?this.interpolate2Spheres(s1,s2,s,st.head):'';
 					st.head?this.convexHullBetween2Spheres(s1,s2):'';
 				}
 			}
@@ -378,7 +379,7 @@ var f3dwebgl = class{
 
 	convexHullBetween2Spheres(s1,s2){
 		let points = [...s1.geometry.vertices, ...s2.geometry.vertices];
-		var geometry = new THREE.ConvexGeometry( points );
+		var geometry = new ConvexGeometry( points );
 		var material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );
 		var mesh = new THREE.Mesh( geometry, material );
 		this.group.add( mesh );
