@@ -7,6 +7,8 @@ var f3dwebgl = class{
 		this.lastSphereCenterY;
 		this.oldX;
 		this.oldY;
+		this.lastX;
+		this.lastY;
 		this.lastSphere;
 		this.container;
 		this.camera;
@@ -228,8 +230,39 @@ var f3dwebgl = class{
 		this.mousemove(event, x,y);
 	}
 
+	scaleSphere(grow){
+		this.mouse.set( ( this.lastX / window.innerWidth ) * 2 - 1, - ( this.lastY / window.innerHeight ) * 2 + 1 );
+
+		this.raycaster.setFromCamera( this.mouse, this.camera );
+
+		var intersects = this.raycaster.intersectObjects( this.scene.children );
+		
+		if ( intersects.length > 0 ) {
+			let index = intersects[0].object.name.split('_');
+			if(index[1].includes('sphere')){
+				let scale = this.f3dWorld[+this.bodyNumber][+this.chainsNumber][index[2]].sphere.scale;
+				if(grow){
+					scale.x++;
+					scale.y++;
+					scale.z++;
+				}else{
+					scale.x=((scale.x-1)>=0)?scale.x-1:0;
+					scale.y=((scale.y-1)>=0)?scale.y-1:0;
+					scale.z=((scale.z-1)>=0)?scale.z-1:0;
+				}
+				this.f3dWorld[+this.bodyNumber][+this.chainsNumber][index[2]].sphere.scale.set(scale.x,scale.y,scale.z);
+			}
+			
+		}
+		this.group.children.length = 0;
+		this.interpolateSpheres();
+		this.render();
+
+	}
 
 	mousemove( event, x, y ) {
+		this.lastX = x;
+		this.lastY = y;
 		this.mouse.set( ( x / window.innerWidth ) * 2 - 1, - ( y / window.innerHeight ) * 2 + 1 );
 
 		this.raycaster.setFromCamera( this.mouse, this.camera );
@@ -253,10 +286,10 @@ var f3dwebgl = class{
 					me.info2.innerHTML += e.object.name + ' ';
 				}
 			);
-			if(this.indexPickedObject || this.indexPickedObject === 0){
+			if(me.indexPickedObject || me.indexPickedObject === 0){
 				for(let i = 0,intersect_length = intersects.length;i<intersect_length;i++){
 					if(intersects[i].object.name.length === 0)
-						me.f3dWorld[+me.bodyNumber][+me.chainsNumber][+(this.indexPickedObject)].sphere.position.copy( intersects[i].point );
+						me.f3dWorld[+me.bodyNumber][+me.chainsNumber][+(me.indexPickedObject)].sphere.position.copy( intersects[i].point );
 						//this.scene.children[this.f3d_scene[0][this.indexPickedObject]].position.copy( intersects[i].point );
 				}	
 			}
@@ -451,9 +484,10 @@ var f3dwebgl = class{
 	
 	onDocumentKeyDown( event ) {
 		let x = event.which || event.keyCode;
+		//+ (187) to grow, - (189) to scale down
 		switch( event.keyCode ) {
-			case 66: this.addBody(); break;
-			case 67: this.addChain(); break;
+			case 187: this.scaleSphere(true); break;
+			case 189: this.scaleSphere(false); break;
 		}
 	}
 	
