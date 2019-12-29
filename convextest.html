@@ -1,0 +1,53 @@
+<html>
+	<head>
+		<title>My first three.js app</title>
+		<style>
+			body { margin: 0; }
+			canvas { width: 100%; height: 100% }
+		</style>
+	</head>
+	<body>
+		<script type="module">
+			import * as THREE from './Utils/js/three.module.js';
+			import { ConvexBufferGeometry } from './Utils/js/mod/ConvexGeometry.js';
+			var scene = new THREE.Scene();
+			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
+
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			document.body.appendChild( renderer.domElement );
+
+			var geometry = new THREE.SphereGeometry( 1, 4, 4 );
+			var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+			var cube = new THREE.Mesh( geometry, material );
+			scene.add( cube );
+			cube.position.set(2, 0, 0);
+			
+			var geometry2 = new THREE.SphereGeometry( 1, 4, 4 );
+			var material2 = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+			var cube2 = new THREE.Mesh( geometry2, material2 );
+			scene.add( cube2 );
+			cube2.position.set(-2, 0, 0);
+
+			var geometry3 = new ConvexBufferGeometry( [...cube.geometry.vertices,...cube2.geometry.vertices] );
+			var material3 = new THREE.MeshBasicMaterial( { color: 0xff0000 } );
+			var cube3 = new THREE.Mesh( geometry3, material3 );
+			scene.add( cube3 );
+			
+			
+			camera.position.z = 5;
+
+			var animate = function () {
+				requestAnimationFrame( animate );
+
+				cube.rotation.x += 0.01;
+				cube.rotation.y += 0.01;
+
+				renderer.render( scene, camera );
+			};
+			
+			renderer.render( scene, camera );
+			//animate();
+		</script>
+	</body>
+</html>
