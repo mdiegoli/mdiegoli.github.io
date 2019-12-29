@@ -34,7 +34,16 @@ var f3dwebgl = class{
 		this.info.style.top = '10px';
 		this.info.style.width = '100%';
 		this.info.style.textAlign = 'center';
-		this.info.innerHTML = 'B to add new Body, C to add new Chain';
+		//todo: create a js class to handle bar buttons
+		this.info.innerHTML = `
+		<div class="toolbar">
+			<div class="barButton" onmousedown="addBody(event)" onmousemove="event.stopPropagation()" onmouseup="event.stopPropagation()" ontouchstart="addBody(event)" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation()">
+				new Body
+			</div> 
+			<div class="barButton" onmousedown="addChain(event)" onmousemove="event.stopPropagation()" onmouseup="event.stopPropagation()"  ontouchstart="addChain(event)" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation()">
+				new Chain
+			</div>
+		</div>`;
 
 		this.container.appendChild( this.info );
 		this.info2 = document.createElement( 'div' );
@@ -371,7 +380,7 @@ var f3dwebgl = class{
 					let s1 = st.sphere;
 					let s2 = this.f3dWorld[+b][+c][+st.head].sphere;
 					st.head?this.interpolate2Spheres(s1,s2,s,st.head):'';
-					st.head?this.convexHullBetween2Spheres(s1,s2):'';
+					//st.head?this.convexHullBetween2Spheres(s1,s2):'';
 				}
 			}
 		}
@@ -492,3 +501,13 @@ var f3dwebgl = class{
 
 var f = new f3dwebgl();
 f.render();
+
+window.addBody = (e) => {
+	e.stopPropagation();
+	f.addBody();
+}
+
+window.addChain = (e) => {
+	e.stopPropagation();
+	f.addChain();
+}
