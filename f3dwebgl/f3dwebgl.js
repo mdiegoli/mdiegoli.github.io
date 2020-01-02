@@ -39,10 +39,10 @@ var f3dwebgl = class{
 		//todo: create a js class to handle bar buttons
 		this.info.innerHTML = `
 		<div class="toolbar">
-			<div class="barButton" onmousedown="addBody(event)" onmousemove="event.stopPropagation()" onmouseup="event.stopPropagation()" ontouchstart="addBody(event)" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation()">
+			<div class="barButton" onmousedown="addBody(event)" onmousemove="event.stopPropagation()" onmouseup="event.stopPropagation()" ontouchstart="touchBody(event)" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation();endTouch();">
 				new Body
 			</div> 
-			<div class="barButton" onmousedown="addChain(event)" onmousemove="event.stopPropagation()" onmouseup="event.stopPropagation()"  ontouchstart="addChain(event)" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation()">
+			<div class="barButton" onmousedown="addChain(event)" onmousemove="event.stopPropagation()" onmouseup="event.stopPropagation()"  ontouchstart="touchChain(event)" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation();endTouch();">
 				new Chain
 			</div>
 		</div>`;
@@ -135,20 +135,20 @@ var f3dwebgl = class{
 		this.f3dWorld[+this.bodyNumber] = {};
 		this.f3dWorld[+this.bodyNumber][+this.chainsNumber] = {};
 		this.f3dWorld[+this.bodyNumber][+this.chainsNumber][+this.spheresNumber] = {};
-
+		this.isTouched = false;
 		
 	}
 	
 	addBody(){
-		//controllo se nel body precedente c'è almeno una sfera
 		let canAdd = false;
+		console.log('addBody');
 		for(let c = 0,c_l = Object.keys(this.f3dWorld[+this.bodyNumber]).length;c<c_l;c++){
-			if(Object.keys(this.f3dWorld[+this.bodyNumber][+c]).length > 0){
-				canAdd = true;
-			}
-			if(c == (c_l-1)){
-				if(canAdd){
+			let chain_length = Object.keys(this.f3dWorld[+this.bodyNumber][+c]).length; 
+			if(chain_length > 0){
+				if(canAdd == false){
+					canAdd = true;
 					this.bodyNumber++;
+					console.log('addbody, c:' + c + ', c_l:' + c_l + ', chain_length: ' + chain_length);
 					this.chainsNumber = 0;
 					this.spheresNumber = 0;
 					this.f3dWorld[+this.bodyNumber] = {};
@@ -157,8 +157,6 @@ var f3dwebgl = class{
 				}
 			}
 		}
-			
-		 
 	}
 
 	addChain(){
@@ -542,9 +540,29 @@ var f3dwebgl = class{
 var f = new f3dwebgl();
 f.render();
 
+window.endTouch = () => {
+	console.log('endTouch');
+	f.isTouched = false;
+}
+
+
+window.touchBody = (e) => {
+	e.stopPropagation();
+	e.preventDefault();
+	//sigle touch event (and mouse event)
+	if(f.isTouched == false){
+		console.log('touchBody');
+		f.isTouched = true;
+		f.addBody();
+	}
+	
+}
+
 window.addBody = (e) => {
+	console.log('mouseBody');
 	e.stopPropagation();
 	f.addBody();
+	
 }
 
 window.addChain = (e) => {
