@@ -142,17 +142,23 @@ var f3dwebgl = class{
 	addBody(){
 		//controllo se nel body precedente c'è almeno una sfera
 		let canAdd = false;
-		for(let c = 0,c_l = Object.keys(this.f3dWorld[+this.bodyNumber]).length;c<c_l;c++)
-			if(Object.keys(this.f3dWorld[+this.bodyNumber][+c]).length > 0)
+		for(let c = 0,c_l = Object.keys(this.f3dWorld[+this.bodyNumber]).length;c<c_l;c++){
+			if(Object.keys(this.f3dWorld[+this.bodyNumber][+c]).length > 0){
 				canAdd = true;
-		if(canAdd){
-			this.bodyNumber++;
-			this.chainsNumber = 0;
-			this.spheresNumber = 0;
-			this.f3dWorld[+this.bodyNumber] = {};
-			this.f3dWorld[+this.bodyNumber][+this.chainsNumber] = {};
-			this.f3dWorld[+this.bodyNumber][+this.chainsNumber][+this.spheresNumber] = {};
-		} 
+			}
+			if(c == (c_l-1)){
+				if(canAdd){
+					this.bodyNumber++;
+					this.chainsNumber = 0;
+					this.spheresNumber = 0;
+					this.f3dWorld[+this.bodyNumber] = {};
+					this.f3dWorld[+this.bodyNumber][+this.chainsNumber] = {};
+					this.f3dWorld[+this.bodyNumber][+this.chainsNumber][+this.spheresNumber] = {};
+				}
+			}
+		}
+			
+		 
 	}
 
 	addChain(){
