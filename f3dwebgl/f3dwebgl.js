@@ -37,6 +37,8 @@ var f3dwebgl = class{
 		this.info.style.width = '100%';
 		this.info.style.textAlign = 'center';
 		//todo: create a js class to handle bar buttons
+		this.sphereScale = 10;
+		
 		this.info.innerHTML = `
 		<div class="toolbar">
 			<div class="barButton" onmousedown="addBody(event)" onmousemove="event.stopPropagation()" onmouseup="event.stopPropagation()" ontouchstart="touchBody(event)" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation();endTouch();">
@@ -44,6 +46,18 @@ var f3dwebgl = class{
 			</div> 
 			<div class="barButton" onmousedown="addChain(event)" onmousemove="event.stopPropagation()" onmouseup="event.stopPropagation()"  ontouchstart="touchChain(event)" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation();endTouch();">
 				new Chain
+			</div>
+			<div>
+				Thickness 
+				<div class="barButton" onmousedown="decreaseSphereScale(event)" onmousemove="event.stopPropagation()" onmouseup="event.stopPropagation()"  ontouchstart="decreaseSphereScale(event)" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation();">
+					-
+				</div>
+				<div id="sphereScale" class="barButton" onmousedown="addChain(event)" onmousemove="event.stopPropagation()" onmouseup="event.stopPropagation()"  ontouchstart="touchChain(event)" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation();endTouch();">
+				`+this.sphereScale+`
+				</div>
+				<div class="barButton" onmousedown="increaseSphereScale(event)" onmousemove="event.stopPropagation()" onmouseup="event.stopPropagation()"  ontouchstart="increaseSphereScale(event)" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation();">
+					+
+				</div>
 			</div>
 		</div>`;
 
@@ -112,7 +126,7 @@ var f3dwebgl = class{
 		this.container.appendChild( this.renderer.domElement );
 		this.group = new THREE.Group();
 		this.scene.add(this.group);
-		this.sphereScale = 10;
+		
 		//eventi
 		document.addEventListener( 'mousemove', this.onDocumentMouseMove.bind(this), false );
 		document.addEventListener( 'touchmove', this.onDocumentMobileMouseMove.bind(this), false );
@@ -138,7 +152,15 @@ var f3dwebgl = class{
 		this.isTouched = false;
 		
 	}
-	
+	increaseSphereScale(){
+		this.sphereScale++;
+	}
+	decreaseSphereScale(){
+		if((this.sphereScale-1)>=1) this.sphereScale--;
+	}
+	updateSphereScale(){
+		document.getElementById('sphereScale').innerText = this.sphereScale;
+	}
 	addBody(){
 		let canAdd = false;
 		console.log('addBody');
@@ -568,4 +590,16 @@ window.addBody = (e) => {
 window.addChain = (e) => {
 	e.stopPropagation();
 	f.addChain();
+}
+
+window.increaseSphereScale = (e) => {
+	e.stopPropagation();
+	f.increaseSphereScale();
+	f.updateSphereScale();
+}
+
+window.decreaseSphereScale = (e) => {
+	e.stopPropagation();
+	f.decreaseSphereScale();
+	f.updateSphereScale();
 }
