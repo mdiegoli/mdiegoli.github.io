@@ -48,7 +48,9 @@ var f3dwebgl = class{
 				new Chain
 			</div>
 			<div>
-				Thickness 
+				<div class="barLabel">
+					Thickness
+				</div> 
 				<div class="barButton" onmousedown="decreaseSphereScale(event)" onmousemove="event.stopPropagation()" onmouseup="event.stopPropagation()"  ontouchstart="decreaseSphereScale(event)" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation();">
 					-
 				</div>
