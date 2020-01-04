@@ -1,12 +1,10 @@
 https://mdiegoli.github.io/f3dwebgl.html
 
-https://mdiegoli.github.io/f3dwebgl_v1.html
+https://mdiegoli.github.io/f3dwebgl_v1.html , https://mdiegoli.github.io/f3dwebgl_v2.html
 
 todo:
 
-html widgets
-
-add chain
+insert body number and chain number in sphere and interpolation (and ring?)
 
 change camera https://github.com/mrdoob/three.js/blob/master/examples/webgl_camera.html
 
