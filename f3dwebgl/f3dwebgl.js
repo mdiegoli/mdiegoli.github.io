@@ -23,6 +23,8 @@ var f3dwebgl = class{
 		this.plane;
 		this.draw_mode = false;
 		this.indexPickedObject;
+		this.indexPickedBody;
+		this.indexPickedChain;
 		this.f3d_scene = [];
 		this.f3d_scene[0] = [];
 		this.group;
@@ -196,7 +198,7 @@ var f3dwebgl = class{
 	}
 
 	addSphereToScene (me,voxel,intersect){
-		voxel.name = 'f3d_sphere_' + me.spheresNumber;
+		voxel.name = 'f3d_sphere_' + me.spheresNumber + '_' + me.bodyNumber + '_' + me.chainsNumber;
 		
 		me.setOldCoord(intersect.point.x,intersect.point.z);
 		me.setLastSphereCenter(intersect.point.x,intersect.point.z);
@@ -317,7 +319,7 @@ var f3dwebgl = class{
 			if(me.indexPickedObject || me.indexPickedObject === 0){
 				for(let i = 0,intersect_length = intersects.length;i<intersect_length;i++){
 					if(intersects[i].object.name.length === 0)
-						me.f3dWorld[+me.bodyNumber][+me.chainsNumber][+(me.indexPickedObject)].sphere.position.copy( intersects[i].point );
+						me.f3dWorld[me.indexPickedBody][me.indexPickedChain][+(me.indexPickedObject)].sphere.position.copy( intersects[i].point );
 						//this.scene.children[this.f3d_scene[0][this.indexPickedObject]].position.copy( intersects[i].point );
 				}	
 			}
@@ -355,8 +357,13 @@ var f3dwebgl = class{
 				}
 			);
 			if(intersects[ 0 ].object.name.indexOf('f3d_sphere_') !== -1){
-				let index_f3d_sphere = parseInt(intersects[ 0 ].object.name.split('_')[2]);
+				let sphereTokens = intersects[ 0 ].object.name.split('_');
+				let index_f3d_sphere = parseInt(sphereTokens[2]);
+				let index_body = parseInt(sphereTokens[3]);
+				let index_chain = parseInt(sphereTokens[4]);
 				me.indexPickedObject = index_f3d_sphere;
+				me.indexPickedBody = index_body;
+				me.indexPickedChain = index_chain;
 				/*				
 				for(let o = 0,scene_children_length = me.scene.children.length;o<scene_children_length;o++){
 					
@@ -367,14 +374,19 @@ var f3dwebgl = class{
 				}
 				*/
 			}else if(intersects[ 0 ].object.name.indexOf('interpolation_') !== -1){
-				let token_objId1 = intersects[ 0 ].object.name.split('_')[1];
-				let token_objId2 = intersects[ 0 ].object.name.split('_')[2];
-				let firstRing = me.f3dWorld[+me.bodyNumber][+me.chainsNumber][+token_objId1];
+				let interpolation_tokens = intersects[ 0 ].object.name.split('_');
+				let token_objId1 = interpolation_tokens[1];
+				let token_objId2 = interpolation_tokens[2];
+				let token_body = interpolation_tokens[3];
+				let token_chain = interpolation_tokens[4];
+				let firstRing = me.f3dWorld[token_body][token_chain][+token_objId1];
 				var voxel = me.createSphere(0xffff00,me.sphereScale);
 				let ring = {back:null,head:firstRing.head,sphere:voxel};
 				firstRing.head = me.spheresNumber;
-				me.f3dWorld[+me.bodyNumber][+me.chainsNumber][+(me.spheresNumber)] = ring;
+				me.f3dWorld[token_body][token_chain][+(me.spheresNumber)] = ring;
 				me.indexPickedObject = me.spheresNumber;
+				me.indexPickedBody = token_body;
+				me.indexPickedChain = token_chain;
 				me.addSphereToScene(me, voxel, intersects[0]);
 				me.render();
 
@@ -485,7 +497,8 @@ var f3dwebgl = class{
 			sphere.scale.x = s1.scale.x - token_scale_x*(s+1);
 			sphere.scale.y = s1.scale.y - token_scale_y*(s+1);
 			sphere.scale.z = s1.scale.z - token_scale_z*(s+1);
-			sphere.name = 'interpolation_'+i+'_'+(ii);
+			sphere.name = 'interpolation_'+i+'_'+ ii + '_' + this.bodyNumber + '_' + this.chainsNumber;
+
 			this.group.add( sphere );
 		}
 				
@@ -497,6 +510,8 @@ var f3dwebgl = class{
 		this.draw_mode = false;
 		if(this.indexPickedObject || this.indexPickedObject !== undefined){
 			this.indexPickedObject = undefined;
+			this.indexPickedBody = undefined;
+			this.indexPickedChain = undefined;
 			//var scene = f.getScene();
 			//this.group.children.length = 0;
 						
