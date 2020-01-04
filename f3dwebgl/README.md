@@ -4,7 +4,7 @@ https://mdiegoli.github.io/f3dwebgl_v1.html , https://mdiegoli.github.io/f3dwebg
 
 todo:
 
-insert body number and chain number in sphere and interpolation (and ring?)
+after pick a sphere, the new sphere created will be added as last sphere of the body and chain of the picked sphere
 
 change camera https://github.com/mrdoob/three.js/blob/master/examples/webgl_camera.html
 
