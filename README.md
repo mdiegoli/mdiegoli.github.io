@@ -58,9 +58,11 @@ https://mdiegoli.github.io/f3d.html
 
 https://mdiegoli.github.io/skinned.html
 
-f3dwebgl
+f3dwebgl wip https://mdiegoli.github.io/f3dwebgl.html
 
-https://mdiegoli.github.io/f3dwebgl.html
+f3dwebgl v1 https://mdiegoli.github.io/f3dwebgl_v1.html , create sphere chain
+
+f3dwebgl v2 https://mdiegoli.github.io/f3dwebgl_v2.html , add html widgets
 
 https://mdiegoli.github.io/convextest.html
 
