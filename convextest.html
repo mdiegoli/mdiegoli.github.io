@@ -28,8 +28,11 @@
 			var cube2 = new THREE.Mesh( geometry2, material2 );
 			scene.add( cube2 );
 			cube2.position.set(-2, 0, 0);
+			var points = [];
+            cube.geometry.vertices.map((e)=>{points.push(e.applyMatrix4(cube.matrixWorld))});
+			cube2.geometry.vertices.map((e)=>{points.push(e.applyMatrix4(cube2.matrixWorld))});
 
-			var geometry3 = new ConvexBufferGeometry( [...cube.geometry.vertices,...cube2.geometry.vertices] );
+			var geometry3 = new ConvexBufferGeometry( points );
 			var material3 = new THREE.MeshBasicMaterial( { color: 0xff0000 } );
 			var cube3 = new THREE.Mesh( geometry3, material3 );
 			scene.add( cube3 );
