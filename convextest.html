@@ -29,7 +29,7 @@
 			var cube2 = new THREE.Mesh( geometry2, material2 );
 			scene.add( cube2 );
 			cube2.position.set(-3, 0, 0);
-			cube.updateMatrixWorld();
+			cube2.updateMatrixWorld();
 			var points = [];
             cube.geometry.vertices.map((e)=>{points.push(e.applyMatrix4(cube.matrixWorld))});
 			cube2.geometry.vertices.map((e)=>{points.push(e.applyMatrix4(cube2.matrixWorld))});
