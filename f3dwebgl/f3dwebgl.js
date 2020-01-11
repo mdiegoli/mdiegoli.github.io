@@ -49,6 +49,9 @@ var f3dwebgl = class{
 			<div class="barButton" onmousedown="addChain(event)" onmousemove="event.stopPropagation()" onmouseup="event.stopPropagation()"  ontouchstart="touchChain(event)" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation();endTouch();">
 				new Chain
 			</div>
+			<div class="barButton" onmousedown="showHideCH(event)" onmousemove="event.stopPropagation()" onmouseup="event.stopPropagation()"  ontouchstart="touchCH(event)" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation();endTouch();">
+				CH
+			</div>
 			<div>
 				<div class="barLabel">
 					Thickness
@@ -155,6 +158,7 @@ var f3dwebgl = class{
 		this.f3dWorld[+this.bodyNumber][+this.chainsNumber] = {};
 		this.f3dWorld[+this.bodyNumber][+this.chainsNumber][+this.spheresNumber] = {};
 		this.isTouched = false;
+		this.hideConvexHull = false;
 		
 	}
 	increaseSphereScale(){
@@ -427,7 +431,7 @@ var f3dwebgl = class{
 					let s1 = st.sphere;
 					let s2 = this.f3dWorld[+b][+c][+st.head].sphere;
 					st.head?this.interpolate2Spheres(s1,s2,s,st.head):'';
-					st.head?this.convexHullBetween2Spheres(s1,s2,s,st.head):'';
+					if(!this.hideConvexHull) st.head?this.convexHullBetween2Spheres(s1,s2,s,st.head):'';
 				}
 			}
 		}
@@ -551,7 +555,10 @@ var f3dwebgl = class{
 		return this.scene;
 	}
 	
-
+	setCH(){
+		this.hideConvexHull = !this.hideConvexHull;
+		this.mouseup();
+	}
 }
 
 var f = new f3dwebgl();
@@ -562,6 +569,21 @@ window.endTouch = () => {
 	f.isTouched = false;
 }
 
+window.showHideCH = (e) => {
+	e.stopPropagation();
+	f.setCH();
+}
+window.touchCH = (e) => {
+	e.stopPropagation();
+	e.preventDefault();
+	//sigle touch event (and mouse event)
+	if(f.isTouched == false){
+		console.log('touchBody');
+		f.isTouched = true;
+		f.setCH();
+	}
+	
+}
 
 window.touchBody = (e) => {
 	e.stopPropagation();
