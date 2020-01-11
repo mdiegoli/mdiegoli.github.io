@@ -104,6 +104,7 @@ var f3dwebgl = class{
 		var geometry = new THREE.PlaneBufferGeometry( 2000, 2000 );
 		geometry.rotateX( - Math.PI / 2 );
 		this.plane = new THREE.Mesh( geometry, new THREE.MeshToonMaterial( { visible: false } ) );
+		this.plane.name = 'wp';
 		this.scene.add( this.plane );
 		
 		// Lights
@@ -391,37 +392,7 @@ var f3dwebgl = class{
 				me.indexPickedChain = token_chain;
 				me.addSphereToScene(me, voxel, intersects[0]);
 				me.render();
-
-				/*
-				for(let o = 0,group_children_length = me.group.children.length;o<group_children_length;o++){
-					if(me.group.children[o].name === intersects[ 0 ].object.name){
-						//ottendo id sfera dal gruppo
-						//clono l'oggetto
-						//lo inserisco nella scena
-						//aggiungo un l'id alla this.f3d_scene(basta aggiungere, come ultimo elemento, l'ultimo id incrementato di uno)
-						let token_objId = intersects[ 0 ].object.name.split('_')[1];
-						let first = me.scene.children.slice(0,me.f3d_scene[0][token_objId]+1);
-						let second = me.scene.children.slice(me.f3d_scene[0][token_objId]+1,me.scene.children.length);
-						let obj = me.group.children[o].clone();
-						obj.name = 'f3d_sphere_' + (parseInt(token_objId)+1);
-						obj.material.color = {r:1,g:1,b:0};
-						me.spheresNumber += 1;
-						//scene.add( obj );						
-						let tmp = first.concat(obj);
-						second.map(function(e){
-							let str = e.name.split('_');
-							e.name = str[0]+'_'+str[1]+'_'+(parseInt(str[2])+1);
-						})
-						me.scene.children.length = 0;
-						me.scene.children = tmp.concat(second);
-						me.f3d_scene[0].push(me.f3d_scene[0][me.f3d_scene[0].length-1]+1);
-						me.indexPickedObject = (parseInt(token_objId)+1);
-						//me.render();
-					}
-						
-				}
-				*/
-			}else{
+			}else if(intersects[ 0 ].object.name.indexOf('wp') !== -1){
 				me.draw_mode = true;
 				console.log(intersects[ 0 ].object.name);
 				var intersect = intersects[ 0 ];
@@ -456,13 +427,13 @@ var f3dwebgl = class{
 					let s1 = st.sphere;
 					let s2 = this.f3dWorld[+b][+c][+st.head].sphere;
 					st.head?this.interpolate2Spheres(s1,s2,s,st.head):'';
-					st.head?this.convexHullBetween2Spheres(s1,s2):'';
+					st.head?this.convexHullBetween2Spheres(s1,s2,s,st.head):'';
 				}
 			}
 		}
 	}
 
-	convexHullBetween2Spheres(s1,s2){
+	convexHullBetween2Spheres(s1,s2,i,ii){
 		var points = [];
         s1.geometry.vertices.map((e)=>{points.push(new THREE.Vector3( e.x, e.y, e.z ).applyMatrix4(s1.matrixWorld))});
 		s2.geometry.vertices.map((e)=>{points.push(new THREE.Vector3( e.x, e.y, e.z ).applyMatrix4(s2.matrixWorld))});
@@ -470,6 +441,7 @@ var f3dwebgl = class{
 		var geometry = new ConvexBufferGeometry( points );
 		var material = new THREE.MeshBasicMaterial( {color: 0x00ff00, opacity: 0.5,transparent:true} );
 		var mesh = new THREE.Mesh( geometry, material );
+		mesh.name = "convexhull_"+i+"_"+ii;
 		this.group.add( mesh );
 	}
 	
