@@ -203,6 +203,7 @@ var f3dwebgl = class{
 		me.setOldCoord(intersect.point.x,intersect.point.z);
 		me.setLastSphereCenter(intersect.point.x,intersect.point.z);
 		voxel.position.copy( intersect.point ).add( intersect.face.normal );
+		voxel.updateMatrixWorld();
 		//voxel.position.divideScalar( 50 ).floor().multiplyScalar( 50 ).addScalar( 25 );
 		me.scene.add( voxel );
 		me.spheresNumber += 1;		
@@ -320,6 +321,7 @@ var f3dwebgl = class{
 				for(let i = 0,intersect_length = intersects.length;i<intersect_length;i++){
 					if(intersects[i].object.name.length === 0)
 						me.f3dWorld[me.indexPickedBody][me.indexPickedChain][+(me.indexPickedObject)].sphere.position.copy( intersects[i].point );
+						me.f3dWorld[me.indexPickedBody][me.indexPickedChain][+(me.indexPickedObject)].sphere.updateMatrixWorld();
 						//this.scene.children[this.f3d_scene[0][this.indexPickedObject]].position.copy( intersects[i].point );
 				}	
 			}
@@ -454,16 +456,19 @@ var f3dwebgl = class{
 					let s1 = st.sphere;
 					let s2 = this.f3dWorld[+b][+c][+st.head].sphere;
 					st.head?this.interpolate2Spheres(s1,s2,s,st.head):'';
-					//st.head?this.convexHullBetween2Spheres(s1,s2):'';
+					st.head?this.convexHullBetween2Spheres(s1,s2):'';
 				}
 			}
 		}
 	}
 
 	convexHullBetween2Spheres(s1,s2){
-		let points = [...s2.geometry.vertices, ...s1.geometry.vertices];
+		var points = [];
+        s1.geometry.vertices.map((e)=>{points.push(new THREE.Vector3( e.x, e.y, e.z ).applyMatrix4(s1.matrixWorld))});
+		s2.geometry.vertices.map((e)=>{points.push(new THREE.Vector3( e.x, e.y, e.z ).applyMatrix4(s2.matrixWorld))});
+
 		var geometry = new ConvexBufferGeometry( points );
-		var material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );
+		var material = new THREE.MeshBasicMaterial( {color: 0x00ff00, opacity: 0.5} );
 		var mesh = new THREE.Mesh( geometry, material );
 		this.group.add( mesh );
 	}
