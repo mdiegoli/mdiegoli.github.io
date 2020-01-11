@@ -468,7 +468,7 @@ var f3dwebgl = class{
 		s2.geometry.vertices.map((e)=>{points.push(new THREE.Vector3( e.x, e.y, e.z ).applyMatrix4(s2.matrixWorld))});
 
 		var geometry = new ConvexBufferGeometry( points );
-		var material = new THREE.MeshBasicMaterial( {color: 0x00ff00, opacity: 0.5} );
+		var material = new THREE.MeshBasicMaterial( {color: 0x00ff00, opacity: 0.5,transparent:true} );
 		var mesh = new THREE.Mesh( geometry, material );
 		this.group.add( mesh );
 	}
