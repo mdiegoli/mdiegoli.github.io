@@ -64,6 +64,8 @@ f3dwebgl v1 https://mdiegoli.github.io/f3dwebgl_v1.html , create sphere chain
 
 f3dwebgl v2 https://mdiegoli.github.io/f3dwebgl_v2.html , add html widgets
 
+f3dwebgl v3 https://mdiegoli.github.io/f3dwebgl_v2.html , add convex hull mesh
+
 https://mdiegoli.github.io/convextest.html
 
 sketch MAT SAT (v. 0.1 of f3d)
