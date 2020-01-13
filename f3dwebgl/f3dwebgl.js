@@ -506,7 +506,7 @@ var f3dwebgl = class{
 		this.interpolateSpheres();
 		//}
 		
-		
+		this.plane.lookAt(this.camera);
 		this.render();	
 	}
 	
