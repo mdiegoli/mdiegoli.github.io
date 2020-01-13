@@ -1,6 +1,7 @@
 //if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 import * as THREE from '../Utils/js/three.module.js';
 import { ConvexBufferGeometry } from '../Utils/js/mod/ConvexGeometry.js';
+import { OrbitControls } from '../Utils/js/mod/OrbitControls.js';
 var f3dwebgl = class{
 	constructor(){
 		this.lastSphereCenterX;
@@ -135,7 +136,7 @@ var f3dwebgl = class{
 		this.group = new THREE.Group();
 		this.scene.add(this.group);
 		
-		this.controls = new THREE.OrbitControls( this.camera, this.renderer.domElement );
+		this.controls = new OrbitControls( this.camera, this.renderer.domElement );
 		
 		//eventi
 		document.addEventListener( 'mousemove', this.onDocumentMouseMove.bind(this), false );
