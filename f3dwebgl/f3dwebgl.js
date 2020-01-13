@@ -135,6 +135,8 @@ var f3dwebgl = class{
 		this.group = new THREE.Group();
 		this.scene.add(this.group);
 		
+		this.controls = new THREE.OrbitControls( this.camera, this.renderer.domElement );
+		
 		//eventi
 		document.addEventListener( 'mousemove', this.onDocumentMouseMove.bind(this), false );
 		document.addEventListener( 'touchmove', this.onDocumentMobileMouseMove.bind(this), false );
