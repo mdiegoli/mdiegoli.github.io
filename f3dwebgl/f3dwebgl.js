@@ -506,16 +506,8 @@ var f3dwebgl = class{
 		this.interpolateSpheres();
 		//}
 		
-		// in camera space...
-		let planePosition = new THREE.Vector3( 10, 10, -10 )
-		let normal = this.plane.position.clone().inverse().normalize()
-
-		// convert to world space...
-		this.camera.localToWorld( planePosition )
-		this.camera.localToWorld( normal )
-		normal.sub( this.camera.position ) // fix the normal based on the camera position
-
-		this.plane.setFromNormalAndCoplanarPoint( normal, planePosition )
+		// assume plane is a THREE.Plane
+		this.plane.setFromNormalAndCoplanarPoint( this.camera.position.clone().normalize(), this.scene.position )
 		this.render();	
 	}
 	
