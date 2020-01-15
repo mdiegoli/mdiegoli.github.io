@@ -112,12 +112,11 @@ var f3dwebgl = class{
 		this.wplane.setFromNormalAndCoplanarPoint(dir, centroid).normalize();
 
 		
-		// Align the geometry to the plane
-		var coplanarPoint = this.wplane.coplanarPoint();
-		
-		
 		var planeGeometry = new THREE.PlaneBufferGeometry( 2000, 2000 );
-		var coplanarPoint = this.wplane.coplanarPoint();
+		// Align the geometry to the plane
+		this.wplane.coplanarPoint(coplanarPoint);
+		
+		
 		var focalPoint = new THREE.Vector3().copy(coplanarPoint).add(this.wplane.normal);
 		planeGeometry.lookAt(focalPoint);
 		planeGeometry.translate(coplanarPoint.x, coplanarPoint.y, coplanarPoint.z);
