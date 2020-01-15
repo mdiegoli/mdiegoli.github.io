@@ -125,7 +125,7 @@ var f3dwebgl = class{
 		// Create mesh with the geometry
 		var planeMaterial = new THREE.MeshLambertMaterial({color: 0xffff00, side: THREE.DoubleSide});
 		var dispPlane = new THREE.Mesh(planeGeometry, planeMaterial);
-		scene.add(dispPlane);
+		this.scene.add(dispPlane);
 		
 		geometry.rotateX( - Math.PI / 2 );
 		//this.plane = new THREE.Mesh( geometry, new THREE.MeshToonMaterial( { visible: false } ) );
