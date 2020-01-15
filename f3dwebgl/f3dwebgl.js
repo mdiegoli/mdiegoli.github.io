@@ -105,11 +105,32 @@ var f3dwebgl = class{
 		//
 		this.raycaster = new THREE.Raycaster();
 		this.mouse = new THREE.Vector2();
-		var geometry = new THREE.PlaneBufferGeometry( 2000, 2000 );
+		
+		var dir = new THREE.Vector3(0,1,0);
+		var centroid = this.scene.position;
+		this.wplane = new THREE.Plane();
+		this.wplane.setFromNormalAndCoplanarPoint(dir, centroid).normalize();
+
+		
+		// Align the geometry to the plane
+		var coplanarPoint = this.wplane.coplanarPoint();
+		
+		
+		var planeGeometry = new THREE.PlaneBufferGeometry( 2000, 2000 );
+		var coplanarPoint = this.wplane.coplanarPoint();
+		var focalPoint = new THREE.Vector3().copy(coplanarPoint).add(this.wplane.normal);
+		planeGeometry.lookAt(focalPoint);
+		planeGeometry.translate(coplanarPoint.x, coplanarPoint.y, coplanarPoint.z);
+
+		// Create mesh with the geometry
+		var planeMaterial = new THREE.MeshLambertMaterial({color: 0xffff00, side: THREE.DoubleSide});
+		var dispPlane = new THREE.Mesh(planeGeometry, planeMaterial);
+		scene.add(dispPlane);
+		
 		geometry.rotateX( - Math.PI / 2 );
-		this.plane = new THREE.Mesh( geometry, new THREE.MeshToonMaterial( { visible: false } ) );
-		this.plane.name = 'wp';
-		this.scene.add( this.plane );
+		//this.plane = new THREE.Mesh( geometry, new THREE.MeshToonMaterial( { visible: false } ) );
+		//this.plane.name = 'wp';
+		//this.scene.add( this.plane );
 		
 		// Lights
 		//var ambientLight = new THREE.AmbientLight( 0x606060 );
