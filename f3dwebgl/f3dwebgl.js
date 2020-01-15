@@ -114,6 +114,7 @@ var f3dwebgl = class{
 		
 		var planeGeometry = new THREE.PlaneBufferGeometry( 2000, 2000 );
 		// Align the geometry to the plane
+		var coplanarPoint = {};
 		this.wplane.coplanarPoint(coplanarPoint);
 		
 		
