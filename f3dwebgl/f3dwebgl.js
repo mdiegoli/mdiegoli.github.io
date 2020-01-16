@@ -169,223 +169,223 @@ var f3dwebgl = class{
 	//from https://codepen.io/looeee/pen/RMLJYw
 	/*
 	var SCREEN_WIDTH = window.innerWidth;
-var SCREEN_HEIGHT = window.innerHeight;
-var aspect = SCREEN_WIDTH / SCREEN_HEIGHT;
-var container, stats;
-var camera, scene, renderer, mesh, planeMesh;
-var cameraRig, activeHelper;
-var cameraPerspective;
-var cameraPerspectiveHelper;
-var frustumSize = 600;
-var frustumVertices = [
-  new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(),
-  new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3()
-];
+		var SCREEN_HEIGHT = window.innerHeight;
+		var aspect = SCREEN_WIDTH / SCREEN_HEIGHT;
+		var container, stats;
+		var camera, scene, renderer, mesh, planeMesh;
+		var cameraRig, activeHelper;
+		var cameraPerspective;
+		var cameraPerspectiveHelper;
+		var frustumSize = 600;
+		var frustumVertices = [
+		  new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(),
+		  new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3()
+		];
 
-var skyPlaneGeometry;
-var skyPlaneGeometry;
-var skyPlaneIndexes;
-var skyPlanePositions;
-var skyPlaneUVs;
+		var skyPlaneGeometry;
+		var skyPlaneGeometry;
+		var skyPlaneIndexes;
+		var skyPlanePositions;
+		var skyPlaneUVs;
 
-init();
-animate();
-function init() {
-  container = document.createElement( 'div' );
-  document.body.appendChild( container );
-  scene = new THREE.Scene();
-  //
-  camera = new THREE.PerspectiveCamera( 50, 0.5 * aspect, 1, 10000 );
-  camera.position.z = 2500;
-  cameraPerspective = new THREE.PerspectiveCamera( 50, 0.5 * aspect, 150, 1000 );
-  cameraPerspectiveHelper = new THREE.CameraHelper( cameraPerspective );
-  scene.add( cameraPerspectiveHelper );
+		init();
+		animate();
+		function init() {
+		  container = document.createElement( 'div' );
+		  document.body.appendChild( container );
+		  scene = new THREE.Scene();
+		  //
+		  camera = new THREE.PerspectiveCamera( 50, 0.5 * aspect, 1, 10000 );
+		  camera.position.z = 2500;
+		  cameraPerspective = new THREE.PerspectiveCamera( 50, 0.5 * aspect, 150, 1000 );
+		  cameraPerspectiveHelper = new THREE.CameraHelper( cameraPerspective );
+		  scene.add( cameraPerspectiveHelper );
 
-  //
-  activeCamera = cameraPerspective;
-  activeHelper = cameraPerspectiveHelper;
-  // counteract different front orientation of cameras vs rig
-  cameraPerspective.rotation.y = Math.PI;
-  cameraRig = new THREE.Group();
-  cameraRig.add( cameraPerspective );
-  scene.add( cameraRig );
-  //
-  mesh = new THREE.Mesh(
-    new THREE.SphereBufferGeometry( 100, 16, 8 ),
-    new THREE.MeshBasicMaterial( { color: 0xffffff, wireframe: true } )
-  );
-  scene.add( mesh );
-  var mesh2 = new THREE.Mesh(
-    new THREE.SphereBufferGeometry( 50, 16, 8 ),
-    new THREE.MeshBasicMaterial( { color: 0x00ff00, wireframe: true } )
-  );
-  mesh2.position.y = 150;
-  mesh.add( mesh2 );
-  
-  planeMesh = createPlaneMesh();
-  scene.add(planeMesh);
+		  //
+		  activeCamera = cameraPerspective;
+		  activeHelper = cameraPerspectiveHelper;
+		  // counteract different front orientation of cameras vs rig
+		  cameraPerspective.rotation.y = Math.PI;
+		  cameraRig = new THREE.Group();
+		  cameraRig.add( cameraPerspective );
+		  scene.add( cameraRig );
+		  //
+		  mesh = new THREE.Mesh(
+		    new THREE.SphereBufferGeometry( 100, 16, 8 ),
+		    new THREE.MeshBasicMaterial( { color: 0xffffff, wireframe: true } )
+		  );
+		  scene.add( mesh );
+		  var mesh2 = new THREE.Mesh(
+		    new THREE.SphereBufferGeometry( 50, 16, 8 ),
+		    new THREE.MeshBasicMaterial( { color: 0x00ff00, wireframe: true } )
+		  );
+		  mesh2.position.y = 150;
+		  mesh.add( mesh2 );
 
-  //
-  var geometry = new THREE.Geometry();
-  for ( var i = 0; i < 10000; i ++ ) {
-    var vertex = new THREE.Vector3();
-    vertex.x = THREE.Math.randFloatSpread( 2000 );
-    vertex.y = THREE.Math.randFloatSpread( 2000 );
-    vertex.z = THREE.Math.randFloatSpread( 2000 );
-    geometry.vertices.push( vertex );
-  }
-  var particles = new THREE.Points( geometry, new THREE.PointsMaterial( { color: 0x888888 } ) );
-  scene.add( particles );
-  //
-  renderer = new THREE.WebGLRenderer( { antialias: true } );
-  renderer.setPixelRatio( window.devicePixelRatio );
-  renderer.setSize( SCREEN_WIDTH, SCREEN_HEIGHT );
-  renderer.domElement.style.position = "relative";
-  container.appendChild( renderer.domElement );
-  renderer.autoClear = false;
+		  planeMesh = createPlaneMesh();
+		  scene.add(planeMesh);
 
-  window.addEventListener( 'resize', onWindowResize, false );
-}
+		  //
+		  var geometry = new THREE.Geometry();
+		  for ( var i = 0; i < 10000; i ++ ) {
+		    var vertex = new THREE.Vector3();
+		    vertex.x = THREE.Math.randFloatSpread( 2000 );
+		    vertex.y = THREE.Math.randFloatSpread( 2000 );
+		    vertex.z = THREE.Math.randFloatSpread( 2000 );
+		    geometry.vertices.push( vertex );
+		  }
+		  var particles = new THREE.Points( geometry, new THREE.PointsMaterial( { color: 0x888888 } ) );
+		  scene.add( particles );
+		  //
+		  renderer = new THREE.WebGLRenderer( { antialias: true } );
+		  renderer.setPixelRatio( window.devicePixelRatio );
+		  renderer.setSize( SCREEN_WIDTH, SCREEN_HEIGHT );
+		  renderer.domElement.style.position = "relative";
+		  container.appendChild( renderer.domElement );
+		  renderer.autoClear = false;
 
-function onWindowResize( event ) {
-  SCREEN_WIDTH = window.innerWidth;
-  SCREEN_HEIGHT = window.innerHeight;
-  aspect = SCREEN_WIDTH / SCREEN_HEIGHT;
-  renderer.setSize( SCREEN_WIDTH, SCREEN_HEIGHT );
-  camera.aspect = 0.5 * aspect;
-  camera.updateProjectionMatrix();
-  cameraPerspective.aspect = 0.5 * aspect;
-  cameraPerspective.updateProjectionMatrix();
-}
+		  window.addEventListener( 'resize', onWindowResize, false );
+		}
 
-function createPlaneMesh(){
-  skyPlaneGeometry = new THREE.BufferGeometry();
-  // positions
-  const positions = new Float32Array( [
-    0.0, 0.0,  1.0,
-    1.0, 0.0,  1.0,
-    1.0, 1.0,  1.0,
-    0.0, 1.0,  1.0,
-  ] );
-  skyPlanePositions = new THREE.BufferAttribute(positions, 3);
-  skyPlanePositions.setDynamic(true);
-  skyPlaneGeometry.addAttribute("position", skyPlanePositions);
+		function onWindowResize( event ) {
+		  SCREEN_WIDTH = window.innerWidth;
+		  SCREEN_HEIGHT = window.innerHeight;
+		  aspect = SCREEN_WIDTH / SCREEN_HEIGHT;
+		  renderer.setSize( SCREEN_WIDTH, SCREEN_HEIGHT );
+		  camera.aspect = 0.5 * aspect;
+		  camera.updateProjectionMatrix();
+		  cameraPerspective.aspect = 0.5 * aspect;
+		  cameraPerspective.updateProjectionMatrix();
+		}
 
-  // indexes
-  skyPlaneIndexes = new THREE.BufferAttribute(new Uint32Array([2,1,0, 3,2,0]), 1);
-  skyPlaneGeometry.setIndex(skyPlaneIndexes);
+		function createPlaneMesh(){
+		  skyPlaneGeometry = new THREE.BufferGeometry();
+		  // positions
+		  const positions = new Float32Array( [
+		    0.0, 0.0,  1.0,
+		    1.0, 0.0,  1.0,
+		    1.0, 1.0,  1.0,
+		    0.0, 1.0,  1.0,
+		  ] );
+		  skyPlanePositions = new THREE.BufferAttribute(positions, 3);
+		  skyPlanePositions.setDynamic(true);
+		  skyPlaneGeometry.addAttribute("position", skyPlanePositions);
 
-  // uvs
-  const uvs = new Float32Array([
-    0.0, 0.0,
-    0.0, 1.0,
-    1.0, 1.0,
-    1.0, 0.0
-  ]);
-  skyPlaneUVs = new THREE.BufferAttribute( uvs, 2 );
-  skyPlaneGeometry.addAttribute( 'uv', this.skyPlaneUVs);
-  skyPlaneGeometry.computeBoundingSphere();
+		  // indexes
+		  skyPlaneIndexes = new THREE.BufferAttribute(new Uint32Array([2,1,0, 3,2,0]), 1);
+		  skyPlaneGeometry.setIndex(skyPlaneIndexes);
 
-  var pmesh = new THREE.Mesh(skyPlaneGeometry, new THREE.MeshBasicMaterial({
-    //depthTest: false,
-    color: 0XFF0000,
-    side: THREE.DoubleSide
-    //map: this.texture
-  }));
-  mesh.frustumCulled = false;
-  return pmesh;
-}
+		  // uvs
+		  const uvs = new Float32Array([
+		    0.0, 0.0,
+		    0.0, 1.0,
+		    1.0, 1.0,
+		    1.0, 0.0
+		  ]);
+		  skyPlaneUVs = new THREE.BufferAttribute( uvs, 2 );
+		  skyPlaneGeometry.addAttribute( 'uv', this.skyPlaneUVs);
+		  skyPlaneGeometry.computeBoundingSphere();
 
-function setFrustumVertices(cam, corners){
-    cam.projectionMatrix.copy(cam.projectionMatrix);
-    var cornerIndex = 0;
+		  var pmesh = new THREE.Mesh(skyPlaneGeometry, new THREE.MeshBasicMaterial({
+		    //depthTest: false,
+		    color: 0XFF0000,
+		    side: THREE.DoubleSide
+		    //map: this.texture
+		  }));
+		  mesh.frustumCulled = false;
+		  return pmesh;
+		}
 
-    function addPoint(x, y, z) {
-        corners[cornerIndex++].set(x, y, z).unproject(cam);
-    }
+		function setFrustumVertices(cam, corners){
+		    cam.projectionMatrix.copy(cam.projectionMatrix);
+		    var cornerIndex = 0;
 
-    const w = 1;
-    const h = 1;
-    const n = -1;
-    const f = 1;
+		    function addPoint(x, y, z) {
+			corners[cornerIndex++].set(x, y, z).unproject(cam);
+		    }
 
-    // near
-    addPoint(- w, - h, n);
-    addPoint(w, - h, n);
-    addPoint(- w, h, n);
-    addPoint(w, h, n);
+		    const w = 1;
+		    const h = 1;
+		    const n = -1;
+		    const f = 1;
 
-    // far
-    addPoint(- w - 0.25, - h - 0.25, f - 0.01);
-    addPoint(w + 0.25, - h - 0.25, f - 0.01);
-    addPoint(- w - 0.25, h + 0.25, f - 0.01);
-    addPoint(w + 0.25, h + 0.25, f - 0.01);  
-};
+		    // near
+		    addPoint(- w, - h, n);
+		    addPoint(w, - h, n);
+		    addPoint(- w, h, n);
+		    addPoint(w, h, n);
 
-function updatePlane(){
-        var bottomLeftFarCorner = frustumVertices[4];
-        var bottomRightFarCorner = frustumVertices[5];
-        var topLeftFarCorner = frustumVertices[6];
-        var topRightFarCorner = frustumVertices[7];
-        var zOffset = 0;
-        skyPlanePositions.setXYZ(
-            0,
-            bottomLeftFarCorner.x,
-            bottomLeftFarCorner.y,
-            bottomLeftFarCorner.z+zOffset // z fighting test
-        );
-        skyPlanePositions.setXYZ(
-            1,
-            topLeftFarCorner.x,
-            topLeftFarCorner.y,
-            topLeftFarCorner.z+zOffset
-        );
-        skyPlanePositions.setXYZ(
-            2,
-            topRightFarCorner.x,
-            topRightFarCorner.y,
-            topRightFarCorner.z+zOffset
-        );
-        skyPlanePositions.setXYZ(
-            3,
-            bottomRightFarCorner.x,
-            bottomRightFarCorner.y,
-            bottomRightFarCorner.z+zOffset
-        );
-        planeMesh.geometry.computeBoundingSphere();
-        skyPlanePositions.needsUpdate = true;
-}
+		    // far
+		    addPoint(- w - 0.25, - h - 0.25, f - 0.01);
+		    addPoint(w + 0.25, - h - 0.25, f - 0.01);
+		    addPoint(- w - 0.25, h + 0.25, f - 0.01);
+		    addPoint(w + 0.25, h + 0.25, f - 0.01);  
+		};
 
-function animate() {
-  requestAnimationFrame( animate );
-  setFrustumVertices(cameraPerspective, frustumVertices);
-  updatePlane();
-  render();
-}
+		function updatePlane(){
+			var bottomLeftFarCorner = frustumVertices[4];
+			var bottomRightFarCorner = frustumVertices[5];
+			var topLeftFarCorner = frustumVertices[6];
+			var topRightFarCorner = frustumVertices[7];
+			var zOffset = 0;
+			skyPlanePositions.setXYZ(
+			    0,
+			    bottomLeftFarCorner.x,
+			    bottomLeftFarCorner.y,
+			    bottomLeftFarCorner.z+zOffset // z fighting test
+			);
+			skyPlanePositions.setXYZ(
+			    1,
+			    topLeftFarCorner.x,
+			    topLeftFarCorner.y,
+			    topLeftFarCorner.z+zOffset
+			);
+			skyPlanePositions.setXYZ(
+			    2,
+			    topRightFarCorner.x,
+			    topRightFarCorner.y,
+			    topRightFarCorner.z+zOffset
+			);
+			skyPlanePositions.setXYZ(
+			    3,
+			    bottomRightFarCorner.x,
+			    bottomRightFarCorner.y,
+			    bottomRightFarCorner.z+zOffset
+			);
+			planeMesh.geometry.computeBoundingSphere();
+			skyPlanePositions.needsUpdate = true;
+		}
 
-function render() {
-  var r = Date.now() * 0.0005;
-  mesh.position.x = 700 * Math.cos( r );
-  mesh.position.z = 700 * Math.sin( r );
-  mesh.position.y = 700 * Math.sin( r );
-  mesh.children[ 0 ].position.x = 70 * Math.cos( 2 * r );
-  mesh.children[ 0 ].position.z = 70 * Math.sin( r );
+		function animate() {
+		  requestAnimationFrame( animate );
+		  setFrustumVertices(cameraPerspective, frustumVertices);
+		  updatePlane();
+		  render();
+		}
 
-  cameraPerspective.fov = 35 + 30 * Math.sin( 0.5 * r );
-  cameraPerspective.far = mesh.position.length();
-  cameraPerspective.updateProjectionMatrix();
-  cameraPerspectiveHelper.update();
-  cameraPerspectiveHelper.visible = true;
+		function render() {
+		  var r = Date.now() * 0.0005;
+		  mesh.position.x = 700 * Math.cos( r );
+		  mesh.position.z = 700 * Math.sin( r );
+		  mesh.position.y = 700 * Math.sin( r );
+		  mesh.children[ 0 ].position.x = 70 * Math.cos( 2 * r );
+		  mesh.children[ 0 ].position.z = 70 * Math.sin( r );
 
-  cameraRig.lookAt( mesh.position );
-  renderer.clear();
-  activeHelper.visible = false;
-  renderer.setViewport( 0, 0, SCREEN_WIDTH/2, SCREEN_HEIGHT );
-  renderer.render( scene, activeCamera );
-  activeHelper.visible = true;
-  renderer.setViewport( SCREEN_WIDTH/2, 0, SCREEN_WIDTH/2, SCREEN_HEIGHT );
-  renderer.render( scene, camera );
-}
+		  cameraPerspective.fov = 35 + 30 * Math.sin( 0.5 * r );
+		  cameraPerspective.far = mesh.position.length();
+		  cameraPerspective.updateProjectionMatrix();
+		  cameraPerspectiveHelper.update();
+		  cameraPerspectiveHelper.visible = true;
+
+		  cameraRig.lookAt( mesh.position );
+		  renderer.clear();
+		  activeHelper.visible = false;
+		  renderer.setViewport( 0, 0, SCREEN_WIDTH/2, SCREEN_HEIGHT );
+		  renderer.render( scene, activeCamera );
+		  activeHelper.visible = true;
+		  renderer.setViewport( SCREEN_WIDTH/2, 0, SCREEN_WIDTH/2, SCREEN_HEIGHT );
+		  renderer.render( scene, camera );
+	}
 	*/
 	function createPlaneMesh(){
 		  this.skyPlaneGeometry = new THREE.BufferGeometry();
