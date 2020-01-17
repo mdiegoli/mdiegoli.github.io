@@ -111,7 +111,7 @@ var f3dwebgl = class{
 		geometry.rotateX( - Math.PI / 2 );
 		this.plane = new THREE.Mesh( geometry, new THREE.MeshToonMaterial( { visible: false } ) );
 		this.plane.name = 'wp';
-		this.scene.add( this.plane );
+		//this.scene.add( this.plane );
 		
 		// Lights
 		//var ambientLight = new THREE.AmbientLight( 0x606060 );
@@ -434,6 +434,7 @@ var f3dwebgl = class{
 		    transparent:true
 		  }));
 		  this.mesh.frustumCulled = false;
+		  this.mesh.name = 'wp';
 		  return pmesh;
 	}
 	
