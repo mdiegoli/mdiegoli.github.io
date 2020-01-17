@@ -172,6 +172,8 @@ var f3dwebgl = class{
 		this.scene.add( this.mesh );
 		this.planeMesh = this.createPlaneMesh();
 		this.scene.add(this.planeMesh);
+		this.setFrustumVertices(this.camera, this.frustumVertices);
+		this.updatePlane();
 		
 	}
 	//from https://codepen.io/looeee/pen/RMLJYw
@@ -426,8 +428,10 @@ var f3dwebgl = class{
 		  var pmesh = new THREE.Mesh(this.skyPlaneGeometry, new THREE.MeshBasicMaterial({
 		    //depthTest: false,
 		    color: 0XFF0000,
-		    side: THREE.DoubleSide
+		    side: THREE.DoubleSide,
 		    //map: this.texture
+		    opacity: 0.5,
+		    transparent:true
 		  }));
 		  this.mesh.frustumCulled = false;
 		  return pmesh;
