@@ -164,6 +164,14 @@ var f3dwebgl = class{
 		this.f3dWorld[+this.bodyNumber][+this.chainsNumber][+this.spheresNumber] = {};
 		this.isTouched = false;
 		this.hideConvexHull = false;
+		this.frustumVertices = [new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(),new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3()];
+		this.mesh = new THREE.Mesh(
+			new THREE.SphereBufferGeometry( 100, 16, 8 ),
+			new THREE.MeshBasicMaterial( { color: 0xffffff, wireframe: true } )
+		);
+		this.scene.add( this.mesh );
+		this.planeMesh = this.createPlaneMesh();
+		this.scene.add(this.planeMesh);
 		
 	}
 	//from https://codepen.io/looeee/pen/RMLJYw
@@ -387,7 +395,7 @@ var f3dwebgl = class{
 		  renderer.render( scene, camera );
 	}
 	*/
-	function createPlaneMesh(){
+	createPlaneMesh(){
 		  this.skyPlaneGeometry = new THREE.BufferGeometry();
 		  // positions
 		  const positions = new Float32Array( [
@@ -421,69 +429,69 @@ var f3dwebgl = class{
 		    side: THREE.DoubleSide
 		    //map: this.texture
 		  }));
-		  mesh.frustumCulled = false;
+		  this.mesh.frustumCulled = false;
 		  return pmesh;
 	}
 	
-	function setFrustumVertices(cam, corners){
-    cam.projectionMatrix.copy(cam.projectionMatrix);
-    var cornerIndex = 0;
+	setFrustumVertices(cam, corners){
+		cam.projectionMatrix.copy(cam.projectionMatrix);
+		var cornerIndex = 0;
 
-    function addPoint(x, y, z) {
-        corners[cornerIndex++].set(x, y, z).unproject(cam);
-    }
+		function addPoint(x, y, z) {
+			corners[cornerIndex++].set(x, y, z).unproject(cam);
+		}
 
-    const w = 1;
-    const h = 1;
-    const n = -1;
-    const f = 1;
+		const w = 1;
+		const h = 1;
+		const n = -1;
+		const f = 1;
 
-    // near
-    addPoint(- w, - h, n);
-    addPoint(w, - h, n);
-    addPoint(- w, h, n);
-    addPoint(w, h, n);
+		// near
+		addPoint(- w, - h, n);
+		addPoint(w, - h, n);
+		addPoint(- w, h, n);
+		addPoint(w, h, n);
 
-    // far
-    addPoint(- w - 0.25, - h - 0.25, f - 0.01);
-    addPoint(w + 0.25, - h - 0.25, f - 0.01);
-    addPoint(- w - 0.25, h + 0.25, f - 0.01);
-    addPoint(w + 0.25, h + 0.25, f - 0.01);  
-};
+		// far
+		addPoint(- w - 0.25, - h - 0.25, f - 0.01);
+		addPoint(w + 0.25, - h - 0.25, f - 0.01);
+		addPoint(- w - 0.25, h + 0.25, f - 0.01);
+		addPoint(w + 0.25, h + 0.25, f - 0.01);  
+	}
 
-function updatePlane(){
-        var bottomLeftFarCorner = frustumVertices[4];
-        var bottomRightFarCorner = frustumVertices[5];
-        var topLeftFarCorner = frustumVertices[6];
-        var topRightFarCorner = frustumVertices[7];
+	updatePlane(){
+        var bottomLeftFarCorner = this.frustumVertices[4];
+        var bottomRightFarCorner = this.frustumVertices[5];
+        var topLeftFarCorner = this.frustumVertices[6];
+        var topRightFarCorner = this.frustumVertices[7];
         var zOffset = 0;
-        skyPlanePositions.setXYZ(
+        this.skyPlanePositions.setXYZ(
             0,
             bottomLeftFarCorner.x,
             bottomLeftFarCorner.y,
             bottomLeftFarCorner.z+zOffset // z fighting test
         );
-        skyPlanePositions.setXYZ(
+        this.skyPlanePositions.setXYZ(
             1,
             topLeftFarCorner.x,
             topLeftFarCorner.y,
             topLeftFarCorner.z+zOffset
         );
-        skyPlanePositions.setXYZ(
+        this.skyPlanePositions.setXYZ(
             2,
             topRightFarCorner.x,
             topRightFarCorner.y,
             topRightFarCorner.z+zOffset
         );
-        skyPlanePositions.setXYZ(
+        this.skyPlanePositions.setXYZ(
             3,
             bottomRightFarCorner.x,
             bottomRightFarCorner.y,
             bottomRightFarCorner.z+zOffset
         );
-        planeMesh.geometry.computeBoundingSphere();
-        skyPlanePositions.needsUpdate = true;
-}
+        this.planeMesh.geometry.computeBoundingSphere();
+        this.skyPlanePositions.needsUpdate = true;
+	}
 
 	
 	
@@ -833,7 +841,9 @@ function updatePlane(){
 		//}
 		
 		// assume plane is a THREE.Plane
-		this.plane.setFromNormalAndCoplanarPoint( this.camera.position.clone().normalize(), this.scene.position )
+		//this.plane.setFromNormalAndCoplanarPoint( this.camera.position.clone().normalize(), this.scene.position )
+		this.setFrustumVertices(this.camera, this.frustumVertices);
+		this.updatePlane();
 		this.render();	
 	}
 	
