@@ -87,7 +87,7 @@ var f3dwebgl = class{
 		//this.rollOverMaterial = new THREE.MeshBasicMaterial( { color: 0xff0000, opacity: 0.5, transparent: true } );
 		//this.rollOverMesh = new THREE.Mesh( this.rollOverGeo, this.rollOverMaterial );
 		//scene.add( rollOverMesh );
-		/* OLD WP
+		/* OLD WP */
 		var sizeH = window.innerHeight, sizeW = window.innerWidth, step = 100;
 		var geometry = new THREE.Geometry();
 		for ( var i = -sizeH; i <= sizeH; i += step ) {
@@ -106,7 +106,7 @@ var f3dwebgl = class{
 		this.plane = new THREE.Mesh( geometry, new THREE.MeshToonMaterial( { visible: false } ) );
 		this.plane.name = 'wp';
 		this.scene.add( this.plane );
-		*/
+		
 		this.raycaster = new THREE.Raycaster();
 		this.mouse = new THREE.Vector2();
 		// Lights
