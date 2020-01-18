@@ -430,7 +430,7 @@ var f3dwebgl = class{
 		    transparent:true
 		  }));
 		  this.mesh.frustumCulled = false;
-		  this.mesh.name = 'wp';
+		  pmesh.name = 'wp';
 		  return pmesh;
 	}
 	
