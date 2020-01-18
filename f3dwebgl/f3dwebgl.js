@@ -768,7 +768,7 @@ var f3dwebgl = class{
 					let st = this.f3dWorld[+b][+c][+s];
 					let s1 = st.sphere;
 					let s2 = this.f3dWorld[+b][+c][+st.head].sphere;
-					st.head?this.interpolate2Spheres(s1,s2,s,st.head):'';
+					st.head?this.r_interpolate2Spheres(s1,s2,s,st.head):'';
 					if(!this.hideConvexHull) st.head?this.convexHullBetween2Spheres(s1,s2,s,st.head):'';
 				}
 			}
@@ -798,7 +798,7 @@ var f3dwebgl = class{
 		let distance = Math.sqrt(x_diff * x_diff + y_diff * y_diff + z_diff * z_diff);
 		let numberOfTokens;
 		//todo: calcolare il numero dei tokens in base alla dimensione delle due sfere
-		numberOfTokens = distance/60;
+		numberOfTokens = distance/30;
 		
 		token_position_x = x_diff/numberOfTokens;
 		token_position_y = y_diff/numberOfTokens;
@@ -824,6 +824,48 @@ var f3dwebgl = class{
 		//console.log(JSON.stringify(this.scene));
 	}
 	
+	r_interpolate2Spheres(s1,s2,i,ii){
+		let x_diff = (s1.position.x - s2.position.x);
+		let y_diff = (s1.position.y - s2.position.y);
+		let z_diff = (s1.position.z - s2.position.z);
+		let scale_x_diff = (s1.scale.x - s2.scale.x);
+		let scale_y_diff = (s1.scale.y - s2.scale.y);
+		let scale_z_diff = (s1.scale.z - s2.scale.z);
+		let token_position_x,token_position_y,token_position_z, token_scale_x,token_scale_y,token_scale_z;
+		let distance = Math.sqrt(x_diff * x_diff + y_diff * y_diff + z_diff * z_diff);
+		let numberOfTokens;
+		//todo: calcolare il numero dei tokens in base alla dimensione delle due sfere
+		numberOfTokens = 2;
+		
+		token_position_x = x_diff/numberOfTokens;
+		token_position_y = y_diff/numberOfTokens;
+		token_position_z = z_diff/numberOfTokens;
+		token_scale_x = scale_x_diff/numberOfTokens;
+		token_scale_y = scale_y_diff/numberOfTokens;
+		token_scale_z = scale_z_diff/numberOfTokens;
+		
+		//s<numberOfTokens-1, perché altrimenti la penultima sfera sarebbe grande come l'ultima
+		//for(let s = 0;s<numberOfTokens-1;s++){
+		let sphere = this.createSphere(0xff0000);
+		sphere.position.x = s1.position.x - token_position_x;
+		sphere.position.y = s1.position.y - token_position_y;
+		sphere.position.z = s1.position.z - token_position_z;
+		sphere.scale.x = s1.scale.x - token_scale_x;
+		sphere.scale.y = s1.scale.y - token_scale_y;
+		sphere.scale.z = s1.scale.z - token_scale_z;
+		sphere.name = 'interpolation_'+i+'_'+ ii + '_' + this.bodyNumber + '_' + this.chainsNumber;
+
+		this.group.add( sphere );
+		if((distance > s1.scale.x) || (distance > s2.scale.x)){
+			this.r_interpolate2Spheres(s1,sphere,i,ii);
+			this.r_interpolate2Spheres(sphere,s2,i,ii);
+			
+		}
+		//}
+				
+		//console.log(JSON.stringify(this.scene));
+	}
+
 	mouseup( event ){
 	        this.info2.innerHTML = '';
 		this.draw_mode = false;
