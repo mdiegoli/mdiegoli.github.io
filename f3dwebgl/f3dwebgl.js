@@ -1,6 +1,7 @@
 //if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 import * as THREE from '../Utils/js/three.module.js';
 import { ConvexBufferGeometry } from '../Utils/js/mod/ConvexGeometry.js';
+import { TrackballControls } from '../Utils/js/mod/TrackballControls.js';
 import { OrbitControls } from '../Utils/js/mod/OrbitControls.js';
 var f3dwebgl = class{
 	constructor(){
@@ -41,6 +42,7 @@ var f3dwebgl = class{
 		this.info.style.textAlign = 'center';
 		//todo: create a js class to handle bar buttons
 		this.sphereScale = 10;
+		this.drawMove = 'MOVE';
 		
 		this.info.innerHTML = `
 		<div class="toolbar">
@@ -51,7 +53,10 @@ var f3dwebgl = class{
 				new Chain
 			</div>
 			<div class="barButton" onmousedown="showHideCH(event)" onmousemove="event.stopPropagation()" onmouseup="event.stopPropagation()"  ontouchstart="touchCH(event)" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation();endTouch();">
-				CH
+				MESH
+			</div>
+			<div id="drawMove" class="barButton" onmousedown="moveMode(event)" onmousemove="event.stopPropagation()" onmouseup="event.stopPropagation()"  ontouchstart="touchMoveMode(event)" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation();endTouch();">
+			`+this.drawMove+`
 			</div>
 			<div>
 				<div class="barLabel">
@@ -78,7 +83,7 @@ var f3dwebgl = class{
 		this.info2.innerHTML = 'selezione';
 		this.container.appendChild( this.info2 );
 		//camera
-		this.camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 10000 );
+		this.camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 100 );
 		this.camera.position.set(0, 1000, 0 );
 		this.camera.lookAt( new THREE.Vector3() );
 		this.scene = new THREE.Scene();
@@ -134,8 +139,10 @@ var f3dwebgl = class{
 		this.group = new THREE.Group();
 		this.scene.add(this.group);
 		
+		//this.controls = new TrackballControls( this.camera, this.renderer.domElement );
 		this.controls = new OrbitControls( this.camera, this.renderer.domElement );
-		
+		//disable to draw on start
+		this.controls.enabled = false;
 		//eventi
 		document.addEventListener( 'mousemove', this.onDocumentMouseMove.bind(this), false );
 		document.addEventListener( 'touchmove', this.onDocumentMobileMouseMove.bind(this), false );
@@ -161,15 +168,16 @@ var f3dwebgl = class{
 		this.isTouched = false;
 		this.hideConvexHull = false;
 		this.frustumVertices = [new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(),new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3()];
-		this.mesh = new THREE.Mesh(
-			new THREE.SphereBufferGeometry( 100, 16, 8 ),
-			new THREE.MeshBasicMaterial( { color: 0xffffff, wireframe: true } )
-		);
-		this.scene.add( this.mesh );
+		//this.mesh = new THREE.Mesh(
+		//	new THREE.SphereBufferGeometry( 100, 16, 8 ),
+		//	new THREE.MeshBasicMaterial( { color: 0xffffff, wireframe: true } )
+		//);
+		//this.scene.add( this.mesh );
 		this.planeMesh = this.createPlaneMesh();
 		this.scene.add(this.planeMesh);
 		this.setFrustumVertices(this.camera, this.frustumVertices);
 		this.updatePlane();
+		this.distanceFactor = 10;
 		
 	}
 	//from https://codepen.io/looeee/pen/RMLJYw
@@ -429,7 +437,7 @@ var f3dwebgl = class{
 		    opacity: 0.5,
 		    transparent:true
 		  }));
-		  this.mesh.frustumCulled = false;
+		  //this.mesh.frustumCulled = false;
 		  pmesh.name = 'wp';
 		  return pmesh;
 	}
@@ -675,15 +683,19 @@ var f3dwebgl = class{
 	}
 	
 	onDocumentMobileMouseDown( event ){
-		var x = event.targetTouches[0].pageX;
-		var y = event.targetTouches[0].pageY;
-		this.mousedown(event, x,y,this);
+		if(!this.controls.enabled){
+			var x = event.targetTouches[0].pageX;
+			var y = event.targetTouches[0].pageY;
+			this.mousedown(event, x,y,this);
+		}
 	}
 
 	onDocumentMouseDown( event ) {
-		var x = event.clientX;
-		var y =  event.clientY;
-		this.mousedown(event, x,y,this);
+		if(!this.controls.enabled){
+			var x = event.clientX;
+			var y =  event.clientY;
+			this.mousedown(event, x,y,this);
+		}
 	}
 
 	mousedown( event, x, y,me ) {
@@ -854,9 +866,8 @@ var f3dwebgl = class{
 		sphere.scale.y = s1.scale.y - token_scale_y;
 		sphere.scale.z = s1.scale.z - token_scale_z;
 		sphere.name = 'interpolation_'+i+'_'+ ii + '_' + this.bodyNumber + '_' + this.chainsNumber;
-
 		this.group.add( sphere );
-		if((distance > s1.scale.x) || (distance > s2.scale.x)){
+		if((distance > (s1.scale.x*this.distanceFactor)) || (distance > (s2.scale.x*this.distanceFactor))){
 			this.r_interpolate2Spheres(s1,sphere,i,ii);
 			this.r_interpolate2Spheres(sphere,s2,i,ii);
 			
@@ -942,6 +953,21 @@ var f3dwebgl = class{
 		this.hideConvexHull = !this.hideConvexHull;
 		this.mouseup();
 	}
+
+	moveMode(){
+		if(this.drawMove.indexOf('MOVE') != -1){
+			this.controls.enabled = true;
+			this.drawMove = 'DRAW';	
+		}
+		else{
+			this.controls.enabled = false;
+			this.drawMove = 'MOVE';
+		}
+		this.updateDrawMove();
+	}
+	updateDrawMove(){
+		document.getElementById('drawMove').innerText = this.drawMove;
+	}
 }
 
 var f = new f3dwebgl();
@@ -967,6 +993,23 @@ window.touchCH = (e) => {
 	}
 	
 }
+
+window.moveMode = (e) => {
+	e.stopPropagation();
+	f.moveMode();
+}
+window.touchMoveMode = (e) => {
+	e.stopPropagation();
+	e.preventDefault();
+	//sigle touch event (and mouse event)
+	if(f.isTouched == false){
+		console.log('touchBody');
+		f.isTouched = true;
+		f.moveMode();
+	}
+	
+}
+
 
 window.touchBody = (e) => {
 	e.stopPropagation();
