@@ -670,10 +670,11 @@ var f3dwebgl = class{
 			);
 			if(me.indexPickedObject || me.indexPickedObject === 0){
 				for(let i = 0,intersect_length = intersects.length;i<intersect_length;i++){
-					if(intersects[i].object.name.length === 0)
+					if(intersects[i].object.name.indexOf('wp') != -1){
 						me.f3dWorld[me.indexPickedBody][me.indexPickedChain][+(me.indexPickedObject)].sphere.position.copy( intersects[i].point );
 						me.f3dWorld[me.indexPickedBody][me.indexPickedChain][+(me.indexPickedObject)].sphere.updateMatrixWorld();
 						//this.scene.children[this.f3d_scene[0][this.indexPickedObject]].position.copy( intersects[i].point );
+					}
 				}	
 			}
 		}
