@@ -455,11 +455,7 @@ var f3dwebgl = class{
 		const n = -1;
 		const f = 1;
 
-		// far
-		addPoint(- w - 0.25, - h - 0.25, f - 0.01);
-		addPoint(w + 0.25, - h - 0.25, f - 0.01);
-		addPoint(- w - 0.25, h + 0.25, f - 0.01);
-		addPoint(w + 0.25, h + 0.25, f - 0.01);  
+		
 		
 		// near
 		addPoint(- w, - h, n);
@@ -467,7 +463,11 @@ var f3dwebgl = class{
 		addPoint(- w, h, n);
 		addPoint(w, h, n);
 
-		
+		// far
+		addPoint(- w - 0.25, - h - 0.25, f - 0.01);
+		addPoint(w + 0.25, - h - 0.25, f - 0.01);
+		addPoint(- w - 0.25, h + 0.25, f - 0.01);
+		addPoint(w + 0.25, h + 0.25, f - 0.01);  
 	}
 
 	updatePlane(){
