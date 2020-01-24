@@ -74,6 +74,9 @@ var f3dwebgl = class{
 					+
 				</div>
 			</div>
+			<div class="barButton" onmousedown="export(event)" onmousemove="event.stopPropagation()" onmouseup="event.stopPropagation()"  ontouchstart="touchExport(event)" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation();endTouch();">
+			EXPORT
+			</div>
 		</div>`;
 
 		this.container.appendChild( this.info );
@@ -1055,6 +1058,22 @@ window.touchCH = (e) => {
 		console.log('touchBody');
 		f.isTouched = true;
 		f.setCH();
+	}
+	
+}
+
+window.export = (e) => {
+	e.stopPropagation();
+	f.esportCH();
+}
+window.touchExport = (e) => {
+	e.stopPropagation();
+	e.preventDefault();
+	//sigle touch event (and mouse event)
+	if(f.isTouched == false){
+		console.log('touchBody');
+		f.isTouched = true;
+		f.esportCH();
 	}
 	
 }
