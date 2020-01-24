@@ -997,17 +997,18 @@ var f3dwebgl = class{
 			forcePowerOfTwoTextures: false,
 			maxTextureSize: Infinity 
 		};
-		gltfExporter.parse( this.ch_scene, function ( result ) {
+		var me = this;
+		gltfExporter.parse( me.ch_group, function ( result ) {
 
 			if ( result instanceof ArrayBuffer ) {
 
-				this.saveArrayBuffer( result, 'scene.glb' );
+				me.saveArrayBuffer( result, 'scene.glb' );
 
 			} else {
 
 				var output = JSON.stringify( result, null, 2 );
 				console.log( output );
-				this.saveString( output, 'scene.gltf' );
+				me.saveString( output, 'scene.gltf' );
 
 			}
 
