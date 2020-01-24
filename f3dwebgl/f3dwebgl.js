@@ -60,7 +60,7 @@ var f3dwebgl = class{
 			<div id="drawMove" class="barButton" onmousedown="moveMode(event)" onmousemove="event.stopPropagation()" onmouseup="event.stopPropagation()"  ontouchstart="touchMoveMode(event)" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation();endTouch();">
 			`+this.drawMove+`
 			</div>
-			<div class="barButton" onmousedown="export(event)" onmousemove="event.stopPropagation()" onmouseup="event.stopPropagation()"  ontouchstart="touchExport(event)" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation();endTouch();">
+			<div class="barButton" onmousedown="export_fn(event)" onmousemove="event.stopPropagation()" onmouseup="event.stopPropagation()"  ontouchstart="touchExport(event)" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation();endTouch();">
 				EXPORT
 			</div>
 			<div>
@@ -1063,7 +1063,7 @@ window.touchCH = (e) => {
 	
 }
 
-window.export = (e) => {
+window.export_fn = (e) => {
 	e.stopPropagation();
 	f.esportCH();
 }
