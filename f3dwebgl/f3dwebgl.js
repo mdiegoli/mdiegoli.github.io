@@ -974,6 +974,10 @@ var f3dwebgl = class{
 	updateDrawMove(){
 		document.getElementById('drawMove').innerText = this.drawMove;
 	}
+	
+	esportCH(){
+		//todo
+	}
 }
 
 var f = new f3dwebgl();
