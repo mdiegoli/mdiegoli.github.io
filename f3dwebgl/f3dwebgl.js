@@ -43,7 +43,7 @@ var f3dwebgl = class{
 		this.info.style.width = '100%';
 		this.info.style.textAlign = 'center';
 		//todo: create a js class to handle bar buttons
-		this.sphereScale = 10;
+		this.sphereScale = 1;
 		this.drawMove = 'MOVE';
 		
 		this.info.innerHTML = `
