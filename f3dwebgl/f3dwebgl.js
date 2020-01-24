@@ -976,7 +976,7 @@ var f3dwebgl = class{
 	}
 	
 	esportCH(){
-		//todo
+		//https://github.com/mrdoob/three.js/blob/master/examples/misc_exporter_gltf.html
 	}
 }
 
