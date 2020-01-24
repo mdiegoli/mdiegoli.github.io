@@ -77,6 +77,9 @@ var f3dwebgl = class{
 		</div>`;
 
 		this.container.appendChild( this.info );
+		this.link = document.createElement( 'a' );
+		this.link.style.display = 'none';
+		document.body.appendChild( this.link ); // Firefox workaround, see #6594
 		this.info2 = document.createElement( 'div' );
 		this.info2.style.position = 'absolute';
 		this.info2.style.top = '30px';
@@ -978,7 +981,57 @@ var f3dwebgl = class{
 	}
 	
 	esportCH(){
-		//https://github.com/mrdoob/three.js/blob/master/examples/misc_exporter_gltf.html
+		
+		var gltfExporter = new GLTFExporter();
+
+		var options = {
+			trs: false,
+			onlyVisible: true,
+			truncateDrawRange: true,
+			binary: false,
+			forceIndices: true,
+			forcePowerOfTwoTextures: false,
+			maxTextureSize: Infinity 
+		};
+		gltfExporter.parse( this.ch_scene, function ( result ) {
+
+			if ( result instanceof ArrayBuffer ) {
+
+				this.saveArrayBuffer( result, 'scene.glb' );
+
+			} else {
+
+				var output = JSON.stringify( result, null, 2 );
+				console.log( output );
+				this.saveString( output, 'scene.gltf' );
+
+			}
+
+		}, options );
+
+	}
+	
+	save( blob, filename ) {
+
+		this.link.href = URL.createObjectURL( blob );
+		this.link.download = filename;
+		this.link.click();
+
+		// URL.revokeObjectURL( url ); breaks Firefox...
+
+	}
+
+	saveString( text, filename ) {
+
+		this.save( new Blob( [ text ], { type: 'text/plain' } ), filename );
+
+	}
+
+
+	saveArrayBuffer( buffer, filename ) {
+
+		this.save( new Blob( [ buffer ], { type: 'application/octet-stream' } ), filename );
+
 	}
 }
 
