@@ -137,7 +137,9 @@ var f3dwebgl = class{
 		this.renderer.setSize( window.innerWidth, window.innerHeight );
 		this.container.appendChild( this.renderer.domElement );
 		this.group = new THREE.Group();
+		this.ch_group = new THREE.Group();
 		this.scene.add(this.group);
+		this.scene.add(this.ch_group);
 		
 		//this.controls = new TrackballControls( this.camera, this.renderer.domElement );
 		this.controls = new OrbitControls( this.camera, this.renderer.domElement );
@@ -799,7 +801,7 @@ var f3dwebgl = class{
 		var material = new THREE.MeshBasicMaterial( {color: 0x00ff00, opacity: 0.5,transparent:true} );
 		var mesh = new THREE.Mesh( geometry, material );
 		mesh.name = "convexhull_"+i+"_"+ii;
-		this.group.add( mesh );
+		this.ch_group.add( mesh );
 	}
 	
 	interpolate2Spheres(s1,s2,i,ii){
