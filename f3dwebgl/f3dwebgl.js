@@ -894,6 +894,7 @@ var f3dwebgl = class{
 						
 		}
 		this.group.children.length = 0;
+		this.ch_group.children.length = 0;
 
 		//if(Object.keys(this.f3dWorld[+this.bodyNumber][+this.chainsNumber]).length > 1){
 		this.interpolateSpheres();
