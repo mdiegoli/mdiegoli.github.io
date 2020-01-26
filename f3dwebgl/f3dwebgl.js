@@ -567,6 +567,9 @@ var f3dwebgl = class{
 		me.setOldCoord(intersect.point.x,intersect.point.z);
 		me.setLastSphereCenter(intersect.point.x,intersect.point.z);
 		voxel.position.copy( intersect.point ).add( intersect.face.normal );
+		
+		this.controls.target.copy( intersect.point );
+
 		voxel.updateMatrixWorld();
 		//voxel.position.divideScalar( 50 ).floor().multiplyScalar( 50 ).addScalar( 25 );
 		me.scene.add( voxel );
