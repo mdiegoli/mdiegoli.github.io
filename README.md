@@ -64,7 +64,9 @@ f3dwebgl v1 https://mdiegoli.github.io/f3dwebgl_v1.html , create sphere chain
 
 f3dwebgl v2 https://mdiegoli.github.io/f3dwebgl_v2.html , add html widgets
 
-f3dwebgl v3 https://mdiegoli.github.io/f3dwebgl_v2.html , add convex hull mesh
+f3dwebgl v3 https://mdiegoli.github.io/f3dwebgl_v3.html , add convex hull mesh
+
+f3dwebgl v4 https://mdiegoli.github.io/f3dwebgl_v4.html , change camera target
 
 https://mdiegoli.github.io/convextest.html
 
