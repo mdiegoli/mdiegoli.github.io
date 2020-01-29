@@ -5,6 +5,7 @@ import { TrackballControls } from '../Utils/js/mod/TrackballControls.js';
 import { OrbitControls } from '../Utils/js/mod/OrbitControls.js';
 import { GLTFExporter } from '../Utils/js/mod/GLTFExporter.js';
 
+//WIP
 var widget = class{
 	constructor(obj,fn){
 		obj.info.innerHTML = `
