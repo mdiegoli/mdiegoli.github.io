@@ -5,19 +5,62 @@ import { TrackballControls } from '../Utils/js/mod/TrackballControls.js';
 import { OrbitControls } from '../Utils/js/mod/OrbitControls.js';
 import { GLTFExporter } from '../Utils/js/mod/GLTFExporter.js';
 
-//WIP
-var widget = class{
+var superWidget = class{
 	constructor(obj,fn){
-		obj.info.innerHTML = `
-		<div class="toolbar">
+		//window.f3d.... e dove salvo fn?
+		this.fn = fn;
+		this.obj = obj;
+		document.getElementById('toolbar').innerHTML += `
 			<div class="barButton" onmousedown="${fn}(event)" onmousemove="event.stopPropagation()" onmouseup="event.stopPropagation()" ontouchstart="touch${fn}(event)" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation();endTouch();">
 				new Body
-			</div> 
-		</div>`;
-		obj.addBody = () => {}
-		window.addBody = () => {obj.addBody();};
+			</div>`;
+		this.obj[fn] = this.obj_cb;
+		window[fn] = this.win_cb;
+		window['touch'+fn] = this.win_touchcb;
 	}
 }
+//WIP
+var widgetAddBody = class extends superWidget{
+	obj_cb() {
+		let canAdd = false;
+		for(let c = 0,c_l = Object.keys(this.obj.f3dWorld[+this.obj.bodyNumber]).length;c<c_l;c++){
+			let chain_length = Object.keys(this.obj.f3dWorld[+this.obj.bodyNumber][+c]).length; 
+			if(chain_length > 0){
+				if(canAdd == false){
+					canAdd = true;
+					this.obj.bodyNumber++;
+					console.log('addbody, c:' + c + ', c_l:' + c_l + ', chain_length: ' + chain_length);
+					this.obj.chainsNumber = 0;
+					this.obj.spheresNumber = 0;
+					this.obj.f3dWorld[+this.obj.bodyNumber] = {};
+					this.obj.f3dWorld[+this.obj.bodyNumber][+this.obj.chainsNumber] = {};
+					this.obj.f3dWorld[+this.obj.bodyNumber][+this.obj.chainsNumber][+this.obj.spheresNumber] = {};
+					break;
+				}
+			}
+		}
+	}
+
+	win_cb(e){
+		console.log('mouseBody');
+		e.stopPropagation();
+		this.obj[this.fn]();
+	}
+
+	win_touchcb(e){
+		e.stopPropagation();
+		e.preventDefault();
+		//sigle touch event (and mouse event)
+		if(window.f3d.isTouched == false){
+			console.log('touchBody');
+			window.f3d.isTouched = true;
+			window.f3d['touch'+this.fn]();
+		}
+		
+	}
+	
+}
+
 
 var f3dwebgl = class{
 	constructor(){
@@ -59,7 +102,12 @@ var f3dwebgl = class{
 		//todo: create a js class to handle bar buttons
 		this.sphereScale = 1;
 		this.drawMove = 'MOVE';
-		
+		this.htmlWidgets = '';
+		this.info.innerHTML = `
+		<div id="toolbar" class="toolbar">
+		</div>`;
+
+		/*
 		this.info.innerHTML = `
 		<div class="toolbar">
 			<div class="barButton" onmousedown="addBody(event)" onmousemove="event.stopPropagation()" onmouseup="event.stopPropagation()" ontouchstart="touchBody(event)" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation();endTouch();">
@@ -93,6 +141,7 @@ var f3dwebgl = class{
 			</div>
 			
 		</div>`;
+		*/
 
 		this.container.appendChild( this.info );
 		this.link = document.createElement( 'a' );
@@ -203,6 +252,7 @@ var f3dwebgl = class{
 		this.setFrustumVertices(this.camera, this.frustumVertices);
 		this.updatePlane();
 		this.distanceFactor = 10;
+		var addbody = new widgetAddBody(this,'ADDBODY');
 		
 	}
 	//from https://codepen.io/looeee/pen/RMLJYw
@@ -1057,8 +1107,8 @@ var f3dwebgl = class{
 	}
 }
 
-var f = new f3dwebgl();
-f.render();
+window.f3d = new f3dwebgl();
+window.f3d.render();
 
 window.endTouch = () => {
 	console.log('endTouch');
