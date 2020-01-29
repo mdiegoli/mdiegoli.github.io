@@ -5,6 +5,19 @@ import { TrackballControls } from '../Utils/js/mod/TrackballControls.js';
 import { OrbitControls } from '../Utils/js/mod/OrbitControls.js';
 import { GLTFExporter } from '../Utils/js/mod/GLTFExporter.js';
 
+var widget = class{
+	constructor(obj,fn){
+		obj.info.innerHTML = `
+		<div class="toolbar">
+			<div class="barButton" onmousedown="${fn}(event)" onmousemove="event.stopPropagation()" onmouseup="event.stopPropagation()" ontouchstart="touch${fn}(event)" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation();endTouch();">
+				new Body
+			</div> 
+		</div>`;
+		obj.addBody = () => {}
+		window.addBody = () => {obj.addBody();};
+	}
+}
+
 var f3dwebgl = class{
 	constructor(){
 		this.lastSphereCenterX;
