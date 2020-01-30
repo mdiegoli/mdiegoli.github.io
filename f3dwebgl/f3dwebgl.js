@@ -15,8 +15,8 @@ var superWidget = class{
 				new Body
 			</div>`;
 		this.obj[fn] = this.obj_cb;
-		window[fn] = this.win_cb.apply(this);
-		window['touch'+fn] = this.win_touchcb.apply(this);
+		window[fn] = this.win_cb.apply(this,[event]);
+		window['touch'+fn] = this.win_touchcb.apply(this,[event]);
 	}
 }
 //WIP
