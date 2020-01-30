@@ -255,7 +255,7 @@ var f3dwebgl = class{
 		this.setFrustumVertices(this.camera, this.frustumVertices);
 		this.updatePlane();
 		this.distanceFactor = 10;
-		var addbody = new widgetAddBody(this,'ADDBODY');
+		this.addbody = new widgetAddBody(this,'ADDBODY');
 		
 	}
 	//from https://codepen.io/looeee/pen/RMLJYw
