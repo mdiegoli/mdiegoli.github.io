@@ -11,7 +11,7 @@ var superWidget = class{
 		this.fn = fn;
 		this.obj = obj;
 		document.getElementById('toolbar').innerHTML += `
-			<div class="barButton" onmousedown="${fn}(event,${fn})" onmousemove="event.stopPropagation()" onmouseup="event.stopPropagation()" ontouchstart="touch${fn}(event,${fn})" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation();endTouch();">
+			<div class="barButton" onmousedown="${fn}(event,'${fn}')" onmousemove="event.stopPropagation()" onmouseup="event.stopPropagation()" ontouchstart="touch${fn}(event,'${fn}')" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation();endTouch();">
 				new Body
 			</div>`;
 		//usare le api dom per registrare gli eventi
