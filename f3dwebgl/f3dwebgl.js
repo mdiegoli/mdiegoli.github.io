@@ -11,13 +11,13 @@ var superWidget = class{
 		this.fn = fn;
 		this.obj = obj;
 		document.getElementById('toolbar').innerHTML += `
-			<div class="barButton" onmousedown="${fn}(event)" onmousemove="event.stopPropagation()" onmouseup="event.stopPropagation()" ontouchstart="touch${fn}(event)" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation();endTouch();">
+			<div class="barButton" onmousedown="${fn}(event,${fn})" onmousemove="event.stopPropagation()" onmouseup="event.stopPropagation()" ontouchstart="touch${fn}(event,${fn})" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation();endTouch();">
 				new Body
 			</div>`;
 		//usare le api dom per registrare gli eventi
 		this.obj[fn] = this.obj_cb;
-		window[fn] = this.win_cb.apply(this,[event]);
-		window['touch'+fn] = this.win_touchcb.apply(this,[event]);
+		window[fn] = this.win_cb;
+		window['touch'+fn] = this.win_touchcb;
 	}
 }
 //WIP
@@ -45,20 +45,20 @@ var widgetAddBody = class extends superWidget{
 		}
 	}
 
-	win_cb(e){
+	win_cb(e,fn){
 		console.log('mouseBody');
 		e.stopPropagation();
-		this.obj[this.fn]();
+		window.f3d[fn]();
 	}
 
-	win_touchcb(e){
+	win_touchcb(e,fn){
 		e.stopPropagation();
 		e.preventDefault();
 		//sigle touch event (and mouse event)
 		if(window.f3d.isTouched == false){
 			console.log('touchBody');
 			window.f3d.isTouched = true;
-			window.f3d['touch'+this.fn]();
+			window.f3d['touch'+fn]();
 		}
 		
 	}
