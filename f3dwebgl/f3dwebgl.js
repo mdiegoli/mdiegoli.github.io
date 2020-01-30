@@ -21,6 +21,9 @@ var superWidget = class{
 }
 //WIP
 var widgetAddBody = class extends superWidget{
+	constructor(obj,fn){
+		super(obj,fn)
+	}
 	obj_cb() {
 		let canAdd = false;
 		for(let c = 0,c_l = Object.keys(this.obj.f3dWorld[+this.obj.bodyNumber]).length;c<c_l;c++){
