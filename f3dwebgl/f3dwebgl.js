@@ -119,7 +119,15 @@ var widgetShowMesh = class extends superButtonWidget{
 	}
 	obj_cb(fn) {
 		window.f3d.hideConvexHull = !window.f3d.hideConvexHull;
+		if(window.f3d.hideConvexHull){
+			window.f3d.hideShowCH = 'SHOWMESH';	
+		}
+		else{
+			window.f3d.hideShowCH = 'HIDEMESH';
+		}
+		document.getElementById(fn).innerText = window.f3d.hideShowCH;
 		window.f3d.mouseup();
+		
 	}
 }
 
