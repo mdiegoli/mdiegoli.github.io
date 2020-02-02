@@ -412,8 +412,11 @@ var f3dwebgl = class{
             bottomRightFarCorner.y,
             bottomRightFarCorner.z+zOffset
         );
-        this.planeMesh.geometry.computeBoundingSphere();
-        this.skyPlanePositions.needsUpdate = true;
+		this.planeMesh.geometry.computeBoundingSphere();//<- serve ancora?
+		this.planeMesh.geometry.computeBoundingBox();
+
+		this.skyPlanePositions.needsUpdate = true;
+		this.planeMesh.geometry.boundingBox.getCenter(this.controls.target);
 	}
 
 	addSphereToScene (me,voxel,intersect){
@@ -421,7 +424,6 @@ var f3dwebgl = class{
 		me.setOldCoord(intersect.point.x,intersect.point.z);
 		me.setLastSphereCenter(intersect.point.x,intersect.point.z);
 		voxel.position.copy( intersect.point ).add( intersect.face.normal );
-		this.controls.target.copy( intersect.point );
 		voxel.updateMatrixWorld();
 		me.scene.add( voxel );
 		me.spheresNumber += 1;		
