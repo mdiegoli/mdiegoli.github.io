@@ -241,12 +241,12 @@ var f3dwebgl = class{
 		this.link.style.display = 'none';
 		document.body.appendChild( this.link ); // Firefox workaround, see #6594
 		this.info2 = document.createElement( 'div' );
-		this.info2.style.position = 'absolute';
-		this.info2.style.top = '30px';
+		//this.info2.style.position = 'absolute';
+		//this.info2.style.top = '30px';
 		this.info2.style.width = '100%';
 		this.info2.style.textAlign = 'center';
 		this.info2.innerHTML = 'selezione';
-		this.container.appendChild( this.info2 );
+		this.info.appendChild( this.info2 );
 		//camera
 		this.camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 100 );
 		this.camera.position.set(0, 1000, 0 );
