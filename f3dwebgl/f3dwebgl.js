@@ -29,7 +29,7 @@ var superButtonWidget = class{
 		if(window.f3d.isTouched == false){
 			console.log('touchBody');
 			window.f3d.isTouched = true;
-			window.f3d['touch'+fn](fn);
+			window.f3d[fn](fn);
 		}
 	}
 
@@ -789,6 +789,6 @@ window.f3d.render();
 //only 1 touch at time
 window.endTouch = () => {
 	console.log('endTouch');
-	f.isTouched = false;
+	window.f3d.isTouched = false;
 }
 
