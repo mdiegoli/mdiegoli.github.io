@@ -182,11 +182,15 @@ var widgetSphereScale = class extends superNumericWidget{
 	}
 
 	obj_increase_cb(e,fn){
-		window.f3d.sphereScale++;
+		let tmp = window.f3d.sphereScale + 0.1;
+		window.f3d.sphereScale = parseFloat(tmp.toFixed(2))
 	}
 
 	obj_decrease_cb(e,fn){
-		if((window.f3d.sphereScale-1)>=1) window.f3d.sphereScale--;
+		if((window.f3d.sphereScale-0.1)>=0.1){
+			let tmp = window.f3d.sphereScale - 0.1;
+			window.f3d.sphereScale = parseFloat(tmp.toFixed(2))
+		} 
 	}
 
 	obj_update_cb(e,fn){
