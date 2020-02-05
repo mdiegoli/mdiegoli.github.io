@@ -331,6 +331,7 @@ var f3dwebgl = class{
 		this.exportmesh = new widgetExportMesh(this,'EXPORTMESH');
 		this.drawmove = new widgetDrawMove(this,'MOVE');
 		this.spherescale = new widgetSphereScale(this,'SPHERESCALE');
+		
 	}
 	//from https://codepen.io/looeee/pen/RMLJYw
 	createPlaneMesh(){
@@ -438,7 +439,11 @@ var f3dwebgl = class{
 		voxel.position.copy( intersect.point ).add( intersect.face.normal );
 		voxel.updateMatrixWorld();
 		me.scene.add( voxel );
-		me.spheresNumber += 1;		
+		me.spheresNumber += 1;
+		if(!me.boxHelper) me.boxHelper = new THREE.BoxHelper( voxel, 0xffff00 );
+		else me.boxHelper.setFromObject(voxel);
+		me.scene.add(me.boxHelper);
+		
 	}
 			
 	createSphere(color,scale){
