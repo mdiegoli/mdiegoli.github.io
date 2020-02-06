@@ -439,7 +439,11 @@ var f3dwebgl = class{
 		voxel.position.copy( intersect.point ).add( intersect.face.normal );
 		voxel.updateMatrixWorld();
 		me.scene.add( voxel );
-		me.spheresNumber += 1;		
+		me.indexPickedBody = me.bodyNumber;
+		me.indexPickedChain = me.chainsNumber;
+		me.indexPickedObject = me.spheresNumber;
+		me.spheresNumber += 1;
+				
 		//me.showBBox(voxel,me);
 	}
 	
@@ -639,7 +643,7 @@ var f3dwebgl = class{
 					let s1 = st.sphere;
 					let s2 = this.f3dWorld[+b][+c][+st.head].sphere;
 					st.head?this.r_interpolate2Spheres(s1,s2,s,st.head):'';
-					if(!this.hideConvexHull) st.head?this.convexHullBetween2Spheres(s1,s2,s,st.head):'';
+					if(this.hideConvexHull) st.head?this.convexHullBetween2Spheres(s1,s2,s,st.head):'';
 				}
 			}
 		}
@@ -731,7 +735,7 @@ var f3dwebgl = class{
 		}
 		*/
 
-		me.showBBox(me.f3dWorld[me.indexPickedBody][me.indexPickedChain][+(me.indexPickedObject)].sphere,me);
+		this.showBBox(this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(this.indexPickedObject)].sphere,this);
 		this.group.children.length = 0;
 		this.ch_group.children.length = 0;
 		this.interpolateSpheres();
