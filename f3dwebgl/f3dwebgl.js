@@ -396,35 +396,35 @@ var f3dwebgl = class{
 	}
 
 	updatePlane(){
-        var bottomLeftFarCorner = this.frustumVertices[4];
-        var bottomRightFarCorner = this.frustumVertices[5];
-        var topLeftFarCorner = this.frustumVertices[6];
-        var topRightFarCorner = this.frustumVertices[7];
-        var zOffset = 0;
-        this.skyPlanePositions.setXYZ(
-            0,
-            bottomLeftFarCorner.x,
-            bottomLeftFarCorner.y,
-            bottomLeftFarCorner.z+zOffset // z fighting test
-        );
-        this.skyPlanePositions.setXYZ(
-            1,
-            topLeftFarCorner.x,
-            topLeftFarCorner.y,
-            topLeftFarCorner.z+zOffset
-        );
-        this.skyPlanePositions.setXYZ(
-            2,
-            topRightFarCorner.x,
-            topRightFarCorner.y,
-            topRightFarCorner.z+zOffset
-        );
-        this.skyPlanePositions.setXYZ(
-            3,
-            bottomRightFarCorner.x,
-            bottomRightFarCorner.y,
-            bottomRightFarCorner.z+zOffset
-        );
+		var bottomLeftFarCorner = this.frustumVertices[4];
+		var bottomRightFarCorner = this.frustumVertices[5];
+		var topLeftFarCorner = this.frustumVertices[6];
+		var topRightFarCorner = this.frustumVertices[7];
+		var zOffset = 0;
+		this.skyPlanePositions.setXYZ(
+		    0,
+		    bottomLeftFarCorner.x,
+		    bottomLeftFarCorner.y,
+		    bottomLeftFarCorner.z+zOffset // z fighting test
+		);
+		this.skyPlanePositions.setXYZ(
+		    1,
+		    topLeftFarCorner.x,
+		    topLeftFarCorner.y,
+		    topLeftFarCorner.z+zOffset
+		);
+		this.skyPlanePositions.setXYZ(
+		    2,
+		    topRightFarCorner.x,
+		    topRightFarCorner.y,
+		    topRightFarCorner.z+zOffset
+		);
+		this.skyPlanePositions.setXYZ(
+		    3,
+		    bottomRightFarCorner.x,
+		    bottomRightFarCorner.y,
+		    bottomRightFarCorner.z+zOffset
+		);
 		this.planeMesh.geometry.computeBoundingSphere();//<- serve ancora?
 		this.planeMesh.geometry.computeBoundingBox();
 
@@ -439,7 +439,12 @@ var f3dwebgl = class{
 		voxel.position.copy( intersect.point ).add( intersect.face.normal );
 		voxel.updateMatrixWorld();
 		me.scene.add( voxel );
-		me.spheresNumber += 1;
+		me.spheresNumber += 1;		
+		me.showBBox(voxel,me);
+	}
+	
+	showBBox(voxel,me){
+		if(!me) me = this;
 		if(!me.boxHelper){
 			me.boxHelper = new THREE.BoxHelper( voxel, 0xffff00 );
 			me.scene.add(me.boxHelper);
@@ -447,8 +452,6 @@ var f3dwebgl = class{
 		else{
 			me.boxHelper.setFromObject(voxel);
 		}
-		
-		
 	}
 			
 	createSphere(color,scale){
