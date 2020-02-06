@@ -542,7 +542,7 @@ var f3dwebgl = class{
 					me.info2.innerHTML += e.object.name + ' ';
 				}
 			);
-			if(me.indexPickedObject || me.indexPickedObject === 0){
+			if((me.indexPickedObject || me.indexPickedObject === 0) && me.draw_mode){
 				for(let i = 0,intersect_length = intersects.length;i<intersect_length;i++){
 					if(intersects[i].object.name.indexOf('wp') != -1){
 						me.f3dWorld[me.indexPickedBody][me.indexPickedChain][+(me.indexPickedObject)].sphere.position.copy( intersects[i].point );
@@ -578,7 +578,7 @@ var f3dwebgl = class{
 		me.mouse.set( ( x / window.innerWidth ) * 2 - 1, - ( y / window.innerHeight ) * 2 + 1 );
 		me.raycaster.setFromCamera( me.mouse, me.camera );
 		var intersects = me.raycaster.intersectObjects( me.scene.children, true );
-		
+		me.draw_mode = true;
 		if ( intersects.length > 0 ) {
 			intersects.map(
 				function(e){
@@ -610,7 +610,7 @@ var f3dwebgl = class{
 				me.addSphereToScene(me, voxel, intersects[0]);
 				me.render();
 			}else if(intersects[ 0 ].object.name.indexOf('wp') !== -1){
-				me.draw_mode = true;
+				//me.draw_mode = true;
 				console.log(intersects[ 0 ].object.name);
 				var intersect = intersects[ 0 ];
 				var voxel = me.createSphere(0xffff00,me.sphereScale);
@@ -723,11 +723,13 @@ var f3dwebgl = class{
 	mouseup( event ){
 	    this.info2.innerHTML = '';
 		this.draw_mode = false;
+		/*
 		if(this.indexPickedObject || this.indexPickedObject !== undefined){
 			this.indexPickedObject = undefined;
 			this.indexPickedBody = undefined;
 			this.indexPickedChain = undefined;
 		}
+		*/
 		this.group.children.length = 0;
 		this.ch_group.children.length = 0;
 		this.interpolateSpheres();
