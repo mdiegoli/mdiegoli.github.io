@@ -440,7 +440,7 @@ var f3dwebgl = class{
 		voxel.updateMatrixWorld();
 		me.scene.add( voxel );
 		me.spheresNumber += 1;		
-		me.showBBox(voxel,me);
+		//me.showBBox(voxel,me);
 	}
 	
 	showBBox(voxel,me){
@@ -730,6 +730,8 @@ var f3dwebgl = class{
 			this.indexPickedChain = undefined;
 		}
 		*/
+
+		me.showBBox(me.f3dWorld[me.indexPickedBody][me.indexPickedChain][+(me.indexPickedObject)].sphere,me);
 		this.group.children.length = 0;
 		this.ch_group.children.length = 0;
 		this.interpolateSpheres();
