@@ -440,9 +440,14 @@ var f3dwebgl = class{
 		voxel.updateMatrixWorld();
 		me.scene.add( voxel );
 		me.spheresNumber += 1;
-		if(!me.boxHelper) me.boxHelper = new THREE.BoxHelper( voxel, 0xffff00 );
-		else me.boxHelper.setFromObject(voxel);
-		me.scene.add(me.boxHelper);
+		if(!me.boxHelper){
+			me.boxHelper = new THREE.BoxHelper( voxel, 0xffff00 );
+			me.scene.add(me.boxHelper);
+		}
+		else{
+			me.boxHelper.setFromObject(voxel);
+		}
+		
 		
 	}
 			
