@@ -471,10 +471,10 @@ var f3dwebgl = class{
 	addNextRing(me,voxel){
 		var ring = {};
 		if(me.spheresNumber == 1){
-			ring = {back:null,head:null,sphere:voxel};
+			ring = {back:null,head:[],sphere:voxel};
 		}else{
-			ring = {back:me.spheresNumber-2,head:null,sphere:voxel};
-			me.f3dWorld[+me.bodyNumber][+me.chainsNumber][+(me.spheresNumber-2)].head = me.spheresNumber-1;
+			ring = {back:me.spheresNumber-2,head:[],sphere:voxel};
+			me.f3dWorld[+me.bodyNumber][+me.chainsNumber][+(me.spheresNumber-2)].head = [me.spheresNumber-1];
 		}	
 		me.f3dWorld[+me.bodyNumber][+me.chainsNumber][+(me.spheresNumber-1)] = ring;
 	}
@@ -605,8 +605,8 @@ var f3dwebgl = class{
 				let token_chain = interpolation_tokens[4];
 				let firstRing = me.f3dWorld[token_body][token_chain][+token_objId1];
 				var voxel = me.createSphere(0xffff00,me.sphereScale);
-				let ring = {back:null,head:firstRing.head,sphere:voxel};
-				firstRing.head = me.spheresNumber;
+				let ring = {back:null,head:[firstRing.head[0]],sphere:voxel};
+				firstRing.head = [me.spheresNumber];
 				me.f3dWorld[token_body][token_chain][+(me.spheresNumber)] = ring;
 				me.indexPickedObject = me.spheresNumber;
 				me.indexPickedBody = token_body;
@@ -641,9 +641,9 @@ var f3dwebgl = class{
 				for(let s = 0,s_l = Object.keys(this.f3dWorld[+b][+c]).length;s<s_l;s++){
 					let st = this.f3dWorld[+b][+c][+s];
 					let s1 = st.sphere;
-					let s2 = this.f3dWorld[+b][+c][+st.head].sphere;
-					st.head?this.r_interpolate2Spheres(s1,s2,s,st.head):'';
-					if(this.hideConvexHull) st.head?this.convexHullBetween2Spheres(s1,s2,s,st.head):'';
+					let s2 = this.f3dWorld[+b][+c][+st.head[0]].sphere;
+					st.head.length>0?this.r_interpolate2Spheres(s1,s2,s,st.head[0]):'';
+					if(this.hideConvexHull) st.head.length?this.convexHullBetween2Spheres(s1,s2,s,st.head[0]):'';
 				}
 			}
 		}
