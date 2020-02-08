@@ -68,6 +68,8 @@ f3dwebgl v3 https://mdiegoli.github.io/f3dwebgl_v3.html , add convex hull mesh
 
 f3dwebgl v4 https://mdiegoli.github.io/f3dwebgl_v4.html , change camera target
 
+f3dwebgl v5 https://mdiegoli.github.io/f3dwebgl_v5.html , multi chain from one node
+
 https://mdiegoli.github.io/convextest.html
 
 sketch MAT SAT (v. 0.1 of f3d)
