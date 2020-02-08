@@ -201,8 +201,8 @@ var widgetSphereScale = class extends superNumericWidget{
 
 var f3dwebgl = class{
 	constructor(){
-		this.lastSphereCenterX;
-		this.lastSphereCenterY;
+		//this.lastSphereCenterX;
+		//this.lastSphereCenterY;
 		this.oldX;
 		this.oldY;
 		this.lastX;
@@ -435,13 +435,13 @@ var f3dwebgl = class{
 	addSphereToScene (me,voxel,intersect){
 		voxel.name = 'f3d_sphere_' + me.spheresNumber + '_' + me.bodyNumber + '_' + me.chainsNumber;
 		me.setOldCoord(intersect.point.x,intersect.point.z);
-		me.setLastSphereCenter(intersect.point.x,intersect.point.z);
+		//me.setLastSphereCenter(intersect.point.x,intersect.point.z);
 		voxel.position.copy( intersect.point ).add( intersect.face.normal );
 		voxel.updateMatrixWorld();
 		me.scene.add( voxel );
-		me.indexPickedBody = me.bodyNumber;
-		me.indexPickedChain = me.chainsNumber;
-		me.indexPickedObject = me.spheresNumber;
+		//me.indexPickedBody = me.bodyNumber;
+		//me.indexPickedChain = me.chainsNumber;
+		//me.indexPickedObject = me.spheresNumber;
 		me.spheresNumber += 1;
 				
 		//me.showBBox(voxel,me);
@@ -472,11 +472,16 @@ var f3dwebgl = class{
 		var ring = {};
 		if(me.spheresNumber == 1){
 			ring = {back:null,head:[],sphere:voxel};
+			me.f3dWorld[+me.bodyNumber][+me.chainsNumber][+(me.spheresNumber-1)] = ring;
 		}else{
-			ring = {back:me.spheresNumber-2,head:[],sphere:voxel};
-			me.f3dWorld[+me.bodyNumber][+me.chainsNumber][+(me.spheresNumber-2)].head = [me.spheresNumber-1];
+			//me.f3dWorld[me.indexPickedBody][me.indexPickedChain][+(me.indexPickedObject)].sphere.position.copy( intersects[i].point );
+			ring = {back:me.indexPickedObject,head:[],sphere:voxel};
+			//my ring
+			me.f3dWorld[+me.indexPickedBody][+me.indexPickedChain][+(me.spheresNumber-1)] = ring;
+			//update selected sphere
+			if(me.f3dWorld[+me.indexPickedBody][+me.indexPickedChain][+(me.indexPickedObject)].head.length == 0) me.f3dWorld[+me.indexPickedBody][+me.indexPickedChain][+(me.indexPickedObject)].head = [me.spheresNumber-1];
+			else me.f3dWorld[+me.indexPickedBody][+me.indexPickedChain][+(me.indexPickedObject)].head.push(me.spheresNumber-1);
 		}	
-		me.f3dWorld[+me.bodyNumber][+me.chainsNumber][+(me.spheresNumber-1)] = ring;
 	}
 
 	distance(x1,y1,x2,y2){
@@ -605,8 +610,9 @@ var f3dwebgl = class{
 				let token_chain = interpolation_tokens[4];
 				let firstRing = me.f3dWorld[token_body][token_chain][+token_objId1];
 				var voxel = me.createSphere(0xffff00,me.sphereScale);
-				let ring = {back:null,head:[firstRing.head[0]],sphere:voxel};
-				firstRing.head = [me.spheresNumber];
+				let index_to_replace = firstRing.head.indexOf(parseInt(token_objId2));
+				let ring = {back:null,head:[firstRing.head[index_to_replace]],sphere:voxel};
+				firstRing.head[index_to_replace] = me.spheresNumber;
 				me.f3dWorld[token_body][token_chain][+(me.spheresNumber)] = ring;
 				me.indexPickedObject = me.spheresNumber;
 				me.indexPickedBody = token_body;
@@ -620,6 +626,9 @@ var f3dwebgl = class{
 				var voxel = me.createSphere(0xffff00,me.sphereScale);
 				me.addSphereToScene(me, voxel, intersect);
 				me.addNextRing(me,voxel);
+				me.indexPickedBody = me.bodyNumber;
+				me.indexPickedChain = me.chainsNumber;
+				me.indexPickedObject = me.spheresNumber-1;
 			}
 			
 		} else {
@@ -640,10 +649,19 @@ var f3dwebgl = class{
 			for(let c = 0,c_l = Object.keys(this.f3dWorld[+b]).length;c<c_l;c++){
 				for(let s = 0,s_l = Object.keys(this.f3dWorld[+b][+c]).length;s<s_l;s++){
 					let st = this.f3dWorld[+b][+c][+s];
-					let s1 = st.sphere;
-					let s2 = this.f3dWorld[+b][+c][+st.head[0]].sphere;
-					st.head.length>0?this.r_interpolate2Spheres(s1,s2,s,st.head[0]):'';
-					if(this.hideConvexHull) st.head.length?this.convexHullBetween2Spheres(s1,s2,s,st.head[0]):'';
+					if(st.head.length>0){
+						let s1 = st.sphere;
+						//let s2 = this.f3dWorld[+b][+c][+st.head[0]].sphere;
+						for(let h = 0,h_l = st.head.length;h<h_l;h++){
+							let s2 = this.f3dWorld[+b][+c][+st.head[h]].sphere;
+							this.r_interpolate2Spheres(s1,s2,s,st.head[h]);
+							if(this.hideConvexHull) this.convexHullBetween2Spheres(s1,s2,s,st.head[h]);
+						}
+							
+					}
+					//let s2 = this.f3dWorld[+b][+c][+st.head[0]].sphere;
+					//st.head.length>0?this.r_interpolate2Spheres(s1,s2,s,st.head[0]):'';
+					//if(this.hideConvexHull) st.head.length?this.convexHullBetween2Spheres(s1,s2,s,st.head[0]):'';
 				}
 			}
 		}
@@ -763,7 +781,7 @@ var f3dwebgl = class{
 			this.oldX = x;
 			this.oldY = y;
 	}
-	
+	/*
 	setLastSphereCenter(x,y){
 		this.lastSphereCenterX = x;
 		this.lastSphereCenterY = y;
@@ -779,7 +797,7 @@ var f3dwebgl = class{
 		this.lastSphere.scale.y += 1;
 		this.lastSphere.scale.z += 1;
 	}
-	
+	*/
 	getOldCoord(){
 		return {x:this.oldX,y:this.oldY};
 	}
