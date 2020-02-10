@@ -6,6 +6,8 @@ threejs forum
 
 https://discourse.threejs.org/
 
+https://discourse.threejs.org/c/showcase
+
 electron
 
 https://www.electronjs.org/
