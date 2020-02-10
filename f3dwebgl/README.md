@@ -2,6 +2,14 @@ wip https://mdiegoli.github.io/f3dwebgl.html
 
 https://mdiegoli.github.io/f3dwebgl_v1.html , add body and chain https://mdiegoli.github.io/f3dwebgl_v2.html , convexhull mesh https://mdiegoli.github.io/f3dwebgl_v3.html
 
+threejs forum
+
+https://discourse.threejs.org/
+
+electron
+
+https://www.electronjs.org/
+
 todo:
 
 after pick a sphere, the new sphere created will be added as last sphere of the body and chain of the picked sphere
