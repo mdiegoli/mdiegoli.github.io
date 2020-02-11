@@ -1,3 +1,4 @@
+import { GLTFExporter } from './GLTFExporter.js';
 var superButtonWidget = class{
 	constructor(obj,fn){
 		document.getElementById('toolbar').innerHTML += `
