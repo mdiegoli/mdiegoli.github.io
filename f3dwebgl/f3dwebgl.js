@@ -284,7 +284,7 @@ var f3dwebgl = class{
 		this.mouse = new THREE.Vector2();
 		// Lights
 		var spotLight = new THREE.SpotLight( 0xffffff );
-		spotLight.position.set( 0, 1000, 0 );
+		spotLight.position.set(1000, 0, 0 );
 		spotLight.castShadow = true;
 		spotLight.shadow.mapSize.width = 1024;
 		spotLight.shadow.mapSize.height = 1024;
