@@ -3,7 +3,7 @@ import * as THREE from '../Utils/js/three.module.js';
 import { ConvexBufferGeometry } from '../Utils/js/mod/ConvexGeometry.js';
 import { TrackballControls } from '../Utils/js/mod/TrackballControls.js';
 import { OrbitControls } from '../Utils/js/mod/OrbitControls.js';
-import { GLTFExporter } from '../Utils/js/mod/GLTFExporter.js';
+//import { GLTFExporter } from '../Utils/js/mod/GLTFExporter.js';
 import {widgetAddBody,widgetAddChain,widgetShowMesh,widgetDrawMove,widgetExportMesh,widgetSphereScale} from '../Utils/js/mod/f3d_widgets.js';
 
 /*
