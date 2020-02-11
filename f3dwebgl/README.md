@@ -12,6 +12,10 @@ electron
 
 https://www.electronjs.org/
 
+sketchfab
+
+https://sketchfab.com/developers/data-api/v3
+
 todo:
 
 after pick a sphere, the new sphere created will be added as last sphere of the body and chain of the picked sphere
