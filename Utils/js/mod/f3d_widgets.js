@@ -1,14 +1,36 @@
 import { GLTFExporter } from './GLTFExporter.js';
-var superButtonWidget = class{
+var superWidget = class{
 	constructor(obj,fn){
+		window[fn] = this.win_cb;
+		window['touch'+fn] = this.win_touchcb;
+	}
+
+	win_cb(e,fn){
+		e.stopPropagation();
+		window.f3d[fn](fn);
+	}
+
+	win_touchcb(e,fn){
+		e.stopPropagation();
+		e.preventDefault();
+		//sigle touch event (and mouse event)
+		if(window.f3d.isTouched == false){
+			console.log('touchBody');
+			window.f3d.isTouched = true;
+			window.f3d[fn](fn);
+		}
+	}
+}
+var superButtonWidget = class extends superWidget{
+	constructor(obj,fn){
+		super(obj,fn);
 		document.getElementById('toolbar').innerHTML += `
 			<div id="${fn}" class="barButton" onmousedown="${fn}(event,'${fn}')" onmousemove="event.stopPropagation()" onmouseup="event.stopPropagation()" ontouchstart="touch${fn}(event,'${fn}')" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation();endTouch();">
 			${fn}
 			</div>`;
 		//usare le api dom per registrare gli eventi
 		obj[fn] = this.obj_cb;
-		window[fn] = this.win_cb;
-		window['touch'+fn] = this.win_touchcb;
+		
 	}
 
 	win_cb(e,fn){
@@ -29,8 +51,9 @@ var superButtonWidget = class{
 
 }
 
-var superNumericWidget = class{
+var superNumericWidget = class extends superWidget{
 	constructor(obj,fn){
+		super(obj,fn);
 		document.getElementById('toolbar').innerHTML += `
 		<div>
 			<div class="barLabel">
