@@ -567,11 +567,21 @@ var f3dwebgl = class{
 		this.updatePlane();
 		this.render();	
 	}
-	
+
 	onDocumentKeyDown( event ) {
 		let x = event.which || event.keyCode;
 		//+ (187) to grow, - (189) to scale down
 		switch( event.keyCode ) {
+			case 68: 
+				window.f3d.controls.enabled = false;
+				window.f3d.drawMove = 'MOVE';
+				document.getElementById('MOVE').innerText = window.f3d.drawMove;
+				break;	
+			case 77:
+				window.f3d.controls.enabled = true;
+				window.f3d.drawMove = 'DRAW';
+				document.getElementById('MOVE').innerText = window.f3d.drawMove;
+				break;
 			case 187: this.scaleSphere(true); break;
 			case 189: this.scaleSphere(false); break;
 		}
