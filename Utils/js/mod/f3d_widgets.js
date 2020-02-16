@@ -258,4 +258,14 @@ var widgetSphereScale = class extends superNumericWidget{
 
 }
 
-export {superButtonWidget,superNumericWidget,widgetAddBody,widgetAddChain,widgetShowMesh,widgetDrawMove,widgetExportMesh,widgetSphereScale,superTextWidget}
+var saveWidget = class extends superTextWidget{
+	constructor(obj,fn){
+		super(obj,fn);
+	}
+	obj_text_cb(e,fn){
+		localStorage['save'] = JSON.stringify(window.f3d.f3dWorld);
+	};
+		
+}
+
+export {saveWidget,superButtonWidget,superNumericWidget,widgetAddBody,widgetAddChain,widgetShowMesh,widgetDrawMove,widgetExportMesh,widgetSphereScale,superTextWidget}
