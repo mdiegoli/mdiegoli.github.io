@@ -90,7 +90,30 @@ var superNumericWidget = class extends superWidget{
 	}
 }
 
-//WIP
+var superTextWidget = class extends superWidget{
+	constructor(obj,fn){
+		super(obj,fn);
+		document.getElementById('toolbar').innerHTML += `
+		<div> 
+			<div class="barButton" onmousedown="${fn}_fn(event,'${fn}')" onmousemove="event.stopPropagation()" onmouseup="event.stopPropagation()"  ontouchstart="${fn}touch_fn(event,'${fn}')" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation();">
+				${fn}
+			</div>
+			<input id="${fn}Text" class="barInputText" type="text" onmousedown="event.stopPropagation();" onmousemove="event.stopPropagation()" onmouseup="event.stopPropagation()"  ontouchstart="event.stopPropagation();" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation();"></input>
+		</div>`;
+		//usare le api dom per registrare gli eventi
+		obj[fn+'_fn'] = this.obj_text_cb;
+		window[fn+'_fn'] = this.win_text_cb;
+		window[fn+'touch_fn'] = this.win_text_cb;
+
+	}
+	
+	win_text_cb(e,fn){
+		e.stopPropagation();
+		window.f3d[fn+'_fn']();
+	}
+}
+
+
 var widgetAddBody = class extends superButtonWidget{
 	constructor(obj,fn){
 		super(obj,fn)
@@ -224,4 +247,15 @@ var widgetSphereScale = class extends superNumericWidget{
 
 }
 
-export {superButtonWidget,superNumericWidget,widgetAddBody,widgetAddChain,widgetShowMesh,widgetDrawMove,widgetExportMesh,widgetSphereScale}
+var widgetSphereScale = class extends superNumericWidget{
+	constructor(obj,fn){
+		super(obj,fn);
+	}
+
+	obj_text_cb(e,fn){
+		window.f3d.mouseup(document.getElementById(fn+'Text').value); 
+	}
+
+}
+
+export {superButtonWidget,superNumericWidget,widgetAddBody,widgetAddChain,widgetShowMesh,widgetDrawMove,widgetExportMesh,widgetSphereScale,superTextWidget}

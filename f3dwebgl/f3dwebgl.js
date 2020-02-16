@@ -3,7 +3,7 @@ import * as THREE from '../Utils/js/three.module.js';
 import { ConvexBufferGeometry } from '../Utils/js/mod/ConvexGeometry.js';
 import { TrackballControls } from '../Utils/js/mod/TrackballControls.js';
 import { OrbitControls } from '../Utils/js/mod/OrbitControls.js';
-import {widgetAddBody,widgetAddChain,widgetShowMesh,widgetDrawMove,widgetExportMesh,widgetSphereScale} from '../Utils/js/mod/f3d_widgets.js';
+import {widgetAddBody,widgetAddChain,widgetShowMesh,widgetDrawMove,widgetExportMesh,widgetSphereScale,superTextWidget} from '../Utils/js/mod/f3d_widgets.js';
 
 var f3dwebgl = class{
 	constructor(){
@@ -137,6 +137,7 @@ var f3dwebgl = class{
 		this.exportmesh = new widgetExportMesh(this,'EXPORTMESH');
 		this.drawmove = new widgetDrawMove(this,'MOVE');
 		this.spherescale = new widgetSphereScale(this,'SPHERESCALE');
+		this.spherescale = new superTextWidget(this,'SAVEMODEL');
 		
 	}
 	//from https://codepen.io/looeee/pen/RMLJYw
