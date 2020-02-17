@@ -109,7 +109,7 @@ var superTextWidget = class extends superWidget{
 	
 	win_text_cb(e,fn){
 		e.stopPropagation();
-		window.f3d[fn+'_fn']();
+		window.f3d[fn+'_fn'](e,fn);
 	}
 }
 
