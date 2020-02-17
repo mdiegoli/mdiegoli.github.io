@@ -263,7 +263,9 @@ var saveWidget = class extends superTextWidget{
 		super(obj,fn);
 	}
 	obj_text_cb(e,fn){
-		localStorage['save'] = JSON.stringify(window.f3d.f3dWorld);
+		let str = document.getElementById(fn+'Text').value;
+		if(!str) alert('No file name!')
+		else localStorage[str] = JSON.stringify(window.f3d.f3dWorld);
 	};
 		
 }
