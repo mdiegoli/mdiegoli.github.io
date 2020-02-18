@@ -203,8 +203,10 @@ var widgetExportMesh = class extends superButtonWidget{
 			forcePowerOfTwoTextures: false,
 			maxTextureSize: Infinity 
 		};
-		var me = window.f3d;
-		gltfExporter.parse( me.ch_group, function ( result ) {
+		var group = {};
+		if(window.f3d.hideConvexHull) group = window.f3d.scene;
+		else group = window.f3d.ch_group;
+		gltfExporter.parse( group, function ( result ) {
 			if ( result instanceof ArrayBuffer ) {
 				me.saveArrayBuffer( result, 'scene.glb' );
 			} else {
