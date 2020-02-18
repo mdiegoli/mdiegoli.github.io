@@ -208,11 +208,11 @@ var widgetExportMesh = class extends superButtonWidget{
 		else group = window.f3d.ch_group;
 		gltfExporter.parse( group, function ( result ) {
 			if ( result instanceof ArrayBuffer ) {
-				me.saveArrayBuffer( result, 'scene.glb' );
+				window.f3d.saveArrayBuffer( result, 'scene.glb' );
 			} else {
 				var output = JSON.stringify( result, null, 2 );
 				console.log( output );
-				me.saveString( output, 'scene.gltf' );
+				window.f3d.saveString( output, 'scene.gltf' );
 			}
 		}, options );
 	}
