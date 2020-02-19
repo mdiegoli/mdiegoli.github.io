@@ -124,7 +124,7 @@ var f3dwebgl = class{
 		this.f3dWorld[+this.bodyNumber][+this.chainsNumber] = {};
 		this.f3dWorld[+this.bodyNumber][+this.chainsNumber][+this.spheresNumber] = {};
 		this.isTouched = false;
-		this.hideConvexHull = false;
+		this.hideConvexHull = true;
 		this.frustumVertices = [new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(),new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3()];
 		this.planeMesh = this.createPlaneMesh();
 		this.scene.add(this.planeMesh);
@@ -462,7 +462,7 @@ var f3dwebgl = class{
 						for(let h = 0,h_l = st.head.length;h<h_l;h++){
 							let s2 = this.f3dWorld[+b][+c][+st.head[h]].sphere;
 							this.r_interpolate2Spheres(s1,s2,s,st.head[h]);
-							if(this.hideConvexHull) this.convexHullBetween2Spheres(s1,s2,s,st.head[h]);
+							if(!this.hideConvexHull) this.convexHullBetween2Spheres(s1,s2,s,st.head[h]);
 						}
 							
 					}
