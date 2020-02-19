@@ -56,7 +56,7 @@ var superNumericWidget = class extends superWidget{
 		super(obj,fn);
 		document.getElementById('toolbar').innerHTML += `
 		<div>
-			<div class="barLabel">
+			<div class="barLabel" onmousedown="event.stopPropagation();" onmousemove="event.stopPropagation()" onmouseup="event.stopPropagation()"  ontouchstart="event.stopPropagation();" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation();">
 			${fn}
 			</div> 
 			<div class="barButton" onmousedown="decrease${fn}_fn(event,'${fn}')" onmousemove="event.stopPropagation()" onmouseup="event.stopPropagation()"  ontouchstart="decrease${fn}_fn(event,'${fn}')" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation();">
