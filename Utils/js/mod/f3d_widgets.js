@@ -204,7 +204,7 @@ var widgetExportMesh = class extends superButtonWidget{
 			maxTextureSize: Infinity 
 		};
 		var group = {};
-		if(window.f3d.hideConvexHull) group = window.f3d.scene;
+		if(window.f3d.hideConvexHull) group = window.f3d.group;
 		else group = window.f3d.ch_group;
 		gltfExporter.parse( group, function ( result ) {
 			if ( result instanceof ArrayBuffer ) {
