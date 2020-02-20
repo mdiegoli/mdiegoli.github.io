@@ -97,8 +97,10 @@ var f3dwebgl = class{
 		this.renderer.setSize( window.innerWidth, window.innerHeight );
 		this.container.appendChild( this.renderer.domElement );
 		this.group = new THREE.Group();
+		this.interpolate_group = new THREE.Group();
 		this.ch_group = new THREE.Group();
 		this.scene.add(this.group);
+		this.scene.add(this.interpolate_group);
 		this.scene.add(this.ch_group);
 		this.controls = new OrbitControls( this.camera, this.renderer.domElement );
 		this.controls.enabled = false;
@@ -245,7 +247,7 @@ var f3dwebgl = class{
 		//me.setLastSphereCenter(intersect.point.x,intersect.point.z);
 		voxel.position.copy( intersect.point ).add( intersect.face.normal );
 		voxel.updateMatrixWorld();
-		me.scene.add( voxel );
+		me.scene.group.add( voxel );
 		//me.indexPickedBody = me.bodyNumber;
 		//me.indexPickedChain = me.chainsNumber;
 		//me.indexPickedObject = me.spheresNumber;
@@ -339,7 +341,7 @@ var f3dwebgl = class{
 				this.f3dWorld[+this.bodyNumber][+this.chainsNumber][index[2]].sphere.scale.set(scale.x,scale.y,scale.z);
 			}
 		}
-		this.group.children.length = 0;
+		this.interpolate_group.children.length = 0;
 		this.interpolateSpheres();
 		this.render();
 	}
@@ -512,7 +514,7 @@ var f3dwebgl = class{
 			sphere.scale.z = s1.scale.z - token_scale_z*(s+1);
 			sphere.name = 'interpolation_'+i+'_'+ ii + '_' + this.bodyNumber + '_' + this.chainsNumber;
 
-			this.group.add( sphere );
+			this.interpolate_group.add( sphere );
 		}
 	}
 	
