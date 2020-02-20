@@ -248,7 +248,7 @@ var widgetSphereScale = class extends superNumericWidget{
 	}
 
 }
-
+/*
 var widgetSphereScale = class extends superNumericWidget{
 	constructor(obj,fn){
 		super(obj,fn);
@@ -259,7 +259,7 @@ var widgetSphereScale = class extends superNumericWidget{
 	}
 
 }
-
+*/
 var saveWidget = class extends superTextWidget{
 	constructor(obj,fn){
 		super(obj,fn);
