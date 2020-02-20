@@ -563,7 +563,7 @@ var f3dwebgl = class{
 		*/
 
 		this.showBBox(this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(this.indexPickedObject)].sphere,this);
-		this.group.children.length = 0;
+		this.interpolate_group.children.length = 0;
 		this.ch_group.children.length = 0;
 		this.interpolateSpheres();
 		this.setFrustumVertices(this.camera, this.frustumVertices);
