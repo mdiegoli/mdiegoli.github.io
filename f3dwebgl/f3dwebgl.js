@@ -247,7 +247,7 @@ var f3dwebgl = class{
 		//me.setLastSphereCenter(intersect.point.x,intersect.point.z);
 		voxel.position.copy( intersect.point ).add( intersect.face.normal );
 		voxel.updateMatrixWorld();
-		me.scene.group.add( voxel );
+		me.group.add( voxel );
 		//me.indexPickedBody = me.bodyNumber;
 		//me.indexPickedChain = me.chainsNumber;
 		//me.indexPickedObject = me.spheresNumber;
