@@ -543,7 +543,7 @@ var f3dwebgl = class{
 		sphere.scale.y = s1.scale.y - token_scale_y;
 		sphere.scale.z = s1.scale.z - token_scale_z;
 		sphere.name = 'interpolation_'+i+'_'+ ii + '_' + this.bodyNumber + '_' + this.chainsNumber;
-		this.group.add( sphere );
+		this.interpolate_group.add( sphere );
 		if((distance > (s1.scale.x*this.distanceFactor)) || (distance > (s2.scale.x*this.distanceFactor))){
 			this.r_interpolate2Spheres(s1,sphere,i,ii);
 			this.r_interpolate2Spheres(sphere,s2,i,ii);
