@@ -571,16 +571,9 @@ var f3dwebgl = class{
 			this.indexPickedChain = this.chainsNumber;
 			this.indexPickedObject = this.spheresNumber-1;
 			this.intersect = {};
+			this.showBBox(this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(this.indexPickedObject)].sphere,this);
 		}
-		/*
-		if(this.indexPickedObject || this.indexPickedObject !== undefined){
-			this.indexPickedObject = undefined;
-			this.indexPickedBody = undefined;
-			this.indexPickedChain = undefined;
-		}
-		*/
-
-		this.showBBox(this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(this.indexPickedObject)].sphere,this);
+		
 		this.interpolate_group.children.length = 0;
 		this.ch_group.children.length = 0;
 		this.interpolateSpheres();
