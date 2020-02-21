@@ -562,7 +562,7 @@ var f3dwebgl = class{
 	    this.info2.innerHTML = '';
 		if(this.draw_mode){
 			this.draw_mode = false;
-			var voxel = me.createSphere(0xffff00,me.sphereScale);
+			var voxel = this.createSphere(0xffff00,this.sphereScale);
 			this.addSphereToScene(this, voxel, this.intersect);
 			this.addNextRing(this,voxel);
 			this.indexPickedBody = this.bodyNumber;
