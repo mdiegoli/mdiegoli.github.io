@@ -361,6 +361,7 @@ var f3dwebgl = class{
 		this.info2.innerHTML = '';
 		var me = this;
 		me.draw_mode = false;
+		window.f3d.controls.enabled = true;
 		if ( intersects.length > 0 ) {
 			intersects.map(
 				function(e){
@@ -562,6 +563,7 @@ var f3dwebgl = class{
 	    this.info2.innerHTML = '';
 		if(this.draw_mode){
 			this.draw_mode = false;
+			window.f3d.controls.enabled = false;
 			var voxel = this.createSphere(0xffff00,this.sphereScale);
 			this.addSphereToScene(this, voxel, this.intersect);
 			this.addNextRing(this,voxel);
