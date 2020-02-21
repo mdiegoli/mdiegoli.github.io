@@ -141,6 +141,7 @@ var f3dwebgl = class{
 		this.drawmove = new widgetDrawMove(this,'MOVE');
 		this.spherescale = new widgetSphereScale(this,'SPHERESCALE');
 		this.spherescale = new saveWidget(this,'SAVEMODEL');
+		this.intersect = {};
 		
 	}
 	//from https://codepen.io/looeee/pen/RMLJYw
@@ -359,6 +360,7 @@ var f3dwebgl = class{
 		var intersects = this.raycaster.intersectObjects( this.scene.children );
 		this.info2.innerHTML = '';
 		var me = this;
+		me.draw_mode = false;
 		if ( intersects.length > 0 ) {
 			intersects.map(
 				function(e){
@@ -436,7 +438,7 @@ var f3dwebgl = class{
 			}else if(intersects[ 0 ].object.name.indexOf('wp') !== -1){
 				me.draw_mode = true;
 				console.log(intersects[ 0 ].object.name);
-				//var intersect = intersects[ 0 ];
+				this.intersect = intersects[ 0 ];
 				//var voxel = me.createSphere(0xffff00,me.sphereScale);
 				//me.addSphereToScene(me, voxel, intersect);
 				//me.addNextRing(me,voxel);
@@ -558,7 +560,16 @@ var f3dwebgl = class{
 
 	mouseup( event ){
 	    this.info2.innerHTML = '';
-		this.draw_mode = false;
+		if(this.draw_mode){
+			this.draw_mode = false;
+			var voxel = me.createSphere(0xffff00,me.sphereScale);
+			this.addSphereToScene(this, voxel, this.intersect);
+			this.addNextRing(this,voxel);
+			this.indexPickedBody = this.bodyNumber;
+			this.indexPickedChain = this.chainsNumber;
+			this.indexPickedObject = this.spheresNumber-1;
+			this.intersect = {};
+		}
 		/*
 		if(this.indexPickedObject || this.indexPickedObject !== undefined){
 			this.indexPickedObject = undefined;
