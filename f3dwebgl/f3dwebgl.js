@@ -434,15 +434,15 @@ var f3dwebgl = class{
 				me.addSphereToScene(me, voxel, intersects[0]);
 				me.render();
 			}else if(intersects[ 0 ].object.name.indexOf('wp') !== -1){
-				//me.draw_mode = true;
+				me.draw_mode = true;
 				console.log(intersects[ 0 ].object.name);
-				var intersect = intersects[ 0 ];
-				var voxel = me.createSphere(0xffff00,me.sphereScale);
-				me.addSphereToScene(me, voxel, intersect);
-				me.addNextRing(me,voxel);
-				me.indexPickedBody = me.bodyNumber;
-				me.indexPickedChain = me.chainsNumber;
-				me.indexPickedObject = me.spheresNumber-1;
+				//var intersect = intersects[ 0 ];
+				//var voxel = me.createSphere(0xffff00,me.sphereScale);
+				//me.addSphereToScene(me, voxel, intersect);
+				//me.addNextRing(me,voxel);
+				//me.indexPickedBody = me.bodyNumber;
+				//me.indexPickedChain = me.chainsNumber;
+				//me.indexPickedObject = me.spheresNumber-1;
 			}
 			
 		} else {
