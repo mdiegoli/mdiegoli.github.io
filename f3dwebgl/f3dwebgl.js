@@ -112,7 +112,7 @@ var f3dwebgl = class{
 		document.addEventListener( 'keyup', this.onDocumentKeyUp.bind(this), false );
 		document.addEventListener( 'mouseup', this.onDocumentMouseUp.bind(this), false );
 		document.addEventListener( 'touchend', this.onDocumentMobileMouseUp.bind(this), false );
-		document.addEventListener( 'click', this.onDocumentClick.bind(this), false );
+		//document.addEventListener( 'click', this.onDocumentClick.bind(this), false );
 		window.addEventListener( 'resize', this.onWindowResize.bind(this), false );
 		Array.prototype.insertAt = function(pos,val){
 			let first = this.slice(0,pos+1);
@@ -309,11 +309,11 @@ var f3dwebgl = class{
 		this.camera.updateProjectionMatrix();
 		this.renderer.setSize( window.innerWidth, window.innerHeight );
 	}
-
+	/*
 	onDocumentClick( event ){
 		alert('click');
 	}
-	
+	*/
 	onDocumentMobileMouseMove( event ){
 		var x = event.targetTouches[0].pageX;
 		var y = event.targetTouches[0].pageY;
