@@ -22,7 +22,7 @@ var f3dwebgl = class{
 		this.raycaster;
 		this.isShiftDown = false;
 		this.plane;
-		this.draw_mode = false;
+		this.draw_mode = true;
 		this.indexPickedObject;
 		this.indexPickedBody;
 		this.indexPickedChain;
@@ -103,7 +103,7 @@ var f3dwebgl = class{
 		this.scene.add(this.interpolate_group);
 		this.scene.add(this.ch_group);
 		this.controls = new OrbitControls( this.camera, this.renderer.domElement );
-		this.controls.enabled = false;
+		//this.controls.enabled = false;
 		document.addEventListener( 'mousemove', this.onDocumentMouseMove.bind(this), false );
 		document.addEventListener( 'touchmove', this.onDocumentMobileMouseMove.bind(this), false );
 		document.addEventListener( 'mousedown', this.onDocumentMouseDown.bind(this), false );
@@ -142,7 +142,8 @@ var f3dwebgl = class{
 		this.spherescale = new widgetSphereScale(this,'SPHERESCALE');
 		this.spherescale = new saveWidget(this,'SAVEMODEL');
 		this.intersect = {};
-		
+		this.mouseDown = false;
+		this.setSelect(false);
 	}
 	//from https://codepen.io/looeee/pen/RMLJYw
 	createPlaneMesh(){
@@ -359,52 +360,53 @@ var f3dwebgl = class{
 		this.raycaster.setFromCamera( this.mouse, this.camera );
 		var intersects = this.raycaster.intersectObjects( this.scene.children );
 		this.info2.innerHTML = '';
-		var me = this;
-		me.draw_mode = false;
-		window.f3d.controls.enabled = true;
-		if ( intersects.length > 0 ) {
-			intersects.map(
-				function(e){
-					me.info2.innerHTML += e.object.name + ' ';
-				}
-			);
-			if((me.indexPickedObject || me.indexPickedObject === 0) && me.draw_mode){
-				for(let i = 0,intersect_length = intersects.length;i<intersect_length;i++){
-					if(intersects[i].object.name.indexOf('wp') != -1){
-						me.f3dWorld[me.indexPickedBody][me.indexPickedChain][+(me.indexPickedObject)].sphere.position.copy( intersects[i].point );
-						me.f3dWorld[me.indexPickedBody][me.indexPickedChain][+(me.indexPickedObject)].sphere.updateMatrixWorld();
+		let me = this;
+		if(this.mouseDown){
+			if ( intersects.length > 0 ) {
+				intersects.map(
+					function(e){
+						me.info2.innerHTML += e.object.name + ' ';
 					}
-				}	
+				);
+				if((this.indexPickedObject || this.indexPickedObject === 0) && this.select){
+					for(let i = 0,intersect_length = intersects.length;i<intersect_length;i++){
+						//if(intersects[i].object.name.indexOf('wp') != -1){
+							this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(this.indexPickedObject)].sphere.position.copy( intersects[i].point );
+							this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(this.indexPickedObject)].sphere.updateMatrixWorld();
+						//}
+					}	
+				}
+				else{
+					this.draw_mode = false;
+				}
 			}
+			
+			this.render()
 		}
-		this.render()
 	}
 	
 	onDocumentMobileMouseDown( event ){
-		if(!this.controls.enabled){
+		//if(!this.controls.enabled){
 			var x = event.targetTouches[0].pageX;
 			var y = event.targetTouches[0].pageY;
 			this.mousedown(event, x,y,this);
-		}
+		//}
 	}
 
 	onDocumentMouseDown( event ) {
-		if(!this.controls.enabled){
+		//if(!this.controls.enabled){
 			var x = event.clientX;
 			var y =  event.clientY;
 			this.mousedown(event, x,y,this);
-		}
+		//}
 	}
 
 	mousedown( event, x, y,me ) {
-		var maxX = x,
-		    minX = x,
-		    maxY = y,
-		    minY = y;
+		this.mouseDown = true;
+		//this.setDraw();
 		me.mouse.set( ( x / window.innerWidth ) * 2 - 1, - ( y / window.innerHeight ) * 2 + 1 );
 		me.raycaster.setFromCamera( me.mouse, me.camera );
 		var intersects = me.raycaster.intersectObjects( me.scene.children, true );
-		me.draw_mode = true;
 		if ( intersects.length > 0 ) {
 			intersects.map(
 				function(e){
@@ -412,6 +414,7 @@ var f3dwebgl = class{
 				}
 			);
 			if(intersects[ 0 ].object.name.indexOf('f3d_sphere_') !== -1){
+				this.controls.enabled = false;
 				let sphereTokens = intersects[ 0 ].object.name.split('_');
 				let index_f3d_sphere = parseInt(sphereTokens[2]);
 				let index_body = parseInt(sphereTokens[3]);
@@ -419,7 +422,9 @@ var f3dwebgl = class{
 				me.indexPickedObject = index_f3d_sphere;
 				me.indexPickedBody = index_body;
 				me.indexPickedChain = index_chain;
+				this.setSelect(true);
 			}else if(intersects[ 0 ].object.name.indexOf('interpolation_') !== -1){
+				this.controls.enabled = false;
 				let interpolation_tokens = intersects[ 0 ].object.name.split('_');
 				let token_objId1 = interpolation_tokens[1];
 				let token_objId2 = interpolation_tokens[2];
@@ -434,12 +439,12 @@ var f3dwebgl = class{
 				me.indexPickedObject = me.spheresNumber;
 				me.indexPickedBody = token_body;
 				me.indexPickedChain = token_chain;
+				this.setSelect(true);
 				me.addSphereToScene(me, voxel, intersects[0]);
 				me.render();
 			}else if(intersects[ 0 ].object.name.indexOf('wp') !== -1){
-				me.draw_mode = true;
-				console.log(intersects[ 0 ].object.name);
 				this.intersect = intersects[ 0 ];
+				this.setSelect(false);
 				//var voxel = me.createSphere(0xffff00,me.sphereScale);
 				//me.addSphereToScene(me, voxel, intersect);
 				//me.addNextRing(me,voxel);
@@ -466,7 +471,7 @@ var f3dwebgl = class{
 			for(let c = 0,c_l = Object.keys(this.f3dWorld[+b]).length;c<c_l;c++){
 				for(let s = 0,s_l = Object.keys(this.f3dWorld[+b][+c]).length;s<s_l;s++){
 					let st = this.f3dWorld[+b][+c][+s];
-					if(st.head.length>0){
+					if(st.head && st.head.length>0){
 						let s1 = st.sphere;
 						//let s2 = this.f3dWorld[+b][+c][+st.head[0]].sphere;
 						for(let h = 0,h_l = st.head.length;h<h_l;h++){
@@ -560,26 +565,50 @@ var f3dwebgl = class{
 	}
 
 	mouseup( event ){
+		this.mouseDown = false;
 	    this.info2.innerHTML = '';
 		if(this.draw_mode){
-			this.draw_mode = false;
-			window.f3d.controls.enabled = false;
-			var voxel = this.createSphere(0xffff00,this.sphereScale);
-			this.addSphereToScene(this, voxel, this.intersect);
-			this.addNextRing(this,voxel);
-			this.indexPickedBody = this.bodyNumber;
-			this.indexPickedChain = this.chainsNumber;
-			this.indexPickedObject = this.spheresNumber-1;
+			if(!this.select){
+				var voxel = this.createSphere(0xffff00,this.sphereScale);
+				this.addSphereToScene(this, voxel, this.intersect);
+				this.addNextRing(this,voxel);
+				this.indexPickedBody = this.bodyNumber;
+				this.indexPickedChain = this.chainsNumber;
+				this.indexPickedObject = this.spheresNumber-1;
+			}
+			this.controls.enabled = true;
 			this.intersect = {};
 			this.showBBox(this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(this.indexPickedObject)].sphere,this);
+		}
+		else{
+			this.draw_mode = true;
 		}
 		
 		this.interpolate_group.children.length = 0;
 		this.ch_group.children.length = 0;
+		this.setSelect(false);
+		//this.setDraw();		
 		this.interpolateSpheres();
 		this.setFrustumVertices(this.camera, this.frustumVertices);
 		this.updatePlane();
 		this.render();	
+	}
+
+	setSelect(bool){
+		this.select = bool;
+	}
+
+	setMoveCamera(e){
+		//console.log('move camera')
+		this.draw_mode = false;
+		this.controls.enabled = true;
+		//this.controls.onMouseDown(e)
+	}
+
+	setDraw(){
+		//console.log('draw')
+		this.draw_mode = true;
+		this.controls.enabled = false;
 	}
 
 	onDocumentKeyDown( event ) {
@@ -587,14 +616,14 @@ var f3dwebgl = class{
 		//+ (187) to grow, - (189) to scale down
 		switch( event.keyCode ) {
 			case 68: 
-				window.f3d.controls.enabled = false;
-				window.f3d.drawMove = 'MOVE';
-				document.getElementById('MOVE').innerText = window.f3d.drawMove;
+				//this.setDraw();
+				this.drawMove = 'MOVE';
+				document.getElementById('MOVE').innerText = this.drawMove;
 				break;	
 			case 77:
-				window.f3d.controls.enabled = true;
-				window.f3d.drawMove = 'DRAW';
-				document.getElementById('MOVE').innerText = window.f3d.drawMove;
+				//this.setMoveCamera();
+				this.drawMove = 'DRAW';
+				document.getElementById('MOVE').innerText = this.drawMove;
 				break;
 			case 187: this.scaleSphere(true); break;
 			case 189: this.scaleSphere(false); break;
@@ -627,18 +656,19 @@ var f3dwebgl = class{
 		this.lastSphere.scale.y += 1;
 		this.lastSphere.scale.z += 1;
 	}
-	*/
-	getOldCoord(){
-		return {x:this.oldX,y:this.oldY};
-	}
-	
 	getMouseDistance(x,y){
 		return distamce(this.oldX,this.oldY,x,y);
 	}
-	
+	getOldCoord(){
+		return {x:this.oldX,y:this.oldY};
+	}
 	getScene(){
 		return this.scene;
 	}
+	*/
+	
+	
+	
 	
 	//utility CH
 	save( blob, filename ) {
