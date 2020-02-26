@@ -318,21 +318,16 @@ var f3dwebgl = class{
 	}
 	*/
 	onDocumentWheel( event ){
-		event.preventDefault();
+	  event.preventDefault();
 
 	  if (event.deltaY < 0) {
-	    // Zoom in
-	    scale *= event.deltaY * -2;
+	    this.obj_decrease_cb(e,fn);
 	  }
 	  else {
-	    // Zoom out
-	    scale /= event.deltaY * 2;
+	   this.obj_increase_cb(e,fn);
 	  }
-
-	  // Restrict scale
-	  scale = Math.min(Math.max(.125, scale), 4);
-	
 	}
+	
 	obj_increase_cb(e,fn){
 		let tmp = this.sphereScale + 0.1;
 		this.sphereScale = parseFloat(tmp.toFixed(2));
