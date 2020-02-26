@@ -112,6 +112,7 @@ var f3dwebgl = class{
 		document.addEventListener( 'keyup', this.onDocumentKeyUp.bind(this), false );
 		document.addEventListener( 'mouseup', this.onDocumentMouseUp.bind(this), false );
 		document.addEventListener( 'touchend', this.onDocumentMobileMouseUp.bind(this), false );
+		document.addEventListener( 'wheel', this.onDocumentWheel.bind(this), false );
 		//document.addEventListener( 'click', this.onDocumentClick.bind(this), false );
 		window.addEventListener( 'resize', this.onWindowResize.bind(this), false );
 		Array.prototype.insertAt = function(pos,val){
@@ -316,6 +317,41 @@ var f3dwebgl = class{
 		alert('click');
 	}
 	*/
+	onDocumentWheel( event ){
+		event.preventDefault();
+
+	  if (event.deltaY < 0) {
+	    // Zoom in
+	    scale *= event.deltaY * -2;
+	  }
+	  else {
+	    // Zoom out
+	    scale /= event.deltaY * 2;
+	  }
+
+	  // Restrict scale
+	  scale = Math.min(Math.max(.125, scale), 4);
+	
+	}
+	obj_increase_cb(e,fn){
+		let tmp = this.sphereScale + 0.1;
+		this.sphereScale = parseFloat(tmp.toFixed(2));
+		this.f3dWorld[+this.indexPickedBody][+this.indexPickedChain][+(this.indexPickedObject)].sphere.scale.x = this.sphereScale;
+		this.f3dWorld[+this.indexPickedBody][+this.indexPickedChain][+(this.indexPickedObject)].sphere.scale.y = this.sphereScale;
+		this.f3dWorld[+this.indexPickedBody][+this.indexPickedChain][+(this.indexPickedObject)].sphere.scale.z = this.sphereScale;
+		this.mouseup("",true);
+	}
+
+	obj_decrease_cb(e,fn){
+		if((this.sphereScale-0.1)>=0.1){
+			let tmp = this.sphereScale - 0.1;
+			this.sphereScale = parseFloat(tmp.toFixed(2));
+			this.f3dWorld[+this.indexPickedBody][+this.indexPickedChain][+(this.indexPickedObject)].sphere.scale.x = this.sphereScale;
+			this.f3dWorld[+this.indexPickedBody][+this.indexPickedChain][+(this.indexPickedObject)].sphere.scale.y = this.sphereScale;
+			this.f3dWorld[+this.indexPickedBody][+this.indexPickedChain][+(this.indexPickedObject)].sphere.scale.z = this.sphereScale;
+			this.mouseup("",true);
+		} 
+	}
 	onDocumentMobileMouseMove( event ){
 		var x = event.targetTouches[0].pageX;
 		var y = event.targetTouches[0].pageY;
