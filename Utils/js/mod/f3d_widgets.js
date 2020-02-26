@@ -166,7 +166,7 @@ var widgetShowMesh = class extends superButtonWidget{
 			window.f3d.hideShowCH = 'HIDEMESH';
 		}
 		document.getElementById(fn).innerText = window.f3d.hideShowCH;
-		window.f3d.mouseup();
+		window.f3d.mouseup("",true);
 		
 	}
 }
@@ -229,7 +229,7 @@ var widgetSphereScale = class extends superNumericWidget{
 		window.f3d.f3dWorld[+window.f3d.indexPickedBody][+window.f3d.indexPickedChain][+(window.f3d.indexPickedObject)].sphere.scale.x = window.f3d.sphereScale;
 		window.f3d.f3dWorld[+window.f3d.indexPickedBody][+window.f3d.indexPickedChain][+(window.f3d.indexPickedObject)].sphere.scale.y = window.f3d.sphereScale;
 		window.f3d.f3dWorld[+window.f3d.indexPickedBody][+window.f3d.indexPickedChain][+(window.f3d.indexPickedObject)].sphere.scale.z = window.f3d.sphereScale;
-		window.f3d.mouseup();
+		window.f3d.mouseup("",true);
 	}
 
 	obj_decrease_cb(e,fn){
@@ -239,7 +239,7 @@ var widgetSphereScale = class extends superNumericWidget{
 			window.f3d.f3dWorld[+window.f3d.indexPickedBody][+window.f3d.indexPickedChain][+(window.f3d.indexPickedObject)].sphere.scale.x = window.f3d.sphereScale;
 			window.f3d.f3dWorld[+window.f3d.indexPickedBody][+window.f3d.indexPickedChain][+(window.f3d.indexPickedObject)].sphere.scale.y = window.f3d.sphereScale;
 			window.f3d.f3dWorld[+window.f3d.indexPickedBody][+window.f3d.indexPickedChain][+(window.f3d.indexPickedObject)].sphere.scale.z = window.f3d.sphereScale;
-			window.f3d.mouseup();
+			window.f3d.mouseup("",true);
 		} 
 	}
 
