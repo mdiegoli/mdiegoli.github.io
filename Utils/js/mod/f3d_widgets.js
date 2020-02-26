@@ -224,23 +224,11 @@ var widgetSphereScale = class extends superNumericWidget{
 	}
 
 	obj_increase_cb(e,fn){
-		let tmp = window.f3d.sphereScale + 0.1;
-		window.f3d.sphereScale = parseFloat(tmp.toFixed(2));
-		window.f3d.f3dWorld[+window.f3d.indexPickedBody][+window.f3d.indexPickedChain][+(window.f3d.indexPickedObject)].sphere.scale.x = window.f3d.sphereScale;
-		window.f3d.f3dWorld[+window.f3d.indexPickedBody][+window.f3d.indexPickedChain][+(window.f3d.indexPickedObject)].sphere.scale.y = window.f3d.sphereScale;
-		window.f3d.f3dWorld[+window.f3d.indexPickedBody][+window.f3d.indexPickedChain][+(window.f3d.indexPickedObject)].sphere.scale.z = window.f3d.sphereScale;
-		window.f3d.mouseup("",true);
+		window.f3d.obj_increase_cb(e,fn);
 	}
 
 	obj_decrease_cb(e,fn){
-		if((window.f3d.sphereScale-0.1)>=0.1){
-			let tmp = window.f3d.sphereScale - 0.1;
-			window.f3d.sphereScale = parseFloat(tmp.toFixed(2));
-			window.f3d.f3dWorld[+window.f3d.indexPickedBody][+window.f3d.indexPickedChain][+(window.f3d.indexPickedObject)].sphere.scale.x = window.f3d.sphereScale;
-			window.f3d.f3dWorld[+window.f3d.indexPickedBody][+window.f3d.indexPickedChain][+(window.f3d.indexPickedObject)].sphere.scale.y = window.f3d.sphereScale;
-			window.f3d.f3dWorld[+window.f3d.indexPickedBody][+window.f3d.indexPickedChain][+(window.f3d.indexPickedObject)].sphere.scale.z = window.f3d.sphereScale;
-			window.f3d.mouseup("",true);
-		} 
+		window.f3d.obj_decrease_cb(e,fn);
 	}
 
 	obj_update_cb(e,fn){
