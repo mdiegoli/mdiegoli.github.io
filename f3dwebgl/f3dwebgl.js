@@ -564,10 +564,10 @@ var f3dwebgl = class{
 		}
 	}
 
-	mouseup( event ){
+	mouseup( event , fromScale ){
 		this.mouseDown = false;
 	    this.info2.innerHTML = '';
-		if(this.draw_mode){
+		if(this.draw_mode && !fromScale){
 			if(!this.select){
 				var voxel = this.createSphere(0xffff00,this.sphereScale);
 				this.addSphereToScene(this, voxel, this.intersect);
