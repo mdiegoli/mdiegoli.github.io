@@ -171,6 +171,25 @@ var widgetShowMesh = class extends superButtonWidget{
 	}
 }
 
+var widgetTargetWP = class extends superButtonWidget{
+	constructor(obj,fn){
+		super(obj,fn)
+	}
+	obj_cb(fn) {
+		window.f3d.targetWP = !window.f3d.targetWP;
+		if(window.f3d.targetWP){
+			window.f3d.targetLabel = 'target wp';	
+		}
+		else{
+			window.f3d.targetLabel = 'target obj';
+		}
+		document.getElementById(fn).innerText = window.f3d.targetLabel;
+		window.f3d.mouseup("",true);
+		
+	}
+}
+
+
 var widgetDrawMove = class extends superButtonWidget{
 	constructor(obj,fn){
 		super(obj,fn)
@@ -260,4 +279,4 @@ var saveWidget = class extends superTextWidget{
 		
 }
 
-export {saveWidget,superButtonWidget,superNumericWidget,widgetAddBody,widgetAddChain,widgetShowMesh,widgetDrawMove,widgetExportMesh,widgetSphereScale,superTextWidget}
+export {widgetTargetWP,saveWidget,superButtonWidget,superNumericWidget,widgetAddBody,widgetAddChain,widgetShowMesh,widgetDrawMove,widgetExportMesh,widgetSphereScale,superTextWidget}

@@ -3,7 +3,7 @@ import * as THREE from '../Utils/js/three.module.js';
 import { ConvexBufferGeometry } from '../Utils/js/mod/ConvexGeometry.js';
 import { TrackballControls } from '../Utils/js/mod/TrackballControls.js';
 import { OrbitControls } from '../Utils/js/mod/OrbitControls.js';
-import {widgetAddBody,widgetAddChain,widgetShowMesh,widgetDrawMove,widgetExportMesh,widgetSphereScale,saveWidget} from '../Utils/js/mod/f3d_widgets.js';
+import {widgetTargetWP,widgetAddBody,widgetAddChain,widgetShowMesh,widgetDrawMove,widgetExportMesh,widgetSphereScale,saveWidget} from '../Utils/js/mod/f3d_widgets.js';
 
 var f3dwebgl = class{
 	constructor(){
@@ -135,13 +135,16 @@ var f3dwebgl = class{
 		this.setFrustumVertices(this.camera, this.frustumVertices);
 		this.updatePlane();
 		this.distanceFactor = 10;
+		this.targetWP = true;
+		this.targetLabel = 'target wp';
 		this.addbody = new widgetAddBody(this,'ADDBODY');
 		this.addchain = new widgetAddChain(this,'ADDCHAIN');
 		this.showmesh = new widgetShowMesh(this,'SHOWMESH');
 		this.exportmesh = new widgetExportMesh(this,'EXPORTMESH');
 		this.drawmove = new widgetDrawMove(this,'MOVE');
 		this.spherescale = new widgetSphereScale(this,'SPHERESCALE');
-		this.spherescale = new saveWidget(this,'SAVEMODEL');
+		this.savescale = new saveWidget(this,'SAVEMODEL');
+		this.targetWP = new widgetTargetWP(this,'TARGETWP');
 		this.intersect = {};
 		this.mouseDown = false;
 		this.setSelect(false);
@@ -242,7 +245,7 @@ var f3dwebgl = class{
 		this.planeMesh.geometry.computeBoundingBox();
 
 		this.skyPlanePositions.needsUpdate = true;
-		this.planeMesh.geometry.boundingBox.getCenter(this.controls.target);
+		if(this.targetWP) this.planeMesh.geometry.boundingBox.getCenter(this.controls.target);
 	}
 
 	addSphereToScene (me,voxel,intersect){
@@ -252,6 +255,7 @@ var f3dwebgl = class{
 		voxel.position.copy( intersect.point ).add( intersect.face.normal );
 		voxel.updateMatrixWorld();
 		me.group.add( voxel );
+		if(!this.targetWP) this.controls.target.copy(intersect.point);
 		//me.indexPickedBody = me.bodyNumber;
 		//me.indexPickedChain = me.chainsNumber;
 		//me.indexPickedObject = me.spheresNumber;
