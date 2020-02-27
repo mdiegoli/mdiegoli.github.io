@@ -58,7 +58,7 @@ var f3dwebgl = class{
 		this.info2.innerHTML = 'selezione';
 		this.info.appendChild( this.info2 );
 		//camera
-		this.camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 100 );
+		this.camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000 );
 		this.camera.position.set(1000, 0, 0 );
 		this.camera.lookAt( new THREE.Vector3() );
 		this.scene = new THREE.Scene();
