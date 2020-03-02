@@ -135,8 +135,8 @@ var f3dwebgl = class{
 		this.setFrustumVertices(this.camera, this.frustumVertices);
 		this.updatePlane();
 		this.distanceFactor = 10;
-		this.targetWP = true;
-		this.targetLabel = 'target wp';
+		this.targetWP = false;
+		this.targetLabel = 'TARGETOBJ';
 		this.addbody = new widgetAddBody(this,'ADDBODY');
 		this.addchain = new widgetAddChain(this,'ADDCHAIN');
 		this.showmesh = new widgetShowMesh(this,'SHOWMESH');
@@ -144,7 +144,7 @@ var f3dwebgl = class{
 		this.drawmove = new widgetDrawMove(this,'MOVE');
 		this.spherescale = new widgetSphereScale(this,'SPHERESCALE');
 		this.savescale = new saveWidget(this,'SAVEMODEL');
-		this.targetWP = new widgetTargetWP(this,'TARGETWP');
+		this.targetWP = new widgetTargetWP(this,'TARGETOBJ');
 		this.intersect = {};
 		this.mouseDown = false;
 		this.setSelect(false);

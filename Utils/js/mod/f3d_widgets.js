@@ -179,12 +179,12 @@ var widgetTargetWP = class extends superButtonWidget{
 		window.f3d.targetWP = !window.f3d.targetWP;
 		
 		if(window.f3d.targetWP){
-			window.f3d.targetLabel = 'target wp';	
+			window.f3d.targetLabel = 'TARGETWP';	
 			window.f3d.planeMesh.geometry.boundingBox.getCenter(window.f3d.controls.target);
 		}
 		else{
-			window.f3d.targetLabel = 'target obj';
-			window.f3d.controls.target.copy(window.f3d.obj_intersected);
+			window.f3d.targetLabel = 'TARGETOBJ';
+			window.f3d.controls.target.copy(this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(this.indexPickedObject)].sphere.position);
 		}
 		document.getElementById(fn).innerText = window.f3d.targetLabel;
 		window.f3d.mouseup("",true);
