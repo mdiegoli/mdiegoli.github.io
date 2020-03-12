@@ -3,7 +3,7 @@ import * as THREE from '../Utils/js/three.module.js';
 import { ConvexBufferGeometry } from '../Utils/js/mod/ConvexGeometry.js';
 import { TrackballControls } from '../Utils/js/mod/TrackballControls.js';
 import { OrbitControls } from '../Utils/js/mod/OrbitControls.js';
-import {widgetTargetWP,widgetAddBody,widgetAddChain,widgetShowMesh,widgetDrawMove,widgetExportMesh,widgetSphereScale,saveWidget,loadWidget} from '../Utils/js/mod/f3d_widgets.js';
+import {widgetTargetWP,widgetAddBody,widgetAddChain,widgetShowMesh,widgetDrawMove,widgetExportMesh,widgetSphereScale,saveWidget,loadWidget,widgetClear} from '../Utils/js/mod/f3d_widgets.js';
 
 var f3dwebgl = class{
 	constructor(){
@@ -146,6 +146,8 @@ var f3dwebgl = class{
 		this.saveModel = new saveWidget(this,'SAVEMODEL');
 		this.targetWP = new widgetTargetWP(this,'TARGETOBJ');
 		this.loadModel = new loadWidget(this,'LOADMODEL');
+		this.sceneClear = new widgetClear(this,'CLEAR');
+		
 		this.intersect = {};
 		this.mouseDown = false;
 		this.setSelect(false);
@@ -735,6 +737,16 @@ var f3dwebgl = class{
 		this.save( new Blob( [ buffer ], { type: 'application/octet-stream' } ), filename );
 	}
 	//end utility CH
+	clear(){
+		this.f3dWorld = {}
+		this.indexPickedBody = 0;
+		this.indexPickedChain = 0;
+		this.indexPickedObject = 0;
+		this.scene.children[1].children.length = 0;
+		this.mouseup("",true);
+		
+	}
+		
 }
 
 window.f3d = new f3dwebgl();
