@@ -294,6 +294,7 @@ var saveWidget = class extends superTextWidget{
 			let tmp = [];
 			window.f3d.scene.children[1].children.forEach(e => {tmp.push({position:{x:e.position.x,y:e.position.y,z:e.position.z},scale:{x:e.scale.x,y:e.scale.y,z:e.scale.z}})});
 			localStorage[str+'_spheres'] = JSON.stringify(tmp);
+			localStorage[str+'index'] = {indexPickedBody:window.f3d.indexPickedBody,indexPickedChain:window.f3d.indexPickedChain,indexPickedObject:window.f3d.indexPickedObject;}
 		}
 	};
 		
@@ -312,6 +313,10 @@ var loadWidget = class extends superTextWidget{
 			window.f3d.f3dWorld = JSON.parse(localStorage[str]);
 			let tmp = JSON.parse(localStorage[str+'_spheres']);
 			window.f3d.scene.children[1].children.lenght = 0;
+			var index = JSON.parse(localStorage[str+'index']);
+			window.f3d.indexPickedBody = index.indexPickedBody;
+			window.f3d.indexPickedChain = index.indexPickedChain;
+			window.f3d.indexPickedObject = index.indexPickedObject;
 			//tmp.forEach(e => {window.f3d.scene.children[1].children.push({position:{x:e.position.x,y:e.position.y,z:e.position.z},scale:{x:e.scale.x,y:e.scale.y,z:e.scale.z}})});
 			window.f3d.loadModel_fn(tmp);
 		
