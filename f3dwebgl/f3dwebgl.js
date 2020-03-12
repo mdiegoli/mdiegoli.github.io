@@ -702,7 +702,7 @@ var f3dwebgl = class{
 		return this.scene;
 	}
 	*/
-	loadModel(spheresDataArray){
+	loadModel_fn(spheresDataArray){
 		spheresDataArray.forEach(e=>{
 			var geometry = new THREE.SphereGeometry( 5, 8, 8 );
 			var material = new THREE.MeshToonMaterial( {color: color} );
