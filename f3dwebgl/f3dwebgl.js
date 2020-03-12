@@ -702,7 +702,21 @@ var f3dwebgl = class{
 		return this.scene;
 	}
 	*/
-	
+	loadModel(spheresDataArray){
+		spheresDataArray.forEach(e=>{
+			var geometry = new THREE.SphereGeometry( 5, 8, 8 );
+			var material = new THREE.MeshToonMaterial( {color: color} );
+			var sphere = new THREE.Mesh( geometry, material );
+			sphere.scale.x = e.scale.x;
+			sphere.scale.y = e.scale.y;
+			sphere.scale.z = e.scale.z;
+			sphere.position.x = e.position.x;
+			sphere.position.y = e.position.y;
+			sphere.position.z = e.position.z;
+			this.group.add( sphere );
+		})
+		this.mouseup("",true);
+	}
 	
 	
 	
