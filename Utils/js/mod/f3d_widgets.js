@@ -302,7 +302,7 @@ var loadWidget = class extends superTextWidget{
 			let tmp = JSON.parse(localStorage[str+'_spheres']);
 			window.f3d.scene.children[1].children.lenght = 0;
 			//tmp.forEach(e => {window.f3d.scene.children[1].children.push({position:{x:e.position.x,y:e.position.y,z:e.position.z},scale:{x:e.scale.x,y:e.scale.y,z:e.scale.z}})});
-			window.f3d.loadModel(tmp);
+			window.f3d.loadModel_fn(tmp);
 		
 		}
 	};
