@@ -310,10 +310,10 @@ var loadWidget = class extends superTextWidget{
 			alert('No file name!');}
 		else{ 
 			window.f3d.f3dWorld = {};
-			window.f3d.f3dWorld = JSON.parse(localStorage[str]);
-			let tmp = JSON.parse(localStorage[str+'_spheres']);
+			window.f3d.f3dWorld = JSON.parse(localStorage[fn]);
+			let tmp = JSON.parse(localStorage[fn+'_spheres']);
 			window.f3d.scene.children[1].children.lenght = 0;
-			var index = JSON.parse(localStorage[str+'index']);
+			var index = JSON.parse(localStorage[fn+'index']);
 			window.f3d.indexPickedBody = index.indexPickedBody;
 			window.f3d.indexPickedChain = index.indexPickedChain;
 			window.f3d.indexPickedObject = index.indexPickedObject;
