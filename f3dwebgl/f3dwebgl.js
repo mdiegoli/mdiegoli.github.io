@@ -705,7 +705,7 @@ var f3dwebgl = class{
 	loadModel_fn(spheresDataArray){
 		spheresDataArray.forEach(e=>{
 			var geometry = new THREE.SphereGeometry( 5, 8, 8 );
-			var material = new THREE.MeshToonMaterial( {color: color} );
+			var material = new THREE.MeshToonMaterial( {color: 0xff0000} );
 			var sphere = new THREE.Mesh( geometry, material );
 			sphere.scale.x = e.scale.x;
 			sphere.scale.y = e.scale.y;
