@@ -144,8 +144,8 @@ var f3dwebgl = class{
 		this.drawmove = new widgetDrawMove(this,'MOVE');
 		this.spherescale = new widgetSphereScale(this,'SPHERESCALE');
 		this.saveModel = new saveWidget(this,'SAVEMODEL');
-		this.loadModel = new loadWidget(this,'LOADMODEL');
 		this.targetWP = new widgetTargetWP(this,'TARGETOBJ');
+		this.loadModel = new loadWidget(this,'LOADMODEL');
 		this.intersect = {};
 		this.mouseDown = false;
 		this.setSelect(false);
