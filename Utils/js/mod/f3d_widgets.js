@@ -153,6 +153,17 @@ var widgetAddChain = class extends superButtonWidget{
 	}
 }
 
+var widgetClear = class extends superButtonWidget{
+	constructor(obj,fn){
+		super(obj,fn)
+	}
+	obj_cb(fn) {
+		window.f3d.clear();
+		
+	}
+}
+
+
 var widgetShowMesh = class extends superButtonWidget{
 	constructor(obj,fn){
 		super(obj,fn)
@@ -309,4 +320,4 @@ var loadWidget = class extends superTextWidget{
 		
 }
 
-export {widgetTargetWP,loadWidget,saveWidget,superButtonWidget,superNumericWidget,widgetAddBody,widgetAddChain,widgetShowMesh,widgetDrawMove,widgetExportMesh,widgetSphereScale,superTextWidget}
+export {widgetTargetWP,loadWidget,saveWidget,superButtonWidget,superNumericWidget,widgetAddBody,widgetAddChain,widgetShowMesh,widgetDrawMove,widgetExportMesh,widgetSphereScale,superTextWidget,widgetClear}
