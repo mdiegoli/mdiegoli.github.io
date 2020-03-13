@@ -705,6 +705,7 @@ var f3dwebgl = class{
 	}
 	*/
 	loadModel_fn(spheresDataArray){
+		/*
 		spheresDataArray.forEach(e=>{
 			var geometry = new THREE.SphereGeometry( 5, 8, 8 );
 			var material = new THREE.MeshToonMaterial( {color: 0xff0000} );
@@ -717,6 +718,8 @@ var f3dwebgl = class{
 			sphere.position.z = e.position.z;
 			this.group.add( sphere );
 		})
+		*/
+		this.group = JSON.parse(JSON.stringify(spheresDataArray));
 		this.mouseup("",true);
 	}
 	
