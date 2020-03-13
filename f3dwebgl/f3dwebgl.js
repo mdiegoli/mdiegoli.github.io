@@ -1,5 +1,5 @@
 //if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
-import * as THREE from '../Utils/js/three.module.js';
+import * as THREE from '../Utils/js/three.module113.js';
 import { ConvexBufferGeometry } from '../Utils/js/mod/ConvexGeometry.js';
 import { TrackballControls } from '../Utils/js/mod/TrackballControls.js';
 import { OrbitControls } from '../Utils/js/mod/OrbitControls.js';
