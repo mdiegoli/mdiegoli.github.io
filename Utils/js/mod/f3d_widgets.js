@@ -294,7 +294,7 @@ var saveWidget = class extends superTextWidget{
 			//let tmp = [];
 			//window.f3d.scene.children[1].children.forEach(e => {tmp.push({position:{x:e.position.x,y:e.position.y,z:e.position.z},scale:{x:e.scale.x,y:e.scale.y,z:e.scale.z}})});
 			localStorage[str+'_spheres'] = JSON.stringify(window.f3d.scene.children[1].children);
-			localStorage[str+'index'] = {indexPickedBody:window.f3d.indexPickedBody,indexPickedChain:window.f3d.indexPickedChain,indexPickedObject:window.f3d.indexPickedObject}
+			localStorage[str+'index'] = JSON.stringify({indexPickedBody:window.f3d.indexPickedBody,indexPickedChain:window.f3d.indexPickedChain,indexPickedObject:window.f3d.indexPickedObject});
 		}
 	};
 		
