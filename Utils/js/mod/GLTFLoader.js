@@ -34,7 +34,7 @@ import {
 	Loader,
 	LoaderUtils,
 	Material,
-	MathUtils,
+	Math,
 	Matrix4,
 	Mesh,
 	MeshBasicMaterial,
@@ -2711,7 +2711,7 @@ var GLTFLoader = ( function () {
 
 		if ( cameraDef.type === 'perspective' ) {
 
-			camera = new PerspectiveCamera( MathUtils.radToDeg( params.yfov ), params.aspectRatio || 1, params.znear || 1, params.zfar || 2e6 );
+			camera = new PerspectiveCamera( Math.radToDeg( params.yfov ), params.aspectRatio || 1, params.znear || 1, params.zfar || 2e6 );
 
 		} else if ( cameraDef.type === 'orthographic' ) {
 
