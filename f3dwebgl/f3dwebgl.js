@@ -719,7 +719,7 @@ var f3dwebgl = class{
 			this.group.add( sphere );
 		})
 		*/
-		this.group = JSON.parse(JSON.stringify(spheresDataArray));
+		this.group.children = JSON.parse(JSON.stringify(spheresDataArray));
 		this.mouseup("",true);
 	}
 	
