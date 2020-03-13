@@ -293,8 +293,28 @@ var saveWidget = class extends superTextWidget{
 			localStorage[str] = JSON.stringify(window.f3d.f3dWorld);
 			//let tmp = [];
 			//window.f3d.scene.children[1].children.forEach(e => {tmp.push({position:{x:e.position.x,y:e.position.y,z:e.position.z},scale:{x:e.scale.x,y:e.scale.y,z:e.scale.z}})});
-			localStorage[str+'_spheres'] = JSON.stringify(window.f3d.scene.children[1].children);
+			//localStorage[str+'_spheres'] = JSON.stringify(window.f3d.scene.children[1].children);
 			localStorage[str+'index'] = JSON.stringify({indexPickedBody:window.f3d.indexPickedBody,indexPickedChain:window.f3d.indexPickedChain,indexPickedObject:window.f3d.indexPickedObject});
+			var gltfExporter = new GLTFExporter();
+			var options = {
+				trs: false,
+				onlyVisible: true,
+				truncateDrawRange: true,
+				binary: false,
+				forceIndices: true,
+				forcePowerOfTwoTextures: false,
+				maxTextureSize: Infinity 
+			};
+			
+			gltfExporter.parse( window.f3d.scene, function ( result ) {
+				if ( result instanceof ArrayBuffer ) {
+					window.f3d.saveArrayBuffer( result, 'scene.glb' );
+				} else {
+					localStorage[str+'_spheres'] = JSON.stringify( result, null, 2 );
+					//window.f3d.saveString( output, 'scene.gltf' );
+				}
+			}, options );
+			
 		}
 	};
 		
@@ -311,14 +331,48 @@ var loadWidget = class extends superTextWidget{
 		else{ 
 			window.f3d.f3dWorld = {};
 			window.f3d.f3dWorld = JSON.parse(localStorage[str]);
-			let tmp = JSON.parse(localStorage[str+'_spheres']);
-			window.f3d.scene.children[1].children.lenght = 0;
 			var index = JSON.parse(localStorage[str+'index']);
 			window.f3d.indexPickedBody = index.indexPickedBody;
 			window.f3d.indexPickedChain = index.indexPickedChain;
 			window.f3d.indexPickedObject = index.indexPickedObject;
-			//tmp.forEach(e => {window.f3d.scene.children[1].children.push({position:{x:e.position.x,y:e.position.y,z:e.position.z},scale:{x:e.scale.x,y:e.scale.y,z:e.scale.z}})});
-			window.f3d.loadModel_fn(tmp);
+			var loader = new GLTFLoader();
+
+			// Optional: Provide a DRACOLoader instance to decode compressed mesh data
+			//var dracoLoader = new DRACOLoader();
+			//dracoLoader.setDecoderPath( '/examples/jsm/libs/draco/' );
+			//loader.setDRACOLoader( dracoLoader );
+
+			// Load a glTF resource
+			loader.load(
+				// resource URL
+				JSON.parse(localStorage[str+'_spheres']),
+				// called when the resource is loaded
+				function ( gltf ) {
+
+					window.f3d.scene.add( gltf.scene );
+
+					gltf.animations; // Array<THREE.AnimationClip>
+					gltf.scene; // THREE.Group
+					gltf.scenes; // Array<THREE.Group>
+					gltf.cameras; // Array<THREE.Camera>
+					gltf.asset; // Object
+
+				},
+				// called while loading is progressing
+				function ( xhr ) {
+
+					console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+
+				},
+				// called when loading has errors
+				function ( error ) {
+
+					console.log( 'An error happened' );
+
+				}
+			);
+			
+			window.f3d.mouseup("",true);
 		
 		}
 	};
