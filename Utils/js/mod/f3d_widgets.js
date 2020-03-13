@@ -1,4 +1,5 @@
 import { GLTFExporter } from './GLTFExporter.js';
+import { GLTFLoader } from './GLTFLoader.js';
 var superWidget = class{
 	constructor(obj,fn){
 		window[fn] = this.win_cb;
