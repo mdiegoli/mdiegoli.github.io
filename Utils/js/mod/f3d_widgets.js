@@ -298,21 +298,21 @@ var saveWidget = class extends superTextWidget{
 			localStorage[str+'index'] = JSON.stringify({indexPickedBody:window.f3d.indexPickedBody,indexPickedChain:window.f3d.indexPickedChain,indexPickedObject:window.f3d.indexPickedObject});
 			var gltfExporter = new GLTFExporter();
 			var options = {
-				trs: false,
+				trs: true,
 				onlyVisible: true,
 				truncateDrawRange: true,
 				binary: false,
-				forceIndices: true,
+				forceIndices: false,
 				forcePowerOfTwoTextures: false,
 				maxTextureSize: Infinity 
 			};
 			
 			gltfExporter.parse( window.f3d.scene, function ( result ) {
 				if ( result instanceof ArrayBuffer ) {
-					window.f3d.saveArrayBuffer( result, 'scene.glb' );
+					window.f3d.saveArrayBuffer( result, str+'.glb' );
 				} else {
-					localStorage[str+'_spheres'] = JSON.stringify( result, null, 2 );
-					//window.f3d.saveString( output, 'scene.gltf' );
+					//localStorage[str+'_spheres'] = JSON.stringify( result, null, 2 );
+					window.f3d.saveString( JSON.stringify( result, null, 2 ), str+'.gltf' );
 				}
 			}, options );
 			
@@ -346,17 +346,18 @@ var loadWidget = class extends superTextWidget{
 			// Load a glTF resource
 			loader.load(
 				// resource URL
-				JSON.parse(localStorage[str+'_spheres']),
+				//JSON.parse(localStorage[str+'_spheres']),
+				'\\models\\'+str+'.gltf',
 				// called when the resource is loaded
 				function ( gltf ) {
 
 					window.f3d.scene.add( gltf.scene );
-
-					gltf.animations; // Array<THREE.AnimationClip>
-					gltf.scene; // THREE.Group
-					gltf.scenes; // Array<THREE.Group>
-					gltf.cameras; // Array<THREE.Camera>
-					gltf.asset; // Object
+					window.f3d.render();
+					//gltf.animations; // Array<THREE.AnimationClip>
+					//gltf.scene; // THREE.Group
+					//gltf.scenes; // Array<THREE.Group>
+					//gltf.cameras; // Array<THREE.Camera>
+					//gltf.asset; // Object
 
 				},
 				// called while loading is progressing
@@ -373,7 +374,7 @@ var loadWidget = class extends superTextWidget{
 				}
 			);
 			
-			window.f3d.mouseup("",true);
+			
 		
 		}
 	};
