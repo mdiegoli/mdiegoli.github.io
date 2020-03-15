@@ -296,9 +296,11 @@ var saveWidget = class extends superTextWidget{
 			//window.f3d.scene.children[1].children.forEach(e => {tmp.push({position:{x:e.position.x,y:e.position.y,z:e.position.z},scale:{x:e.scale.x,y:e.scale.y,z:e.scale.z}})});
 			//localStorage[str+'_spheres'] = JSON.stringify(window.f3d.scene.children[1].children);
 			localStorage[str+'index'] = JSON.stringify({indexPickedBody:window.f3d.indexPickedBody,indexPickedChain:window.f3d.indexPickedChain,indexPickedObject:window.f3d.indexPickedObject});
+			localStorage[str+'scene'] = window.f3d.scene.toJSON();
+			/*
 			var gltfExporter = new GLTFExporter();
 			var options = {
-				trs: true,
+				trs: false,
 				onlyVisible: true,
 				truncateDrawRange: true,
 				binary: false,
@@ -313,9 +315,18 @@ var saveWidget = class extends superTextWidget{
 				} else {
 					//localStorage[str+'_spheres'] = JSON.stringify( result, null, 2 );
 					window.f3d.saveString( JSON.stringify( result, null, 2 ), str+'.gltf' );
+					let toFile = {};
+					toFile[str] = localStorage[str];
+					toFile[str+'index'] = localStorage[str+'index'];
+					window.f3d.saveString( JSON.stringify( toFile), str+'.f3d' );
 				}
 			}, options );
-			
+			*/
+			let toFile = {};
+			toFile[str] = localStorage[str];
+			toFile[str+'index'] = localStorage[str+'index'];
+			toFile[str+'scene'] = localStorage[str+'scene'];
+			window.f3d.saveString( JSON.stringify( toFile), str+'.f3d' );
 		}
 	};
 		
@@ -330,19 +341,32 @@ var loadWidget = class extends superTextWidget{
 		if(!str){ 
 			alert('No file name!');}
 		else{ 
-			window.f3d.f3dWorld = {};
-			window.f3d.f3dWorld = JSON.parse(localStorage[str]);
-			var index = JSON.parse(localStorage[str+'index']);
-			window.f3d.indexPickedBody = index.indexPickedBody;
-			window.f3d.indexPickedChain = index.indexPickedChain;
-			window.f3d.indexPickedObject = index.indexPickedObject;
+			
 			var loader = new GLTFLoader();
 
 			// Optional: Provide a DRACOLoader instance to decode compressed mesh data
 			//var dracoLoader = new DRACOLoader();
 			//dracoLoader.setDecoderPath( '/examples/jsm/libs/draco/' );
 			//loader.setDRACOLoader( dracoLoader );
+			fetch('\\models\\'+str+'.f3d').then((response)=>{
+				response.json().then((json)=>{
+					window.f3d.f3dWorld = {};
+					window.f3d.f3dWorld = JSON.parse(json[str]);
+					var index = JSON.parse(json[str+'index']);
+					window.f3d.indexPickedBody = index.indexPickedBody;
+					window.f3d.indexPickedChain = index.indexPickedChain;
+					window.f3d.indexPickedObject = index.indexPickedObject;
+				    //window.f3d.resetGroup();
+					window.f3d.scene = JSON.parse(json[str+'scene']);
+					//array_spheres.forEach(e => window.f3d.group.add(e));
+					window.f3d.mouseup("",true);
+				});
+				
+			}).catch((error)=>{
+				alert(error);
 
+			})
+			/*
 			// Load a glTF resource
 			loader.load(
 				// resource URL
@@ -350,9 +374,24 @@ var loadWidget = class extends superTextWidget{
 				'\\models\\'+str+'.gltf',
 				// called when the resource is loaded
 				function ( gltf ) {
+					
+					fetch('\\models\\'+str+'.f3d').then((response)=>{
+						response.json().then((json)=>{
+							window.f3d.f3dWorld = {};
+							window.f3d.f3dWorld = JSON.parse(json[str]);
+							var index = JSON.parse(json[str+'index']);
+							window.f3d.indexPickedBody = index.indexPickedBody;
+							window.f3d.indexPickedChain = index.indexPickedChain;
+							window.f3d.indexPickedObject = index.indexPickedObject;
+							window.f3d.scene.add( gltf.scene );
+							window.f3d.render();
+						});
+						
+					}).catch((error)=>{
+						alert(error);
 
-					window.f3d.scene.add( gltf.scene );
-					window.f3d.render();
+					})
+					
 					//gltf.animations; // Array<THREE.AnimationClip>
 					//gltf.scene; // THREE.Group
 					//gltf.scenes; // Array<THREE.Group>
@@ -373,7 +412,7 @@ var loadWidget = class extends superTextWidget{
 
 				}
 			);
-			
+			*/
 			
 		
 		}

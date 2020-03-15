@@ -152,6 +152,9 @@ var f3dwebgl = class{
 		this.mouseDown = false;
 		this.setSelect(false);
 	}
+	resetGroup(){
+		this.group = new THREE.Group();
+	}
 	//from https://codepen.io/looeee/pen/RMLJYw
 	createPlaneMesh(){
 		this.skyPlaneGeometry = new THREE.BufferGeometry();
@@ -746,6 +749,7 @@ var f3dwebgl = class{
 		this.indexPickedChain = 0;
 		this.indexPickedObject = 0;
 		this.scene.children[1].children.length = 0;
+		this.group = new THREE.Group();
 		this.mouseup("",true);
 		
 	}
