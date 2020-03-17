@@ -363,7 +363,7 @@ var loadWidget = class extends superTextWidget{
 					var pos_scl = JSON.parse(json[str+'pos_scl']);
 					var sphereIndex = 0;
 					pos_scl.forEach(e=>{
-						window.f3d.createBNSphere(0xffff00,e.position,e.scale,sphereIndex);
+						window.f3d.createBNSphere(0xffff00,e.position,e.scale,e.name,sphereIndex);
 						sphereIndex++;
 					})
 					//array_spheres.forEach(e => window.f3d.group.add(e));
