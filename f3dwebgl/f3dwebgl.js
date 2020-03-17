@@ -742,6 +742,17 @@ var f3dwebgl = class{
 	saveArrayBuffer( buffer, filename ) {
 		this.save( new Blob( [ buffer ], { type: 'application/octet-stream' } ), filename );
 	}
+	getPosScl(){
+		let numberOfSpheres = Object.keys(me.f3dWorld[me.indexPickedBody][me.indexPickedChain]).length;
+		let returnArray = [];
+		for(let s = 0;s<numberOfSpheres;s++){
+			returnArray[s] = {};
+			returnArray[s].position = me.f3dWorld[me.indexPickedBody][me.indexPickedChain][+(s)].sphere.position;
+			returnArray[s].scale = me.f3dWorld[me.indexPickedBody][me.indexPickedChain][+(s)].sphere.scale;
+			if(s == numberOfSpheres-1) return returnArray;
+		};
+
+	}
 	//end utility CH
 	clear(){
 		this.f3dWorld = {}
