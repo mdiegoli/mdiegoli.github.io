@@ -285,13 +285,13 @@ var f3dwebgl = class{
 		var geometry = new THREE.SphereGeometry( 5, 8, 8 );
 		var material = new THREE.MeshToonMaterial( {color: color} );
 		var lastSphere = new THREE.Mesh( geometry, material );
-		var lastSphere.position.x = pos.x;
-		var lastSphere.position.y = pos.y;
-		var lastSphere.position.z = pos.z;
-		var lastSphere.scale.x = scale.x;
-		var lastSphere.scale.y = scale.y;
-		var lastSphere.scale.z = scale.z;
-		var group.add(this.lastSphere);
+		lastSphere.position.x = pos.x;
+		lastSphere.position.y = pos.y;
+		lastSphere.position.z = pos.z;
+		lastSphere.scale.x = scale.x;
+		lastSphere.scale.y = scale.y;
+		lastSphere.scale.z = scale.z;
+		this.group.add(lastSphere);
 		this.f3dWorld[+this.indexPickedBody][+this.indexPickedChain][+(i)].sphere = lastSphere;
 	}
 	
