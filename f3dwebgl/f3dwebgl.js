@@ -763,6 +763,7 @@ var f3dwebgl = class{
 			returnArray[s] = {};
 			returnArray[s].position = this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(s)].sphere.position;
 			returnArray[s].scale = this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(s)].sphere.scale;
+			returnArray[s].name = this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(s)].sphere.name;
 			if(s == numberOfSpheres-1) return JSON.stringify(returnArray);
 		};
 
