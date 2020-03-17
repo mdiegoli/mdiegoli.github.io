@@ -749,7 +749,7 @@ var f3dwebgl = class{
 			returnArray[s] = {};
 			returnArray[s].position = this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(s)].sphere.position;
 			returnArray[s].scale = this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(s)].sphere.scale;
-			if(s == numberOfSpheres-1) return returnArray;
+			if(s == numberOfSpheres-1) return JSON.stringify(returnArray);
 		};
 
 	}
