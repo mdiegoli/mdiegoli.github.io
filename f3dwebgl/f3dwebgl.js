@@ -774,6 +774,7 @@ var f3dwebgl = class{
 		this.indexPickedObject = 0;
 		this.scene.children[1].children.length = 0;
 		this.group = new THREE.Group();
+		this.boxHelper = {};
 		this.mouseup("",true);
 		
 	}
