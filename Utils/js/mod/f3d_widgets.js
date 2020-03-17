@@ -361,8 +361,10 @@ var loadWidget = class extends superTextWidget{
 				    //window.f3d.resetGroup();
 					//window.f3d.scene = JSON.parse(json[str+'scene']);
 					var pos_scl = JSON.parse(json[str+'pos_scl']);
+					var sphereIndex = 0;
 					pos_scl.forEach(e=>{
-						window.f3d.createBNSphere(0xffff00,e.position,e.scale);
+						window.f3d.createBNSphere(0xffff00,e.position,e.scale,sphereIndex);
+						sphereIndex++;
 					})
 					//array_spheres.forEach(e => window.f3d.group.add(e));
 					window.f3d.mouseup("",true);
