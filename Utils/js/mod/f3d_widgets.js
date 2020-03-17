@@ -292,6 +292,7 @@ var saveWidget = class extends superTextWidget{
 			alert('No file name!');}
 		else{ 
 			localStorage[str] = JSON.stringify(window.f3d.f3dWorld);
+			localStorage[str+'pos_scl'] = window.f3d.getPosScl();
 			//let tmp = [];
 			//window.f3d.scene.children[1].children.forEach(e => {tmp.push({position:{x:e.position.x,y:e.position.y,z:e.position.z},scale:{x:e.scale.x,y:e.scale.y,z:e.scale.z}})});
 			//localStorage[str+'_spheres'] = JSON.stringify(window.f3d.scene.children[1].children);
@@ -326,6 +327,7 @@ var saveWidget = class extends superTextWidget{
 			toFile[str] = localStorage[str];
 			toFile[str+'index'] = localStorage[str+'index'];
 			toFile[str+'scene'] = localStorage[str+'scene'];
+			toFile[str+'pos_scl'] = localStorage[str+'pos_scl'];
 			window.f3d.saveString( JSON.stringify( toFile), str+'.f3d' );
 		}
 	};
@@ -358,6 +360,12 @@ var loadWidget = class extends superTextWidget{
 					window.f3d.indexPickedObject = index.indexPickedObject;
 				    //window.f3d.resetGroup();
 					window.f3d.scene = JSON.parse(json[str+'scene']);
+					var pos_scl = JSON.parse(json[str+'pos_scl']);
+					var i = 0;
+					window.f3d.group.children.forEach(e=>{
+						e['position'] = pos_scl[i].position;
+						e['scale'] = pos_scl[i].scale;
+					})
 					//array_spheres.forEach(e => window.f3d.group.add(e));
 					window.f3d.mouseup("",true);
 				});
