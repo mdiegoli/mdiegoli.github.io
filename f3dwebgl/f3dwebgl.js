@@ -281,7 +281,7 @@ var f3dwebgl = class{
 		}
 	}
 	
-	createBNSphere(color,pos,scale,i){
+	createBNSphere(color,pos,scale,name,i){
 		var geometry = new THREE.SphereGeometry( 5, 8, 8 );
 		var material = new THREE.MeshToonMaterial( {color: color} );
 		var lastSphere = new THREE.Mesh( geometry, material );
@@ -291,6 +291,7 @@ var f3dwebgl = class{
 		lastSphere.scale.x = scale.x;
 		lastSphere.scale.y = scale.y;
 		lastSphere.scale.z = scale.z;
+		lastSphere.name = name;
 		this.group.add(lastSphere);
 		this.f3dWorld[+this.indexPickedBody][+this.indexPickedChain][+(i)].sphere = lastSphere;
 	}
