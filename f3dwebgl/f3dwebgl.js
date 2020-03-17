@@ -280,7 +280,20 @@ var f3dwebgl = class{
 			me.boxHelper.setFromObject(voxel);
 		}
 	}
-			
+	
+	createBNSphere(color,pos,scale){
+		var geometry = new THREE.SphereGeometry( 5, 8, 8 );
+		var material = new THREE.MeshToonMaterial( {color: color} );
+		this.lastSphere = new THREE.Mesh( geometry, material );
+		this.lastSphere.position.x = pos.x;
+		this.lastSphere.position.y = pos.y;
+		this.lastSphere.position.z = pos.z;
+		this.lastSphere.scale.x = scale.x;
+		this.lastSphere.scale.y = scale.y;
+		this.lastSphere.scale.z = scale.z;
+		this.group.add(this.lastSphere);
+	}
+	
 	createSphere(color,scale){
 		var geometry = new THREE.SphereGeometry( 5, 8, 8 );
 		var material = new THREE.MeshToonMaterial( {color: color} );
