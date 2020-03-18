@@ -296,7 +296,7 @@ var saveWidget = class extends superTextWidget{
 			//let tmp = [];
 			//window.f3d.scene.children[1].children.forEach(e => {tmp.push({position:{x:e.position.x,y:e.position.y,z:e.position.z},scale:{x:e.scale.x,y:e.scale.y,z:e.scale.z}})});
 			//localStorage[str+'_spheres'] = JSON.stringify(window.f3d.scene.children[1].children);
-			localStorage[str+'index'] = JSON.stringify({indexPickedBody:window.f3d.indexPickedBody,indexPickedChain:window.f3d.indexPickedChain,indexPickedObject:window.f3d.indexPickedObject});
+			localStorage[str+'index'] = JSON.stringify({indexPickedBody:window.f3d.indexPickedBody,indexPickedChain:window.f3d.indexPickedChain,indexPickedObject:window.f3d.indexPickedObject,spheresNumber:window.f3d.spheresNumber});
 			localStorage[str+'scene'] = window.f3d.scene.toJSON();
 			/*
 			var gltfExporter = new GLTFExporter();
@@ -358,6 +358,7 @@ var loadWidget = class extends superTextWidget{
 					window.f3d.indexPickedBody = index.indexPickedBody;
 					window.f3d.indexPickedChain = index.indexPickedChain;
 					window.f3d.indexPickedObject = index.indexPickedObject;
+					window.f3d.spheresNumber = index.spheresNumber;
 				    //window.f3d.resetGroup();
 					//window.f3d.scene = JSON.parse(json[str+'scene']);
 					var pos_scl = JSON.parse(json[str+'pos_scl']);
