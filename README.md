@@ -74,6 +74,10 @@ f3dwebgl v4 https://mdiegoli.github.io/f3dwebgl_v4.html , change camera target
 
 f3dwebgl v5 https://mdiegoli.github.io/f3dwebgl_v5.html , multi chain from one node
 
+f3dwebgl v6 https://mdiegoli.github.io/f3dwebgl_v6.html , working plane follow camera
+
+f3dwebgl v7 https://mdiegoli.github.io/f3dwebgl_v7.html , save and load f3d file
+
 https://mdiegoli.github.io/convextest.html
 
 sketch MAT SAT (v. 0.1 of f3d)
