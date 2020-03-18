@@ -346,10 +346,10 @@ var f3dwebgl = class{
 	  event.preventDefault();
 
 	  if (event.deltaY < 0) {
-	    this.obj_decrease_cb(e,fn);
+	    this.obj_decrease_cb(event);
 	  }
 	  else {
-	   this.obj_increase_cb(e,fn);
+	   this.obj_increase_cb(event);
 	  }
 	}
 	
