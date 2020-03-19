@@ -343,14 +343,13 @@ var f3dwebgl = class{
 	}
 	*/
 	onDocumentWheel( event ){
-	  event.preventDefault();
-	  event.stopPropagation();
+	  event.stopImmediatePropagation();
 		
 	  if (event.deltaY < 0) {
-	    this.obj_decrease_cb(event);
+	   this.obj_increase_cb(event);
 	  }
 	  else {
-	   this.obj_increase_cb(event);
+	   this.obj_decrease_cb(event);
 	  }
 	}
 	
