@@ -395,7 +395,7 @@ var f3dwebgl = class{
 		var intersects = this.raycaster.intersectObjects( this.scene.children );
 		if ( intersects.length > 0 ) {
 			let index = intersects[0].object.name.split('_');
-			if(index[1].includes('sphere')){
+			if(index[0].includes('sphere')){
 				let scale = this.f3dWorld[+this.bodyNumber][+this.chainsNumber][index[2]].sphere.scale;
 				if(grow){
 					scale.x++;
