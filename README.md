@@ -58,6 +58,8 @@ https://mdiegoli.github.io/paint.html
 
 f3d
 
+![f3d v7](https://mdiegoli.github.io/images/f3dv7.png)
+
 https://mdiegoli.github.io/f3d.html
 
 https://mdiegoli.github.io/skinned.html
