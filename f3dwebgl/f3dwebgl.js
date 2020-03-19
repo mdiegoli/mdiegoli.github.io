@@ -390,6 +390,20 @@ var f3dwebgl = class{
 	}
 
 	scaleSphere(grow){
+		if(me.indexPickedObject){
+			let scale = this.f3dWorld[+this.bodyNumber][+this.chainsNumber][index[2]].sphere.scale;
+			if(grow){
+				scale.x++;
+				scale.y++;
+				scale.z++;
+			}else{
+				scale.x=((scale.x-1)>=0)?scale.x-1:0;
+				scale.y=((scale.y-1)>=0)?scale.y-1:0;
+				scale.z=((scale.z-1)>=0)?scale.z-1:0;
+			}
+			this.f3dWorld[+this.bodyNumber][+this.chainsNumber][index[2]].sphere.scale.set(scale.x,scale.y,scale.z);
+		}
+		/*
 		this.mouse.set( ( this.lastX / window.innerWidth ) * 2 - 1, - ( this.lastY / window.innerHeight ) * 2 + 1 );
 		this.raycaster.setFromCamera( this.mouse, this.camera );
 		var intersects = this.raycaster.intersectObjects( this.scene.children );
@@ -408,7 +422,7 @@ var f3dwebgl = class{
 				}
 				this.f3dWorld[+this.bodyNumber][+this.chainsNumber][index[2]].sphere.scale.set(scale.x,scale.y,scale.z);
 			}
-		}
+		}*/
 		this.interpolate_group.children.length = 0;
 		this.interpolateSpheres();
 		this.render();
