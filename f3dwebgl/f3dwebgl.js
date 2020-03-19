@@ -391,7 +391,7 @@ var f3dwebgl = class{
 
 	scaleSphere(grow){
 		if(me.indexPickedObject){
-			let scale = this.f3dWorld[+this.bodyNumber][+this.chainsNumber][index[2]].sphere.scale;
+			let scale = this.f3dWorld[+this.bodyNumber][+this.chainsNumber][+me.indexPickedObject].sphere.scale;
 			if(grow){
 				scale.x++;
 				scale.y++;
