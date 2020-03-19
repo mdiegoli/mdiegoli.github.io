@@ -418,13 +418,19 @@ var f3dwebgl = class{
 		var intersects = this.raycaster.intersectObjects( this.scene.children );
 		this.info2.innerHTML = '';
 		let me = this;
-		if(this.mouseDown){
-			if ( intersects.length > 0 ) {
+		if ( intersects.length > 0 ) {
+			if(intersects[i].object.name.indexOf('wp') != -1){
+				this.disableController = true;	
+			}else{
+				this.disableController = false;	
+			}
+			if(this.mouseDown){
 				intersects.map(
 					function(e){
 						me.info2.innerHTML += e.object.name + ' ';
 					}
 				);
+				
 				if((this.indexPickedObject || this.indexPickedObject === 0) && this.select){
 					for(let i = 0,intersect_length = intersects.length;i<intersect_length;i++){
 						//if(intersects[i].object.name.indexOf('wp') != -1){
