@@ -343,6 +343,7 @@ var f3dwebgl = class{
 	}
 	*/
 	onDocumentWheel( event ){
+		event.preventDefault();
 	  event.stopImmediatePropagation();
 		
 	  if (event.deltaY < 0) {
