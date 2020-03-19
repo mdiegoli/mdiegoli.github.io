@@ -151,6 +151,7 @@ var f3dwebgl = class{
 		this.intersect = {};
 		this.mouseDown = false;
 		this.setSelect(false);
+		this.disableControls = false;
 	}
 	resetGroup(){
 		this.group = new THREE.Group();
@@ -343,15 +344,19 @@ var f3dwebgl = class{
 	}
 	*/
 	onDocumentWheel( event ){
+		if(this.disableControls){
+			this.controls.enabled = false;
+		}
 		event.preventDefault();
-	  event.stopImmediatePropagation();
+		event.stopImmediatePropagation();
+
+		if (event.deltaY < 0) {
+			this.obj_increase_cb(event);
+		}
+		else {
+			this.obj_decrease_cb(event);
+		}
 		
-	  if (event.deltaY < 0) {
-	   this.obj_increase_cb(event);
-	  }
-	  else {
-	   this.obj_decrease_cb(event);
-	  }
 	}
 	
 	obj_increase_cb(e,fn){
@@ -420,9 +425,9 @@ var f3dwebgl = class{
 		let me = this;
 		if ( intersects.length > 0 ) {
 			if(intersects[i].object.name.indexOf('wp') != -1){
-				this.disableController = true;	
+				this.disableControls = false;	
 			}else{
-				this.disableController = false;	
+				this.disableControls = true;	
 			}
 			if(this.mouseDown){
 				intersects.map(
