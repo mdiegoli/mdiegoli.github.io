@@ -347,7 +347,6 @@ var f3dwebgl = class{
 		if(this.disableControls){
 			this.controls.enabled = false;
 		}
-		event.preventDefault();
 		event.stopImmediatePropagation();
 
 		if (event.deltaY < 0) {
