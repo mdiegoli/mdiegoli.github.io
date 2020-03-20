@@ -151,6 +151,7 @@ var f3dwebgl = class{
 		this.intersect = {};
 		this.mouseDown = false;
 		this.setSelect(false);
+		this.disableControls = false;
 	}
 	resetGroup(){
 		this.group = new THREE.Group();
@@ -343,14 +344,18 @@ var f3dwebgl = class{
 	}
 	*/
 	onDocumentWheel( event ){
-	  event.preventDefault();
+		if(this.disableControls){
+			this.controls.enabled = false;
+		}
+		event.stopImmediatePropagation();
 
-	  if (event.deltaY < 0) {
-	    this.obj_decrease_cb(e,fn);
-	  }
-	  else {
-	   this.obj_increase_cb(e,fn);
-	  }
+		if (event.deltaY < 0) {
+			this.obj_increase_cb(event);
+		}
+		else {
+			this.obj_decrease_cb(event);
+		}
+		
 	}
 	
 	obj_increase_cb(e,fn){
@@ -385,12 +390,26 @@ var f3dwebgl = class{
 	}
 
 	scaleSphere(grow){
+		if(me.indexPickedObject){
+			let scale = this.f3dWorld[+this.bodyNumber][+this.chainsNumber][+me.indexPickedObject].sphere.scale;
+			if(grow){
+				scale.x++;
+				scale.y++;
+				scale.z++;
+			}else{
+				scale.x=((scale.x-1)>=0)?scale.x-1:0;
+				scale.y=((scale.y-1)>=0)?scale.y-1:0;
+				scale.z=((scale.z-1)>=0)?scale.z-1:0;
+			}
+			this.f3dWorld[+this.bodyNumber][+this.chainsNumber][index[2]].sphere.scale.set(scale.x,scale.y,scale.z);
+		}
+		/*
 		this.mouse.set( ( this.lastX / window.innerWidth ) * 2 - 1, - ( this.lastY / window.innerHeight ) * 2 + 1 );
 		this.raycaster.setFromCamera( this.mouse, this.camera );
 		var intersects = this.raycaster.intersectObjects( this.scene.children );
 		if ( intersects.length > 0 ) {
 			let index = intersects[0].object.name.split('_');
-			if(index[1].includes('sphere')){
+			if(index[0].includes('sphere')){
 				let scale = this.f3dWorld[+this.bodyNumber][+this.chainsNumber][index[2]].sphere.scale;
 				if(grow){
 					scale.x++;
@@ -403,27 +422,37 @@ var f3dwebgl = class{
 				}
 				this.f3dWorld[+this.bodyNumber][+this.chainsNumber][index[2]].sphere.scale.set(scale.x,scale.y,scale.z);
 			}
-		}
+		}*/
 		this.interpolate_group.children.length = 0;
 		this.interpolateSpheres();
 		this.render();
 	}
 
+	intersect_fn(x,y){
+		this.mouse.set( ( x / window.innerWidth ) * 2 - 1, - ( y / window.innerHeight ) * 2 + 1 );
+		this.raycaster.setFromCamera( this.mouse, this.camera );
+		return this.raycaster.intersectObjects( this.scene.children, true );
+	}
+
 	mousemove( event, x, y ) {
 		this.lastX = x;
 		this.lastY = y;
-		this.mouse.set( ( x / window.innerWidth ) * 2 - 1, - ( y / window.innerHeight ) * 2 + 1 );
-		this.raycaster.setFromCamera( this.mouse, this.camera );
-		var intersects = this.raycaster.intersectObjects( this.scene.children );
+		var intersects = this.intersect_fn(x,y);
 		this.info2.innerHTML = '';
 		let me = this;
-		if(this.mouseDown){
-			if ( intersects.length > 0 ) {
+		if ( intersects.length > 0 ) {
+			if(intersects[0].object.name.indexOf('wp') != -1){
+				this.disableControls = false;	
+			}else{
+				this.disableControls = true;	
+			}
+			if(this.mouseDown){
 				intersects.map(
 					function(e){
 						me.info2.innerHTML += e.object.name + ' ';
 					}
 				);
+				
 				if((this.indexPickedObject || this.indexPickedObject === 0) && this.select){
 					for(let i = 0,intersect_length = intersects.length;i<intersect_length;i++){
 						//if(intersects[i].object.name.indexOf('wp') != -1){
@@ -456,13 +485,11 @@ var f3dwebgl = class{
 			this.mousedown(event, x,y,this);
 		//}
 	}
-
+	
 	mousedown( event, x, y,me ) {
 		this.mouseDown = true;
 		//this.setDraw();
-		me.mouse.set( ( x / window.innerWidth ) * 2 - 1, - ( y / window.innerHeight ) * 2 + 1 );
-		me.raycaster.setFromCamera( me.mouse, me.camera );
-		var intersects = me.raycaster.intersectObjects( me.scene.children, true );
+		var intersects = this.intersect_fn(x,y);
 		if ( intersects.length > 0 ) {
 			intersects.map(
 				function(e){
@@ -515,11 +542,15 @@ var f3dwebgl = class{
 	}
 
 	onDocumentMobileMouseUp( event ){
-		this.mouseup(event);
+		var x = event.targetTouches[0].pageX;
+		var y = event.targetTouches[0].pageY;
+		this.mouseup(event,false,x,y);
 	}
 
 	onDocumentMouseUp( event ){
-		this.mouseup(event);
+		var x = event.clientX;
+		var y =  event.clientY;
+		this.mouseup(event,false,x,y);
 	}
 
 	interpolateSpheres(){
@@ -620,7 +651,7 @@ var f3dwebgl = class{
 		}
 	}
 
-	mouseup( event , fromScale ){
+	mouseup( event , fromScale, x, y ){
 		this.mouseDown = false;
 	    this.info2.innerHTML = '';
 		if(this.draw_mode && !fromScale){
@@ -647,6 +678,16 @@ var f3dwebgl = class{
 		this.interpolateSpheres();
 		this.setFrustumVertices(this.camera, this.frustumVertices);
 		this.updatePlane();
+		//check what is under the mouse now
+		let intersects = {};
+		if(x && y ){
+			intersects = this.intersect_fn(x,y);
+			if(intersects[ 0 ].object.name.indexOf('f3d_sphere_') !== -1 || intersects[ 0 ].object.name.indexOf('interpolation_') !== -1){
+				this.controls.enabled = false;
+			}else{
+				this.controls.enabled = true;
+			}
+		}
 		this.render();	
 	}
 
