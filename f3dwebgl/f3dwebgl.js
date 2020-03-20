@@ -680,7 +680,12 @@ var f3dwebgl = class{
 		this.updatePlane();
 		//check what is under the mouse now
 		let intersects = {};
-		if(x && y ) intersects = this.intersect_fn(x,y);
+		if(x && y ){
+			intersects = this.intersect_fn(x,y);
+			if(intersects[ 0 ].object.name.indexOf('f3d_sphere_') !== -1 || intersects[ 0 ].object.name.indexOf('interpolation_') !== -1){
+				this.controls.enabled = false;
+			}
+		}
 		this.render();	
 	}
 
