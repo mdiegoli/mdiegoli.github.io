@@ -684,6 +684,8 @@ var f3dwebgl = class{
 			intersects = this.intersect_fn(x,y);
 			if(intersects[ 0 ].object.name.indexOf('f3d_sphere_') !== -1 || intersects[ 0 ].object.name.indexOf('interpolation_') !== -1){
 				this.controls.enabled = false;
+			}else{
+				this.controls.enabled = true;
 			}
 		}
 		this.render();	
