@@ -428,12 +428,16 @@ var f3dwebgl = class{
 		this.render();
 	}
 
+	intersect_fn(x,y){
+		this.mouse.set( ( x / window.innerWidth ) * 2 - 1, - ( y / window.innerHeight ) * 2 + 1 );
+		this.raycaster.setFromCamera( this.mouse, this.camera );
+		return this.raycaster.intersectObjects( this.scene.children, true );
+	}
+
 	mousemove( event, x, y ) {
 		this.lastX = x;
 		this.lastY = y;
-		this.mouse.set( ( x / window.innerWidth ) * 2 - 1, - ( y / window.innerHeight ) * 2 + 1 );
-		this.raycaster.setFromCamera( this.mouse, this.camera );
-		var intersects = this.raycaster.intersectObjects( this.scene.children );
+		var intersects = this.intersect_fn(x,y);
 		this.info2.innerHTML = '';
 		let me = this;
 		if ( intersects.length > 0 ) {
@@ -481,13 +485,11 @@ var f3dwebgl = class{
 			this.mousedown(event, x,y,this);
 		//}
 	}
-
+	
 	mousedown( event, x, y,me ) {
 		this.mouseDown = true;
 		//this.setDraw();
-		me.mouse.set( ( x / window.innerWidth ) * 2 - 1, - ( y / window.innerHeight ) * 2 + 1 );
-		me.raycaster.setFromCamera( me.mouse, me.camera );
-		var intersects = me.raycaster.intersectObjects( me.scene.children, true );
+		var intersects = this.intersect_fn(x,y);
 		if ( intersects.length > 0 ) {
 			intersects.map(
 				function(e){
@@ -540,11 +542,15 @@ var f3dwebgl = class{
 	}
 
 	onDocumentMobileMouseUp( event ){
-		this.mouseup(event);
+		var x = event.targetTouches[0].pageX;
+		var y = event.targetTouches[0].pageY;
+		this.mouseup(event,false,x,y);
 	}
 
 	onDocumentMouseUp( event ){
-		this.mouseup(event);
+		var x = event.clientX;
+		var y =  event.clientY;
+		this.mouseup(event,false,x,y);
 	}
 
 	interpolateSpheres(){
@@ -645,7 +651,7 @@ var f3dwebgl = class{
 		}
 	}
 
-	mouseup( event , fromScale ){
+	mouseup( event , fromScale, x, y ){
 		this.mouseDown = false;
 	    this.info2.innerHTML = '';
 		if(this.draw_mode && !fromScale){
@@ -672,6 +678,9 @@ var f3dwebgl = class{
 		this.interpolateSpheres();
 		this.setFrustumVertices(this.camera, this.frustumVertices);
 		this.updatePlane();
+		//check what is under the mouse now
+		let intersects = {};
+		if(x && y ) intersects = this.intersect_fn(x,y);
 		this.render();	
 	}
 
