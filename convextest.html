@@ -12,7 +12,8 @@
 			import { ConvexBufferGeometry } from './Utils/js/mod/ConvexGeometry.js';
 			var scene = new THREE.Scene();
 			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
-
+			var ambientLight = new THREE.AmbientLight( 0x606060 );
+                    	scene.add( ambientLight );
 			var renderer = new THREE.WebGLRenderer();
 			renderer.setSize( window.innerWidth, window.innerHeight );
 			document.body.appendChild( renderer.domElement );
@@ -31,7 +32,7 @@
 			cube2.position.set(-3, 0, 0);
 			cube2.updateMatrixWorld();
 			var points = [];
-            cube.geometry.vertices.map((e)=>{points.push(new THREE.Vector3( e.x, e.y, e.z ).applyMatrix4(cube.matrixWorld))});
+                        cube.geometry.vertices.map((e)=>{points.push(new THREE.Vector3( e.x, e.y, e.z ).applyMatrix4(cube.matrixWorld))});
 			cube2.geometry.vertices.map((e)=>{points.push(new THREE.Vector3( e.x, e.y, e.z ).applyMatrix4(cube2.matrixWorld))});
 			var geometry3 = new ConvexBufferGeometry( points );
 			var material3 = new THREE.MeshBasicMaterial( {color: 0xff0000, opacity: 0.5,transparent:true} );
