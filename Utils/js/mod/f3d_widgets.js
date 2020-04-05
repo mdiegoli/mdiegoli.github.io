@@ -183,6 +183,24 @@ var widgetShowMesh = class extends superButtonWidget{
 	}
 }
 
+var widgetLinesCurves = class extends superButtonWidget{
+	constructor(obj,fn){
+		super(obj,fn)
+	}
+	obj_cb(fn) {
+		window.f3d.lineCurve = !window.f3d.lineCurve;
+		if(window.f3d.lineCurve){
+			window.f3d.lineCurveLabel = 'LINE';	
+		}
+		else{
+			window.f3d.lineCurveLabel = 'CURVE';
+		}
+		document.getElementById(fn).innerText = window.f3d.lineCurveLabel;
+		window.f3d.mouseup("",true);
+		
+	}
+}
+
 var widgetTargetWP = class extends superButtonWidget{
 	constructor(obj,fn){
 		super(obj,fn)
@@ -429,4 +447,4 @@ var loadWidget = class extends superTextWidget{
 		
 }
 
-export {widgetTargetWP,loadWidget,saveWidget,superButtonWidget,superNumericWidget,widgetAddBody,widgetAddChain,widgetShowMesh,widgetDrawMove,widgetExportMesh,widgetSphereScale,superTextWidget,widgetClear}
+export {widgetLinesCurves,widgetTargetWP,loadWidget,saveWidget,superButtonWidget,superNumericWidget,widgetAddBody,widgetAddChain,widgetShowMesh,widgetDrawMove,widgetExportMesh,widgetSphereScale,superTextWidget,widgetClear}

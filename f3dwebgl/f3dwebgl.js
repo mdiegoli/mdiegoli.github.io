@@ -3,7 +3,7 @@ import * as THREE from '../Utils/js/three.module.js';
 import { ConvexBufferGeometry } from '../Utils/js/mod/ConvexGeometry.js';
 import { TrackballControls } from '../Utils/js/mod/TrackballControls.js';
 import { OrbitControls } from '../Utils/js/mod/OrbitControls.js';
-import {widgetTargetWP,widgetAddBody,widgetAddChain,widgetShowMesh,widgetDrawMove,widgetExportMesh,widgetSphereScale,saveWidget,loadWidget,widgetClear} from '../Utils/js/mod/f3d_widgets.js';
+import {widgetLinesCurves,widgetTargetWP,widgetAddBody,widgetAddChain,widgetShowMesh,widgetDrawMove,widgetExportMesh,widgetSphereScale,saveWidget,loadWidget,widgetClear} from '../Utils/js/mod/f3d_widgets.js';
 
 var f3dwebgl = class{
 	constructor(){
@@ -147,11 +147,12 @@ var f3dwebgl = class{
 		this.targetWP = new widgetTargetWP(this,'TARGETOBJ');
 		this.loadModel = new loadWidget(this,'LOADMODEL');
 		this.sceneClear = new widgetClear(this,'CLEAR');
-		
+		this.lineCurveWidget = new widgetLinesCurves(this,'LINE');
 		this.intersect = {};
 		this.mouseDown = false;
 		this.setSelect(false);
 		this.disableControls = false;
+		this.lineCurve = true;
 	}
 	resetGroup(){
 		this.group = new THREE.Group();
@@ -553,24 +554,50 @@ var f3dwebgl = class{
 		this.mouseup(event,false,x,y);
 	}
 
+	createCurve(curvePoints){
+		//Create a closed wavey loop
+		var curve = new THREE.CatmullRomCurve3( curvePoints );
+
+		var points = curve.getPoints( 10 * curvePoints.length );
+		for(let p = 0, p_l = points.length;p<p_l;p++){
+			let sphere = this.createSphere(0xff0000);
+			sphere.position.x = points[p].x;
+			sphere.position.y = points[p].y;
+			sphere.position.z = points[p].z;
+			sphere.scale.x = 1;//s1.scale.x - token_scale_x*(s+1);
+			sphere.scale.y = 1;//s1.scale.y - token_scale_y*(s+1);
+			sphere.scale.z = 1;//s1.scale.z - token_scale_z*(s+1);
+			sphere.name = 'interpolation_curve_' + this.bodyNumber + '_' + this.chainsNumber;
+
+			this.interpolate_group.add( sphere );
+		}
+	}
+
 	interpolateSpheres(){
+		var curvePoints = [];					
 		for(let b = 0,b_l = Object.keys(this.f3dWorld).length;b<b_l;b++){
 			for(let c = 0,c_l = Object.keys(this.f3dWorld[+b]).length;c<c_l;c++){
 				for(let s = 0,s_l = Object.keys(this.f3dWorld[+b][+c]).length;s<s_l;s++){
 					let st = this.f3dWorld[+b][+c][+s];
 					if(st.head && st.head.length>0){
-						let s1 = st.sphere;
-						//let s2 = this.f3dWorld[+b][+c][+st.head[0]].sphere;
-						for(let h = 0,h_l = st.head.length;h<h_l;h++){
-							let s2 = this.f3dWorld[+b][+c][+st.head[h]].sphere;
-							this.r_interpolate2Spheres(s1,s2,s,st.head[h]);
-							if(!this.hideConvexHull) this.convexHullBetween2Spheres(s1,s2,s,st.head[h]);
+						if(this.lineCurve){
+							let s1 = st.sphere;
+							for(let h = 0,h_l = st.head.length;h<h_l;h++){
+								let s2 = this.f3dWorld[+b][+c][+st.head[h]].sphere;
+								this.r_interpolate2Spheres(s1,s2,s,st.head[h]);
+								if(!this.hideConvexHull) this.convexHullBetween2Spheres(s1,s2,s,st.head[h]);
+							}
+						}else{
+							if(!this.curvePoints && curvePoints.length == 0) curvePoints.push( st.sphere.position );
+							for(let h = 0,h_l = st.head.length;h<h_l;h++){
+								curvePoints.push( this.f3dWorld[+b][+c][+st.head[h]].sphere.position );
+								//this.r_interpolate2Spheres(s1,s2,s,st.head[h]);
+								//if(!this.hideConvexHull) this.convexHullBetween2Spheres(s1,s2,s,st.head[h]);
+							}
+							if(s == (s_l-2)) this.createCurve(curvePoints)
+
 						}
-							
 					}
-					//let s2 = this.f3dWorld[+b][+c][+st.head[0]].sphere;
-					//st.head.length>0?this.r_interpolate2Spheres(s1,s2,s,st.head[0]):'';
-					//if(this.hideConvexHull) st.head.length?this.convexHullBetween2Spheres(s1,s2,s,st.head[0]):'';
 				}
 			}
 		}
