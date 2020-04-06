@@ -564,9 +564,9 @@ var f3dwebgl = class{
 			sphere.position.x = points[p].x;
 			sphere.position.y = points[p].y;
 			sphere.position.z = points[p].z;
-			sphere.scale.x = 1;//s1.scale.x - token_scale_x*(s+1);
-			sphere.scale.y = 1;//s1.scale.y - token_scale_y*(s+1);
-			sphere.scale.z = 1;//s1.scale.z - token_scale_z*(s+1);
+			sphere.scale.x = this.sphereScale>0.1?this.sphereScale-0.1:0.1;//s1.scale.x - token_scale_x*(s+1);
+			sphere.scale.y = this.sphereScale>0.1?this.sphereScale-0.1:0.1;//s1.scale.y - token_scale_y*(s+1);
+			sphere.scale.z = this.sphereScale>0.1?this.sphereScale-0.1:0.1;//s1.scale.z - token_scale_z*(s+1);
 			sphere.name = 'interpolation_curve_' + this.bodyNumber + '_' + this.chainsNumber;
 
 			this.interpolate_group.add( sphere );
