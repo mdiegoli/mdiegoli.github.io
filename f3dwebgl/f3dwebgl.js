@@ -543,8 +543,8 @@ var f3dwebgl = class{
 	}
 
 	onDocumentMobileMouseUp( event ){
-		var x = event.targetTouches[0].pageX;
-		var y = event.targetTouches[0].pageY;
+		var x = event.targetTouches[0].pageX || event.changedTouches[0].pageX;
+		var y = event.targetTouches[0].pageY || event.changedTouches[0].pageY;
 		this.mouseup(event,false,x,y);
 	}
 
