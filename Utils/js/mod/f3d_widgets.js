@@ -63,8 +63,8 @@ var superNumericWidget = class extends superWidget{
 			<div class="barButton" onmousedown="decrease${fn}_fn(event,'${fn}')" onmousemove="event.stopPropagation()" onmouseup="event.stopPropagation()"  ontouchstart="decrease${fn}_fn(event,'${fn}')" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation();">
 				-
 			</div>
-			<div id="sphereScale" class="barButton">
-			`+obj.sphereScale+`
+			<div id="val_${fn}" class="barButton">
+			`+obj[fn]+`
 			</div>
 			<div class="barButton" onmousedown="increase${fn}_fn(event,'${fn}')" onmousemove="event.stopPropagation()" onmouseup="event.stopPropagation()"  ontouchstart="increase${fn}_fn(event,'${fn}')" ontouchmove="event.stopPropagation()" ontouchend="event.stopPropagation();">
 				+
@@ -80,14 +80,26 @@ var superNumericWidget = class extends superWidget{
 
 	win_increase_cb(e,fn) {
 		e.stopPropagation();
-		window.f3d['increase'+fn+'_fn']();
-		window.f3d['update'+fn+'_fn']();
+		window.f3d['increase'+fn+'_fn'](e,fn);
+		window.f3d['update'+fn+'_fn'](e,fn);
 	}
 	
 	win_decrease_cb(e,fn){
 		e.stopPropagation();
-		window.f3d['decrease'+fn+'_fn']();
-		window.f3d['update'+fn+'_fn']();
+		window.f3d['decrease'+fn+'_fn'](e,fn);
+		window.f3d['update'+fn+'_fn'](e,fn);
+	}
+
+	obj_increase_cb(e,fn){
+		window.f3d.obj_increase_cb(e,fn);
+	}
+
+	obj_decrease_cb(e,fn){
+		window.f3d.obj_decrease_cb(e,fn);
+	}
+
+	obj_update_cb(e,fn){
+		document.getElementById('val_'+fn).innerText = window.f3d[fn];
 	}
 }
 
@@ -274,19 +286,12 @@ var widgetSphereScale = class extends superNumericWidget{
 	constructor(obj,fn){
 		super(obj,fn);
 	}
+}
 
-	obj_increase_cb(e,fn){
-		window.f3d.obj_increase_cb(e,fn);
+var widgetNumIntSpheresCurve = class extends superNumericWidget{
+	constructor(obj,fn){
+		super(obj,fn);
 	}
-
-	obj_decrease_cb(e,fn){
-		window.f3d.obj_decrease_cb(e,fn);
-	}
-
-	obj_update_cb(e,fn){
-		document.getElementById('sphereScale').innerText = window.f3d.sphereScale;
-	}
-
 }
 /*
 var widgetSphereScale = class extends superNumericWidget{
@@ -447,4 +452,4 @@ var loadWidget = class extends superTextWidget{
 		
 }
 
-export {widgetLinesCurves,widgetTargetWP,loadWidget,saveWidget,superButtonWidget,superNumericWidget,widgetAddBody,widgetAddChain,widgetShowMesh,widgetDrawMove,widgetExportMesh,widgetSphereScale,superTextWidget,widgetClear}
+export {widgetNumIntSpheresCurve,widgetLinesCurves,widgetTargetWP,loadWidget,saveWidget,superButtonWidget,superNumericWidget,widgetAddBody,widgetAddChain,widgetShowMesh,widgetDrawMove,widgetExportMesh,widgetSphereScale,superTextWidget,widgetClear}

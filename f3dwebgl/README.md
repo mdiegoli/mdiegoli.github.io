@@ -1,6 +1,6 @@
 wip https://mdiegoli.github.io/f3dwebgl.html
 
-https://mdiegoli.github.io/f3dwebgl_v1.html , add body and chain https://mdiegoli.github.io/f3dwebgl_v2.html , convexhull mesh https://mdiegoli.github.io/f3dwebgl_v3.html ...
+https://mdiegoli.github.io/f3dwebgl_v1.html , add body and chain https://mdiegoli.github.io/f3dwebgl_v2.html , convexhull mesh https://mdiegoli.github.io/f3dwebgl_v3.html ... read update on README.md at page https://mdiegoli.github.io
 
 threejs forum
 

@@ -80,6 +80,8 @@ f3dwebgl v6 https://mdiegoli.github.io/f3dwebgl_v6.html , working plane follow c
 
 f3dwebgl v7 https://mdiegoli.github.io/f3dwebgl_v7.html , save and load f3d file
 
+f3dwebgl v7 https://mdiegoli.github.io/f3dwebgl_v8.html , curve
+
 https://mdiegoli.github.io/convextest.html
 
 sketch MAT SAT (v. 0.1 of f3d)
