@@ -731,6 +731,7 @@ var f3dwebgl = class{
 				this.indexPickedBody = this.bodyNumber;
 				this.indexPickedChain = this.chainsNumber;
 				this.indexPickedObject = this.spheresNumber-1;
+				//addAction('ADDSPHERE',this.indexPickedObject)
 			}
 			this.controls.enabled = true;
 			this.intersect = {};
