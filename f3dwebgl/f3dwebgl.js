@@ -149,7 +149,7 @@ var f3dwebgl = class{
 		this.sceneClear = new widgetClear(this,'CLEAR');
 		this.lineCurveWidget = new widgetLinesCurves(this,'LINE');
 		this.undoWidget = new widgetUndo(this,'UNDO');
-		this.redoWidget = new widgetRedo(this,'REDO');
+		//this.redoWidget = new widgetRedo(this,'REDO');
 		this.NUMINTSPHERECURVE = 10;
 		this.numIntSphere = new widgetNumIntSpheresCurve(this,'NUMINTSPHERECURVE');
 		this.intersect = {};
@@ -737,12 +737,12 @@ var f3dwebgl = class{
 			}
 			this.controls.enabled = true;
 			this.intersect = {};
-			this.showBBox(this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(this.indexPickedObject)].sphere,this);
+			
 		}
 		else{
 			this.draw_mode = true;
 		}
-		
+		this.showBBox(this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(this.indexPickedObject)].sphere,this);
 		this.interpolate_group.children.length = 0;
 		this.ch_group.children.length = 0;
 		this.setSelect(false);
@@ -919,7 +919,9 @@ var f3dwebgl = class{
 						this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(b)].head = h[0];
 						this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(h[0])].back = b;
 					}else{
-						this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(b)].head = [];
+						let a = this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(b)].head;
+						if(a.length>1) this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(b)].head.removeElement((this.spheresNumber-1));
+						else this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(b)].head = [];
 					}
 					let s = this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(this.spheresNumber-1)].sphere;
 					this.group.remove( s );
@@ -928,7 +930,7 @@ var f3dwebgl = class{
 				}else{
 					this.spheresNumber++;
 				}
-				this.indexPickedChain = action.d-1;
+				this.indexPickedObject = action.d-1;
 				break;
 		}
 		this.mouseup("",true);
@@ -965,5 +967,12 @@ window.f3d.render();
 window.endTouch = () => {
 	console.log('endTouch');
 	window.f3d.isTouched = false;
+}
+
+Array.prototype.removeElement = function(elem) {
+    var index = this.indexOf(elem);
+    if (index > -1) {
+        this.splice(index, 1);
+    }
 }
 
