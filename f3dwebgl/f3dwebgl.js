@@ -3,7 +3,7 @@ import * as THREE from '../Utils/js/three.module.js';
 import { ConvexBufferGeometry } from '../Utils/js/mod/ConvexGeometry.js';
 import { TrackballControls } from '../Utils/js/mod/TrackballControls.js';
 import { OrbitControls } from '../Utils/js/mod/OrbitControls.js';
-import {widgetNumIntSpheresCurve,widgetLinesCurves,widgetTargetWP,widgetAddBody,widgetAddChain,widgetShowMesh,widgetDrawMove,widgetExportMesh,widgetSphereScale,saveWidget,loadWidget,widgetClear} from '../Utils/js/mod/f3d_widgets.js';
+import {widgetUndo,widgetRedo,widgetNumIntSpheresCurve,widgetLinesCurves,widgetTargetWP,widgetAddBody,widgetAddChain,widgetShowMesh,widgetDrawMove,widgetExportMesh,widgetSphereScale,saveWidget,loadWidget,widgetClear} from '../Utils/js/mod/f3d_widgets.js';
 
 var f3dwebgl = class{
 	constructor(){
@@ -148,6 +148,8 @@ var f3dwebgl = class{
 		this.loadModel = new loadWidget(this,'LOADMODEL');
 		this.sceneClear = new widgetClear(this,'CLEAR');
 		this.lineCurveWidget = new widgetLinesCurves(this,'LINE');
+		this.undoWidget = new widgetUndo(this,'UNDO');
+		this.redoWidget = new widgetRedo(this,'REDO');
 		this.NUMINTSPHERECURVE = 10;
 		this.numIntSphere = new widgetNumIntSpheresCurve(this,'NUMINTSPHERECURVE');
 		this.intersect = {};
@@ -731,7 +733,7 @@ var f3dwebgl = class{
 				this.indexPickedBody = this.bodyNumber;
 				this.indexPickedChain = this.chainsNumber;
 				this.indexPickedObject = this.spheresNumber-1;
-				//addAction('ADDSPHERE',this.indexPickedObject)
+				window.actionsStack.addAction('ADDSPHERE',this.indexPickedObject);
 			}
 			this.controls.enabled = true;
 			this.intersect = {};
@@ -892,10 +894,72 @@ var f3dwebgl = class{
 		this.mouseup("",true);
 		
 	}
+
+	undo(){
+		let a = window.actionsStack.getLastAction();
+		if(a){
+			this.processAction(a,'u');
+		}
+	}
 		
+	redo(){
+		let a = window.actionsStack.getNextAction();
+		if(a){
+			this.processAction(a,'r');
+		}
+	}
+
+	processAction(action,undoRedo){
+		switch(action.t){
+			case 'ADDSPHERE':
+				if(undoRedo.indexOf('u')!=-1){
+					let h = this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(this.spheresNumber-1)].head;
+					let b = this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(this.spheresNumber-1)].back;
+					if(h[0]){
+						this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(b)].head = h[0];
+						this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(h[0])].back = b;
+					}else{
+						this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(b)].head = [];
+					}
+					let s = this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(this.spheresNumber-1)].sphere;
+					this.group.remove( s );
+					delete this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(this.spheresNumber-1)];
+					this.spheresNumber--;
+				}else{
+					this.spheresNumber++;
+				}
+				this.indexPickedChain = action.d-1;
+				break;
+		}
+		this.mouseup("",true);
+	}
+}
+var actionsStack = class{
+	constructor(){
+		this.actions = [];
+		this.index = 0;
+	}
+	addAction(type,data){
+		this.actions.push({t:type,d:data});
+		this.index = this.actions.length;
+	}
+	getLastAction(){
+		if(this.index>0){
+			this.index--;
+			return this.actions[this.index];
+		}else{
+			return null;
+		}
+	}
+	getNextAction(){
+		this.index++;
+		if(this.actions.length > this.index) return this.actions[this.index];
+		else return null;
+	}
 }
 
 window.f3d = new f3dwebgl();
+window.actionsStack = new actionsStack();
 window.f3d.render();
 //only 1 touch at time
 window.endTouch = () => {

@@ -176,6 +176,25 @@ var widgetClear = class extends superButtonWidget{
 	}
 }
 
+var widgetUndo = class extends superButtonWidget{
+	constructor(obj,fn){
+		super(obj,fn)
+	}
+	obj_cb(fn) {
+		window.f3d.undo();
+		
+	}
+}
+
+var widgetRedo = class extends superButtonWidget{
+	constructor(obj,fn){
+		super(obj,fn)
+	}
+	obj_cb(fn) {
+		window.f3d.redo();
+		
+	}
+}
 
 var widgetShowMesh = class extends superButtonWidget{
 	constructor(obj,fn){
@@ -452,4 +471,4 @@ var loadWidget = class extends superTextWidget{
 		
 }
 
-export {widgetNumIntSpheresCurve,widgetLinesCurves,widgetTargetWP,loadWidget,saveWidget,superButtonWidget,superNumericWidget,widgetAddBody,widgetAddChain,widgetShowMesh,widgetDrawMove,widgetExportMesh,widgetSphereScale,superTextWidget,widgetClear}
+export {widgetUndo,widgetRedo,widgetNumIntSpheresCurve,widgetLinesCurves,widgetTargetWP,loadWidget,saveWidget,superButtonWidget,superNumericWidget,widgetAddBody,widgetAddChain,widgetShowMesh,widgetDrawMove,widgetExportMesh,widgetSphereScale,superTextWidget,widgetClear}
