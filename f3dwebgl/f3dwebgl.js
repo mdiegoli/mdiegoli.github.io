@@ -127,6 +127,7 @@ var f3dwebgl = class{
 		this.f3dWorld[+this.bodyNumber] = {};
 		this.f3dWorld[+this.bodyNumber][+this.chainsNumber] = {};
 		this.f3dWorld[+this.bodyNumber][+this.chainsNumber][+this.spheresNumber] = {};
+		this.f3dWorld.stroke = [];
 		this.isTouched = false;
 		this.hideConvexHull = true;
 		this.frustumVertices = [new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(),new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3()];
@@ -480,7 +481,7 @@ var f3dwebgl = class{
 						me.info2.innerHTML += e.object.name + ' ';
 					}
 				);
-				
+				if(this.draw_mode) this.f3dWorld.stroke.push(intersects[0].point);
 				if((this.indexPickedObject || this.indexPickedObject === 0) && this.select){
 					for(let i = 0,intersect_length = intersects.length;i<intersect_length;i++){
 						//if(intersects[i].object.name.indexOf('wp') != -1){
