@@ -466,11 +466,13 @@ var f3dwebgl = class{
 		this.info2.innerHTML = '';
 		let me = this;
 		if ( intersects.length > 0 ) {
+			/*
 			if(intersects[0].object.name.indexOf('wp') != -1){
 				this.disableControls = false;	
 			}else{
 				this.disableControls = true;	
 			}
+			*/
 			if(this.mouseDown){
 				intersects.map(
 					function(e){
