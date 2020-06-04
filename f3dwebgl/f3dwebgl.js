@@ -103,7 +103,7 @@ var f3dwebgl = class{
 		this.scene.add(this.interpolate_group);
 		this.scene.add(this.ch_group);
 		this.controls = new OrbitControls( this.camera, this.renderer.domElement );
-		//this.controls.enabled = false;
+		this.controls.enabled = false;
 		document.addEventListener( 'mousemove', this.onDocumentMouseMove.bind(this), false );
 		document.addEventListener( 'touchmove', this.onDocumentMobileMouseMove.bind(this), false );
 		document.addEventListener( 'mousedown', this.onDocumentMouseDown.bind(this), false );
@@ -350,9 +350,9 @@ var f3dwebgl = class{
 	}
 	*/
 	onDocumentWheel( event ){
-		if(this.disableControls){
-			this.controls.enabled = false;
-		}
+		//if(this.disableControls){
+		//	this.controls.enabled = false;
+		//}
 		event.stopImmediatePropagation();
 
 		if (event.deltaY < 0) {
@@ -466,13 +466,13 @@ var f3dwebgl = class{
 		this.info2.innerHTML = '';
 		let me = this;
 		if ( intersects.length > 0 ) {
-			/*
+			
 			if(intersects[0].object.name.indexOf('wp') != -1){
 				this.disableControls = false;	
 			}else{
 				this.disableControls = true;	
 			}
-			*/
+			
 			if(this.mouseDown){
 				intersects.map(
 					function(e){
@@ -524,7 +524,7 @@ var f3dwebgl = class{
 				}
 			);
 			if(intersects[ 0 ].object.name.indexOf('f3d_sphere_') !== -1){
-				this.controls.enabled = false;
+				//this.controls.enabled = false;
 				let sphereTokens = intersects[ 0 ].object.name.split('_');
 				let index_f3d_sphere = parseInt(sphereTokens[2]);
 				let index_body = parseInt(sphereTokens[3]);
@@ -534,7 +534,7 @@ var f3dwebgl = class{
 				me.indexPickedChain = index_chain;
 				this.setSelect(true);
 			}else if(intersects[ 0 ].object.name.indexOf('interpolation_') !== -1){
-				this.controls.enabled = false;
+				//this.controls.enabled = false;
 				let interpolation_tokens = intersects[ 0 ].object.name.split('_');
 				let token_objId1 = interpolation_tokens[1];
 				let token_objId2 = interpolation_tokens[2];
@@ -737,7 +737,7 @@ var f3dwebgl = class{
 				this.indexPickedObject = this.spheresNumber-1;
 				window.actionsStack.addAction('ADDSPHERE',this.indexPickedObject);
 			}
-			this.controls.enabled = true;
+			//this.controls.enabled = true;
 			this.intersect = {};
 			
 		}
@@ -756,11 +756,13 @@ var f3dwebgl = class{
 		let intersects = {};
 		if(x && y ){
 			intersects = this.intersect_fn(x,y);
+			/*
 			if(intersects[ 0 ].object.name.indexOf('f3d_sphere_') !== -1 || intersects[ 0 ].object.name.indexOf('interpolation_') !== -1){
 				this.controls.enabled = false;
 			}else{
 				this.controls.enabled = true;
 			}
+			*/
 		}
 		this.render();	
 	}
