@@ -489,7 +489,7 @@ var f3dwebgl = class{
 					}	
 				}
 				else{
-					this.draw_mode = false;
+					//this.draw_mode = false;
 				}
 			}
 			
@@ -742,7 +742,7 @@ var f3dwebgl = class{
 			
 		}
 		else{
-			this.draw_mode = true;
+			//this.draw_mode = true;
 		}
 		this.showBBox(this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(this.indexPickedObject)].sphere,this);
 		this.interpolate_group.children.length = 0;
