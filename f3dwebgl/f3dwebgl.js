@@ -468,6 +468,7 @@ var f3dwebgl = class{
 		if ( intersects.length > 0 ) {
 			
 			if(intersects[0].object.name.indexOf('wp') != -1){
+				this.intersect = intersects[ 0 ];
 				this.disableControls = false;	
 			}else{
 				this.disableControls = true;	
