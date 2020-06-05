@@ -11,4 +11,4 @@ function Point3DToScreen2D(point3D){
             screenY = renderer.domElement.height * (1-screenY);
             return {x: screenX, y: screenY};
         }
-export { Point3DToScreen2D }
+export { Point3DToScreen2D };
