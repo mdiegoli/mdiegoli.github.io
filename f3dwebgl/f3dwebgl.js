@@ -481,7 +481,7 @@ var f3dwebgl = class{
 						me.info2.innerHTML += e.object.name + ' ';
 					}
 				);
-				if(this.draw_mode) this.f3dWorld.stroke.push(intersects[0].point);
+				if(this.draw_mode) this.f3dWorld.stroke.push(intersects[0]);
 				if((this.indexPickedObject || this.indexPickedObject === 0) && this.select){
 					for(let i = 0,intersect_length = intersects.length;i<intersect_length;i++){
 						//if(intersects[i].object.name.indexOf('wp') != -1){
@@ -731,6 +731,12 @@ var f3dwebgl = class{
 	    this.info2.innerHTML = '';
 		if(this.draw_mode && !fromScale){
 			if(!this.select){
+				var me = this;
+				this.f3dWorld.stroke.foreach((e) => {
+					let voxel = me.createSphere(0xffff00,me.SPHERESCALE);
+					me.addSphereToScene(me, voxel, e);
+				})
+				
 				var voxel = this.createSphere(0xffff00,this.SPHERESCALE);
 				this.addSphereToScene(this, voxel, this.intersect);
 				this.addNextRing(this,voxel);
