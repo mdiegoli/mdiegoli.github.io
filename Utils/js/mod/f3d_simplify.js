@@ -1,3 +1,4 @@
+//https://stackoverflow.com/questions/11534000/three-js-converting-3d-position-to-2d-screen-position
 function Point3DToScreen2D(point3D){
             var screenX = 0;
             var screenY = 0;
@@ -12,6 +13,7 @@ function Point3DToScreen2D(point3D){
             return {x: screenX, y: screenY};
 }
 
+//https://gist.github.com/conorbuck/2606166
 //var p1 = {
 //	x: 20,
 //	y: 20
