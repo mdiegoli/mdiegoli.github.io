@@ -10,5 +10,23 @@ function Point3DToScreen2D(point3D){
             screenX = screenX * renderer.domElement.width;
             screenY = renderer.domElement.height * (1-screenY);
             return {x: screenX, y: screenY};
-        }
-export { Point3DToScreen2D };
+}
+
+//var p1 = {
+//	x: 20,
+//	y: 20
+//};
+
+//var p2 = {
+//	x: 40,
+//	y: 40
+//};
+
+// angle in radians
+//var angleRadians = Math.atan2(p2.y - p1.y, p2.x - p1.x);
+
+function degreesBetweenTwoPoints(p1,p2){
+            return Math.atan2(p2.y - p1.y, p2.x - p1.x) * 180 / Math.PI;
+}
+
+export { Point3DToScreen2D, degreesBetweenTwoPoints };
