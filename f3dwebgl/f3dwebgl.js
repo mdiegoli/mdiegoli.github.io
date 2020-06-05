@@ -732,7 +732,7 @@ var f3dwebgl = class{
 		if(this.draw_mode && !fromScale){
 			if(!this.select){
 				var me = this;
-				this.f3dWorld.stroke.foreach((e) => {
+				this.f3dWorld.stroke.forEach((e) => {
 					let voxel = me.createSphere(0xffff00,me.SPHERESCALE);
 					me.addSphereToScene(me, voxel, e);
 				})
