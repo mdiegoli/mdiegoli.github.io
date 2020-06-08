@@ -51,6 +51,20 @@
 				renderer.render( scene, camera );
 			};
 			
+			var textureLoader = new THREE.TextureLoader();
+
+			var mapA = textureLoader.load( "./asets/f3d/sprite.png" );
+			
+			var materialC = new THREE.SpriteMaterial( { map: mapA, color: 0xffffff, fog: true } );
+			
+			var sprite = new THREE.Sprite( materialC );
+
+			sprite.position.set( x, y, z );
+			sprite.position.normalize();
+			sprite.position.multiplyScalar( radius );
+
+			scene.add( sprite );
+
 			renderer.render( scene, camera );
 			//animate();
 		</script>
