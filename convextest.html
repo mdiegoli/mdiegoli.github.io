@@ -17,7 +17,7 @@
 			var renderer = new THREE.WebGLRenderer();
 			renderer.setSize( window.innerWidth, window.innerHeight );
 			document.body.appendChild( renderer.domElement );
-
+			/*
 			var geometry = new THREE.SphereGeometry( 1, 16, 16 );
 			var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
 			var cube = new THREE.Mesh( geometry, material );
@@ -38,7 +38,7 @@
 			var material3 = new THREE.MeshBasicMaterial( {color: 0xff0000, opacity: 0.5,transparent:true} );
 			var cube3 = new THREE.Mesh( geometry3, material3 );
 			scene.add( cube3 );
-			
+			*/
 			
 			camera.position.z = 5;
 
@@ -59,7 +59,7 @@
 			
 			var sprite = new THREE.Sprite( materialC );
 
-			sprite.position.set( 200, 200, 0 );
+			sprite.position.set( 1, 1, 0 );
 			//sprite.position.normalize();
 			//sprite.position.multiplyScalar( radius );
 
