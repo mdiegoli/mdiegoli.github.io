@@ -12,6 +12,8 @@
 		<script type="module">
 			import * as THREE from './Utils/js/three.module.js';
 			import { ConvexBufferGeometry } from './Utils/js/mod/ConvexGeometry.js';
+			import{ toScreenXY } from './Utils/js/mod/f3d_simplify.js';
+			
 			var scene = new THREE.Scene();
 			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
 			var ambientLight = new THREE.AmbientLight( 0x606060 );
@@ -20,6 +22,9 @@
 			renderer.setSize( window.innerWidth, window.innerHeight );
 			scene.background = new THREE.Color( 0xffffff );
 			document.body.appendChild( renderer.domElement );
+			var canvas = document.getElementById('2d');
+			var ctx = canvas.getContext('2d');
+			var coords2d = [];
 			
 			var geometry = new THREE.SphereGeometry( 1, 16, 16 );
 			var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
@@ -27,6 +32,7 @@
 			scene.add( cube );
 			cube.position.set(3, 0, 0);
 			cube.updateMatrixWorld();
+			coords2d.push(toScreenXY(cube.position))
 			
 			var geometry2 = new THREE.SphereGeometry( 2, 16, 16 );
 			var material2 = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
