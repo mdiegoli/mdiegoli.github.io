@@ -32,15 +32,27 @@
 			scene.add( cube );
 			cube.position.set(3, 0, 0);
 			cube.updateMatrixWorld();
-			var co2d = toScreenXY.call(this,cube,camera);
-			coords2d.push(co2d)
+			var width = window.innerWidth, height = window.innerHeight;
+    			var widthHalf = width / 2, heightHalf = height / 2;
+
+    			var pos = cube.position.clone();
+			camera.updateMatrixWorld();
+			pos.project(camera);
+    			pos.x = ( pos.x * widthHalf ) + widthHalf;
+    			pos.y = - ( pos.y * heightHalf ) + heightHalf;
+			coords2d.push({ x: pos.x, y: pos.y});
 			
 			var geometry2 = new THREE.SphereGeometry( 2, 16, 16 );
 			var material2 = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
 			var cube2 = new THREE.Mesh( geometry2, material2 );
 			scene.add( cube2 );
 			cube2.position.set(-3, 0, 0);
+    			var pos2 = cube2.position.clone();
 			cube2.updateMatrixWorld();
+			pos2.project(camera);
+    			pos2.x = ( pos2.x * widthHalf ) + widthHalf;
+    			pos2.y = - ( pos2.y * heightHalf ) + heightHalf;
+			coords2d.push({ x: pos2.x, y: pos2.y});
 			var points = [];
                         cube.geometry.vertices.map((e)=>{points.push(new THREE.Vector3( e.x, e.y, e.z ).applyMatrix4(cube.matrixWorld))});
 			cube2.geometry.vertices.map((e)=>{points.push(new THREE.Vector3( e.x, e.y, e.z ).applyMatrix4(cube2.matrixWorld))});
