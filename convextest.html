@@ -32,7 +32,7 @@
 			scene.add( cube );
 			cube.position.set(3, 0, 0);
 			cube.updateMatrixWorld();
-			var co2d = toScreenXY.call(this,cube.position,camera);
+			var co2d = toScreenXY.call(this,cube.position,camera,renderer);
 			coords2d.push(co2d)
 			
 			var geometry2 = new THREE.SphereGeometry( 2, 16, 16 );
