@@ -74,9 +74,9 @@ var sqTolerance = (tolerance !== undefined)
 	    : 1;
 
 if (!highestQuality) {
-	points = this.simplifyRadialDistance(points, sqTolerance);
+	points = simplifyRadialDistance(points, sqTolerance);
 }
-points = this.simplifyDouglasPeucker(points, sqTolerance);
+points = simplifyDouglasPeucker(points, sqTolerance);
 
 return points;
 
