@@ -7,6 +7,8 @@
 		</style>
 	</head>
 	<body>
+		<canvas id="3d"></canvas>
+		<canvas id="2d"></canvas>
 		<script type="module">
 			import * as THREE from './Utils/js/three.module.js';
 			import { ConvexBufferGeometry } from './Utils/js/mod/ConvexGeometry.js';
@@ -14,7 +16,7 @@
 			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
 			var ambientLight = new THREE.AmbientLight( 0x606060 );
                     	scene.add( ambientLight );
-			var renderer = new THREE.WebGLRenderer();
+			var renderer = new THREE.WebGLRenderer({canvas:documenti.getElementById('3d')});
 			renderer.setSize( window.innerWidth, window.innerHeight );
 			scene.background = new THREE.Color( 0xffffff );
 			document.body.appendChild( renderer.domElement );
