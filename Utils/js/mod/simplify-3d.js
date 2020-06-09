@@ -66,5 +66,7 @@ function getSquareSegmentDistance(p, p1, p2) { // square distance from a point t
          dz * dz +
          dy * dy;
 }
-
-export { simplify(getSquareDistance, getSquareSegmentDistance) }
+function simplify3d(getSquareDistance, getSquareSegmentDistance){
+  simplify(getSquareDistance, getSquareSegmentDistance)
+}
+export { simplify3d }
