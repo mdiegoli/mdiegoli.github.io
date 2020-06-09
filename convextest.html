@@ -32,7 +32,7 @@
 			scene.add( cube );
 			cube.position.set(3, 0, 0);
 			cube.updateMatrixWorld();
-			var co2d = toScreenXY.call(this,cube.position);
+			var co2d = toScreenXY.call(this,cube.position,camera);
 			coords2d.push(co2d)
 			
 			var geometry2 = new THREE.SphereGeometry( 2, 16, 16 );
@@ -51,14 +51,14 @@
 			
 			
 			camera.position.z = 5;
-
+			/*
 			var animate = function () {
 				requestAnimationFrame( animate );
 
 				
 				renderer.render( scene, camera );
 			};
-			
+			*/
 			var textureLoader = new THREE.TextureLoader();
 
 			var mapA = textureLoader.load( "./assets/games/demons/dem_A_BO_3_03.png" );
@@ -75,7 +75,7 @@
 			scene.add( sprite );
 			
 			renderer.render( scene, camera );
-			animate();
+			//animate();
 		</script>
 	</body>
 </html>
