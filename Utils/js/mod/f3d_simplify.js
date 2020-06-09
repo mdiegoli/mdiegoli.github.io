@@ -1,24 +1,18 @@
 import * as THREE from './three.module.js';
 
-//https://stackoverflow.com/questions/27409074/converting-3d-position-to-2d-screen-position-r69
-function toScreenXY(obj,cam,renderer){
+//https://stackoverflow.com/questions/11586527/converting-world-coordinates-to-screen-coordinates-in-three-js-using-projection
+function toScreenXY(obj,cam){
+    var width = window.innerWidth, height = window.innerHeight;
+    var widthHalf = width / 2, heightHalf = height / 2;
 
-    var vector = new THREE.Vector3();
-
-    var widthHalf = 0.5*renderer.context.canvas.width;
-    var heightHalf = 0.5*renderer.context.canvas.height;
-
-    obj.updateMatrixWorld();
-    vector.setFromMatrixPosition(obj.matrixWorld);
-    if(this) vector.project(this.camera);
-    else vector.project(cam);
-
-    vector.x = ( vector.x * widthHalf ) + widthHalf;
-    vector.y = - ( vector.y * heightHalf ) + heightHalf;
-
+    var pos = obj.position.clone();
+    if(this) pos.project(camera);
+    else pos.project(cam);
+    pos.x = ( pos.x * widthHalf ) + widthHalf;
+    pos.y = - ( pos.y * heightHalf ) + heightHalf;
     return { 
-        x: vector.x,
-        y: vector.y
+        x: pos.x,
+        y: pos.y
     };
   
   }
