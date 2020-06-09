@@ -88,17 +88,10 @@
 			
 			scene.add( sprite );
 			*/
-			var x = 0;
-			var y = 0;
+			ctx.beginPath();
+			ctx.rect(0, 0, 150, 100);
+			ctx.stroke();
 			
-			coords2d.forEach((e)=>{
-				x+=100;
-				y+=100;
-				ctx.beginPath();
-				ctx.arc(x, y, 2, 0, 2 * Math.PI, false);
-				ctx.fillStyle = 'green';
-				ctx.fill();
-			})
 			
 			renderer.render( scene, camera );
 			//animate();
