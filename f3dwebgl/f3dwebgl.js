@@ -3,7 +3,7 @@ import * as THREE from '../Utils/js/three.module.js';
 import { ConvexBufferGeometry } from '../Utils/js/mod/ConvexGeometry.js';
 import { toScreenXY, degreesBetweenTwoPoints } from '../Utils/js/mod/f3d_simplify.js';
 import { OrbitControls } from '../Utils/js/mod/OrbitControls.js';
-import { simplify } from  '../Utils/js/mod/simplify-3d.js';
+import { simplify3d } from  '../Utils/js/mod/simplify-3d.js';
 import {widgetUndo,widgetRedo,widgetNumIntSpheresCurve,widgetLinesCurves,widgetTargetWP,widgetAddBody,widgetAddChain,widgetShowMesh,widgetDrawMove,widgetExportMesh,widgetSphereScale,saveWidget,loadWidget,widgetClear} from '../Utils/js/mod/f3d_widgets.js';
 
 var f3dwebgl = class{
@@ -756,7 +756,7 @@ var f3dwebgl = class{
 		var me = this;
 		if(this.draw_mode && !fromScale){
 			if(!this.select){
-				var path_simplified = simplify(this.stroke3D, 2, false);
+				var path_simplified = simplify3d(this.stroke3D, 2, false);
 
 				
 				var voxel = this.createSphere(0xffff00,this.SPHERESCALE);
