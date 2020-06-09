@@ -3,25 +3,23 @@ import * as THREE from './three.module.js';
 //https://stackoverflow.com/questions/11586527/converting-world-coordinates-to-screen-coordinates-in-three-js-using-projection
   function toScreenXY(obj,cam){
 
-    var vector = obj.clone();
-    var windowWidth = window.innerWidth;
-    var minWidth = 1280;
-  
-    if(windowWidth < minWidth) {
-      windowWidth = minWidth;
-    }
-  
-    var widthHalf = (windowWidth/2);
-    var heightHalf = (window.innerHeight/2);
-  
+    var vector = new THREE.Vector3();
+
+    var widthHalf = 0.5*renderer.context.canvas.width;
+    var heightHalf = 0.5*renderer.context.canvas.height;
+
+    obj.updateMatrixWorld();
+    vector.setFromMatrixPosition(obj.matrixWorld);
     if(this) vector.project(this.camera);
     else vector.project(cam);
-  
+
     vector.x = ( vector.x * widthHalf ) + widthHalf;
     vector.y = - ( vector.y * heightHalf ) + heightHalf;
-    vector.z = 0;
-  
-    return vector;
+
+    return { 
+        x: vector.x,
+        y: vector.y
+    };
   
   }
 //https://gist.github.com/conorbuck/2606166
