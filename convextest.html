@@ -16,7 +16,7 @@
 			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
 			var ambientLight = new THREE.AmbientLight( 0x606060 );
                     	scene.add( ambientLight );
-			var renderer = new THREE.WebGLRenderer({canvas:documenti.getElementById('3d')});
+			var renderer = new THREE.WebGLRenderer({canvas:document.getElementById('3d')});
 			renderer.setSize( window.innerWidth, window.innerHeight );
 			scene.background = new THREE.Color( 0xffffff );
 			document.body.appendChild( renderer.domElement );
