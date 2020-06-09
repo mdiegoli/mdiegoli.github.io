@@ -1,7 +1,7 @@
 import * as THREE from './three.module.js';
 
-//https://stackoverflow.com/questions/11586527/converting-world-coordinates-to-screen-coordinates-in-three-js-using-projection
-  function toScreenXY(obj,cam){
+//https://stackoverflow.com/questions/27409074/converting-3d-position-to-2d-screen-position-r69
+function toScreenXY(obj,cam){
 
     var vector = new THREE.Vector3();
 
