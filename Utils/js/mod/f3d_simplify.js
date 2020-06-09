@@ -1,6 +1,6 @@
 import * as THREE from './three.module.js';
 
-//https://stackoverflow.com/questions/11586527/converting-world-coordinates-to-screen-coordinates-in-three-js-using-projection
+//https://jsfiddle.net/f2Lommf5/5772/
 function toScreenXY(obj,cam){
     var width = window.innerWidth, height = window.innerHeight;
     var widthHalf = width / 2, heightHalf = height / 2;
