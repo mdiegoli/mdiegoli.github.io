@@ -1,7 +1,7 @@
 //https://github.com/microjs/simplify-3D
-import { simplify } from './simplify-base.js';
+function simplify(points, tolerance, highestQuality) {
 
-/**
+	/**
  * square distance between 2 points
  * @param  {Point}  p1
  * @param  {Point}  p2
@@ -67,7 +67,20 @@ function getSquareSegmentDistance(p, p1, p2) { // square distance from a point t
          dz * dz +
          dy * dy;
 }
-function simplify3d(getSquareDistance, getSquareSegmentDistance){
-  simplify(getSquareDistance, getSquareSegmentDistance)
+
+  return function (points, tolerance, highestQuality) {
+
+    var sqTolerance = (tolerance !== undefined)
+                    ? tolerance * tolerance
+                    : 1;
+
+    if (!highestQuality) {
+      points = simplifyRadialDistance(points, sqTolerance);
+    }
+    points = simplifyDouglasPeucker(points, sqTolerance);
+
+    return points;
+  }  
 }
-export { simplify3d }
+
+export { simplify }
