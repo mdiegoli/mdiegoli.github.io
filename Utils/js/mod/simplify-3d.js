@@ -68,19 +68,18 @@ function getSquareSegmentDistance(p, p1, p2) { // square distance from a point t
          dy * dy;
 }
 
-  return function (points, tolerance, highestQuality) {
+  
+var sqTolerance = (tolerance !== undefined)
+	    ? tolerance * tolerance
+	    : 1;
 
-    var sqTolerance = (tolerance !== undefined)
-                    ? tolerance * tolerance
-                    : 1;
+if (!highestQuality) {
+	points = this.simplifyRadialDistance(points, sqTolerance);
+}
+points = this.simplifyDouglasPeucker(points, sqTolerance);
 
-    if (!highestQuality) {
-      points = simplifyRadialDistance(points, sqTolerance);
-    }
-    points = simplifyDouglasPeucker(points, sqTolerance);
+return points;
 
-    return points;
-  }  
 }
 
 export { simplify }
