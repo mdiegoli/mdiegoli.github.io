@@ -66,6 +66,8 @@ https://mdiegoli.github.io/skinned.html
 
 f3dwebgl wip https://mdiegoli.github.io/f3dwebgl.html
 
+f3dwebgl vue version https://mdiegoli.github.io/F3D
+
 f3dwebgl v1 https://mdiegoli.github.io/f3dwebgl_v1.html , create sphere chain
 
 f3dwebgl v2 https://mdiegoli.github.io/f3dwebgl_v2.html , add html widgets
