@@ -1,7 +1,7 @@
 import * as THREE from './three.module.js';
 
 //https://stackoverflow.com/questions/11586527/converting-world-coordinates-to-screen-coordinates-in-three-js-using-projection
-  function toScreenXY(obj){
+  function toScreenXY(obj,cam){
 
     var vector = obj.clone();
     var windowWidth = window.innerWidth;
@@ -14,7 +14,8 @@ import * as THREE from './three.module.js';
     var widthHalf = (windowWidth/2);
     var heightHalf = (window.innerHeight/2);
   
-    vector.project(this.camera);
+    if(this) vector.project(this.camera);
+    else vector.project(cam);
   
     vector.x = ( vector.x * widthHalf ) + widthHalf;
     vector.y = - ( vector.y * heightHalf ) + heightHalf;
