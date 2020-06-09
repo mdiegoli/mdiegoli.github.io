@@ -1,3 +1,4 @@
+//https://github.com/microjs/simplify-base/blob/master/index.js
 function simplify(getSquareDistance, getSquareSegmentDistance) {
 
 	// distance-based simplification
