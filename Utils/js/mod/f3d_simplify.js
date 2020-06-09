@@ -6,8 +6,13 @@ function toScreenXY(obj,cam){
     var widthHalf = width / 2, heightHalf = height / 2;
 
     var pos = obj.position.clone();
-    if(this) pos.project(camera);
-    else pos.project(cam);
+    if(this){
+        camera.updateMatrixWorld();
+        pos.project(camera);
+    }else{
+        cam.updateMatrixWorld();
+        pos.project(cam);
+    }
     pos.x = ( pos.x * widthHalf ) + widthHalf;
     pos.y = - ( pos.y * heightHalf ) + heightHalf;
     return { 
