@@ -32,7 +32,7 @@
 			scene.add( cube );
 			cube.position.set(3, 0, 0);
 			cube.updateMatrixWorld();
-			coords2d.push(toScreenXY(cube.position))
+			coords2d.push(toScreenXY.call(this,cube.position))
 			
 			var geometry2 = new THREE.SphereGeometry( 2, 16, 16 );
 			var material2 = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
