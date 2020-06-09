@@ -1,7 +1,7 @@
 import * as THREE from './three.module.js';
 
 //https://stackoverflow.com/questions/27409074/converting-3d-position-to-2d-screen-position-r69
-function toScreenXY(obj,cam){
+function toScreenXY(obj,cam,renderer){
 
     var vector = new THREE.Vector3();
 
