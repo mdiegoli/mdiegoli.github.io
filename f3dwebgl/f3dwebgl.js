@@ -3,6 +3,7 @@ import * as THREE from '../Utils/js/three.module.js';
 import { ConvexBufferGeometry } from '../Utils/js/mod/ConvexGeometry.js';
 import { toScreenXY, degreesBetweenTwoPoints } from '../Utils/js/mod/f3d_simplify.js';
 import { OrbitControls } from '../Utils/js/mod/OrbitControls.js';
+import { simplify } from  '../Utils/js/mod/simplify-3d.js';
 import {widgetUndo,widgetRedo,widgetNumIntSpheresCurve,widgetLinesCurves,widgetTargetWP,widgetAddBody,widgetAddChain,widgetShowMesh,widgetDrawMove,widgetExportMesh,widgetSphereScale,saveWidget,loadWidget,widgetClear} from '../Utils/js/mod/f3d_widgets.js';
 
 var f3dwebgl = class{
@@ -755,9 +756,8 @@ var f3dwebgl = class{
 		var me = this;
 		if(this.draw_mode && !fromScale){
 			if(!this.select){
-				this.stroke2D = this.stroke3D.map((e) => {
-					return toScreenXY.call(me,e.point);
-				})
+				var path_simplified = simplify(this.stroke3D, 2, false);
+
 				
 				var voxel = this.createSphere(0xffff00,this.SPHERESCALE);
 				this.addSphereToScene(this, voxel, this.intersect);
@@ -779,9 +779,6 @@ var f3dwebgl = class{
 		this.ch_group.children.length = 0;
 		this.setSelect(false);
 		//this.setDraw();		
-		this.stroke2D.forEach((e)=>{
-			me.debugSprite(e)
-		})
 		this.interpolateSpheres();
 		this.setFrustumVertices(this.camera, this.frustumVertices);
 		this.updatePlane();
