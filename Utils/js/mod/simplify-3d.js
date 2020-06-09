@@ -67,4 +67,4 @@ function getSquareSegmentDistance(p, p1, p2) { // square distance from a point t
          dy * dy;
 }
 
-export { simplify }
+export simplify(getSquareDistance, getSquareSegmentDistance); 
