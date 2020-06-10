@@ -267,7 +267,7 @@ var f3dwebgl = class{
 		voxel.name = 'f3d_sphere_' + me.spheresNumber + '_' + me.bodyNumber + '_' + me.chainsNumber;
 		me.setOldCoord(intersect.point.x,intersect.point.z);
 		//me.setLastSphereCenter(intersect.point.x,intersect.point.z);
-		voxel.position.copy( intersect.point ).add( intersect.face.normal );
+		voxel.position.copy( intersect.point )//.add( intersect.face.normal );
 		voxel.updateMatrixWorld();
 		me.group.add( voxel );
 		if(!this.targetWP) this.controls.target.copy(intersect.point);
