@@ -756,7 +756,7 @@ var f3dwebgl = class{
 		var me = this;
 		if(this.draw_mode && !fromScale){
 			if(!this.select){
-				var path_simplified = simplify(this.stroke3D, 2, false);
+				var path_simplified = simplify(this.stroke3D, 2, true);
 
 				
 				var voxel = this.createSphere(0xffff00,this.SPHERESCALE);
