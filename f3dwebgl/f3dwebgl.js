@@ -758,14 +758,16 @@ var f3dwebgl = class{
 			if(!this.select){
 				var path_simplified = simplify(this.stroke3D, 10, true);
 
+				path_simplified.forEach((e)=>{
+					var voxel = this.createSphere(0xffff00,this.SPHERESCALE);
+					this.addSphereToScene(this, voxel, this.intersect);
+					this.addNextRing(this,voxel);
+					this.indexPickedBody = this.bodyNumber;
+					this.indexPickedChain = this.chainsNumber;
+					this.indexPickedObject = this.spheresNumber-1;
+					window.actionsStack.addAction('ADDSPHERE',this.indexPickedObject);
+				})
 				
-				var voxel = this.createSphere(0xffff00,this.SPHERESCALE);
-				this.addSphereToScene(this, voxel, this.intersect);
-				this.addNextRing(this,voxel);
-				this.indexPickedBody = this.bodyNumber;
-				this.indexPickedChain = this.chainsNumber;
-				this.indexPickedObject = this.spheresNumber-1;
-				window.actionsStack.addAction('ADDSPHERE',this.indexPickedObject);
 			}
 			//this.controls.enabled = true;
 			this.intersect = {};
