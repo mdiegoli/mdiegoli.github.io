@@ -764,10 +764,10 @@ var f3dwebgl = class{
 				this.stroke3D.forEach((e)=>{
 					var voxel = this.createSphere(0xffff00,this.SPHERESCALE);
 					this.addSphereToScene(this, voxel, this.intersect);
-					this.addNextRing(this,voxel);
-					this.indexPickedBody = this.bodyNumber;
-					this.indexPickedChain = this.chainsNumber;
-					this.indexPickedObject = this.spheresNumber-1;
+					//this.addNextRing(this,voxel);
+					//this.indexPickedBody = this.bodyNumber;
+					//this.indexPickedChain = this.chainsNumber;
+					//this.indexPickedObject = this.spheresNumber-1;
 					window.actionsStack.addAction('ADDSPHERE',this.indexPickedObject);
 				})
 				
