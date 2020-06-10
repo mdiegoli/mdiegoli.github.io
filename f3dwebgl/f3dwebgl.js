@@ -488,7 +488,10 @@ var f3dwebgl = class{
 						me.info2.innerHTML += e.object.name + ' ';
 					}
 				);
-				if(this.draw_mode) this.stroke3D.push(intersects[0].point);
+				if(this.draw_mode){ 
+					console.log(intersects[0].point)
+					this.stroke3D.push(intersects[0].point);
+				}
 				if((this.indexPickedObject || this.indexPickedObject === 0) && this.select){
 					for(let i = 0,intersect_length = intersects.length;i<intersect_length;i++){
 						//if(intersects[i].object.name.indexOf('wp') != -1){
