@@ -64,7 +64,6 @@ var f3dwebgl = class{
 		this.camera.lookAt( new THREE.Vector3() );
 		this.scene = new THREE.Scene();
 		var sizeH = window.innerHeight, sizeW = window.innerWidth, step = 100;
-		/*
 		var geometry = new THREE.Geometry();
 		for ( var i = -sizeH; i <= sizeH; i += step ) {
 			geometry.vertices.push( new THREE.Vector3( -sizeW, 0, i ) );
@@ -76,17 +75,16 @@ var f3dwebgl = class{
 		}
 		var material = new THREE.LineBasicMaterial( { color: 0x000000, opacity: 0.2, transparent: true } );
 		var line = new THREE.LineSegments( geometry, material );
-		*/
 		var geometry = new THREE.PlaneBufferGeometry( 2000, 2000 );
 		geometry.rotateX( - Math.PI / 2 );
-		this.plane = new THREE.Mesh( geometry, new THREE.MeshToonMaterial( { visible: true } ) );
+		this.plane = new THREE.Mesh( geometry, new THREE.MeshToonMaterial( { visible: false } ) );
 		this.plane.name = 'wp';
 		this.raycaster = new THREE.Raycaster();
 		this.mouse = new THREE.Vector2();
 		// Lights
 		var spotLight = new THREE.SpotLight( 0xffffff );
 		spotLight.position.set(1000, 0, 0 );
-		//spotLight.castShadow = true;
+		spotLight.castShadow = true;
 		spotLight.shadow.mapSize.width = 1024;
 		spotLight.shadow.mapSize.height = 1024;
 		spotLight.shadow.camera.near = 500;
@@ -94,17 +92,15 @@ var f3dwebgl = class{
 		spotLight.shadow.camera.fov = 30;
 		spotLight.target = this.plane;
 		this.scene.add( spotLight );
-		this.renderer = new THREE.WebGLRenderer( { antialias: false, multiview: true } );
+		this.renderer = new THREE.WebGLRenderer( { antialias: true } );
 		this.renderer.setClearColor( 0xf0f0f0 );
 		this.renderer.setPixelRatio( window.devicePixelRatio );
 		this.renderer.setSize( window.innerWidth, window.innerHeight );
 		this.container.appendChild( this.renderer.domElement );
 		this.group = new THREE.Group();
-		this.sprite_group = new THREE.Group();
 		this.interpolate_group = new THREE.Group();
 		this.ch_group = new THREE.Group();
 		this.scene.add(this.group);
-		this.scene.add(this.sprite_group);
 		this.scene.add(this.interpolate_group);
 		this.scene.add(this.ch_group);
 		this.controls = new OrbitControls( this.camera, this.renderer.domElement );
@@ -132,8 +128,7 @@ var f3dwebgl = class{
 		this.f3dWorld[+this.bodyNumber] = {};
 		this.f3dWorld[+this.bodyNumber][+this.chainsNumber] = {};
 		this.f3dWorld[+this.bodyNumber][+this.chainsNumber][+this.spheresNumber] = {};
-		this.stroke3D = [];
-		this.stroke2D = [];
+		this.f3dWorld.stroke = [];
 		this.isTouched = false;
 		this.hideConvexHull = true;
 		this.frustumVertices = [new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(),new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3()];
@@ -163,8 +158,8 @@ var f3dwebgl = class{
 		this.mouseDown = false;
 		this.setSelect(false);
 		this.disableControls = false;
-		this.lineCurve = true;	
-		this.bufferTexture = new THREE.WebGLRenderTarget( window.innerWidth, window.innerHeight, { minFilter: THREE.LinearFilter, magFilter: THREE.NearestFilter});
+		this.lineCurve = true;
+
 	}
 	resetGroup(){
 		this.group = new THREE.Group();
@@ -458,7 +453,6 @@ var f3dwebgl = class{
 		this.interpolate_group.children.length = 0;
 		this.interpolateSpheres();
 		this.render();
-		requestAnimationFrame(this.render);
 	}
 
 	intersect_fn(x,y){
@@ -488,10 +482,7 @@ var f3dwebgl = class{
 						me.info2.innerHTML += e.object.name + ' ';
 					}
 				);
-				if(this.draw_mode){ 
-					console.log(intersects[0].point)
-					this.stroke3D.push(intersects[0].point);
-				}
+				if(this.draw_mode) this.f3dWorld.stroke.push(intersects[0]);
 				if((this.indexPickedObject || this.indexPickedObject === 0) && this.select){
 					for(let i = 0,intersect_length = intersects.length;i<intersect_length;i++){
 						//if(intersects[i].object.name.indexOf('wp') != -1){
@@ -736,41 +727,24 @@ var f3dwebgl = class{
 		}
 	}
 
-	debugSprite(p){
-		const textureLoader = new THREE.TextureLoader();
-		const map = textureLoader.load( "../assets/f3d/sprite.png" );
-		var material = new THREE.SpriteMaterial( { map: map, color: 0xffffff } );
-
-		var sprite1 = new THREE.Sprite( material )
-		sprite1.scale.x = 200;
-		sprite1.scale.y = 200;
-		//sprite1.position.y = Math.round(p.y);
-		//sprite1.position.x = Math.round(p.x);
-		sprite1.position.y = 0;
-		sprite1.position.x = 0;
-		sprite1.name = 'sprite';
-		this.sprite_group.add( sprite1 );
-		
-	}
-
 	mouseup( event , fromScale, x, y ){
 		this.mouseDown = false;
-		this.info2.innerHTML = '';
-		var me = this;
+	    this.info2.innerHTML = '';
 		if(this.draw_mode && !fromScale){
 			if(!this.select){
-				var path_simplified = simplify(this.stroke3D, 10, true);
-
-				this.stroke3D.forEach((e)=>{
-					var voxel = this.createSphere(0xffff00,this.SPHERESCALE);
-					this.addSphereToScene(this, voxel, this.intersect);
-					//this.addNextRing(this,voxel);
-					//this.indexPickedBody = this.bodyNumber;
-					//this.indexPickedChain = this.chainsNumber;
-					//this.indexPickedObject = this.spheresNumber-1;
-					//window.actionsStack.addAction('ADDSPHERE',this.indexPickedObject);
+				var me = this;
+				this.f3dWorld.stroke.foreach((e) => {
+					let voxel = me.createSphere(0xffff00,me.SPHERESCALE);
+					me.addSphereToScene(me, voxel, e);
 				})
 				
+				var voxel = this.createSphere(0xffff00,this.SPHERESCALE);
+				this.addSphereToScene(this, voxel, this.intersect);
+				this.addNextRing(this,voxel);
+				this.indexPickedBody = this.bodyNumber;
+				this.indexPickedChain = this.chainsNumber;
+				this.indexPickedObject = this.spheresNumber-1;
+				window.actionsStack.addAction('ADDSPHERE',this.indexPickedObject);
 			}
 			//this.controls.enabled = true;
 			this.intersect = {};
@@ -779,15 +753,14 @@ var f3dwebgl = class{
 		else{
 			//this.draw_mode = true;
 		}
-		//this.showBBox(this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(this.indexPickedObject)].sphere,this);
+		this.showBBox(this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(this.indexPickedObject)].sphere,this);
 		this.interpolate_group.children.length = 0;
 		this.ch_group.children.length = 0;
 		this.setSelect(false);
 		//this.setDraw();		
-		//this.interpolateSpheres();
+		this.interpolateSpheres();
 		this.setFrustumVertices(this.camera, this.frustumVertices);
 		this.updatePlane();
-		
 		//check what is under the mouse now
 		let intersects = {};
 		if(x && y ){
@@ -1015,4 +988,3 @@ Array.prototype.removeElement = function(elem) {
         this.splice(index, 1);
     }
 }
-
