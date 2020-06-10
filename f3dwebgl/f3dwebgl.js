@@ -768,7 +768,7 @@ var f3dwebgl = class{
 					//this.indexPickedBody = this.bodyNumber;
 					//this.indexPickedChain = this.chainsNumber;
 					//this.indexPickedObject = this.spheresNumber-1;
-					window.actionsStack.addAction('ADDSPHERE',this.indexPickedObject);
+					//window.actionsStack.addAction('ADDSPHERE',this.indexPickedObject);
 				})
 				
 			}
@@ -779,7 +779,7 @@ var f3dwebgl = class{
 		else{
 			//this.draw_mode = true;
 		}
-		this.showBBox(this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(this.indexPickedObject)].sphere,this);
+		//this.showBBox(this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(this.indexPickedObject)].sphere,this);
 		this.interpolate_group.children.length = 0;
 		this.ch_group.children.length = 0;
 		this.setSelect(false);
