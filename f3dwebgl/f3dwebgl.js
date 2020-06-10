@@ -784,7 +784,7 @@ var f3dwebgl = class{
 		this.ch_group.children.length = 0;
 		this.setSelect(false);
 		//this.setDraw();		
-		this.interpolateSpheres();
+		//this.interpolateSpheres();
 		this.setFrustumVertices(this.camera, this.frustumVertices);
 		this.updatePlane();
 		
