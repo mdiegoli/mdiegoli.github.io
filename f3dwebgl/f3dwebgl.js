@@ -733,7 +733,7 @@ var f3dwebgl = class{
 		if(this.draw_mode && !fromScale){
 			if(!this.select){
 				var me = this;
-				var stroke2d = simplify(this.f3dstroke,10,true) 
+				var stroke2d = simplify(this.f3dstroke,1,true) 
 				stroke2d.forEach((e) => {
 					let voxel = me.createSphere(0xffff00,me.SPHERESCALE);
 					me.addSphereToScene(me, voxel,{point:e});
