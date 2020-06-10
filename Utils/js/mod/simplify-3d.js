@@ -7,7 +7,7 @@ function simplify(points, tolerance, highestQuality) {
  * @param  {Point}  p2
  * @return {Number}
  */
-this.getSquareDistance = function(p1, p2) { // square distance between 2 points
+var getSquareDistance = function(p1, p2) { // square distance between 2 points
 
   var dx = p1.x - p2.x,
       dz = p1.z - p2.z,
@@ -26,7 +26,7 @@ this.getSquareDistance = function(p1, p2) { // square distance between 2 points
  * @param  {Point}  p2 The end of the segment
  * @return {Number}
  */
-this.getSquareSegmentDistance = function(p, p1, p2) { // square distance from a point to a segment
+var getSquareSegmentDistance = function(p, p1, p2) { // square distance from a point to a segment
 
   var x = p1.x,
       y = p1.y,
@@ -74,9 +74,9 @@ var sqTolerance = (tolerance !== undefined)
 	    : 1;
 
 if (!highestQuality) {
-	points = this.simplifyRadialDistance(points, sqTolerance);
+	points = simplify.simplifyRadialDistance(points, sqTolerance);
 }
-points = this.simplifyDouglasPeucker(points, sqTolerance);
+points = simplify.simplifyDouglasPeucker(points, sqTolerance);
 
 return points;
 
