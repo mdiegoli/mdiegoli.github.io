@@ -758,7 +758,7 @@ var f3dwebgl = class{
 			if(!this.select){
 				var path_simplified = simplify(this.stroke3D, 10, true);
 
-				path_simplified.forEach((e)=>{
+				this.stroke3D.forEach((e)=>{
 					var voxel = this.createSphere(0xffff00,this.SPHERESCALE);
 					this.addSphereToScene(this, voxel, this.intersect);
 					this.addNextRing(this,voxel);
