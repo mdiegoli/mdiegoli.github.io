@@ -86,6 +86,8 @@ f3dwebgl v8 https://mdiegoli.github.io/f3dwebgl_v8.html , curve
 
 f3dwebgl v9 https://mdiegoli.github.io/f3dwebgl_v9.html , undo
 
+f3dwebgl v10 https://mdiegoli.github.io/f3dwebgl_v10.html , freehand draw
+
 https://mdiegoli.github.io/convextest.html
 
 sketch MAT SAT (v. 0.1 of f3d)
