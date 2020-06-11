@@ -733,7 +733,7 @@ var f3dwebgl = class{
 		if(this.draw_mode && !fromScale){
 			if(!this.select){
 				var me = this;
-				if(this.f3dstroke){
+				if(this.f3dstroke.length > 0){
 					var stroke2d = simplify(this.f3dstroke,1,true) 
 					stroke2d.forEach((e) => {
 						let voxel = this.createSphere(0xffff00,me.SPHERESCALE);
@@ -744,6 +744,7 @@ var f3dwebgl = class{
 						this.indexPickedObject = me.spheresNumber-1;
 						window.actionsStack.addAction('ADDSPHERE',me.indexPickedObject);
 					})
+					this.f3dstroke.length = 0;
 				}else{
 					var voxel = this.createSphere(0xffff00,this.SPHERESCALE);
 					this.addSphereToScene(this, voxel, this.intersect);
