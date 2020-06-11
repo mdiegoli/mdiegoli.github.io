@@ -733,19 +733,29 @@ var f3dwebgl = class{
 		if(this.draw_mode && !fromScale){
 			if(!this.select){
 				var me = this;
-				var stroke2d = simplify(this.f3dstroke,1,true) 
-				stroke2d.forEach((e) => {
-					let voxel = me.createSphere(0xffff00,me.SPHERESCALE);
-					me.addSphereToScene(me, voxel,{point:e});
-				})
+				if(this.f3dstroke){
+					var stroke2d = simplify(this.f3dstroke,1,true) 
+					stroke2d.forEach((e) => {
+						let voxel = me.createSphere(0xffff00,me.SPHERESCALE);
+						me.addSphereToScene(me, voxel,{point:e});
+						var voxel = this.createSphere(0xffff00,this.SPHERESCALE);
+						this.addSphereToScene(this, voxel, {point:e});
+						this.addNextRing(this,voxel);
+						this.indexPickedBody = this.bodyNumber;
+						this.indexPickedChain = this.chainsNumber;
+						this.indexPickedObject = this.spheresNumber-1;
+						window.actionsStack.addAction('ADDSPHERE',this.indexPickedObject);
+					})
+				}else{
+					var voxel = this.createSphere(0xffff00,this.SPHERESCALE);
+					this.addSphereToScene(this, voxel, this.intersect);
+					this.addNextRing(this,voxel);
+					this.indexPickedBody = this.bodyNumber;
+					this.indexPickedChain = this.chainsNumber;
+					this.indexPickedObject = this.spheresNumber-1;
+					window.actionsStack.addAction('ADDSPHERE',this.indexPickedObject);
+				}
 				
-				var voxel = this.createSphere(0xffff00,this.SPHERESCALE);
-				this.addSphereToScene(this, voxel, this.intersect);
-				this.addNextRing(this,voxel);
-				this.indexPickedBody = this.bodyNumber;
-				this.indexPickedChain = this.chainsNumber;
-				this.indexPickedObject = this.spheresNumber-1;
-				window.actionsStack.addAction('ADDSPHERE',this.indexPickedObject);
 			}
 			//this.controls.enabled = true;
 			this.intersect = {};
