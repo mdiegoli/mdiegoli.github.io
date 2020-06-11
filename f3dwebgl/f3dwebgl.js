@@ -736,15 +736,13 @@ var f3dwebgl = class{
 				if(this.f3dstroke){
 					var stroke2d = simplify(this.f3dstroke,1,true) 
 					stroke2d.forEach((e) => {
-						let voxel = me.createSphere(0xffff00,me.SPHERESCALE);
-						me.addSphereToScene(me, voxel,{point:e});
-						var voxel = this.createSphere(0xffff00,this.SPHERESCALE);
-						this.addSphereToScene(this, voxel, {point:e});
-						this.addNextRing(this,voxel);
-						this.indexPickedBody = this.bodyNumber;
-						this.indexPickedChain = this.chainsNumber;
-						this.indexPickedObject = this.spheresNumber-1;
-						window.actionsStack.addAction('ADDSPHERE',this.indexPickedObject);
+						let voxel = this.createSphere(0xffff00,me.SPHERESCALE);
+						this.addSphereToScene(me, voxel, {point:e});
+						this.addNextRing(me,voxel);
+						this.indexPickedBody = me.bodyNumber;
+						this.indexPickedChain = me.chainsNumber;
+						this.indexPickedObject = me.spheresNumber-1;
+						window.actionsStack.addAction('ADDSPHERE',me.indexPickedObject);
 					})
 				}else{
 					var voxel = this.createSphere(0xffff00,this.SPHERESCALE);
