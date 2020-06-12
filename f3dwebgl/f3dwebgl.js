@@ -738,13 +738,13 @@ var f3dwebgl = class{
 				if(this.f3dstroke.length > 0){
 					var stroke2d = simplify(this.f3dstroke,1,true) 
 					var stroke2dLength = stroke2d.length;
-					var freeHandDrawScaleStep = (this.startfreeHandDrawScale - this.startfreeHandDrawScale)/stroke2dLength;
+					var freeHandDrawScaleStep = (this.startFreeHandDrawScale - this.startFreeHandDrawScale)/stroke2dLength;
 					stroke2d.forEach((e,i,a) => {
 						let voxel = this.createSphere(0xffff00,me.SPHERESCALE);
 						this.addSphereToScene(me, voxel, {point:e});
-						voxel.scale.x = this.startfreeHandDrawScale - (freeHandDrawScaleStep*i)
-						voxel.scale.y = this.startfreeHandDrawScale - (freeHandDrawScaleStep*i)
-						voxel.scale.z = this.startfreeHandDrawScale - (freeHandDrawScaleStep*i)
+						voxel.scale.x = this.startFreeHandDrawScale - (freeHandDrawScaleStep*i)
+						voxel.scale.y = this.startFreeHandDrawScale - (freeHandDrawScaleStep*i)
+						voxel.scale.z = this.startFreeHandDrawScale - (freeHandDrawScaleStep*i)
 						this.addNextRing(me,voxel);
 						this.indexPickedBody = me.bodyNumber;
 						this.indexPickedChain = me.chainsNumber;
