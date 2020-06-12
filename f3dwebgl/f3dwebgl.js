@@ -738,7 +738,7 @@ var f3dwebgl = class{
 				if(this.f3dstroke.length > 0){
 					var stroke2d = simplify(this.f3dstroke,1,true) 
 					var stroke2dLength = stroke2d.length;
-					var freeHandDrawScaleStep = (this.startFreeHandDrawScale - this.startFreeHandDrawScale)/stroke2dLength;
+					var freeHandDrawScaleStep = (this.startFreeHandDrawScale - this.endFreeHandDrawScale)/stroke2dLength;
 					stroke2d.forEach((e,i,a) => {
 						let voxel = this.createSphere(0xffff00,me.SPHERESCALE);
 						this.addSphereToScene(me, voxel, {point:e});
