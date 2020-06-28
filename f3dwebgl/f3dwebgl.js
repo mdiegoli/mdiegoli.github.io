@@ -308,7 +308,8 @@ var f3dwebgl = class{
 	}
 	
 	createSphere(color,scale){
-		var geometry = new THREE.SphereGeometry( 5, 8, 8 );
+		//var geometry = new THREE.SphereGeometry( 5, 8, 8 );
+		var geometry = new THREE.BoxGeometry( 5, 8, 8 );
 		var material = new THREE.MeshToonMaterial( {color: color} );
 		this.lastSphere = new THREE.Mesh( geometry, material );
 		this.lastSphere.scale.x = scale;
