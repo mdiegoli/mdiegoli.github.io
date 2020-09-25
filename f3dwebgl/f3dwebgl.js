@@ -487,7 +487,7 @@ var f3dwebgl = class{
 					}
 				);
 				if(this.draw_mode) this.f3dstroke.push(intersects[0].point);
-				if((this.indexPickedObject || this.indexPickedObject === 0) && this.select && this.move_sphere == false){
+				if((this.indexPickedObject || this.indexPickedObject === 0) && this.select && this.move_sphere == true){
 					for(let i = 0,intersect_length = intersects.length;i<intersect_length;i++){
 						//if(intersects[i].object.name.indexOf('wp') != -1){
 							this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(this.indexPickedObject)].sphere.position.copy( intersects[i].point );
