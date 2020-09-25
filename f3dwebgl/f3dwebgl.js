@@ -530,7 +530,7 @@ var f3dwebgl = class{
 					me.info2.innerHTML += e.object.name;
 				}
 			);
-			if(intersects[ 0 ].object.name.indexOf('f3d_sphere_') !== -1){
+			if(intersects[ 0 ].object.name.indexOf('f3d_sphere_') !== -1  && this.move_sphere == true){
 				//this.controls.enabled = false;
 				let sphereTokens = intersects[ 0 ].object.name.split('_');
 				let index_f3d_sphere = parseInt(sphereTokens[2]);
@@ -540,7 +540,7 @@ var f3dwebgl = class{
 				me.indexPickedBody = index_body;
 				me.indexPickedChain = index_chain;
 				this.setSelect(true);
-			}else if(intersects[ 0 ].object.name.indexOf('interpolation_') !== -1){
+			}else if(intersects[ 0 ].object.name.indexOf('interpolation_') !== -1  && this.move_sphere == true){
 				//this.controls.enabled = false;
 				let interpolation_tokens = intersects[ 0 ].object.name.split('_');
 				let token_objId1 = interpolation_tokens[1];
