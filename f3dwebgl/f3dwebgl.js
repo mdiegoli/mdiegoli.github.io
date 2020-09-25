@@ -479,7 +479,12 @@ var f3dwebgl = class{
 			}else{
 				this.disableControls = true;	
 			}
-			
+			var intersectTmp = {};
+			try {
+			  intersects.forEach((e) =>{ if(e.object.name.indexOf('wp') != -1)){ intersectTmp = e;throw BreakException;}})
+			} catch (e) {
+			  intersects[0] = intersectTmp;
+			}
 			if(this.mouseDown){
 				intersects.map(
 					function(e){
