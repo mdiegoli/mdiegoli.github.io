@@ -544,6 +544,7 @@ var f3dwebgl = class{
 				me.indexPickedObject = index_f3d_sphere;
 				me.indexPickedBody = index_body;
 				me.indexPickedChain = index_chain;
+          			this.startFreeHandDrawScale = intersects[ 0 ].object.scale.x;
 				this.setSelect(true);
 			}else if(intersects[ 0 ].object.name.indexOf('interpolation_') !== -1){
 				//this.controls.enabled = false;
