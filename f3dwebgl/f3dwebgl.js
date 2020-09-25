@@ -735,7 +735,7 @@ var f3dwebgl = class{
 		this.mouseDown = false;
 	    this.info2.innerHTML = '';
 		if(this.draw_mode && !fromScale){
-			if(this.select){
+			//if(!this.select){
 				var me = this;
 				if(this.f3dstroke.length > 0){
 					var stroke2d = simplify(this.f3dstroke,1,true) 
@@ -764,7 +764,7 @@ var f3dwebgl = class{
 					window.actionsStack.addAction('ADDSPHERE',this.indexPickedObject);
 				}
 				
-			}
+			//}
 			//this.controls.enabled = true;
 			this.intersect = {};
 			
