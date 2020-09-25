@@ -481,7 +481,7 @@ var f3dwebgl = class{
 			}
 			var intersectTmp = {};
 			try {
-			  intersects.forEach((e) =>{ if(e.object.name.indexOf('wp') != -1)){ intersectTmp = e;throw BreakException;}})
+			  intersects.forEach((e) =>{ if(e.object.name.indexOf('wp') != -1){ intersectTmp = e;throw BreakException;}})
 			} catch (e) {
 			  intersects[0] = intersectTmp;
 			}
