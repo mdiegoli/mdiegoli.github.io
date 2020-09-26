@@ -4,7 +4,7 @@ import { ConvexBufferGeometry } from '../Utils/js/mod/ConvexGeometry.js';
 import { toScreenXY, degreesBetweenTwoPoints } from '../Utils/js/mod/f3d_simplify.js';
 import { OrbitControls } from '../Utils/js/mod/OrbitControls.js';
 import { simplify } from  '../Utils/js/mod/simplify-3d.js';
-import {widgetUndo,widgetRedo,widgetNumIntSpheresCurve,widgetLinesCurves,widgetTargetWP,widgetAddBody,widgetAddChain,widgetShowMesh,widgetDrawMove,widgetExportMesh,widgetSphereScale,saveWidget,loadWidget,widgetClear} from '../Utils/js/mod/f3d_widgets.js';
+import {widgetEdit,widgetUndo,widgetRedo,widgetNumIntSpheresCurve,widgetLinesCurves,widgetTargetWP,widgetAddBody,widgetAddChain,widgetShowMesh,widgetDrawMove,widgetExportMesh,widgetSphereScale,saveWidget,loadWidget,widgetClear} from '../Utils/js/mod/f3d_widgets.js';
 
 var f3dwebgl = class{
 	constructor(){
@@ -152,6 +152,8 @@ var f3dwebgl = class{
 		this.lineCurveWidget = new widgetLinesCurves(this,'LINE');
 		this.undoWidget = new widgetUndo(this,'UNDO');
 		//this.redoWidget = new widgetRedo(this,'REDO');
+		this.edit = false;
+		this.editWidget = new widgetEdit(this,'EDIT');
 		this.NUMINTSPHERECURVE = 10;
 		this.numIntSphere = new widgetNumIntSpheresCurve(this,'NUMINTSPHERECURVE');
 		this.intersect = {};
@@ -161,7 +163,6 @@ var f3dwebgl = class{
 		this.lineCurve = true;
 		this.startFreeHandDrawScale = 5;
 		this.endFreeHandDrawScale = 0.1;
-		this.move_sphere = false;
 
 	}
 	resetGroup(){
@@ -492,7 +493,7 @@ var f3dwebgl = class{
 					}
 				);
 				if(this.draw_mode) this.f3dstroke.push(intersects[0].point);
-				if((this.indexPickedObject || this.indexPickedObject === 0) && this.select && this.move_sphere == true){
+				if((this.indexPickedObject || this.indexPickedObject === 0) && this.select && this.edit == true){
 					for(let i = 0,intersect_length = intersects.length;i<intersect_length;i++){
 						//if(intersects[i].object.name.indexOf('wp') != -1){
 							this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(this.indexPickedObject)].sphere.position.copy( intersects[i].point );
@@ -741,7 +742,7 @@ var f3dwebgl = class{
 		this.mouseDown = false;
 	    this.info2.innerHTML = '';
 		if(this.draw_mode && !fromScale){
-			//if(!this.select){
+			if(!this.edit){
 				var me = this;
 				if(this.f3dstroke.length > 0){
 					var stroke2d = simplify(this.f3dstroke,1,true) 
@@ -770,7 +771,7 @@ var f3dwebgl = class{
 					window.actionsStack.addAction('ADDSPHERE',this.indexPickedObject);
 				}
 				
-			//}
+			}
 			//this.controls.enabled = true;
 			this.intersect = {};
 			

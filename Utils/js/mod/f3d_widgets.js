@@ -232,6 +232,24 @@ var widgetLinesCurves = class extends superButtonWidget{
 	}
 }
 
+var widgetEdit = class extends superButtonWidget{
+	constructor(obj,fn){
+		super(obj,fn)
+	}
+	obj_cb(fn) {
+		window.f3d.edit = !window.f3d.edit;
+		if(window.f3d.edit){
+			window.f3d.editLabel = 'EIT';	
+		}
+		else{
+			window.f3d.editLabel = 'EDIT OFF';
+		}
+		document.getElementById(fn).innerText = window.f3d.editLabel;
+		window.f3d.mouseup("",true);
+		
+	}
+}
+
 var widgetTargetWP = class extends superButtonWidget{
 	constructor(obj,fn){
 		super(obj,fn)
@@ -471,4 +489,4 @@ var loadWidget = class extends superTextWidget{
 		
 }
 
-export {widgetUndo,widgetRedo,widgetNumIntSpheresCurve,widgetLinesCurves,widgetTargetWP,loadWidget,saveWidget,superButtonWidget,superNumericWidget,widgetAddBody,widgetAddChain,widgetShowMesh,widgetDrawMove,widgetExportMesh,widgetSphereScale,superTextWidget,widgetClear}
+export {widgetEdit,widgetUndo,widgetRedo,widgetNumIntSpheresCurve,widgetLinesCurves,widgetTargetWP,loadWidget,saveWidget,superButtonWidget,superNumericWidget,widgetAddBody,widgetAddChain,widgetShowMesh,widgetDrawMove,widgetExportMesh,widgetSphereScale,superTextWidget,widgetClear}
