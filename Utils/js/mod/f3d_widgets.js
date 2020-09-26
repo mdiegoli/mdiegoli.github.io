@@ -244,6 +244,7 @@ var widgetEdit = class extends superButtonWidget{
 			window.f3d.editLabel = 'EDIT OFF';
 		}
 		window.f3d.edit = !window.f3d.edit;
+		window.f3d.setDraw();
 		document.getElementById(fn).innerText = window.f3d.editLabel;
 		window.f3d.mouseup("",true);
 		
