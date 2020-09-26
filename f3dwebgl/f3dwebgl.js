@@ -492,7 +492,7 @@ var f3dwebgl = class{
 						me.info2.innerHTML += e.object.name + ' ';
 					}
 				);
-				if(this.draw_mode) this.f3dstroke.push(intersects[0].point);
+				if(!this.edit) this.f3dstroke.push(intersects[0].point);
 				if((this.indexPickedObject || this.indexPickedObject === 0) && this.select && this.edit == true){
 					for(let i = 0,intersect_length = intersects.length;i<intersect_length;i++){
 						//if(intersects[i].object.name.indexOf('wp') != -1){
@@ -806,7 +806,7 @@ var f3dwebgl = class{
 		this.select = bool;
 	}
 
-	setMoveCamera(e){
+	setMoveCamera(){
 		//console.log('move camera')
 		this.draw_mode = false;
 		this.controls.enabled = true;

@@ -237,13 +237,13 @@ var widgetEdit = class extends superButtonWidget{
 		super(obj,fn)
 	}
 	obj_cb(fn) {
-		window.f3d.edit = !window.f3d.edit;
 		if(window.f3d.edit){
-			window.f3d.editLabel = 'EIT';	
+			window.f3d.editLabel = 'EDIT';	
 		}
 		else{
 			window.f3d.editLabel = 'EDIT OFF';
 		}
+		window.f3d.edit = !window.f3d.edit;
 		document.getElementById(fn).innerText = window.f3d.editLabel;
 		window.f3d.mouseup("",true);
 		
@@ -276,13 +276,16 @@ var widgetDrawMove = class extends superButtonWidget{
 	constructor(obj,fn){
 		super(obj,fn)
 	}
+	
 	obj_cb(fn) {
 		if(window.f3d.drawMove.indexOf('MOVE') != -1){
-			window.f3d.controls.enabled = true;
+			//window.f3d.controls.enabled = true;
+			window.f3d.setMoveCamera();
 			window.f3d.drawMove = 'DRAW';	
 		}
 		else{
-			window.f3d.controls.enabled = false;
+			//window.f3d.controls.enabled = false;
+			window.f3d.setDraw();
 			window.f3d.drawMove = 'MOVE';
 		}
 		document.getElementById(fn).innerText = window.f3d.drawMove;
