@@ -1,5 +1,8 @@
 wip https://mdiegoli.github.io/f3dwebgl.html to create a proto to show at blender community to implement zbrush in blender. Now spheres are created upon the picked sphere...
 
+svelthree: https://svelthree.dev/examples#interaction
+
+svelte gl: https://svelte.dev/repl/8d6d139a3d634c2fb1e1ff107c123dd5?version=3.28.0
 
 https://mdiegoli.github.io/f3dwebgl_v1.html , add body and chain https://mdiegoli.github.io/f3dwebgl_v2.html , convexhull mesh https://mdiegoli.github.io/f3dwebgl_v3.html ... read update on README.md at page https://mdiegoli.github.io
 
