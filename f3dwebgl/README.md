@@ -4,7 +4,7 @@ svelthree: https://svelthree.dev/examples#interaction
 
 svelte gl: https://svelte.dev/repl/8d6d139a3d634c2fb1e1ff107c123dd5?version=3.28.0
 
-wacom sdk: https://developer.wacom.com/en-us/products/will-sdk-for-ink
+wacom sdk: https://developer.wacom.com/en-us/products/will-sdk-for-ink , https://github.com/Wacom-Developer/sdk-for-ink-web
 
 https://mdiegoli.github.io/f3dwebgl_v1.html , add body and chain https://mdiegoli.github.io/f3dwebgl_v2.html , convexhull mesh https://mdiegoli.github.io/f3dwebgl_v3.html ... read update on README.md at page https://mdiegoli.github.io
 
