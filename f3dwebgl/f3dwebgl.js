@@ -161,7 +161,7 @@ var f3dwebgl = class{
 		this.setSelect(false);
 		this.disableControls = false;
 		this.lineCurve = true;
-		this.startFreeHandDrawScale = 5;
+		this.startFreeHandDrawScale = 1;
 		this.endFreeHandDrawScale = 0.1;
 
 	}
