@@ -482,15 +482,16 @@ var f3dwebgl = class{
 				this.intersectedObjectOld = this.intersectedObject[ 0 ].object;
 			}
 
-
+			return this.intersectedObject[0];
 		} else {
 
 			if ( this.intersectedObjectOld.material ) this.intersectedObjectOld.material.color.setHex( this.intersectedObjectOld.currentHex );
 			
 			this.intersectedObjectOld = null;
+			return [];
 
 		}
-		return this.intersectedObject;
+		
 
 	}
 
