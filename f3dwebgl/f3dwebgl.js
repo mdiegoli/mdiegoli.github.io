@@ -470,19 +470,19 @@ var f3dwebgl = class{
 
 			if ( this.intersectedObjectOld != this.intersectedObject[ 0 ].object ) {
 
-				if ( his.intersectedObjectOld ) his.intersectedObjectOld.material.emissive.setHex( his.intersectedObjectOld.currentHex );
+				if ( this.intersectedObjectOld ) this.intersectedObjectOld.material.emissive.setHex( this.intersectedObjectOld.currentHex );
 
-				his.intersectedObjectOld = his.intersectedObject[ 0 ].object;
-				his.intersectedObjectOld.currentHex = his.intersectedObjectOld.material.emissive.getHex();
-				his.intersectedObjectOld.material.emissive.setHex( 0xff0000 );
+				this.intersectedObjectOld = this.intersectedObject[ 0 ].object;
+				this.intersectedObjectOld.currentHex = this.intersectedObjectOld.material.emissive.getHex();
+				this.intersectedObjectOld.material.emissive.setHex( 0xff0000 );
 
 			}
 
 		} else {
 
-			if ( his.intersectedObjectOld ) his.intersectedObjectOld.material.emissive.setHex( his.intersectedObjectOld.currentHex );
+			if ( this.intersectedObjectOld ) this.intersectedObjectOld.material.emissive.setHex( this.intersectedObjectOld.currentHex );
 
-			his.intersectedObjectOld = null;
+			this.intersectedObjectOld = null;
 
 		}
 		return this.intersectedObject;
