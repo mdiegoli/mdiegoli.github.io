@@ -163,6 +163,8 @@ var f3dwebgl = class{
 		this.lineCurve = true;
 		this.startFreeHandDrawScale = 1;
 		this.endFreeHandDrawScale = 0.1;
+		this.intersectedObject = {};
+		this.intersectedObjectOld = {};
 
 	}
 	resetGroup(){
@@ -463,7 +465,27 @@ var f3dwebgl = class{
 	intersect_fn(x,y){
 		this.mouse.set( ( x / window.innerWidth ) * 2 - 1, - ( y / window.innerHeight ) * 2 + 1 );
 		this.raycaster.setFromCamera( this.mouse, this.camera );
-		return this.raycaster.intersectObjects( this.scene.children, true );
+		this.intersectedObject = this.raycaster.intersectObjects( this.scene.children, true );
+		if ( this.intersectedObject.length > 0 ) {
+
+			if ( this.intersectedObjectOld != this.intersectedObject[ 0 ].object ) {
+
+				if ( his.intersectedObjectOld ) his.intersectedObjectOld.material.emissive.setHex( his.intersectedObjectOld.currentHex );
+
+				his.intersectedObjectOld = his.intersectedObject[ 0 ].object;
+				his.intersectedObjectOld.currentHex = his.intersectedObjectOld.material.emissive.getHex();
+				his.intersectedObjectOld.material.emissive.setHex( 0xff0000 );
+
+			}
+
+		} else {
+
+			if ( his.intersectedObjectOld ) his.intersectedObjectOld.material.emissive.setHex( his.intersectedObjectOld.currentHex );
+
+			his.intersectedObjectOld = null;
+
+		}
+
 	}
 
 	mousemove( event, x, y ) {
