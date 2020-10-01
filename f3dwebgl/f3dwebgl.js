@@ -476,13 +476,15 @@ var f3dwebgl = class{
 				this.intersectedObjectOld.currentHex = this.intersectedObjectOld.material.emissive.getHex();
 				this.intersectedObjectOld.material.emissive.setHex( 0xff0000 );
 
+			}else{
+				this.intersectedObjectOld = this.intersectedObject[ 0 ].object;
 			}
+
 
 		} else {
 
 			if ( this.intersectedObjectOld.material ) this.intersectedObjectOld.material.emissive.setHex( this.intersectedObjectOld.currentHex );
-			else this.intersectedObjectOld = this.intersectedObject[ 0 ].object;
-
+			
 			this.intersectedObjectOld = null;
 
 		}
