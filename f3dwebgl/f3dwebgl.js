@@ -480,7 +480,8 @@ var f3dwebgl = class{
 
 		} else {
 
-			if ( this.intersectedObjectOld ) this.intersectedObjectOld.material.emissive.setHex( this.intersectedObjectOld.currentHex );
+			if ( this.intersectedObjectOld.material ) this.intersectedObjectOld.material.emissive.setHex( this.intersectedObjectOld.currentHex );
+			else this.intersectedObjectOld = this.intersectedObject[ 0 ].object;
 
 			this.intersectedObjectOld = null;
 
