@@ -468,9 +468,9 @@ var f3dwebgl = class{
 		this.intersectedObject = this.raycaster.intersectObjects( this.scene.children, true );
 		if ( this.intersectedObject.length > 0 ) {
 
-			if ( this.intersectedObjectOld != this.intersectedObject[ 0 ].object ) {
+			if ( this.intersectedObjectOld.material && (this.intersectedObjectOld != this.intersectedObject[ 0 ].object) ) {
 
-				if ( this.intersectedObjectOld ) this.intersectedObjectOld.material.emissive.setHex( this.intersectedObjectOld.currentHex );
+				if ( this.intersectedObjectOld.material ) this.intersectedObjectOld.material.emissive.setHex( this.intersectedObjectOld.currentHex );
 
 				this.intersectedObjectOld = this.intersectedObject[ 0 ].object;
 				this.intersectedObjectOld.currentHex = this.intersectedObjectOld.material.emissive.getHex();
