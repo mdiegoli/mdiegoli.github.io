@@ -298,7 +298,8 @@ var f3dwebgl = class{
 	
 	createBNSphere(color,pos,scale,name,i){
 		var geometry = new THREE.SphereGeometry( 5, 8, 8 );
-		var material = new THREE.MeshToonMaterial( {color: color} );
+		//var material = new THREE.MeshToonMaterial( {color: color} );
+		var material = new THREE.MeshLambertMaterial( {color: color} );
 		var lastSphere = new THREE.Mesh( geometry, material );
 		lastSphere.position.x = pos.x;
 		lastSphere.position.y = pos.y;
@@ -314,7 +315,8 @@ var f3dwebgl = class{
 	createSphere(color,scale){
 		var geometry = new THREE.SphereGeometry( 5, 8, 8 );
 		//var geometry = new THREE.BoxGeometry( 5, 8, 8 );
-		var material = new THREE.MeshToonMaterial( {color: color} );
+		//var material = new THREE.MeshToonMaterial( {color: color} );
+		var material = new THREE.MeshLambertMaterial( {color: color} );
 		this.lastSphere = new THREE.Mesh( geometry, material );
 		this.lastSphere.scale.x = scale;
 		this.lastSphere.scale.y = scale;
