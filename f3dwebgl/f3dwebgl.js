@@ -485,6 +485,7 @@ var f3dwebgl = class{
 			his.intersectedObjectOld = null;
 
 		}
+		return this.intersectedObject;
 
 	}
 
