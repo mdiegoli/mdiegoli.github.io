@@ -476,7 +476,7 @@ var f3dwebgl = class{
 				if ( this.intersectedObjectOld.material ) this.intersectedObjectOld.material.color.setHex( this.intersectedObjectOld.currentHex );
 
 				this.intersectedObjectOld = this.intersectedObject[ 0 ].object;
-				this.intersectedObjectOld.currentHex = this.intersectedObjectOld.material.emissive.getHex();
+				this.intersectedObjectOld.currentHex = this.intersectedObjectOld.material.color.getHex();
 				this.intersectedObjectOld.material.color.setHex( 0xff0000 );
 
 			}else{
