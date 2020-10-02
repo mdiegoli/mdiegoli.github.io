@@ -481,7 +481,7 @@ var f3dwebgl = class{
 				this.intersectedObjectOld.material.color.setHex( 0xffffff );
 
 			}else{
-				if(!this.intersectedObject[ 0 ].object.planeMesh.isNotPickable) this.intersectedObjectOld = this.intersectedObject[ 0 ].object;
+				if(!this.intersectedObject[ 0 ].object.isNotPickable) this.intersectedObjectOld = this.intersectedObject[ 0 ].object;
 			}
 
 			return [this.intersectedObject[0]];
