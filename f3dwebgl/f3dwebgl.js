@@ -471,7 +471,7 @@ var f3dwebgl = class{
 		this.raycaster.setFromCamera( this.mouse, this.camera );
 		this.intersectedObject = this.raycaster.intersectObjects( this.scene.children, true );
 		if ( this.intersectedObject.length > 0 ) {
-
+			//'material' in this.intersectedObjectOld
 			if ( this.intersectedObjectOld.hasOwnProperty('material') && (this.intersectedObjectOld != this.intersectedObject[ 0 ].object) ) {
 
 				if ( this.intersectedObjectOld.material ) this.intersectedObjectOld.material.color.setHex( this.intersectedObjectOld.currentHex );
