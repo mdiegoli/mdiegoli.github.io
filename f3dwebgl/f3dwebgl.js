@@ -472,7 +472,7 @@ var f3dwebgl = class{
 		this.intersectedObject = this.raycaster.intersectObjects( this.scene.children, true );
 		if ( this.intersectedObject.length > 0 ) {
 
-			if ( this.intersectedObjectOld.material && (this.intersectedObjectOld != this.intersectedObject[ 0 ].object) ) {
+			if ( this.intersectedObjectOld.hasOwnProperty('material') && (this.intersectedObjectOld != this.intersectedObject[ 0 ].object) ) {
 
 				if ( this.intersectedObjectOld.material ) this.intersectedObjectOld.material.color.setHex( this.intersectedObjectOld.currentHex );
 
@@ -488,7 +488,7 @@ var f3dwebgl = class{
 			return this.intersectedObject;
 		} else {
 
-			if ( this.intersectedObjectOld.material ) this.intersectedObjectOld.material.color.setHex( this.intersectedObjectOld.currentHex );
+			if ( this.intersectedObjectOld.hasOwnProperty('material') ) this.intersectedObjectOld.material.color.setHex( this.intersectedObjectOld.currentHex );
 			
 			this.intersectedObjectOld = null;
 			return [];
