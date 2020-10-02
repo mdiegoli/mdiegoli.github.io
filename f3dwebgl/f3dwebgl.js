@@ -467,32 +467,37 @@ var f3dwebgl = class{
 	}
 
 	intersect_fn(x,y){
-		this.mouse.set( ( x / window.innerWidth ) * 2 - 1, - ( y / window.innerHeight ) * 2 + 1 );
-		this.raycaster.setFromCamera( this.mouse, this.camera );
-		this.intersectedObject = this.raycaster.intersectObjects( this.scene.children, true );
-		if ( this.intersectedObject.length > 0 ) {
-			//'material' in this.intersectedObjectOld
-			if ( this.intersectedObjectOld.hasOwnProperty('material') && (this.intersectedObjectOld != this.intersectedObject[ 0 ].object) ) {
+		if(this.draw_move){
+			this.mouse.set( ( x / window.innerWidth ) * 2 - 1, - ( y / window.innerHeight ) * 2 + 1 );
+			this.raycaster.setFromCamera( this.mouse, this.camera );
+			this.intersectedObject = this.raycaster.intersectObjects( this.scene.children, true );
+			if ( this.intersectedObject.length > 0 ) {
+				//'material' in this.intersectedObjectOld
+				if ( this.intersectedObjectOld.hasOwnProperty('material') && (this.intersectedObjectOld != this.intersectedObject[ 0 ].object) ) {
 
-				if ( this.intersectedObjectOld.material ) this.intersectedObjectOld.material.color.setHex( this.intersectedObjectOld.currentHex );
+					if ( this.intersectedObjectOld.material ) this.intersectedObjectOld.material.color.setHex( this.intersectedObjectOld.currentHex );
 
-				this.intersectedObjectOld = this.intersectedObject[ 0 ].object;
-				this.intersectedObjectOld.currentHex = this.intersectedObjectOld.material.color.getHex();
-				this.intersectedObjectOld.material.color.setHex( 0xffffff );
+					this.intersectedObjectOld = this.intersectedObject[ 0 ].object;
+					this.intersectedObjectOld.currentHex = this.intersectedObjectOld.material.color.getHex();
+					this.intersectedObjectOld.material.color.setHex( 0xffffff );
 
-			}else{
-				//if(!this.intersectedObject[ 0 ].object.isNotPickable) 
-				this.intersectedObjectOld = this.intersectedObject[ 0 ].object;
+				}else{
+					//if(!this.intersectedObject[ 0 ].object.isNotPickable) 
+					this.intersectedObjectOld = this.intersectedObject[ 0 ].object;
+				}
+
+				return this.intersectedObject;
+			} else {
+
+				if ( this.intersectedObjectOld.hasOwnProperty('material') ) this.intersectedObjectOld.material.color.setHex( this.intersectedObjectOld.currentHex );
+
+				this.intersectedObjectOld = null;
+				return [];
+
 			}
 
-			return this.intersectedObject;
-		} else {
-
-			if ( this.intersectedObjectOld.hasOwnProperty('material') ) this.intersectedObjectOld.material.color.setHex( this.intersectedObjectOld.currentHex );
-			
-			this.intersectedObjectOld = null;
+		}else{
 			return [];
-
 		}
 		
 
