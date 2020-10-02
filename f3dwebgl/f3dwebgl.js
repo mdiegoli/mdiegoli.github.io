@@ -467,7 +467,7 @@ var f3dwebgl = class{
 	}
 
 	intersect_fn(x,y){
-		if(this.draw_move){
+		if(this.draw_mode){
 			this.mouse.set( ( x / window.innerWidth ) * 2 - 1, - ( y / window.innerHeight ) * 2 + 1 );
 			this.raycaster.setFromCamera( this.mouse, this.camera );
 			this.intersectedObject = this.raycaster.intersectObjects( this.scene.children, true );
