@@ -134,6 +134,7 @@ var f3dwebgl = class{
 		this.hideConvexHull = true;
 		this.frustumVertices = [new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(),new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3()];
 		this.planeMesh = this.createPlaneMesh();
+		this.planeMesh.isNotPickable = true;
 		this.scene.add(this.planeMesh);
 		this.setFrustumVertices(this.camera, this.frustumVertices);
 		this.updatePlane();
@@ -480,7 +481,7 @@ var f3dwebgl = class{
 				this.intersectedObjectOld.material.color.setHex( 0xffffff );
 
 			}else{
-				this.intersectedObjectOld = this.intersectedObject[ 0 ].object;
+				if(!this.intersectedObject[ 0 ].object.planeMesh.isNotPickable) this.intersectedObjectOld = this.intersectedObject[ 0 ].object;
 			}
 
 			return [this.intersectedObject[0]];
