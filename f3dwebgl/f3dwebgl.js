@@ -542,8 +542,12 @@ var f3dwebgl = class{
 					//this.draw_mode = false;
 				}
 			}
-			
 			this.render()
+			
+		}else{
+			//if (this.mouseDown) {
+				this.render()
+			//}
 		}
 	}
 	
@@ -602,7 +606,7 @@ var f3dwebgl = class{
 				me.indexPickedChain = token_chain;
 				this.setSelect(true);
 				me.addSphereToScene(me, voxel, intersects[0]);
-				me.render();
+				//me.render();
 			}else if(intersects[ 0 ].object.name.indexOf('wp') !== -1){
 				this.intersect = intersects[ 0 ];
 				this.setSelect(false);
@@ -613,7 +617,7 @@ var f3dwebgl = class{
 				//me.indexPickedChain = me.chainsNumber;
 				//me.indexPickedObject = me.spheresNumber-1;
 			}
-			
+			//me.render();
 		} else {
 			console.log('nothing here');
 		}
