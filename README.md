@@ -88,7 +88,9 @@ f3dwebgl v9 https://mdiegoli.github.io/f3dwebgl_v9.html , undo
 
 f3dwebgl v10 https://mdiegoli.github.io/f3dwebgl_v10.html , freehand draw
 
-f3dwebgl v10 https://mdiegoli.github.io/f3dwebgl_v11.html , fix freehand draw modelling, edit mode
+f3dwebgl v11 https://mdiegoli.github.io/f3dwebgl_v11.html , fix freehand draw modelling, edit mode
+
+f3dwebgl v12 https://mdiegoli.github.io/f3dwebgl_v12.html , node highlight
 
 https://mdiegoli.github.io/convextest.html
 
