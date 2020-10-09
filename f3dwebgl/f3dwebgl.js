@@ -490,25 +490,6 @@ var f3dwebgl = class{
 						this.indexPickedChain = index_chain;
 						this.startFreeHandDrawScale = this.intersectedObjectOld.scale.x;
 						this.setSelect(true);
-					}else if(this.intersectedObjectOld.name.indexOf('interpolation_') !== -1){
-						//this.controls.enabled = false;
-						let interpolation_tokens = this.intersectedObjectOld.name.split('_');
-						let token_objId1 = interpolation_tokens[1];
-						let token_objId2 = interpolation_tokens[2];
-						let token_body = interpolation_tokens[3];
-						let token_chain = interpolation_tokens[4];
-						let firstRing = this.f3dWorld[token_body][token_chain][+token_objId1];
-						var voxel = this.createSphere(0xffff00,this.SPHERESCALE);
-						let index_to_replace = firstRing.head.indexOf(parseInt(token_objId2));
-						let ring = {back:null,head:[firstRing.head[index_to_replace]],sphere:voxel};
-						firstRing.head[index_to_replace] = this.spheresNumber;
-						this.f3dWorld[token_body][token_chain][+(this.spheresNumber)] = ring;
-						this.indexPickedObject = this.spheresNumber;
-						this.indexPickedBody = token_body;
-						this.indexPickedChain = token_chain;
-						this.setSelect(true);
-						//this.addSphereToScene(this, voxel, this.intersectedObjectOld);
-						//me.render();
 					}else if(this.intersectedObjectOld.name.indexOf('wp') !== -1){
 						this.intersect = this.intersectedObjectOld;
 						this.setSelect(false);
