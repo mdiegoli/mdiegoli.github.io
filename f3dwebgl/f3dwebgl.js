@@ -646,7 +646,7 @@ var f3dwebgl = class{
 				me.indexPickedBody = token_body;
 				me.indexPickedChain = token_chain;
 				this.setSelect(true);
-				me.addSphereToScene(me, voxel, intersects[0]);
+				//me.addSphereToScene(me, voxel, intersects[0]);
 				//me.render();
 			}else if(intersects[ 0 ].object.name.indexOf('wp') !== -1){
 				this.intersect = intersects[ 0 ];
