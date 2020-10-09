@@ -479,20 +479,20 @@ var f3dwebgl = class{
 
 					this.intersectedObjectOld = this.intersectedObject[ 0 ].object;
 					
-					if(this.intersectedObjectOld[ 0 ].object.name.indexOf('f3d_sphere_') !== -1){
+					if(this.intersectedObjectOld.name.indexOf('f3d_sphere_') !== -1){
 						//this.controls.enabled = false;
-						let sphereTokens = this.intersectedObjectOld[ 0 ].object.name.split('_');
+						let sphereTokens = this.intersectedObjectOld.name.split('_');
 						let index_f3d_sphere = parseInt(sphereTokens[2]);
 						let index_body = parseInt(sphereTokens[3]);
 						let index_chain = parseInt(sphereTokens[4]);
 						this.indexPickedObject = index_f3d_sphere;
 						this.indexPickedBody = index_body;
 						this.indexPickedChain = index_chain;
-						this.startFreeHandDrawScale = this.intersectedObjectOld[ 0 ].object.scale.x;
+						this.startFreeHandDrawScale = this.intersectedObjectOld.scale.x;
 						this.setSelect(true);
-					}else if(this.intersectedObjectOld[ 0 ].object.name.indexOf('interpolation_') !== -1){
+					}else if(this.intersectedObjectOld.name.indexOf('interpolation_') !== -1){
 						//this.controls.enabled = false;
-						let interpolation_tokens = this.intersectedObjectOld[ 0 ].object.name.split('_');
+						let interpolation_tokens = this.intersectedObjectOld.name.split('_');
 						let token_objId1 = interpolation_tokens[1];
 						let token_objId2 = interpolation_tokens[2];
 						let token_body = interpolation_tokens[3];
@@ -507,10 +507,10 @@ var f3dwebgl = class{
 						this.indexPickedBody = token_body;
 						this.indexPickedChain = token_chain;
 						this.setSelect(true);
-						this.addSphereToScene(this, voxel, this.intersectedObjectOld[0]);
+						this.addSphereToScene(this, voxel, this.intersectedObjectOld);
 						//me.render();
-					}else if(this.intersectedObjectOld[ 0 ].object.name.indexOf('wp') !== -1){
-						this.intersect = this.intersectedObjectOld[ 0 ];
+					}else if(this.intersectedObjectOld.name.indexOf('wp') !== -1){
+						this.intersect = this.intersectedObjectOld;
 						this.setSelect(false);
 						//var voxel = me.createSphere(0xffff00,me.SPHERESCALE);
 						//me.addSphereToScene(me, voxel, intersect);
