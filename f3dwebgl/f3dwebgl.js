@@ -369,10 +369,10 @@ var f3dwebgl = class{
 		event.stopImmediatePropagation();
 
 		if (event.deltaY < 0) {
-			this.obj_increase_cb(event);
+			this.obj_increase_cb(event,'SPHERESCALE');
 		}
 		else {
-			this.obj_decrease_cb(event);
+			this.obj_decrease_cb(event,'SPHERESCALE');
 		}
 		
 	}
