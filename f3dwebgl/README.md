@@ -26,7 +26,11 @@ https://sketchfab.com/developers/data-api/v3
 
 todo:
 
-after pick a sphere, the new sphere created will be added as last sphere of the body and chain of the picked sphere
+offscreen canvas
+
+custom event
+
+
 
 change camera https://github.com/mrdoob/three.js/blob/master/examples/webgl_camera.html
 
