@@ -32,6 +32,8 @@ custom event
 
 draw sketch
 
+WP disappear when no in draw mode
+
 change camera https://github.com/mrdoob/three.js/blob/master/examples/webgl_camera.html
 
 https://github.com/geomensione/geomensione.github.io/tree/master/threejs
