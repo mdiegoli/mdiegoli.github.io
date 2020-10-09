@@ -32,7 +32,9 @@ custom event
 
 draw sketch
 
-WP disappear when no in draw mode
+WP disappear when no in draw mode 
+
+Memorie all WP position to alline the object
 
 change camera https://github.com/mrdoob/three.js/blob/master/examples/webgl_camera.html
 
