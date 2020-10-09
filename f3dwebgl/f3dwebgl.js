@@ -478,6 +478,47 @@ var f3dwebgl = class{
 					if ( this.intersectedObjectOld.material ) this.intersectedObjectOld.material.color.setHex( this.intersectedObjectOld.currentHex );
 
 					this.intersectedObjectOld = this.intersectedObject[ 0 ].object;
+					
+					if(this.intersectedObjectOld[ 0 ].object.name.indexOf('f3d_sphere_') !== -1){
+						//this.controls.enabled = false;
+						let sphereTokens = this.intersectedObjectOld[ 0 ].object.name.split('_');
+						let index_f3d_sphere = parseInt(sphereTokens[2]);
+						let index_body = parseInt(sphereTokens[3]);
+						let index_chain = parseInt(sphereTokens[4]);
+						this.indexPickedObject = index_f3d_sphere;
+						this.indexPickedBody = index_body;
+						this.indexPickedChain = index_chain;
+						this.startFreeHandDrawScale = this.intersectedObjectOld[ 0 ].object.scale.x;
+						this.setSelect(true);
+					}else if(this.intersectedObjectOld[ 0 ].object.name.indexOf('interpolation_') !== -1){
+						//this.controls.enabled = false;
+						let interpolation_tokens = this.intersectedObjectOld[ 0 ].object.name.split('_');
+						let token_objId1 = interpolation_tokens[1];
+						let token_objId2 = interpolation_tokens[2];
+						let token_body = interpolation_tokens[3];
+						let token_chain = interpolation_tokens[4];
+						let firstRing = this.f3dWorld[token_body][token_chain][+token_objId1];
+						var voxel = this.createSphere(0xffff00,this.SPHERESCALE);
+						let index_to_replace = firstRing.head.indexOf(parseInt(token_objId2));
+						let ring = {back:null,head:[firstRing.head[index_to_replace]],sphere:voxel};
+						firstRing.head[index_to_replace] = this.spheresNumber;
+						this.f3dWorld[token_body][token_chain][+(this.spheresNumber)] = ring;
+						this.indexPickedObject = this.spheresNumber;
+						this.indexPickedBody = token_body;
+						this.indexPickedChain = token_chain;
+						this.setSelect(true);
+						this.addSphereToScene(this, voxel, this.intersectedObjectOld[0]);
+						//me.render();
+					}else if(this.intersectedObjectOld[ 0 ].object.name.indexOf('wp') !== -1){
+						this.intersect = this.intersectedObjectOld[ 0 ];
+						this.setSelect(false);
+						//var voxel = me.createSphere(0xffff00,me.SPHERESCALE);
+						//me.addSphereToScene(me, voxel, intersect);
+						//me.addNextRing(me,voxel);
+						//me.indexPickedBody = me.bodyNumber;
+						//me.indexPickedChain = me.chainsNumber;
+						//me.indexPickedObject = me.spheresNumber-1;
+					}
 					this.intersectedObjectOld.currentHex = this.intersectedObjectOld.material.color.getHex();
 					this.intersectedObjectOld.material.color.setHex( 0xffffff );
 
