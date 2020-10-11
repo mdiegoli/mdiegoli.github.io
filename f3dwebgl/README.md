@@ -36,6 +36,8 @@ WP disappear when no in draw mode
 
 Memorie all WP position to alline the object
 
+Differenti strike style ( >, <, <>, =)
+
 change camera https://github.com/mrdoob/three.js/blob/master/examples/webgl_camera.html
 
 https://github.com/geomensione/geomensione.github.io/tree/master/threejs
