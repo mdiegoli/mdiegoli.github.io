@@ -167,6 +167,24 @@ var f3dwebgl = class{
 		this.endFreeHandDrawScale = 0.1;
 		this.intersectedObject = {};
 		this.intersectedObjectOld = {};
+		
+		// geometry
+		this.geometry = new THREE.BufferGeometry();
+
+		// attributes
+		this.positions = new Float32Array( MAX_POINTS * 3 ); // 3 vertices per point
+		this.geometry.addAttribute( 'position', new THREE.BufferAttribute( this.positions, 3 ) );
+
+		// drawcalls
+		this.drawCount = 2; // draw the first 2 points, only
+		geometry.setDrawRange( 0, this.drawCount );
+
+		// material
+		var material = new THREE.LineBasicMaterial( { color: 0xff0000, linewidth: 2 } );
+
+		// line
+		this.line = new THREE.Line( this.geometry,  material );
+		this.scene.add( this.line );
 
 	}
 	resetGroup(){
