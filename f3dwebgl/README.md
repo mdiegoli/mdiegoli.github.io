@@ -30,7 +30,7 @@ offscreen canvas
 
 custom event
 
-draw sketch https://jsfiddle.net/w67tzfhx/40/, https://github.com/esperanc/scribble
+draw sketch https://jsfiddle.net/w67tzfhx/40/ (https://stackoverflow.com/questions/31399856/drawing-a-line-with-three-js-dynamically), https://github.com/esperanc/scribble
 
 WP disappear when no in draw mode 
 
