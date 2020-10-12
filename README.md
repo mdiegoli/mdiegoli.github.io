@@ -92,6 +92,8 @@ f3dwebgl v11 https://mdiegoli.github.io/f3dwebgl_v11.html , fix freehand draw mo
 
 f3dwebgl v12 https://mdiegoli.github.io/f3dwebgl_v12.html , node highlight
 
+f3dwebgl v12 https://mdiegoli.github.io/f3dwebgl_v13.html , draw sketch
+
 https://mdiegoli.github.io/convextest.html
 
 sketch MAT SAT (v. 0.1 of f3d)
