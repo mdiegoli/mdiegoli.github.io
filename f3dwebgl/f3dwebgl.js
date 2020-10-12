@@ -177,7 +177,7 @@ var f3dwebgl = class{
 
 		// drawcalls
 		this.drawCount = 2; // draw the first 2 points, only
-		//geometry.setDrawRange( 0, this.drawCount );
+		geometry.setDrawRange( 0, this.drawCount );
 
 		// material
 		var material = new THREE.LineBasicMaterial( { color: 0xff0000, linewidth: 2 } );
@@ -593,6 +593,7 @@ var f3dwebgl = class{
 				);
 				if(!this.edit){ 
 					this.f3dstroke.push(intersects[0].point);
+					this.line.geometry.setDrawRange( 0, this.f3dstroke.length );
 					this.updatePositions();
 					this.line.geometry.attributes.position.needsUpdate = true; // required after the first render
 				}
