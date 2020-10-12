@@ -177,7 +177,7 @@ var f3dwebgl = class{
 
 		// drawcalls
 		this.drawCount = 2; // draw the first 2 points, only
-		geometry.setDrawRange( 0, this.drawCount );
+		//geometry.setDrawRange( 0, this.drawCount );
 
 		// material
 		var material = new THREE.LineBasicMaterial( { color: 0xff0000, linewidth: 2 } );
