@@ -207,7 +207,8 @@ var f3dwebgl = class{
 			}
 	}
 	resetPosition(){
-		this.line.geometry.attributes.position.array.length = 0;
+		this.line.geometry.setDrawRange( 0, 0 );
+
 	}
 	resetGroup(){
 		this.group = new THREE.Group();
@@ -869,7 +870,7 @@ var f3dwebgl = class{
 						window.actionsStack.addAction('ADDSPHERE',me.indexPickedObject);
 					})
 					this.f3dstroke.length = 0;
-					//this.resetPosition();
+					this.resetPosition();
 				}else{
 					var voxel = this.createSphere(0xffff00,this.SPHERESCALE);
 					this.addSphereToScene(this, voxel, this.intersect);
