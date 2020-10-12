@@ -187,7 +187,7 @@ var f3dwebgl = class{
 		this.scene.add( this.line );
 		
 		// update positions
-		this.updatePositions();
+		//this.updatePositions();
 
 	}
 	// update positions
