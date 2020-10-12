@@ -30,7 +30,7 @@ offscreen canvas
 
 custom event
 
-draw sketch
+draw sketch https://github.com/esperanc/scribble
 
 WP disappear when no in draw mode 
 
