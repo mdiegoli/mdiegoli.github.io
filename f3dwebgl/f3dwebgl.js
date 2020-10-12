@@ -170,9 +170,9 @@ var f3dwebgl = class{
 		
 		// geometry
 		this.geometry = new THREE.BufferGeometry();
-
+		this.MAX_POINTS = 500;
 		// attributes
-		this.positions = new Float32Array( MAX_POINTS * 3 ); // 3 vertices per point
+		this.positions = new Float32Array( this.MAX_POINTS * 3 ); // 3 vertices per point
 		this.geometry.addAttribute( 'position', new THREE.BufferAttribute( this.positions, 3 ) );
 
 		// drawcalls
