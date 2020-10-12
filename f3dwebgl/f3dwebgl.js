@@ -185,7 +185,29 @@ var f3dwebgl = class{
 		// line
 		this.line = new THREE.Line( this.geometry,  material );
 		this.scene.add( this.line );
+		
+		// update positions
+		this.updatePositions();
 
+	}
+	// update positions
+	updatePositions() {
+
+		var positions = this.line.geometry.attributes.position.array;
+
+		var index = 0;
+
+			for ( var i = 0; i < this.f3dstroke.length;  i ++ ) {
+
+				positions[ index ++ ] = this.f3dstroke[i].x;
+				positions[ index ++ ] = this.f3dstroke[i].y;
+				positions[ index ++ ] = this.f3dstroke[i].z;
+
+
+			}
+	}
+	resetPosition(){
+		this.line.geometry.attributes.position.array.length = 0;
 	}
 	resetGroup(){
 		this.group = new THREE.Group();
@@ -569,7 +591,11 @@ var f3dwebgl = class{
 						me.info2.innerHTML += e.object.name + ' ';
 					}
 				);
-				if(!this.edit) this.f3dstroke.push(intersects[0].point);
+				if(!this.edit){ 
+					this.f3dstroke.push(intersects[0].point);
+					this.updatePositions();
+					this.line.geometry.attributes.position.needsUpdate = true; // required after the first render
+				}
 				if((this.indexPickedObject || this.indexPickedObject === 0) && this.select && this.edit == true){
 					for(let i = 0,intersect_length = intersects.length;i<intersect_length;i++){
 						//if(intersects[i].object.name.indexOf('wp') != -1){
@@ -842,6 +868,7 @@ var f3dwebgl = class{
 						window.actionsStack.addAction('ADDSPHERE',me.indexPickedObject);
 					})
 					this.f3dstroke.length = 0;
+					this.resetPosition();
 				}else{
 					var voxel = this.createSphere(0xffff00,this.SPHERESCALE);
 					this.addSphereToScene(this, voxel, this.intersect);
