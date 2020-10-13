@@ -780,7 +780,7 @@ var f3dwebgl = class{
         s1.geometry.vertices.map((e)=>{points.push(new THREE.Vector3( e.x, e.y, e.z ).applyMatrix4(s1.matrixWorld))});
 		s2.geometry.vertices.map((e)=>{points.push(new THREE.Vector3( e.x, e.y, e.z ).applyMatrix4(s2.matrixWorld))});
 		var geometry = new ConvexBufferGeometry( points );
-		var material = new THREE.MeshDepthMaterial();
+		var material = new THREE.MeshToonMaterial( { visible: false } )
 		var mesh = new THREE.Mesh( geometry, material );
 		mesh.name = "convexhull_"+i+"_"+ii;
 		this.ch_group.add( mesh );
