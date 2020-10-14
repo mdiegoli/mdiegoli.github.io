@@ -40,7 +40,7 @@ Differenti strike style ( >, <, <>, =)
 
 color wrap mesh (color attribute in interpolated sphere?)
 
-import in sketchfab https://github.com/sketchfab/blender-plugin
+export to sketchfab https://github.com/sketchfab/blender-plugin
 
 change camera https://github.com/mrdoob/three.js/blob/master/examples/webgl_camera.html
 
