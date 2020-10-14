@@ -30,13 +30,15 @@ offscreen canvas
 
 custom event
 
-draw sketch https://jsfiddle.net/w67tzfhx/40/ (https://stackoverflow.com/questions/31399856/drawing-a-line-with-three-js-dynamically), https://github.com/esperanc/scribble
+DONE draw sketch https://jsfiddle.net/w67tzfhx/40/ (https://stackoverflow.com/questions/31399856/drawing-a-line-with-three-js-dynamically), https://github.com/esperanc/scribble
 
 WP disappear when no in draw mode 
 
 Memorie all WP position to alline the object
 
 Differenti strike style ( >, <, <>, =)
+
+color wrap mesh (color attribute in interpolated sphere?)
 
 change camera https://github.com/mrdoob/three.js/blob/master/examples/webgl_camera.html
 
