@@ -34,7 +34,7 @@ DONE draw sketch https://jsfiddle.net/w67tzfhx/40/ (https://stackoverflow.com/qu
 
 WP disappear when no in draw mode 
 
-Memorie all WP position to alline the object
+Memorie all WP perspective position and https://github.com/mrdoob/three.js/blob/master/examples/webgl_multiple_views.html
 
 Differenti strike style ( >, <, <>, =)
 
