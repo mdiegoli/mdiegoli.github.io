@@ -2,7 +2,7 @@
 //if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 import * as THREE from '../Utils/js/three.module.js';
 import { ConvexBufferGeometry } from '../Utils/js/mod/ConvexGeometry.js';
-import { toScreenXY, degreesBetweenTwoPoints } from '../Utils/js/mod/f3d_simplify.js';
+//import { toScreenXY, degreesBetweenTwoPoints } from '../Utils/js/mod/f3d_simplify.js';
 import { OrbitControls } from '../Utils/js/mod/OrbitControls.js';
 import { simplify } from  '../Utils/js/mod/simplify-3d.js';
 import {widgetEdit,widgetUndo,widgetRedo,widgetNumIntSpheresCurve,widgetLinesCurves,widgetTargetWP,widgetAddBody,widgetAddChain,widgetShowMesh,widgetDrawMove,widgetExportMesh,widgetSphereScale,saveWidget,loadWidget,widgetClear} from '../Utils/js/mod/f3d_widgets.js';
@@ -83,16 +83,16 @@ var f3dwebgl = class{
 		this.raycaster = new THREE.Raycaster();
 		this.mouse = new THREE.Vector2();
 		// Lights
-		var spotLight = new THREE.SpotLight( 0xffffff );
-		spotLight.position.set(1000, 0, 0 );
-		spotLight.castShadow = true;
-		spotLight.shadow.mapSize.width = 1024;
-		spotLight.shadow.mapSize.height = 1024;
-		spotLight.shadow.camera.near = 500;
-		spotLight.shadow.camera.far = 4000;
-		spotLight.shadow.camera.fov = 30;
-		spotLight.target = this.plane;
-		this.scene.add( spotLight );
+		this.spotLight = new THREE.SpotLight( 0xffffff );
+		this.spotLight.position.set(1000, 0, 0 );
+		this.spotLight.castShadow = true;
+		this.spotLight.shadow.mapSize.width = 1024;
+		this.spotLight.shadow.mapSize.height = 1024;
+		this.spotLight.shadow.camera.near = 500;
+		this.spotLight.shadow.camera.far = 4000;
+		this.spotLight.shadow.camera.fov = 30;
+		this.spotLight.target = this.plane;
+		this.scene.add( this.spotLight );
 		this.renderer = new THREE.WebGLRenderer( { antialias: true } );
 		this.renderer.setClearColor( 0xf0f0f0 );
 		this.renderer.setPixelRatio( window.devicePixelRatio );
@@ -106,6 +106,7 @@ var f3dwebgl = class{
 		this.scene.add(this.ch_group);
 		this.controls = new OrbitControls( this.camera, this.renderer.domElement );
 		this.controls.enabled = false;
+		//this.spotLight.target = this.controls.target;
 		document.addEventListener( 'mousemove', this.onDocumentMouseMove.bind(this), false );
 		document.addEventListener( 'touchmove', this.onDocumentMobileMouseMove.bind(this), false );
 		document.addEventListener( 'mousedown', this.onDocumentMouseDown.bind(this), false );
@@ -139,7 +140,7 @@ var f3dwebgl = class{
 		this.setFrustumVertices(this.camera, this.frustumVertices);
 		this.updatePlane();
 		this.distanceFactor = 10;
-		this.targetWP = false;
+		this.targetWorkPlane = true;
 		this.targetLabel = 'TARGETOBJ';
 		this.addbody = new widgetAddBody(this,'ADDBODY');
 		this.addchain = new widgetAddChain(this,'ADDCHAIN');
@@ -511,60 +512,61 @@ var f3dwebgl = class{
 	}
 
 	intersect_fn(x,y){
-		if(this.draw_mode){
-			this.mouse.set( ( x / window.innerWidth ) * 2 - 1, - ( y / window.innerHeight ) * 2 + 1 );
-			this.raycaster.setFromCamera( this.mouse, this.camera );
-			this.intersectedObject = this.raycaster.intersectObjects( this.scene.children, true );
-			if ( this.intersectedObject.length > 0 ) {
-				//'material' in this.intersectedObjectOld
-				if ( this.intersectedObjectOld.hasOwnProperty('material') && (this.intersectedObjectOld != this.intersectedObject[ 0 ].object) ) {
+		//if(this.draw_mode){
+		this.mouse.set( ( x / window.innerWidth ) * 2 - 1, - ( y / window.innerHeight ) * 2 + 1 );
+		this.raycaster.setFromCamera( this.mouse, this.camera );
+		this.intersectedObject = this.raycaster.intersectObjects( this.scene.children, true );
+		if ( this.intersectedObject.length > 0 ) {
+			//'material' in this.intersectedObjectOld
+			if ( this.intersectedObjectOld && this.intersectedObjectOld.hasOwnProperty('material') && (this.intersectedObjectOld != this.intersectedObject[ 0 ].object) ) {
 
-					if ( this.intersectedObjectOld.material ) this.intersectedObjectOld.material.color.setHex( this.intersectedObjectOld.currentHex );
+				if ( this.intersectedObjectOld.material ) this.intersectedObjectOld.material.color.setHex( this.intersectedObjectOld.currentHex );
 
-					this.intersectedObjectOld = this.intersectedObject[ 0 ].object;
-					
-					if(this.intersectedObjectOld.name.indexOf('f3d_sphere_') !== -1){
-						//this.controls.enabled = false;
-						let sphereTokens = this.intersectedObjectOld.name.split('_');
-						let index_f3d_sphere = parseInt(sphereTokens[2]);
-						let index_body = parseInt(sphereTokens[3]);
-						let index_chain = parseInt(sphereTokens[4]);
-						this.indexPickedObject = index_f3d_sphere;
-						this.indexPickedBody = index_body;
-						this.indexPickedChain = index_chain;
-						this.startFreeHandDrawScale = this.intersectedObjectOld.scale.x;
-						this.setSelect(true);
-					}else if(this.intersectedObjectOld.name.indexOf('wp') !== -1){
-						this.intersect = this.intersectedObjectOld;
-						this.setSelect(false);
-						//var voxel = me.createSphere(0xffff00,me.SPHERESCALE);
-						//me.addSphereToScene(me, voxel, intersect);
-						//me.addNextRing(me,voxel);
-						//me.indexPickedBody = me.bodyNumber;
-						//me.indexPickedChain = me.chainsNumber;
-						//me.indexPickedObject = me.spheresNumber-1;
-					}
-					this.intersectedObjectOld.currentHex = this.intersectedObjectOld.material.color.getHex();
-					this.intersectedObjectOld.material.color.setHex( 0xffffff );
-
-				}else{
-					//if(!this.intersectedObject[ 0 ].object.isNotPickable) 
-					this.intersectedObjectOld = this.intersectedObject[ 0 ].object;
+				this.intersectedObjectOld = this.intersectedObject[ 0 ].object;
+				
+				if(this.intersectedObjectOld.name.indexOf('f3d_sphere_') !== -1){
+					//this.controls.enabled = false;
+					let sphereTokens = this.intersectedObjectOld.name.split('_');
+					let index_f3d_sphere = parseInt(sphereTokens[2]);
+					let index_body = parseInt(sphereTokens[3]);
+					let index_chain = parseInt(sphereTokens[4]);
+					this.indexPickedObject = index_f3d_sphere;
+					this.indexPickedBody = index_body;
+					this.indexPickedChain = index_chain;
+					this.startFreeHandDrawScale = this.intersectedObjectOld.scale.x;
+					this.setSelect(true);
+				}else if(this.intersectedObjectOld.name.indexOf('wp') !== -1){
+					this.intersect = this.intersectedObjectOld;
+					this.setSelect(false);
+					//var voxel = me.createSphere(0xffff00,me.SPHERESCALE);
+					//me.addSphereToScene(me, voxel, intersect);
+					//me.addNextRing(me,voxel);
+					//me.indexPickedBody = me.bodyNumber;
+					//me.indexPickedChain = me.chainsNumber;
+					//me.indexPickedObject = me.spheresNumber-1;
 				}
+				this.intersectedObjectOld.currentHex = this.intersectedObjectOld.material.color.getHex();
+				this.intersectedObjectOld.material.color.setHex( 0xffffff );
 
-				return this.intersectedObject;
-			} else {
-
-				if ( this.intersectedObjectOld.hasOwnProperty('material') ) this.intersectedObjectOld.material.color.setHex( this.intersectedObjectOld.currentHex );
-
-				this.intersectedObjectOld = null;
-				return [];
-
+			}else{
+				//if(!this.intersectedObject[ 0 ].object.isNotPickable) 
+				this.intersectedObjectOld = this.intersectedObject[ 0 ].object;
 			}
 
+			return this.intersectedObject;
+		} else {
+			
+			if ( this.intersectedObjectOld && this.intersectedObjectOld.hasOwnProperty('material') ) this.intersectedObjectOld.material.color.setHex( this.intersectedObjectOld.currentHex );
+
+			this.intersectedObjectOld = null;
+			return [];
+
+		}
+		/*
 		}else{
 			return [];
 		}
+		*/
 		
 
 	}
@@ -597,20 +599,22 @@ var f3dwebgl = class{
 				);
 				if(!this.edit){ 
 					this.f3dstroke.push(intersects[0].point);
-					this.line.geometry.setDrawRange( 0, this.f3dstroke.length );
-					this.updatePositions();
-					this.line.geometry.attributes.position.needsUpdate = true; // required after the first render
-				}
-				if((this.indexPickedObject || this.indexPickedObject === 0) && this.select && this.edit == true){
-					for(let i = 0,intersect_length = intersects.length;i<intersect_length;i++){
-						//if(intersects[i].object.name.indexOf('wp') != -1){
-							this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(this.indexPickedObject)].sphere.position.copy( intersects[i].point );
-							this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(this.indexPickedObject)].sphere.updateMatrixWorld();
-						//}
-					}	
-				}
-				else{
-					//this.draw_mode = false;
+					if(this.draw_mode){
+						this.line.geometry.setDrawRange( 0, this.f3dstroke.length );
+						this.updatePositions();
+						this.line.geometry.attributes.position.needsUpdate = true; // required after the first render
+					}
+					if((this.indexPickedObject || this.indexPickedObject === 0) && this.select && this.edit == true){
+						for(let i = 0,intersect_length = intersects.length;i<intersect_length;i++){
+							//if(intersects[i].object.name.indexOf('wp') != -1){
+								this.f3dWorld[+this.indexPickedBody][+this.indexPickedChain][+(this.indexPickedObject)].sphere.position.copy( intersects[i].point );
+								this.f3dWorld[+this.indexPickedBody][+this.indexPickedChain][+(this.indexPickedObject)].sphere.updateMatrixWorld();
+							//}
+						}	
+					}
+					else{
+						//this.draw_mode = false;
+					}
 				}
 			}
 			this.render()
@@ -893,7 +897,8 @@ var f3dwebgl = class{
 		else{
 			//this.draw_mode = true;
 		}
-		this.showBBox(this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(this.indexPickedObject)].sphere,this);
+		this.showBBox(this.f3dWorld[+this.indexPickedBody][+this.indexPickedChain][+(this.indexPickedObject)].sphere,this);
+		this.setControlTarget();
 		this.interpolate_group.children.length = 0;
 		this.ch_group.children.length = 0;
 		this.setSelect(false);
@@ -1024,13 +1029,13 @@ var f3dwebgl = class{
 		this.save( new Blob( [ buffer ], { type: 'application/octet-stream' } ), filename );
 	}
 	getPosScl(){
-		let numberOfSpheres = Object.keys(this.f3dWorld[this.indexPickedBody][this.indexPickedChain]).length;
+		let numberOfSpheres = Object.keys(this.f3dWorld[+this.indexPickedBody][+this.indexPickedChain]).length;
 		let returnArray = [];
 		for(let s = 0;s<numberOfSpheres;s++){
 			returnArray[s] = {};
-			returnArray[s].position = this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(s)].sphere.position;
-			returnArray[s].scale = this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(s)].sphere.scale;
-			returnArray[s].name = this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(s)].sphere.name;
+			returnArray[s].position = this.f3dWorld[+this.indexPickedBody][+this.indexPickedChain][+(s)].sphere.position;
+			returnArray[s].scale = this.f3dWorld[+this.indexPickedBody][+this.indexPickedChain][+(s)].sphere.scale;
+			returnArray[s].name = this.f3dWorld[+this.indexPickedBody][+this.indexPickedChain][+(s)].sphere.name;
 			if(s == numberOfSpheres-1) return JSON.stringify(returnArray);
 		};
 
@@ -1066,19 +1071,19 @@ var f3dwebgl = class{
 		switch(action.t){
 			case 'ADDSPHERE':
 				if(undoRedo.indexOf('u')!=-1){
-					let h = this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(this.spheresNumber-1)].head;
-					let b = this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(this.spheresNumber-1)].back;
+					let h = this.f3dWorld[+this.indexPickedBody][+this.indexPickedChain][+(this.spheresNumber-1)].head;
+					let b = this.f3dWorld[+this.indexPickedBody][+this.indexPickedChain][+(this.spheresNumber-1)].back;
 					if(h[0]){
-						this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(b)].head = h[0];
-						this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(h[0])].back = b;
+						this.f3dWorld[+this.indexPickedBody][+this.indexPickedChain][+(b)].head = h[0];
+						this.f3dWorld[+this.indexPickedBody][+this.indexPickedChain][+(h[0])].back = b;
 					}else{
-						let a = this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(b)].head;
-						if(a.length>1) this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(b)].head.removeElement((this.spheresNumber-1));
-						else this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(b)].head = [];
+						let a = this.f3dWorld[+this.indexPickedBody][+this.indexPickedChain][+(b)].head;
+						if(a.length>1) this.f3dWorld[+this.indexPickedBody][+this.indexPickedChain][+(b)].head.removeElement((this.spheresNumber-1));
+						else this.f3dWorld[+this.indexPickedBody][+this.indexPickedChain][+(b)].head = [];
 					}
-					let s = this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(this.spheresNumber-1)].sphere;
+					let s = this.f3dWorld[+this.indexPickedBody][+this.indexPickedChain][+(this.spheresNumber-1)].sphere;
 					this.group.remove( s );
-					delete this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(this.spheresNumber-1)];
+					delete this.f3dWorld[+this.indexPickedBody][+this.indexPickedChain][+(this.spheresNumber-1)];
 					this.spheresNumber--;
 				}else{
 					this.spheresNumber++;
@@ -1087,6 +1092,34 @@ var f3dwebgl = class{
 				break;
 		}
 		this.mouseup("",true);
+	}
+	setControlTarget(){
+		let pos = this.f3dWorld[+(this.indexPickedBody)][+(this.indexPickedChain)][+(this.indexPickedObject)].sphere.position;
+		this.controls.target.set(pos.x,pos.y,pos.z);
+		//this.spotLight.target = this.controls.target;
+		this.camera.lookAt(new THREE.Vector3(pos.x,pos.y,pos.z));
+	}
+	setTargetWP(){
+		var me = this;
+		return new Promise((res,rej)=>{
+			if(me.targetWorkPlane){
+				me.targetLabel = 'TARGETOBJ';
+				me.planeMesh.geometry.boundingBox.getCenter(me.controls.target);
+			}
+			else{
+				me.targetLabel = 'TARGETWP';
+				if(isFinite(me.indexPickedBody) && isFinite(me.indexPickedChain) && isFinite(me.indexPickedObject)){
+					//let pos = me.f3dWorld[+(me.indexPickedBody)][+(me.indexPickedChain)][+(me.indexPickedObject)].sphere.position;
+					//me.controls.target = new THREE.Vector3(pos.x,pos.y,pos.z);
+					//this.camera.lookAt(new THREE.Vector3(pos.x,pos.y,pos.z));
+					this.setControlTarget();
+				}
+					
+			}
+			me.controls.update();			
+			res();
+		})
+		
 	}
 }
 var actionsStack = class{

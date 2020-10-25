@@ -1,5 +1,3 @@
-import * as THREE from './three.module.js';
-
 //https://jsfiddle.net/f2Lommf5/5772/
 function toScreenXY(obj,cam){
     var width = window.innerWidth, height = window.innerHeight;

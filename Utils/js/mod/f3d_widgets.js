@@ -242,9 +242,9 @@ var widgetEdit = class extends superButtonWidget{
 		}
 		else{
 			window.f3d.editLabel = 'EDIT OFF';
+			//window.f3d.setDraw();
 		}
 		window.f3d.edit = !window.f3d.edit;
-		window.f3d.setDraw();
 		document.getElementById(fn).innerText = window.f3d.editLabel;
 		window.f3d.mouseup("",true);
 		
@@ -256,18 +256,11 @@ var widgetTargetWP = class extends superButtonWidget{
 		super(obj,fn)
 	}
 	obj_cb(fn) {
-		window.f3d.targetWP = !window.f3d.targetWP;
-		
-		if(window.f3d.targetWP){
-			window.f3d.targetLabel = 'TARGETWP';	
-			window.f3d.planeMesh.geometry.boundingBox.getCenter(window.f3d.controls.target);
-		}
-		else{
-			window.f3d.targetLabel = 'TARGETOBJ';
-			window.f3d.controls.target.copy(this.f3dWorld[this.indexPickedBody][this.indexPickedChain][+(this.indexPickedObject)].sphere.position);
-		}
-		document.getElementById(fn).innerText = window.f3d.targetLabel;
-		window.f3d.mouseup("",true);
+		window.f3d.targetWorkPlane = !window.f3d.targetWorkPlane;
+		window.f3d.setTargetWP().then(()=>{
+			document.getElementById(fn).innerText = window.f3d.targetLabel;
+			window.f3d.mouseup("",true);
+		});
 		
 	}
 }
