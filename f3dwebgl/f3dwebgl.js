@@ -2,6 +2,8 @@
 //if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 import * as THREE from '../Utils/js/three.module.js';
 import { ConvexBufferGeometry } from '../Utils/js/mod/ConvexGeometry.js';
+import { TransformControls } from '../Utils/js/mod/TransformControls.js';
+
 //import { toScreenXY, degreesBetweenTwoPoints } from '../Utils/js/mod/f3d_simplify.js';
 import { OrbitControls } from '../Utils/js/mod/OrbitControls.js';
 import { simplify } from  '../Utils/js/mod/simplify-3d.js';
@@ -190,8 +192,7 @@ var f3dwebgl = class{
 		this.opacityCH = 1;
 		this.transparentCH = false;
 
-		// update positions
-		//this.updatePositions();
+		
 
 	}
 	// update positions
@@ -334,12 +335,28 @@ var f3dwebgl = class{
 	
 	showBBox(voxel,me){
 		if(!me) me = this;
+		/*
 		if(!me.boxHelper){
 			me.boxHelper = new THREE.BoxHelper( voxel, 0xffff00 );
 			me.scene.add(me.boxHelper);
 		}
+		*/
+		if(!me.control){
+			me.control = new TransformControls( me.camera, me.renderer.domElement );
+			me.control.addEventListener( "mouseUp", function ( event ) {
+
+				if ( ! event.value ) {
+
+					me.mouseup("",true);
+
+				}
+
+			} );
+			me.control.attach( voxel );
+			me.scene.add( me.control );
+		}
 		else{
-			me.boxHelper.setFromObject(voxel);
+			me.control.attach( voxel );
 		}
 	}
 	
@@ -360,8 +377,8 @@ var f3dwebgl = class{
 	}
 	
 	createSphere(color,scale){
-		var geometry = new THREE.SphereGeometry( 5, 8, 8 );
-		//var geometry = new THREE.BoxGeometry( 5, 8, 8 );
+		//var geometry = new THREE.SphereGeometry( 5, 8, 8 );
+		var geometry = new THREE.BoxGeometry( 8, 8, 8 );
 		//var material = new THREE.MeshToonMaterial( {color: color} );
 		var material = new THREE.MeshLambertMaterial( {color: color} );
 		this.lastSphere = new THREE.Mesh( geometry, material );
