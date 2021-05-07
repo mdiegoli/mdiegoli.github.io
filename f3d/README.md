@@ -1,4 +1,4 @@
-liner notes of spore
+**liner notes of spore**
 
 http://www.chrishecker.com/My_liner_notes_for_spore
 
