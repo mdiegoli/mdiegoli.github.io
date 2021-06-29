@@ -14,7 +14,7 @@ WIP of a 2d skeleton description of shapes: press button on top left, sketch a f
 
 ## F3D
 
-WIP of a 3D modelling tool (Fast 3D)
+WIP of a 3D modelling tool, Fast 3D
 
 https://mdiegoli.github.io/f3dwebgl.html
 
