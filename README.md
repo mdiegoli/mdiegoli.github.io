@@ -18,7 +18,7 @@ WIP of a 3D modelling tool (Fast 3D)
 
 ![f3d v7](https://mdiegoli.github.io/images/f3dv7.png)
 
-[f3dwebgl wip] (https://mdiegoli.github.io/f3dwebgl.html)
+https://mdiegoli.github.io/f3dwebgl.html
 
 [f3dwebgl v1] (https://mdiegoli.github.io/f3dwebgl_v1.html), create sphere chain
 
