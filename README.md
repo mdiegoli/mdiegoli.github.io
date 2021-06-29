@@ -16,8 +16,6 @@ WIP of a 2d skeleton description of shapes: press button on top left, sketch a f
 
 WIP of a 3D modelling tool (Fast 3D)
 
-![f3d v7](https://mdiegoli.github.io/images/f3dv7.png)
-
 https://mdiegoli.github.io/f3dwebgl.html
 
 [f3dwebgl v1] (https://mdiegoli.github.io/f3dwebgl_v1.html), create sphere chain
@@ -46,6 +44,7 @@ https://mdiegoli.github.io/f3dwebgl.html
 
 [f3dwebgl v12] (https://mdiegoli.github.io/f3dwebgl_v13.html) , draw sketch
 
+![f3d v7](https://mdiegoli.github.io/images/f3dv7.png)
 
 ## Marching cube
 
