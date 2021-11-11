@@ -16,7 +16,13 @@ WIP of a 2d skeleton description of shapes: press button on top left, sketch a f
 
 WIP of a 3D modelling tool Fast 3D
 
-ToDo: https://discoverthreejs.com/book/first-steps/transformations/
+ToDo: 
+
+https://discoverthreejs.com/book/first-steps/transformations/ 
+
+http://geekonjava.blogspot.com/2016/10/drag-and-drop-3d-objects-using-threejs.html
+
+
 
 [https://mdiegoli.github.io/f3dwebgl.html](https://mdiegoli.github.io/f3dwebgl.html)
 
