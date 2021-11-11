@@ -16,6 +16,8 @@ WIP of a 2d skeleton description of shapes: press button on top left, sketch a f
 
 WIP of a 3D modelling tool Fast 3D
 
+ToDo: https://discoverthreejs.com/book/first-steps/transformations/
+
 [https://mdiegoli.github.io/f3dwebgl.html](https://mdiegoli.github.io/f3dwebgl.html)
 
 https://mdiegoli.github.io/f3dwebgl_v1.html create sphere chain
