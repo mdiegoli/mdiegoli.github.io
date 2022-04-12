@@ -54,6 +54,8 @@ https://mdiegoli.github.io/f3dwebgl_v1.html create sphere chain
 
 ![f3d v7](https://mdiegoli.github.io/images/f3dv7.png)
 
+https://mdiegoli.github.io/webgl_geometry_spline_editor.html
+
 ## Marching cube
 
 WIP of a painting tool based on metaball
