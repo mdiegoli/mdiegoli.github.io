@@ -18,7 +18,7 @@ import {
 	SphereGeometry,
 	TorusGeometry,
 	Vector3
-} from './three140dev.module.js';
+} from './mod/three140dev.module.js';
 
 const _raycaster = new Raycaster();
 
