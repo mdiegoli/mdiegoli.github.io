@@ -304,7 +304,7 @@
 						const t = i / ( ARC_SEGMENTS - 1 );
 						spline.getPoint( t, point );
 						position.setXYZ( i, point.x, point.y, point.z );
-						let scale = getScale();
+						let scale = getScale(i,ARC_SEGMENTS);
 						curve_spheres.children[i].position.x = point.x;
 						curve_spheres.children[i].position.y = point.y;
 						curve_spheres.children[i].position.z = point.z;
@@ -361,8 +361,8 @@
 			}
 			
 			
-			function getScale(){
-				return 1
+			function getScale(i,numPoints){
+				return i*0.1
 			}
 			
 			function createSphere(color,scale){
