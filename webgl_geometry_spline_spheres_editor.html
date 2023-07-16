@@ -37,7 +37,7 @@
 		<script type="module">
 
 			import * as THREE from './Utils/js/mod/three140dev.module.js';
-
+			import { ConvexBufferGeometry } from './Utils/js/mod/ConvexGeometry.js';
 			import { GUI } from './Utils/js/lil-gui.module.min.js';
 
 			import { OrbitControls } from './Utils/js/mod/OrbitControls.js';
@@ -62,6 +62,8 @@
 			for ( let i = 0; i < ARC_SEGMENTS; i ++ ) {
 				curve_spheres.add( createSphere( 0x00ff00, 1 ) )
 			}
+			var ch_group = new THREE.Group();
+			
 
 			const splines = {};
 
@@ -220,7 +222,7 @@
 
 				}
 
-				
+				scene.add(ch_group);
 				scene.add( curve_spheres )
 
 				load( [ new THREE.Vector3( 289.76843686945404, 452.51481137238443, 56.10018915737797 ),
@@ -311,6 +313,7 @@
 						curve_spheres.children[i].scale.x = scale
 						curve_spheres.children[i].scale.y = scale
 						curve_spheres.children[i].scale.z = scale
+						if ( i > 0 ) convexHullBetween2Spheres(curve_spheres.children[i-1],curve_spheres.children[i],i-1,i)
 					}
 
 					position.needsUpdate = true;
@@ -364,6 +367,36 @@
 			function getScale(i,numPoints){
 				return i*0.1
 			}
+
+			function convexHullBetween2Spheres(s1,s2,i,ii){
+				var colorCH = 0x00ff00
+				var points = [];
+				const position = s1.geometry.attributes.position;
+				
+				for ( let i = 0, l = position.count; i < l; i ++ ) {
+					const vector = new THREE.Vector3();
+					vector.fromBufferAttribute( position, i );
+					vector.applyMatrix4( s1.matrixWorld );
+					points.push(vector);
+				}
+				const position2 = s2.geometry.attributes.position;
+				
+				for ( let i = 0, l = position2.count; i < l; i ++ ) {
+					const vector = new THREE.Vector3();
+					vector.fromBufferAttribute( position2, i );
+					vector.applyMatrix4( s2.matrixWorld );
+					points.push(vector);
+				}
+
+				//s1.geometry.vertices.map((e)=>{points.push(new THREE.Vector3( e.x, e.y, e.z ).applyMatrix4(s1.matrixWorld))});
+				//s2.geometry.vertices.map((e)=>{points.push(new THREE.Vector3( e.x, e.y, e.z ).applyMatrix4(s2.matrixWorld))});
+				var geometry = new ConvexBufferGeometry( points );
+				//var material = new THREE.MeshBasicMaterial( {color: this.colorCH, opacity: this.opacityCH,transparent:this.transparentCH} );	
+				var material = new THREE.MeshLambertMaterial( {color: colorCH} );
+				var mesh = new THREE.Mesh( geometry, material );
+				mesh.name = "convexhull_"+i+"_"+ii;
+				ch_group.add( mesh );
+			}
 			
 			function createSphere(color,scale){
 				var geometry = new THREE.SphereGeometry( 5, 8, 8 );
@@ -415,6 +448,8 @@
 			function render() {
 
 				splines.uniform.mesh.visible = params.uniform;
+				curve_spheres.visible = false
+				ch_group.visible = true
 				//splines.centripetal.mesh.visible = params.centripetal;
 				//splines.chordal.mesh.visible = params.chordal;
 				renderer.render( scene, camera );
